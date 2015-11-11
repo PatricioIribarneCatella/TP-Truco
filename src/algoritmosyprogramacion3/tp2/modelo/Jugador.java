@@ -88,16 +88,30 @@ public class Jugador
 	}
 	
 	/*El jugador coloca una carta de su mano en la mesa*/
-	public void jugarCarta(int indice)
+	public void jugarPrimerCarta()
 	{
 		if(this.campoPropio.esMiTurno())
 		{
-			Carta cartaAJugar = this.cartas.getCarta(indice);
+			Carta cartaAJugar = this.cartas.getPrimerCarta();
 			this.campoPropio.recibirCartaJugada(cartaAJugar);	
 		}
 	}
 	
+	public void jugarSegundaCarta()
+	{
+		if(this.campoPropio.esMiTurno())
+		{
+			Carta cartaAJugar = this.cartas.getSegundaCarta();
+			this.campoPropio.recibirCartaJugada(cartaAJugar);	
+		}
+	}
 	
-	
-	
+	public void jugarTercerCarta()
+	{
+		if(this.campoPropio.esMiTurno())
+		{
+			Carta cartaAJugar = this.cartas.getTercerCarta();
+			this.campoPropio.recibirCartaJugada(cartaAJugar);	
+		}
+	}
 }

@@ -14,6 +14,7 @@ import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaDeCuatro;
 import algoritmosyprogramacion3.tp2.modelo.MesaDeDos;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
+import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
 
 public class MesaTest {
@@ -104,7 +105,7 @@ public class MesaTest {
 		jugador1.recibirCarta(anchoDeBasto);
 		jugador1.recibirCarta(sieteDeEspada);
 		
-		jugador1.jugarCarta(0); //juego el ancho de espada
+		jugador1.jugarPrimerCarta(); //juego el ancho de espada
 		
 		Assert.assertTrue(campoJugador1.getCarta(0) ==  anchoDeEspada);
 		Assert.assertTrue(jugador2 == mesaDeDos.getJugadorActual());
