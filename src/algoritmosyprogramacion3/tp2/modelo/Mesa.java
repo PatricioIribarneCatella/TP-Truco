@@ -9,7 +9,8 @@ public abstract class Mesa {
 	protected LinkedList<Jugador> jugadores;
 	protected LinkedList<Campo> camposDeJuego; 
 	protected int indiceActual;
-    protected Jugador jugadorActual;    
+    protected Jugador jugadorActual;   
+    protected Jugador jugadorMano;
     protected boolean conFlor;
     
     
@@ -25,6 +26,7 @@ public abstract class Mesa {
     	}
     	this.conFlor = conFlor;
     	this.jugadorActual = this.jugadores.getFirst();
+    	this.jugadorMano =  this.jugadorActual;
     	this.indiceActual = 0;
     }
 
@@ -48,6 +50,25 @@ public abstract class Mesa {
     public Jugador getJugadorActual(){
     	
     	return this.jugadorActual;
+    }
+    
+    
+    
+    
+    
+    public boolean cantarFlor(){
+    	
+    	if(!this.partidaConFlor())
+    	{
+    		throw new PartidaSinFlorException();
+    	}
+    	return (this.jugadorActual.cantarFlor());
+    }
+    
+    public void cambiarMano(){
+    	
+    	this.jugadorMano= 
+    	
     }
 	
     
