@@ -119,4 +119,9 @@ public class Mano {
 	public void removerCartas() {
 		this.cartas.clear();
 	}
+	
+	public Carta getCarta(int indice)
+	{
+		return this.cartas.get(indice);
+	}
 }

@@ -9,11 +9,15 @@ import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.modelo.Campo;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
+import algoritmosyprogramacion3.tp2.modelo.CuatroDeCopa;
+import algoritmosyprogramacion3.tp2.modelo.CuatroDeOro;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaDeCuatro;
 import algoritmosyprogramacion3.tp2.modelo.MesaDeDos;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
+import algoritmosyprogramacion3.tp2.modelo.SieteDeOro;
+import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
 
 public class MesaTest {
@@ -26,6 +30,15 @@ public class MesaTest {
 	private Jugador jugador2;
 	private Jugador jugador3;
 	private Jugador jugador4;
+	private Campo campoJugador1;
+	private Campo campoJugador2;
+	private Carta anchoDeEspada;
+	private Carta anchoDeBasto;
+	private Carta sieteDeEspada;
+	private Carta sieteDeOro;
+	private Carta cuatroDeCopa;
+	private Carta cuatroDeOro;
+	
 	
 	@Before
     public void  setUp()
@@ -47,6 +60,25 @@ public class MesaTest {
 	    
 		mesaDeDos = new MesaDeDos(jugadoresPartidaDeDos,true);
 		mesaDeCuatro = new MesaDeCuatro(jugadoresPartidaDeCuatro,true);
+		
+	    anchoDeEspada = new UnoDeEspada();
+	    anchoDeBasto = new UnoDeBasto();
+		sieteDeEspada = new SieteDeEspada();
+		sieteDeOro = new SieteDeOro();
+		cuatroDeCopa = new CuatroDeCopa();
+		cuatroDeOro = new CuatroDeOro();
+		
+		campoJugador1 = new Campo(jugador1, mesaDeDos);
+		campoJugador2 = new Campo(jugador2,mesaDeDos);
+		jugador1.setCampo(campoJugador1);
+		jugador2.setCampo(campoJugador2);
+		
+		jugador1.recibirCarta(anchoDeEspada);
+		jugador1.recibirCarta(anchoDeBasto);
+		jugador1.recibirCarta(sieteDeEspada);
+		jugador2.recibirCarta(sieteDeOro);
+		jugador2.recibirCarta(cuatroDeCopa);
+		jugador2.recibirCarta(cuatroDeOro);
 	}
 	
 	
@@ -93,6 +125,18 @@ public class MesaTest {
 	@Test
 	public void testJugarCarta(){
 		
+		
+		jugador1.jugarPrimerCarta(); //juego el ancho de espada
+		jugador2.jugarSegundaCarta();
+		Assert.assertTrue(campoJugador1.getPrimeraCarta() ==  anchoDeEspada);
+		Assert.assertTrue(campoJugador2.getSegundaCarta() ==  cuatroDeCopa);
+		
+	}
+	
+	
+	@Test
+	public void testJugadorNoPuedeJugarDosVecesLaMismaCarta(){
+		
 		Carta anchoDeEspada = new UnoDeEspada();
 		Carta anchoDeBasto = new UnoDeBasto();
 		Carta sieteDeEspada = new SieteDeEspada();
@@ -104,13 +148,9 @@ public class MesaTest {
 		jugador1.recibirCarta(anchoDeBasto);
 		jugador1.recibirCarta(sieteDeEspada);
 		
-		jugador1.jugarCarta(0); //juego el ancho de espada
-		
-		Assert.assertTrue(campoJugador1.getCarta(0) ==  anchoDeEspada);
-		Assert.assertTrue(jugador2 == mesaDeDos.getJugadorActual());
-		
+		jugador1.jugarPrimerCarta();
+		jugador2.jugarSegundaCarta();
 	}
-	
 	
 	
 	
