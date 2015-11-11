@@ -55,4 +55,9 @@ public abstract class Carta {
 		
 		return 0;
 	}
+	
+	public boolean esValidaParaSerJugada() {
+		
+		return this.estado.esValidoParaSerJugada();
+	}
 }

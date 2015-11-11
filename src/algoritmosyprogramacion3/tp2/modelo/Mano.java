@@ -24,25 +24,37 @@ public class Mano {
 		return lista;
 	}
 	
-	private void calcularPuntajeEnvido(List<Carta> lista, int puntaje) {
+	private int calcularPuntajeEnvido(List<Carta> lista) {
+		
+		int puntaje = 0;
 		
 		for (Carta carta : lista) {
 			puntaje += carta.getValorEnvido();	
 		}
+		
+		return puntaje;
 	}
 	
-	private void calcularPuntajeEnvidoConFlor(int puntaje) {
+	private int calcularPuntajeEnvidoConFlor() {
+		
+		int puntaje = 0;
 		
 		this.cartas.sort(new ComparadorCartas());
 		
 		puntaje = this.cartas.get(1).getValorEnvido() + this.cartas.get(2).getValorEnvido();
+		
+		return puntaje;
 	}
 
-	private void calcularPuntajeEnvidoMentiroso(int puntaje) {
+	private int calcularPuntajeEnvidoMentiroso() {
+		
+		int puntaje = 0;
 		
 		this.cartas.sort(new ComparadorCartas());
 		
 		puntaje = this.cartas.get(2).getValorEnvido();
+		
+		return puntaje;
 	}
 	
 	public boolean hayFlor() {
@@ -76,6 +88,7 @@ public class Mano {
 		
 		String puntajeComoString;
 		int puntaje = 20;
+		int puntajeParcial = 0;
 		
 		List<Carta> listaEspada = this.filtrarCartasPorPalo(new Espada());
 		List<Carta> listaBasto = this.filtrarCartasPorPalo(new Basto());
@@ -84,29 +97,30 @@ public class Mano {
 		
 		if (listaEspada.size() == 2) {
 			
-			this.calcularPuntajeEnvido(listaEspada, puntaje);
+			puntajeParcial = this.calcularPuntajeEnvido(listaEspada);
 			
 		} else if (listaBasto.size() == 2) {
 			
-			this.calcularPuntajeEnvido(listaBasto, puntaje);
+			puntajeParcial = this.calcularPuntajeEnvido(listaBasto);
 			
 		} else if (listaOro.size() == 2) {
 			
-			this.calcularPuntajeEnvido(listaOro, puntaje);
+			puntajeParcial = this.calcularPuntajeEnvido(listaOro);
 			
 		} else if (listaCopa.size() == 2) {
 			
-			this.calcularPuntajeEnvido(listaCopa, puntaje);
+			puntajeParcial = this.calcularPuntajeEnvido(listaCopa);
 			
 		} else if (hayFlor()) {
 			
-			this.calcularPuntajeEnvidoConFlor(puntaje);
+			puntajeParcial = this.calcularPuntajeEnvidoConFlor();
 			
 		} else {
 			
-			this.calcularPuntajeEnvidoMentiroso(puntaje);
+			puntajeParcial = this.calcularPuntajeEnvidoMentiroso();
 		}
 		
+		puntaje += puntajeParcial;
 		puntajeComoString = Integer.toString(puntaje);
 		
 		return puntajeComoString;
