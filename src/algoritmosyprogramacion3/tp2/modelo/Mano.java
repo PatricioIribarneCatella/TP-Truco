@@ -116,12 +116,19 @@ public class Mano {
 		this.cartas.add(nuevaCarta);
 	}
 	
-	public void removerCartas() {
-		this.cartas.clear();
+	public Carta getPrimerCarta() {
+		return this.cartas.get(0);
 	}
 	
-	public Carta getCarta(int indice)
-	{
-		return this.cartas.get(indice);
+	public Carta getSegundaCarta() {
+		return this.cartas.get(1);
+	}
+	
+	public Carta getTercerCarta() {
+		return this.cartas.get(2);
+	}
+	
+	public void removerCartas() {
+		this.cartas.clear();
 	}
 }

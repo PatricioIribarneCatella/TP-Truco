@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import org.junit.Before;
 import org.junit.Test;
 
+import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 import algoritmosyprogramacion3.tp2.modelo.Campo;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.CuatroDeCopa;
@@ -100,6 +101,10 @@ public class MesaTest {
 		jugadorActual = mesaDeDos.getJugadorActual();
 		Assert.assertTrue(jugador2 == jugadorActual);
 		
+		mesaDeDos.cambiarTurno();
+		jugadorActual = mesaDeDos.getJugadorActual();
+		Assert.assertTrue(jugador1 == jugadorActual);
+		
 	}
 	
 	@Test
@@ -120,6 +125,9 @@ public class MesaTest {
 		jugadorActual = mesaDeCuatro.getJugadorActual();
 		Assert.assertTrue(jugador4 == jugadorActual);
 		
+		mesaDeCuatro.cambiarTurno();
+		jugadorActual = mesaDeCuatro.getJugadorActual();
+		Assert.assertTrue(jugador1 == jugadorActual);
 	}
 	
 	@Test
@@ -128,28 +136,31 @@ public class MesaTest {
 		
 		jugador1.jugarPrimerCarta(); //juego el ancho de espada
 		jugador2.jugarSegundaCarta();
-		Assert.assertTrue(campoJugador1.getPrimeraCarta() ==  anchoDeEspada);
-		Assert.assertTrue(campoJugador2.getSegundaCarta() ==  cuatroDeCopa);
+		Assert.assertTrue(campoJugador1.getPrimerCarta() ==  anchoDeEspada);
+		Assert.assertTrue(campoJugador2.getPrimerCarta() ==  cuatroDeCopa);
 		
 	}
 	
 	
+	@Test (expected= TurnoEquivocadoException.class)
+	public void testSoloElDuenioDelTurnoPuedeJugar(){
+	
+		jugador1.jugarPrimerCarta(); 
+		jugador2.jugarSegundaCarta();
+		jugador1.jugarSegundaCarta();
+		jugador1.jugarTercerCarta();
+	}
+	
 	@Test
 	public void testJugadorNoPuedeJugarDosVecesLaMismaCarta(){
 		
-		Carta anchoDeEspada = new UnoDeEspada();
-		Carta anchoDeBasto = new UnoDeBasto();
-		Carta sieteDeEspada = new SieteDeEspada();
-		
-		Campo campoJugador1 = new Campo(jugador1, mesaDeDos);
-		jugador1.setCampo(campoJugador1);
-		
-		jugador1.recibirCarta(anchoDeEspada);
-		jugador1.recibirCarta(anchoDeBasto);
-		jugador1.recibirCarta(sieteDeEspada);
-		
+	
 		jugador1.jugarPrimerCarta();
-		jugador2.jugarSegundaCarta();
+		jugador2.jugarPrimerCarta();
+		jugador1.jugarPrimerCarta(); //Me equivoco, pero eso no me saca el turno
+		jugador1.jugarSegundaCarta();
+		Assert.assertTrue(campoJugador1.getPrimerCarta() ==  anchoDeEspada);
+		Assert.assertFalse(campoJugador1.getSegundaCarta() ==  anchoDeEspada);
 	}
 	
 	

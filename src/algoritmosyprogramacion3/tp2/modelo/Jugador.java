@@ -1,5 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
+
 public class Jugador
 {
 	private Mano cartas;
@@ -18,6 +20,7 @@ public class Jugador
 	//Metodo que permite que un usuario reciba nuevas cartas al comienzo de cada ronda
 	public void recibirCarta(Carta unaCarta)
 	{
+		unaCarta.entregada();
 		this.cartas.agregarCarta(unaCarta);
 	}
 
@@ -55,9 +58,9 @@ public class Jugador
 		
 	}
 	
-	public void cantarFlor()
+	public boolean cantarFlor()
 	{
-		
+	    return this.cartas.hayFlor();
 	}
 	
 	public void irseAlMazo()
@@ -88,16 +91,42 @@ public class Jugador
 	}
 	
 	/*El jugador coloca una carta de su mano en la mesa*/
-	public void jugarCarta(int indice)
+	public void jugarPrimerCarta()
 	{
 		if(this.campoPropio.esMiTurno())
 		{
-			Carta cartaAJugar = this.cartas.getCarta(indice);
+			Carta cartaAJugar = this.cartas.getPrimerCarta();
 			this.campoPropio.recibirCartaJugada(cartaAJugar);	
+		}
+		else
+		{
+			throw new TurnoEquivocadoException();
 		}
 	}
 	
+	public void jugarSegundaCarta()
+	{
+		if(this.campoPropio.esMiTurno())
+		{
+			Carta cartaAJugar = this.cartas.getSegundaCarta();
+			this.campoPropio.recibirCartaJugada(cartaAJugar);	
+		}
+		else
+		{
+			throw new TurnoEquivocadoException();
+		}
+	}
 	
-	
-	
+	public void jugarTercerCarta()
+	{
+		if(this.campoPropio.esMiTurno())
+		{
+			Carta cartaAJugar = this.cartas.getTercerCarta();
+			this.campoPropio.recibirCartaJugada(cartaAJugar);	
+		}
+		else
+		{
+			throw new TurnoEquivocadoException();
+		}
+	}
 }

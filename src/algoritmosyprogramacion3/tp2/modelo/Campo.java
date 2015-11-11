@@ -16,15 +16,26 @@ public class Campo {
 		this.mesaDeJuego = mesaDelCampo;
 	}
 	
-	public Carta getCarta(int indice){
-		
-		return (this.cartasEnJuego.get(indice));
+	public Carta getPrimerCarta() {
+		return this.cartasEnJuego.get(0);
+	}
+	
+	public Carta getSegundaCarta() {
+		return this.cartasEnJuego.get(1);
+	}
+	
+	public Carta getTercerCarta() {
+		return this.cartasEnJuego.get(2);
 	}
 	
 	public void recibirCartaJugada(Carta unaCarta){
 		
-		this.cartasEnJuego.add(unaCarta);
-		this.mesaDeJuego.cambiarTurno();
+		if(unaCarta.esValidaParaSerJugada())
+		{
+			unaCarta.jugate();
+			this.cartasEnJuego.add(unaCarta);
+			this.mesaDeJuego.cambiarTurno();
+		}	
 	}
 	
 	public void removerCartas()
