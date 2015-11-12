@@ -56,13 +56,8 @@ public abstract class Carta {
 		return 0;
 	}
 	
-<<<<<<< HEAD
 	public boolean esValidaParaSerJugada() {
 		
-=======
-	public boolean esValidaParaSerJugada()
-	{
->>>>>>> 7f99c0e1b7cce48787f92ed15b9dc3f8267dd501
 		return this.estado.esValidoParaSerJugada();
 	}
 }

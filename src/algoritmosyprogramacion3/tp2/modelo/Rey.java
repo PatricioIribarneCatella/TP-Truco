@@ -1,6 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public class Rey extends Figura {
+public abstract class Rey extends Figura {
 	
 	public Rey() {
 		

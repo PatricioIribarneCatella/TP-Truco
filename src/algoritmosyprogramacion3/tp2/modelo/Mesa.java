@@ -3,7 +3,6 @@ import java.util.LinkedList;
 
 import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
 
-
 public abstract class Mesa {
     
 	protected LinkedList<Jugador> jugadores;
@@ -18,12 +17,14 @@ public abstract class Mesa {
     	
     	this.camposDeJuego = new LinkedList<Campo>();
     	this.jugadores = jugadores;
+    	
     	for(Jugador unJugador:this.jugadores){
     		
     		Campo nuevoCampo = new Campo(unJugador,this);
     		this.camposDeJuego.add(nuevoCampo);
     		unJugador.setCampo(nuevoCampo);
     	}
+    	
     	this.conFlor = conFlor;
     	this.jugadorActual = this.jugadores.getFirst();
     	this.jugadorMano =  this.jugadorActual;
@@ -36,6 +37,7 @@ public abstract class Mesa {
      }
 
 	 public void cambiarTurno() {
+		 
 		if(this.indiceActual<this.jugadores.size()-1){
 			
 			this.indiceActual += 1;
@@ -45,32 +47,22 @@ public abstract class Mesa {
 		}
 		this.jugadorActual = this.jugadores.get(this.indiceActual);		
 	 }
-		
-    
-    public Jugador getJugadorActual(){
+	 
+	 public Jugador getJugadorActual(){
     	
-    	return this.jugadorActual;
-    }
+		 return this.jugadorActual;
+	 }
     
-    
-    
-    
-    
-    public boolean cantarFlor(){
+	 public boolean cantarFlor(){
     	
-    	if(!this.partidaConFlor())
-    	{
-    		throw new PartidaSinFlorException();
-    	}
-    	return (this.jugadorActual.cantarFlor());
-    }
-    
-    public void cambiarMano(){
-    	
-    	this.jugadorMano= 
-    	
-    }
-	
-    
-	
+		 if(!this.partidaConFlor()) {
+			 
+			 throw new PartidaSinFlorException();
+		 }
+		 return (this.jugadorActual.cantarFlor());
+	 }
+	 
+	 public void cambiarMano(){
+	    	
+	 }
 }

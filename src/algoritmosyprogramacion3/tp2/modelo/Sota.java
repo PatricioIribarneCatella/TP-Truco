@@ -1,6 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public class Sota extends Figura {
+public abstract class Sota extends Figura {
 	
 	public Sota() {
 		

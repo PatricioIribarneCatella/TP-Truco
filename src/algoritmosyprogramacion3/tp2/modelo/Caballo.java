@@ -1,6 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public class Caballo extends Figura {
+public abstract class Caballo extends Figura {
 	
 	public Caballo() {
 		
