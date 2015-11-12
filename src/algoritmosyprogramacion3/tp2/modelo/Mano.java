@@ -2,6 +2,7 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class Mano {
@@ -50,9 +51,11 @@ public class Mano {
 		
 		int puntaje = 0;
 		
-		this.cartas.sort(new ComparadorCartas());
+		Optional<Carta> maximo = this.cartas.stream().max(new ComparadorCartas());
 		
-		puntaje = this.cartas.get(2).getValorEnvido();
+		Carta carta = maximo.get();
+		
+		puntaje = carta.getValorEnvido();
 		
 		return puntaje;
 	}
