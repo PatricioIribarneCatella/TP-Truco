@@ -3,7 +3,9 @@ package algoritmosyprogramacion3.tp2.pruebasunitarias;
 import  org.junit.Assert;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,8 +33,8 @@ public class MesaTest {
 	private Jugador jugador2;
 	private Jugador jugador3;
 	private Jugador jugador4;
-	private Campo campoJugador1;
-	private Campo campoJugador2;
+	private Jugador jugador5;
+	private Jugador jugador6;
 	private Carta anchoDeEspada;
 	private Carta anchoDeBasto;
 	private Carta sieteDeEspada;
@@ -48,16 +50,18 @@ public class MesaTest {
 		jugadoresPartidaDeCuatro = new LinkedList<Jugador>();
 		jugador1= new Jugador("Pepe");
 	    jugador2 = new Jugador("Jorgito");
-	    jugador3 = new Jugador("Julian");
+	    jugador3 = new Jugador("Patricio");
 	    jugador4 = new Jugador("Anita");
+        jugador5 = new Jugador("Santiago");
+        jugador6 = new Jugador("Julian");
 	    
 	    jugadoresPartidaDeDos.add(jugador1);
 	    jugadoresPartidaDeDos.add(jugador2);
 	    
-	    jugadoresPartidaDeCuatro.add(jugador1);
-	    jugadoresPartidaDeCuatro.add(jugador2);
 	    jugadoresPartidaDeCuatro.add(jugador3);
 	    jugadoresPartidaDeCuatro.add(jugador4);
+	    jugadoresPartidaDeCuatro.add(jugador5);
+	    jugadoresPartidaDeCuatro.add(jugador6);
 	    
 		mesaDeDos = new MesaDeDos(jugadoresPartidaDeDos,true);
 		mesaDeCuatro = new MesaDeCuatro(jugadoresPartidaDeCuatro,true);
@@ -68,18 +72,19 @@ public class MesaTest {
 		sieteDeOro = new SieteDeOro();
 		cuatroDeCopa = new CuatroDeCopa();
 		cuatroDeOro = new CuatroDeOro();
-		
-		campoJugador1 = new Campo(jugador1, mesaDeDos);
-		campoJugador2 = new Campo(jugador2,mesaDeDos);
-		jugador1.setCampo(campoJugador1);
-		jugador2.setCampo(campoJugador2);
-		
-		jugador1.recibirCarta(anchoDeEspada);
-		jugador1.recibirCarta(anchoDeBasto);
-		jugador1.recibirCarta(sieteDeEspada);
-		jugador2.recibirCarta(sieteDeOro);
-		jugador2.recibirCarta(cuatroDeCopa);
-		jugador2.recibirCarta(cuatroDeOro);
+				
+	}
+	
+	
+	@After
+	public void devolverAlMazo()
+	{
+		anchoDeEspada.volveAlMazo();
+		anchoDeBasto.volveAlMazo();
+		sieteDeEspada.volveAlMazo();
+		sieteDeOro.volveAlMazo();
+		cuatroDeCopa.volveAlMazo();
+		cuatroDeOro.volveAlMazo();
 	}
 	
 	
@@ -89,81 +94,110 @@ public class MesaTest {
 		Assert.assertTrue(mesaDeDos.partidaConFlor());
 		Assert.assertTrue(mesaDeCuatro.partidaConFlor());
 	}
+		
+	@Test (expected = TurnoEquivocadoException.class)
+	public void testSoloElDuenioDelTurnoPuedeJugar(){
+	
+		jugador1.recibirCarta(anchoDeEspada);
+		jugador2.recibirCarta(anchoDeBasto);
+		jugador2.recibirCarta(cuatroDeCopa);
+		jugador1.jugarPrimerCarta(); 
+		jugador2.jugarPrimerCarta();
+		jugador2.jugarSegundaCarta();
+	}
 	
 	
 	@Test
 	public void testRotacionDeTurnosParaDosJugadores(){
-		 
-		Jugador jugadorActual = mesaDeDos.getJugadorActual();
+		 		
+		jugador1.recibirCarta(anchoDeEspada);
+		jugador1.recibirCarta(anchoDeBasto);
+		jugador1.recibirCarta(sieteDeEspada);
+		jugador2.recibirCarta(sieteDeOro);
+		jugador2.recibirCarta(cuatroDeCopa);
+		jugador2.recibirCarta(cuatroDeOro);	
+		
+		Jugador jugadorActual = mesaDeDos.getJugadorConTurno();
 		Assert.assertTrue(jugador1 == jugadorActual);
 		
-		mesaDeDos.cambiarTurno();
-		jugadorActual = mesaDeDos.getJugadorActual();
+		jugadorActual.jugarPrimerCarta();
+		jugadorActual = mesaDeDos.getJugadorConTurno();
 		Assert.assertTrue(jugador2 == jugadorActual);
-		
-		mesaDeDos.cambiarTurno();
-		jugadorActual = mesaDeDos.getJugadorActual();
+
+		jugadorActual.jugarPrimerCarta();
+		jugadorActual = mesaDeDos.getJugadorConTurno();
 		Assert.assertTrue(jugador1 == jugadorActual);
 		
+		jugadorActual.jugarTercerCarta();
+		jugadorActual = mesaDeDos.getJugadorConTurno();
+		Assert.assertTrue(jugador2 == jugadorActual);	
 	}
+	
 	
 	@Test
 	public void testRotacionDeTurnosParaCuatroJugadores(){
-		 
-		Jugador jugadorActual = mesaDeCuatro.getJugadorActual();
-		Assert.assertTrue(jugador1 == jugadorActual);
+				 
+		jugador3.recibirCarta(anchoDeEspada);
+		jugador3.recibirCarta(anchoDeBasto);
+		jugador4.recibirCarta(sieteDeEspada);
+		jugador4.recibirCarta(sieteDeOro);
+		jugador5.recibirCarta(cuatroDeCopa);
+		jugador6.recibirCarta(cuatroDeOro);	
 		
-		mesaDeCuatro.cambiarTurno();
-		jugadorActual = mesaDeCuatro.getJugadorActual();
-		Assert.assertTrue(jugador2 == jugadorActual);
-		
-		mesaDeCuatro.cambiarTurno();
-		jugadorActual = mesaDeCuatro.getJugadorActual();
+		Jugador jugadorActual = mesaDeCuatro.getJugadorConTurno();
 		Assert.assertTrue(jugador3 == jugadorActual);
-		
-		mesaDeCuatro.cambiarTurno();
-		jugadorActual = mesaDeCuatro.getJugadorActual();
+
+		jugadorActual.jugarPrimerCarta();
+		jugadorActual = mesaDeCuatro.getJugadorConTurno(); 
 		Assert.assertTrue(jugador4 == jugadorActual);
 		
-		mesaDeCuatro.cambiarTurno();
-		jugadorActual = mesaDeCuatro.getJugadorActual();
-		Assert.assertTrue(jugador1 == jugadorActual);
+		jugadorActual.jugarSegundaCarta();
+		jugadorActual = mesaDeCuatro.getJugadorConTurno();
+		Assert.assertTrue(jugador5 == jugadorActual);
+		
+		jugadorActual.jugarPrimerCarta();
+		jugadorActual = mesaDeCuatro.getJugadorConTurno();
+		Assert.assertTrue(jugador6 == jugadorActual);
+		
+		jugadorActual.jugarPrimerCarta();
+		jugadorActual = mesaDeCuatro.getJugadorConTurno();
+		Assert.assertTrue(jugador3 == jugadorActual);
+		
+		jugadorActual.jugarSegundaCarta();
+		jugadorActual = mesaDeCuatro.getJugadorConTurno();
+		Assert.assertTrue(jugador4 == jugadorActual);
 	}
 	
 	@Test
-	public void testJugarCarta(){
+	public void testRecibirCarta(){
 		
+		jugador1.recibirCarta(anchoDeEspada);
+		jugador2.recibirCarta(cuatroDeOro);
+		jugador2.recibirCarta(cuatroDeCopa);
 		
 		jugador1.jugarPrimerCarta(); //juego el ancho de espada
 		jugador2.jugarSegundaCarta();
-		Assert.assertTrue(campoJugador1.getPrimerCarta() ==  anchoDeEspada);
-		Assert.assertTrue(campoJugador2.getPrimerCarta() ==  cuatroDeCopa);
 		
+		Assert.assertTrue(mesaDeDos.getPrimerCartaJugada(jugador1) ==  anchoDeEspada);
+		Assert.assertTrue(mesaDeDos.getPrimerCartaJugada(jugador2) ==  cuatroDeCopa);
 	}
 	
-	
-	@Test (expected= TurnoEquivocadoException.class)
-	public void testSoloElDuenioDelTurnoPuedeJugar(){
-	
-		jugador1.jugarPrimerCarta(); 
-		jugador2.jugarSegundaCarta();
-		jugador1.jugarSegundaCarta();
-		jugador1.jugarTercerCarta();
-	}
 	
 	@Test
 	public void testJugadorNoPuedeJugarDosVecesLaMismaCarta(){
+		jugador1.recibirCarta(anchoDeEspada);
+		jugador1.recibirCarta(anchoDeBasto);
+		jugador1.recibirCarta(sieteDeEspada);
+		jugador2.recibirCarta(sieteDeOro);
+		jugador2.recibirCarta(cuatroDeCopa);
+		jugador2.recibirCarta(cuatroDeOro);
 		
-	
 		jugador1.jugarPrimerCarta();
 		jugador2.jugarPrimerCarta();
 		jugador1.jugarPrimerCarta(); //Me equivoco, pero eso no me saca el turno
 		jugador1.jugarSegundaCarta();
-		Assert.assertTrue(campoJugador1.getPrimerCarta() ==  anchoDeEspada);
-		Assert.assertFalse(campoJugador1.getSegundaCarta() ==  anchoDeEspada);
+		Assert.assertFalse(mesaDeDos.getSegundaCartaJugada(jugador1) ==  anchoDeEspada);
 	}
-	
-	
-	
+		
 
 }

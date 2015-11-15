@@ -6,36 +6,34 @@ public class Campo {
 	
 	private Jugador jugador;
 	private LinkedList<Carta> cartasEnJuego;
-	private Mesa mesaDeJuego;
     
 	
-	public Campo(Jugador jugadorDelCampo,Mesa mesaDelCampo){
+	public Campo(Jugador jugadorDelCampo){
 		
 		this.jugador = jugadorDelCampo;
 		this.cartasEnJuego = new LinkedList<Carta>();
-		this.mesaDeJuego = mesaDelCampo;
 	}
 	
-	public Carta getPrimerCarta() {
+	public Jugador getJugador(){
+		
+		return this.jugador;
+	}
+	
+	public Carta getPrimerCartaJugada() {
 		return this.cartasEnJuego.get(0);
 	}
 	
-	public Carta getSegundaCarta() {
+	public Carta getSegundaCartaJugada() {
 		return this.cartasEnJuego.get(1);
 	}
 	
-	public Carta getTercerCarta() {
+	public Carta getTercerCartaJugada() {
 		return this.cartasEnJuego.get(2);
 	}
 	
 	public void recibirCartaJugada(Carta unaCarta){
-		
-		if(unaCarta.esValidaParaSerJugada())
-		{
-			unaCarta.jugate();
-			this.cartasEnJuego.add(unaCarta);
-			this.mesaDeJuego.cambiarTurno();
-		}	
+	
+	     this.cartasEnJuego.add(unaCarta);
 	}
 	
 	public void removerCartas()
@@ -43,9 +41,5 @@ public class Campo {
 		this.cartasEnJuego.clear();
 	}
 
-	public boolean esMiTurno() {
-
-		return (this.mesaDeJuego.getJugadorActual() == this.jugador);
-	}
 	
 }

@@ -2,10 +2,14 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 
+
+
+
+
 public class Jugador
 {
 	private Mano cartas;
-	private Campo campoPropio;
+	private Mesa mesa;
 	private String nombre;
 	private int puntaje;
 	
@@ -25,9 +29,9 @@ public class Jugador
 	}
 
 	
-	public void setCampo(Campo campoDelJugador){
+	public void setMesa(Mesa mesaDeJuego){
 		
-		this.campoPropio = campoDelJugador;
+		this.mesa = mesaDeJuego;
 	}
 	
 	public void cantarEnvido()
@@ -90,13 +94,26 @@ public class Jugador
 		return this.cartas.puntajeFlor().toString();
 	}
 	
+	
+	private boolean esMiTurno() {
+		
+		return (this == this.mesa.getJugadorConTurno());
+	}
+	
 	/*El jugador coloca una carta de su mano en la mesa*/
 	public void jugarPrimerCarta()
 	{
-		if(this.campoPropio.esMiTurno())
-		{
-			Carta cartaAJugar = this.cartas.getPrimerCarta();
-			this.campoPropio.recibirCartaJugada(cartaAJugar);	
+		Carta cartaAJugar = this.cartas.getPrimerCarta();
+		
+		if(this.esMiTurno()){
+			try
+			{
+			    this.mesa.recibirCartaJugada(cartaAJugar);	
+			}
+			catch(TurnoEquivocadoException e)
+			{
+				//no hago nada
+			}
 		}
 		else
 		{
@@ -106,10 +123,17 @@ public class Jugador
 	
 	public void jugarSegundaCarta()
 	{
-		if(this.campoPropio.esMiTurno())
-		{
-			Carta cartaAJugar = this.cartas.getSegundaCarta();
-			this.campoPropio.recibirCartaJugada(cartaAJugar);	
+		Carta cartaAJugar = this.cartas.getSegundaCarta();
+		
+		if(this.esMiTurno()){
+			try
+			{
+			    this.mesa.recibirCartaJugada(cartaAJugar);	
+			}
+			catch(TurnoEquivocadoException e)
+			{
+				//no hago nada
+			}
 		}
 		else
 		{
@@ -119,14 +143,30 @@ public class Jugador
 	
 	public void jugarTercerCarta()
 	{
-		if(this.campoPropio.esMiTurno())
-		{
-			Carta cartaAJugar = this.cartas.getTercerCarta();
-			this.campoPropio.recibirCartaJugada(cartaAJugar);	
+		Carta cartaAJugar = this.cartas.getTercerCarta();
+		
+		if(this.esMiTurno()){
+			try
+			{
+			    this.mesa.recibirCartaJugada(cartaAJugar);	
+			}
+			catch(TurnoEquivocadoException e)
+			{
+				//no hago nada
+			}
 		}
 		else
 		{
 			throw new TurnoEquivocadoException();
 		}
 	}
+
+
+	public String getNombre() {
+		
+		return this.nombre;
+	}
+
+
+	
 }

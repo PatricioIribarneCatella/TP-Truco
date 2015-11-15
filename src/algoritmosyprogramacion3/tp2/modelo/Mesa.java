@@ -1,18 +1,12 @@
 package algoritmosyprogramacion3.tp2.modelo;
 import java.util.LinkedList;
 
-import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
-
 public abstract class Mesa {
     
 	protected LinkedList<Jugador> jugadores;
 	protected LinkedList<Campo> camposDeJuego; 
-	protected int indiceActual;
-    protected Jugador jugadorActual;   
-    protected Jugador jugadorMano;
-    protected boolean conFlor;
-    
-    
+    protected Moderador moderador;
+	
     protected Mesa(LinkedList<Jugador>jugadores,boolean conFlor) {
     	
     	this.camposDeJuego = new LinkedList<Campo>();
@@ -20,49 +14,74 @@ public abstract class Mesa {
     	
     	for(Jugador unJugador:this.jugadores){
     		
-    		Campo nuevoCampo = new Campo(unJugador,this);
+    		Campo nuevoCampo = new Campo(unJugador);
     		this.camposDeJuego.add(nuevoCampo);
-    		unJugador.setCampo(nuevoCampo);
+    		//unJugador.setCampo(nuevoCampo);
+            unJugador.setMesa(this);
     	}
+    	moderador = new Moderador(this,conFlor);
     	
-    	this.conFlor = conFlor;
-    	this.jugadorActual = this.jugadores.getFirst();
-    	this.jugadorMano =  this.jugadorActual;
-    	this.indiceActual = 0;
     }
+    
+    public LinkedList<Jugador> getJugadores()
+    {
+    	return this.jugadores;
+    }
+    
+    
+     public void recibirCartaJugada(Carta unaCarta){
 
-
-     public boolean partidaConFlor(){
-    	return this.conFlor;
+   		if(unaCarta.esValidaParaSerJugada())
+   		{
+    		unaCarta.jugate();
+    		Campo campoDelJugador = this.getCampoDelJugador(this.moderador.getJugadorConTurno());
+    		campoDelJugador.recibirCartaJugada(unaCarta);
+    		this.moderador.cambiarTurno();
+        }
+    	 
+     }
+    
+     private Campo getCampoDelJugador(Jugador unJugador){
+    	 
+    	 for(Campo unCampo:this.camposDeJuego){
+    		 
+    		 if(unCampo.getJugador() == unJugador)
+    		 {
+    			 return unCampo;
+    		 }
+    	 }
+    	 return null;//nunca va a llegar aca
+     }
+     
+     public Jugador getJugadorConTurno(){
+    	 
+    	 return this.moderador.getJugadorConTurno();
      }
 
-	 public void cambiarTurno() {
-		 
-		if(this.indiceActual<this.jugadores.size()-1){
-			
-			this.indiceActual += 1;
-		}
-		else{
-			this.indiceActual = 0;
-		}
-		this.jugadorActual = this.jugadores.get(this.indiceActual);		
-	 }
-	 
-	 public Jugador getJugadorActual(){
-    	
-		 return this.jugadorActual;
-	 }
-    
-	 public boolean cantarFlor(){
-    	
-		 if(!this.partidaConFlor()) {
-			 
-			 throw new PartidaSinFlorException();
-		 }
-		 return (this.jugadorActual.cantarFlor());
-	 }
+     public boolean partidaConFlor() {
+    	 return this.moderador.seJuegaConFlor();
+     }
 	 
 	 public void cambiarMano(){
 	    	
 	 }
+
+
+	public Carta getPrimerCartaJugada(Jugador unJugador) {
+		
+		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
+		return campoDelJugador.getPrimerCartaJugada();
+	}
+	
+	public Carta getSegundaCartaJugada(Jugador unJugador) {
+		
+		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
+		return campoDelJugador.getSegundaCartaJugada();
+	}
+	
+	public Carta getTercerCartaJugada(Jugador unJugador) {
+		
+		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
+		return campoDelJugador.getTercerCartaJugada();
+	}
 }
