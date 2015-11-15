@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -71,7 +72,8 @@ public class Mazo {
 	}
 	
 	private void mezclarCartas() {
-		// falta la implementacion de cómo mezclar las cartas
+		
+		Collections.shuffle(this.cartas);
 	}
 	
 	public Carta darCarta() {
