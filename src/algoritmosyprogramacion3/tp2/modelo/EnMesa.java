@@ -9,7 +9,6 @@ public class EnMesa implements EstadoDeCarta {
 
 	@Override
 	public EstadoDeCarta proximoEstado() {
-		return new EnMano();
+		return new EnMazo();
 	}
-
 }

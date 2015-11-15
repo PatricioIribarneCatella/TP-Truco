@@ -60,7 +60,7 @@ public class CartaTest {
 		Carta carta1 = new UnoDeEspada();
 		Carta carta2 = new UnoDeBasto();
 		
-		Assert.assertTrue(carta1.compararCarta(carta2) == 1);
+		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}	
 	
 	@Test
@@ -69,7 +69,7 @@ public class CartaTest {
 		Carta carta1 = new DosDeEspada();
 		Carta carta2 = new TresDeBasto();
 		
-		Assert.assertTrue(carta1.compararCarta(carta2) == -1);
+		Assert.assertTrue(carta1.jugarContra(carta2) == carta2);
 	}
 	
 	@Test
@@ -78,7 +78,7 @@ public class CartaTest {
 		Carta carta1 = new UnoDeEspada();
 		Carta carta2 = new UnoDeOro();
 		
-		Assert.assertTrue(carta1.compararCarta(carta2) == 1);
+		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
 	
 	@Test
@@ -87,6 +87,6 @@ public class CartaTest {
 		Carta carta1 = new SieteDeCopa();
 		Carta carta2 = new SieteDeBasto();
 		
-		Assert.assertTrue(carta1.compararCarta(carta2) == 0);
+		Assert.assertTrue(carta1.jugarContra(carta2) == carta2);
 	}
 }

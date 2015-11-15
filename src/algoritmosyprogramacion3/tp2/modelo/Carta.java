@@ -6,12 +6,16 @@ public abstract class Carta {
 	protected String valorComoString;
 	protected int valorEnvido;
 	protected int valorFlor;
-	protected int jerarquia;
 	protected EstadoDeCarta estado;
 	
 	public Carta() {
 		
 		this.estado = new EnMazo();
+	}
+	
+	public boolean esValidaParaSerJugada() {
+		
+		return this.estado.esValidoParaSerJugada();
 	}
 	
 	public Palo getPalo() {
@@ -24,10 +28,6 @@ public abstract class Carta {
 	
 	public int getValorEnvido() {
 		return this.valorEnvido;
-	}
-	
-	public int getJerarquia() {
-		return this.jerarquia;
 	}
 	
 	public void entregada() {
@@ -45,19 +45,33 @@ public abstract class Carta {
 		this.estado = new EnMazo();
 	}
 	
-	/* Compara las jerarquias entre las cartas. Devuelve 1 si la carta de un jugador es mayor que la que del otro,
- 	-1 en caso contrario, o 0 si son de igual jerarquía. */
-	public int compararCarta(Carta carta) {
-		
-		if (this.jerarquia < carta.getJerarquia()) return 1;
-		
-		if (this.jerarquia > carta.getJerarquia()) return -1;
-		
-		return 0;
-	}
+	public abstract Carta jugarContra(Carta carta);
 	
-	public boolean esValidaParaSerJugada() {
-		
-		return this.estado.esValidoParaSerJugada();
-	}
+	public abstract Carta jugarContra(UnoDeEspada unoDeEspada);
+	
+	public abstract Carta jugarContra(UnoDeBasto unoDeBasto);
+	
+	public abstract Carta jugarContra(SieteDeEspada sieteDeEspada);
+	
+	public abstract Carta jugarContra(SieteDeOro sieteDeOro);
+	
+	public abstract Carta jugarContra(Tres tres);
+	
+	public abstract Carta jugarContra(Dos dos);
+	
+	public abstract Carta jugarContra(UnoFalso unoFalso);
+	
+	public abstract Carta jugarContra(Rey rey);
+	
+	public abstract Carta jugarContra(Caballo caballo);
+	
+	public abstract Carta jugarContra(Sota sota);
+	
+	public abstract Carta jugarContra(SieteFalso sieteFalso);
+	
+	public abstract Carta jugarContra(Seis sseis);
+	
+	public abstract Carta jugarContra(Cinco cinco);
+	
+	public abstract Carta jugarContra(Cuatro cuatro);
 }

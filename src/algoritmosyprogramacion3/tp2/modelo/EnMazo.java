@@ -11,5 +11,4 @@ public class EnMazo implements EstadoDeCarta {
 	public EstadoDeCarta proximoEstado() {
 		return new EnMano();
 	}
-
 }
