@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 public class Mano {
 
 	private List<Carta> cartas;
+	private Carta ultimaCartaJugada;
 	
 	public Mano() {
 		
@@ -134,18 +135,31 @@ public class Mano {
 	}
 	
 	public Carta getPrimerCarta() {
-		return this.cartas.get(0);
+		
+		Carta carta = this.cartas.get(0);
+		this.ultimaCartaJugada = carta;
+		return carta;
 	}
 	
 	public Carta getSegundaCarta() {
-		return this.cartas.get(1);
+
+		Carta carta = this.cartas.get(1);
+		this.ultimaCartaJugada = carta;
+		return carta;
 	}
 	
 	public Carta getTercerCarta() {
-		return this.cartas.get(2);
+
+		Carta carta = this.cartas.get(2);
+		this.ultimaCartaJugada = carta;
+		return carta;
 	}
 	
 	public void removerCartas() {
 		this.cartas.clear();
+	}
+
+	public Carta getUltimaCartaJugada() {
+		return this.ultimaCartaJugada;
 	}
 }

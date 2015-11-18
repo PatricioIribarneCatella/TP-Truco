@@ -2,11 +2,7 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 
-
-
-
-
-public class Jugador
+public class Jugador implements Jugable
 {
 	private Mano cartas;
 	private Mesa mesa;
@@ -167,6 +163,19 @@ public class Jugador
 		return this.nombre;
 	}
 
-
+	public String puntajeAcumulado() {
+		
+		String puntajeComoString = Integer.toString(this.puntaje);
+		return puntajeComoString;
+	}
 	
+	@Override
+	public Carta getCartaJugada() {
+		return this.cartas.getUltimaCartaJugada();
+	}
+
+	@Override
+	public void sumarPuntos(int puntos) {
+		this.puntaje += puntos; 
+	}
 }

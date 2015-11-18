@@ -1,13 +1,14 @@
 package algoritmosyprogramacion3.tp2.modelo;
 import java.util.LinkedList;
+import java.util.List;
 
 public abstract class Mesa {
     
-	protected LinkedList<Jugador> jugadores;
-	protected LinkedList<Campo> camposDeJuego; 
+	protected List<Jugador> jugadores;
+	protected List<Campo> camposDeJuego; 
     protected Moderador moderador;
 	
-    protected Mesa(LinkedList<Jugador>jugadores,boolean conFlor) {
+    protected Mesa(List<Jugador>jugadores,boolean conFlor) {
     	
     	this.camposDeJuego = new LinkedList<Campo>();
     	this.jugadores = jugadores;
@@ -23,7 +24,7 @@ public abstract class Mesa {
     	
     }
     
-    public LinkedList<Jugador> getJugadores()
+    public List<Jugador> getJugadores()
     {
     	return this.jugadores;
     }

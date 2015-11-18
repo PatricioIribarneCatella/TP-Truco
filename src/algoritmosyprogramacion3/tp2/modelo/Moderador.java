@@ -1,6 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-import java.util.LinkedList;
+import java.util.List;
 import java.util.ListIterator;
 
 import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
@@ -13,7 +13,7 @@ public class Moderador {
     private Jugador jugadorDeTurno;   
     private Jugador jugadorMano;
     private Mesa mesaACargo;
-    private LinkedList<Jugador> jugadores;
+    private List<Jugador> jugadores;
     private ListIterator<Jugador> iteradorTurno;
     private ListIterator<Jugador> iteradorMano;
     
