@@ -1,34 +1,49 @@
 package algoritmosyprogramacion3.tp2.modelo;
+
 import java.util.LinkedList;
 import java.util.List;
 
-public abstract class Mesa {
+public class Mesa {
     
 	protected List<Jugador> jugadores;
 	protected List<Campo> camposDeJuego; 
     protected Moderador moderador;
+    private boolean partidaConFlor;
 	
-    protected Mesa(List<Jugador>jugadores,boolean conFlor) {
+    public Mesa(List<Jugador>jugadores,boolean conFlor) {
     	
     	this.camposDeJuego = new LinkedList<Campo>();
     	this.jugadores = jugadores;
-    	
+    	this.partidaConFlor = conFlor;
     	for(Jugador unJugador:this.jugadores){
     		
     		Campo nuevoCampo = new Campo(unJugador);
     		this.camposDeJuego.add(nuevoCampo);
-    		//unJugador.setCampo(nuevoCampo);
             unJugador.setMesa(this);
     	}
-    	moderador = new Moderador(this,conFlor);
     	
+    	this.moderador = new Moderador(this);
+    	RotacionStrategy estrategiaDeRotacion = new StrategyRotacionEnRonda(this.jugadores);
+    	this.setRotacionStrategy(estrategiaDeRotacion);
     }
+    
+	public boolean seJuegaConFlor(){
+		
+       return this.partidaConFlor;
+	}
+	
+	    
     
     public List<Jugador> getJugadores()
     {
     	return this.jugadores;
     }
     
+    
+    public void setRotacionStrategy(RotacionStrategy estrategiaDeRotacion){
+    	
+    	this.moderador.setRotacionStrategy(estrategiaDeRotacion);
+    }
     
      public void recibirCartaJugada(Carta unaCarta){
 
@@ -37,7 +52,7 @@ public abstract class Mesa {
     		unaCarta.jugate();
     		Campo campoDelJugador = this.getCampoDelJugador(this.moderador.getJugadorConTurno());
     		campoDelJugador.recibirCartaJugada(unaCarta);
-    		this.moderador.cambiarTurno();
+    		this.moderador.seJugoUnaCarta();
         }
     	 
      }
@@ -59,14 +74,11 @@ public abstract class Mesa {
     	 return this.moderador.getJugadorConTurno();
      }
 
-     public boolean partidaConFlor() {
-    	 return this.moderador.seJuegaConFlor();
-     }
-	 
-	 public void cambiarMano(){
-	    	
+    	 
+	 public Jugador getJugadorMano(){
+		 
+		 return this.moderador.getJugadorMano();
 	 }
-
 
 	public Carta getPrimerCartaJugada(Jugador unJugador) {
 		

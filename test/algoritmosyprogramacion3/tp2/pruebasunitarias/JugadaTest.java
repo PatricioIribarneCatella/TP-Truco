@@ -12,7 +12,6 @@ import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
-import algoritmosyprogramacion3.tp2.modelo.MesaDeDos;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.TresDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
@@ -50,7 +49,7 @@ public class JugadaTest {
 		this.jugador2.recibirCarta(unoDeEspada);
 		this.jugador2.recibirCarta(unoDeOro);
 		
-		this.mesa = new MesaDeDos(Arrays.asList(this.jugador1, this.jugador2), false);
+		this.mesa = new Mesa(Arrays.asList(this.jugador1, this.jugador2), false);
 		this.jugador1.setMesa(this.mesa);
 		this.jugador2.setMesa(this.mesa);
 	}
