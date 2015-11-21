@@ -14,6 +14,8 @@ import algoritmosyprogramacion3.tp2.modelo.CuatroDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.CuatroDeOro;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
+import algoritmosyprogramacion3.tp2.modelo.Moderador;
+import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeOro;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
@@ -38,6 +40,8 @@ public class MesaTest {
 	private Carta sieteDeOro;
 	private Carta cuatroDeCopa;
 	private Carta cuatroDeOro;
+	private Moderador moderador;
+	private RotacionStrategy rotacionEnRonda;
 	
 	
 	@Before
@@ -47,23 +51,17 @@ public class MesaTest {
 		jugadoresPartidaDeCuatro = new LinkedList<Jugador>();
 		jugador1= new Jugador("Pepe");
 	    jugador2 = new Jugador("Jorgito");
-	    jugador3 = new Jugador("Patricio");
-	    jugador4 = new Jugador("Anita");
-        jugador5 = new Jugador("Santiago");
-        jugador6 = new Jugador("Julian");
-	    
+
 	    jugadoresPartidaDeDos.add(jugador1);
 	    jugadoresPartidaDeDos.add(jugador2);
-	    
-	    jugadoresPartidaDeCuatro.add(jugador3);
-	    jugadoresPartidaDeCuatro.add(jugador4);
-	    jugadoresPartidaDeCuatro.add(jugador5);
-	    jugadoresPartidaDeCuatro.add(jugador6);
-	    
-	    
-
+	     
 		mesaDeDos = new Mesa(jugadoresPartidaDeDos,true);
-		mesaDeCuatro = new Mesa(jugadoresPartidaDeCuatro,true);
+		rotacionEnRonda = new StrategyRotacionEnRonda(this.mesaDeDos.getJugadores());
+		
+		moderador = new Moderador(mesaDeDos);
+		this.moderador.setRotacionStrategy(rotacionEnRonda);
+		this.jugador1.setModerador(moderador);
+		this.jugador2.setModerador(moderador);
 		
 	    anchoDeEspada = new UnoDeEspada();
 	    anchoDeBasto = new UnoDeBasto();
@@ -72,6 +70,7 @@ public class MesaTest {
 		cuatroDeCopa = new CuatroDeCopa();
 		cuatroDeOro = new CuatroDeOro();
 				
+		moderador = new Moderador(mesaDeDos);
 	}
 	
 	

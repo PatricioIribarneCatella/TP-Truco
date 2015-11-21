@@ -12,7 +12,10 @@ import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
+import algoritmosyprogramacion3.tp2.modelo.Moderador;
+import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
+import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
 import algoritmosyprogramacion3.tp2.modelo.TresDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
@@ -29,6 +32,8 @@ public class JugadaTest {
 	private Carta unoDeBasto;
 	private Carta siteDeEspada;
 	private Mesa mesa;
+	private Moderador moderador;
+	private RotacionStrategy rotacionEnRonda;
 	
 	@Before
 	public void setUp() {
@@ -50,8 +55,14 @@ public class JugadaTest {
 		this.jugador2.recibirCarta(unoDeOro);
 		
 		this.mesa = new Mesa(Arrays.asList(this.jugador1, this.jugador2), false);
+		this.rotacionEnRonda = new StrategyRotacionEnRonda(this.mesa.getJugadores());
+		this.moderador = new Moderador(mesa);
+		this.moderador.setRotacionStrategy(rotacionEnRonda);
+		this.jugador1.setModerador(moderador);
+		this.jugador2.setModerador(moderador);
 		this.jugador1.setMesa(this.mesa);
 		this.jugador2.setMesa(this.mesa);
+		
 	}
 	
 	@Test

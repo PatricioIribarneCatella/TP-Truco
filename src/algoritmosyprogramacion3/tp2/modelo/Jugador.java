@@ -8,12 +8,18 @@ public class Jugador implements Jugable
 	private Mesa mesa;
 	private String nombre;
 	private int puntaje;
+	private Moderador moderador;
 	
 	public Jugador(String nombre)
 	{
 		this.nombre = nombre;
 		this.puntaje = 0;
 		this.cartas = new Mano();
+	}
+	
+	public void setModerador(Moderador moderadorDeLaPartida){
+		
+		this.moderador =  moderadorDeLaPartida;
 	}
 	
 	
@@ -32,7 +38,7 @@ public class Jugador implements Jugable
 	
 	public void cantarEnvido()
 	{
-		
+		this.moderador.canteEnvido();
 	}
 	
 	public void cantarRealEnvido()
@@ -71,7 +77,7 @@ public class Jugador implements Jugable
 	
 	public void Aceptar()
 	{
-		
+	      	
 	}
 	
 	public void Rechazar()
@@ -93,7 +99,7 @@ public class Jugador implements Jugable
 	
 	private boolean esMiTurno() {
 		
-		return (this == this.mesa.getJugadorConTurno());
+		return (this == this.moderador.getJugadorConTurno());
 	}
 	
 	/*El jugador coloca una carta de su mano en la mesa*/
@@ -104,7 +110,8 @@ public class Jugador implements Jugable
 		if(this.esMiTurno()){
 			try
 			{
-			    this.mesa.recibirCartaJugada(cartaAJugar);	
+			    this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			    this.moderador.seJugoUnaCarta();
 			}
 			catch(TurnoEquivocadoException e)
 			{
@@ -124,7 +131,8 @@ public class Jugador implements Jugable
 		if(this.esMiTurno()){
 			try
 			{
-			    this.mesa.recibirCartaJugada(cartaAJugar);	
+			    this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			    this.moderador.seJugoUnaCarta();
 			}
 			catch(TurnoEquivocadoException e)
 			{
@@ -144,7 +152,8 @@ public class Jugador implements Jugable
 		if(this.esMiTurno()){
 			try
 			{
-			    this.mesa.recibirCartaJugada(cartaAJugar);	
+			    this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			    this.moderador.seJugoUnaCarta();
 			}
 			catch(TurnoEquivocadoException e)
 			{
