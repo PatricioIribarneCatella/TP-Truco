@@ -8,6 +8,7 @@ import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.TresDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
+import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
 
@@ -88,5 +89,24 @@ public class CartaTest {
 		Carta carta2 = new SieteDeBasto();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta2);
+	}
+	
+	@Test
+	public void testCompararDosCartasDeDosFormasDiferentesDeberiaDevolverSiempreLaMismaCarta() {
+		
+		Carta carta1 = new UnoDeEspada();
+		Carta carta2 = new SieteDeBasto();
+		
+		Assert.assertTrue(carta1.jugarContra(carta2).equals(carta2.jugarContra(carta1)));
+	}
+	
+	@Test
+	public void testCompararDosCartasQueEmpatanDeDosFormasDiferentesDeberiaDevolverAlgunaDeEllas() {
+		
+		Carta carta1 = new UnoDeCopa();
+		Carta carta2 = new UnoDeOro();
+		
+		Assert.assertTrue(carta1.jugarContra(carta2) == carta2);
+		Assert.assertTrue(carta2.jugarContra(carta1) == carta1);
 	}
 }

@@ -8,16 +8,16 @@ import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.CincoDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
+import algoritmosyprogramacion3.tp2.modelo.Resultado;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
-import algoritmosyprogramacion3.tp2.modelo.TresDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
+import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
 
@@ -26,7 +26,7 @@ public class JugadaTest {
 	private Jugador jugador1;
 	private Jugador jugador2;
 	private Carta unoDeEspada;
-	private Carta tresDeBasto;
+	private Carta unoDeCopa;
 	private Carta unoDeOro;
 	private Carta cincoDeCopa;
 	private Carta unoDeBasto;
@@ -41,10 +41,10 @@ public class JugadaTest {
 		this.jugador1 = new Jugador("Pedro");
 		this.cincoDeCopa = new CincoDeCopa();
 		this.siteDeEspada = new SieteDeEspada();
-		this.tresDeBasto = new TresDeBasto();
+		this.unoDeCopa = new UnoDeCopa();
 		this.jugador1.recibirCarta(cincoDeCopa);
 		this.jugador1.recibirCarta(siteDeEspada);
-		this.jugador1.recibirCarta(tresDeBasto);
+		this.jugador1.recibirCarta(unoDeCopa);
 		
 		this.jugador2 = new Jugador("Juan");
 		this.unoDeBasto = new UnoDeBasto();
@@ -66,15 +66,29 @@ public class JugadaTest {
 	}
 	
 	@Test
-	public void testConforntarDosJugadores() {
+	public void testConforntarDosJugadoresHayUnGanador() {
 		
-		this.jugador1.jugarPrimerCarta();
-		this.jugador2.jugarSegundaCarta();
+		jugador1.jugarPrimerCarta();
+		jugador2.jugarSegundaCarta();
 		
 		Jugada jugada = new Jugada();
 		
-		Jugable jugadorGanador = jugada.confrontar(jugador1, jugador2);
+		Resultado resultado = jugada.confrontar(jugador1, jugador2);
 		
-		Assert.assertTrue(jugadorGanador == this.jugador2);
+		Assert.assertTrue(resultado.huboGanador());
+		Assert.assertTrue(resultado.getJugadorGandador() == this.jugador2);
+	}
+	
+	@Test
+	public void testConforntarDosJugadoresHayUnEmpate() {
+		
+		jugador1.jugarTercerCarta();
+		jugador2.jugarTercerCarta();
+		
+		Jugada jugada = new Jugada();
+		
+		Resultado resultado = jugada.confrontar(jugador1, jugador2);
+		
+		Assert.assertFalse(resultado.huboGanador());
 	}
 }
