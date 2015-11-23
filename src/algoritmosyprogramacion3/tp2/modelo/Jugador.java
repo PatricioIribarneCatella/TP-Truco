@@ -103,65 +103,44 @@ public class Jugador implements Jugable {
 	}
 	
 	/*El jugador coloca una carta de su mano en la mesa*/
-	public void jugarPrimerCarta()
-	{
+	public void jugarPrimerCarta() {
+		
 		Carta cartaAJugar = this.cartas.getPrimerCarta();
 		
-		if(this.esMiTurno()){
-			try
-			{
-			    this.mesa.recibirCartaJugada(this,cartaAJugar);	
-			    this.moderador.seJugoUnaCarta();
-			}
-			catch(TurnoEquivocadoException e)
-			{
-				//no hago nada
-			}
-		}
-		else
-		{
+		if (this.esMiTurno()) {
+		
+			this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			this.moderador.seJugoUnaCarta();
+			
+		} else {
 			throw new TurnoEquivocadoException();
 		}
 	}
 	
-	public void jugarSegundaCarta()
-	{
+	public void jugarSegundaCarta() {
+		
 		Carta cartaAJugar = this.cartas.getSegundaCarta();
 		
-		if(this.esMiTurno()){
-			try
-			{
-			    this.mesa.recibirCartaJugada(this,cartaAJugar);	
-			    this.moderador.seJugoUnaCarta();
-			}
-			catch(TurnoEquivocadoException e)
-			{
-				//no hago nada
-			}
-		}
-		else
-		{
+		if (this.esMiTurno()) {
+			
+			this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			this.moderador.seJugoUnaCarta();
+			
+		} else {
 			throw new TurnoEquivocadoException();
 		}
 	}
 	
-	public void jugarTercerCarta()
-	{
+	public void jugarTercerCarta() {
+		
 		Carta cartaAJugar = this.cartas.getTercerCarta();
 		
-		if(this.esMiTurno()){
-			try
-			{
-			    this.mesa.recibirCartaJugada(this,cartaAJugar);	
-			    this.moderador.seJugoUnaCarta();
-			}
-			catch(TurnoEquivocadoException e)
-			{
-				//no hago nada
-			}
-		}
-		else
-		{
+		if (this.esMiTurno()) {
+			
+			this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			this.moderador.seJugoUnaCarta();
+			
+		} else {
 			throw new TurnoEquivocadoException();
 		}
 	}
@@ -172,6 +151,7 @@ public class Jugador implements Jugable {
 		return this.nombre;
 	}
 
+	@Override
 	public String puntajeAcumulado() {
 		
 		String puntajeComoString = Integer.toString(this.puntaje);

@@ -4,5 +4,7 @@ public interface Jugable {
 	
 	public Carta getCartaJugada();
 
+	public String puntajeAcumulado();
+	
 	public void sumarPuntos(int puntos);
 }
