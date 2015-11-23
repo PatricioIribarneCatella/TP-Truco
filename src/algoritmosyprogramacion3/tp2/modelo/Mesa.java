@@ -3,19 +3,17 @@ package algoritmosyprogramacion3.tp2.modelo;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Mesa {
+public abstract class Mesa {
     
 	private List<Jugador> jugadores;
 	private List<Campo> camposDeJuego; 
     //private Moderador moderador;
-    private boolean partidaConFlor;
 	
     
-    public Mesa(List<Jugador>jugadores,boolean conFlor) {
+    public Mesa(List<Jugador>jugadores) {
     	
     	this.camposDeJuego = new LinkedList<Campo>();
     	this.jugadores = jugadores;
-    	this.partidaConFlor = conFlor;
     	for(Jugador unJugador:this.jugadores){
     		
     		Campo nuevoCampo = new Campo(unJugador);
@@ -28,12 +26,7 @@ public class Mesa {
     	this.setRotacionStrategy(estrategiaDeRotacion);*/
     }
     
-	public boolean seJuegaConFlor(){
-		
-       return this.partidaConFlor;
-	}
-	
-	    
+	public abstract boolean seJuegaConFlor();
 	
     public List<Jugador> getJugadores()
     {

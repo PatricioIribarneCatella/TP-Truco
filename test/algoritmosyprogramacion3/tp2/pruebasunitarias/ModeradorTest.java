@@ -1,20 +1,19 @@
 package algoritmosyprogramacion3.tp2.pruebasunitarias;
 
-import static org.junit.Assert.*;
-
 import java.util.LinkedList;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.Campo;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
-import algoritmosyprogramacion3.tp2.modelo.Mazo;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
+import algoritmosyprogramacion3.tp2.modelo.MesaConFlor;
+import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
+import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionPicaPica;
 
 public class ModeradorTest {
 
@@ -33,6 +32,8 @@ public class ModeradorTest {
 	private Moderador moderadorMesaDeDos;
 	private Moderador moderadorMesaDeCuatro;
 	private Moderador moderadorMesaDeSeis;
+	private RotacionStrategy rotacionEnRonda;
+	private RotacionStrategy rotacionPicaPica;
 	
 	@Before
 	public void setUp(){		
@@ -62,16 +63,17 @@ public class ModeradorTest {
 		
 	    RotacionStrategy criterioRotacionMesaDeDos = new StrategyRotacionEnRonda(this.jugadoresMesaDeDos);
 	    RotacionStrategy criterioRotacionMesaDeCuatro = new StrategyRotacionEnRonda(this.jugadoresMesaDeCuatro);
-	    RotacionStrategy criterioRotacionMesaDeSeis = new StrategyRotacionEnRonda(this.jugadoresMesaDeSeis);
-		mesaDeDos = new Mesa(jugadoresMesaDeDos,true);
-		mesaDeCuatro = new Mesa(jugadoresMesaDeCuatro,true); 
-	    mesaPicaPica = new Mesa(jugadoresMesaDeSeis,false);
+	    rotacionPicaPica = new StrategyRotacionPicaPica(this.jugadoresMesaDeSeis);
+	    rotacionEnRonda = new StrategyRotacionEnRonda(this.jugadoresMesaDeSeis);
+		mesaDeDos = new MesaConFlor(jugadoresMesaDeDos);
+		mesaDeCuatro = new MesaConFlor(jugadoresMesaDeCuatro); 
+	    mesaPicaPica = new MesaSinFlor(jugadoresMesaDeSeis);
 	    this.moderadorMesaDeDos = new Moderador(mesaDeDos);
 	    this.moderadorMesaDeCuatro = new Moderador(mesaDeCuatro);
 	    this.moderadorMesaDeSeis = new Moderador(mesaPicaPica);
 	    this.moderadorMesaDeDos.setRotacionStrategy(criterioRotacionMesaDeDos);
 	    this.moderadorMesaDeCuatro.setRotacionStrategy(criterioRotacionMesaDeCuatro);
-	    this.moderadorMesaDeSeis.setRotacionStrategy(criterioRotacionMesaDeSeis);
+	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionPicaPica);
 	}
 	
 	@Test
@@ -114,50 +116,6 @@ public class ModeradorTest {
 	
 	
 	@Test
-	public void testRotacionDeTurnosPartidaPicaPica(){
-		
-		/*Juega la primera pareja (jugador 1 vs jugador 2) */
-	    Jugador jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugador1 == jugadorConTurno);
-	    
-	    this.moderadorMesaDeSeis.seJugoUnaCarta();
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugador2 == jugadorConTurno);
-	    
-	    this.moderadorMesaDeSeis.seJugoUnaCarta();
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugador1 == jugadorConTurno);
-	    this.moderadorMesaDeSeis.rondaFinalizada();
-	    
-	    /*Juega la segunda pareja (jugador 3 vs jugador 4)  */
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugador3 == jugadorConTurno);
-	    
-	    this.moderadorMesaDeSeis.seJugoUnaCarta();
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugador4 == jugadorConTurno);
-	    
-	    this.moderadorMesaDeSeis.seJugoUnaCarta();
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugador3 == jugadorConTurno);
-	    this.moderadorMesaDeSeis.rondaFinalizada();
-	    
-	    /*Juega la tercera pareja (jugador 5 vs jugador 6)  */
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugador5 == jugadorConTurno);
-	    
-	    this.moderadorMesaDeSeis.seJugoUnaCarta();
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugador6 == jugadorConTurno);
-	    
-	    this.moderadorMesaDeSeis.seJugoUnaCarta();
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugador5 == jugadorConTurno);
-	    this.moderadorMesaDeSeis.rondaFinalizada();
-		
-	}
-	
-	@Test
 	public void testRotacionDeManoPartidaDeDos(){
 		
 		
@@ -196,10 +154,105 @@ public class ModeradorTest {
 		    Assert.assertTrue(jugador1 == jugadorMano);	
 	}
 	
+	
+	@Test
+	public void testRotacionDeTurnosRondaPicaPica(){
+		
+		/*Juega la primera pareja (jugador 1 vs jugador 4) */
+	    Jugador jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugador1 == jugadorConTurno);
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugador4 == jugadorConTurno);
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugador1 == jugadorConTurno);
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    
+	    /*Juega la segunda pareja (jugador 2 vs jugador 5)  */
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugador2 == jugadorConTurno);
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugador5 == jugadorConTurno);
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugador2 == jugadorConTurno);
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    
+	    /*Juega la tercera pareja (jugador 3 vs jugador 6)  */
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugador3 == jugadorConTurno);
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugador6 == jugadorConTurno);
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugador3 == jugadorConTurno);
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+		
+	}
+	
+	
+	@Test
+	public void cambioDeComportamientoDelModeradorEnMesaConPicaPicaTest(){
+		
+		this.moderadorMesaDeSeis.setRotacionStrategy(rotacionEnRonda);
+		Jugador jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
+		Jugador jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+		
+		/*Rotacion en ronda*/
+		for(int i=0; i<5 ; i++){
+			
+			this.moderadorMesaDeSeis.seJugoUnaCarta();	
+		}
+		
+		jugadorConTurno =  this.moderadorMesaDeSeis.getJugadorConTurno();
+		Assert.assertTrue(jugadorConTurno == jugador6);
+		this.moderadorMesaDeSeis.rondaFinalizada();
+		jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
+		Assert.assertTrue(jugadorMano == jugador2);
+		
+		/*Fin ronda ahora cambia el comportamiento*/
+		
+		/*Ronda pica pica*/
+	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionPicaPica);
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugadorConTurno == jugador2);
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugadorConTurno == jugador1);
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
+	    Assert.assertTrue(jugadorConTurno == jugador2);
+	    Assert.assertTrue(jugadorMano == jugador2);
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    /*fin ronda pica pica*/
+	    
+	    /*Vuelve a rotar en ronda*/
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
+	    System.out.println(jugadorConTurno.getNombre());
+	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionEnRonda);
+	    
+	    
+	}
+	
 	@Test
 	public void testRotacionDeManoPartidaPicaPica(){
 		
-	
+		
 	    
 	}
 	

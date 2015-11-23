@@ -2,8 +2,8 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 
-public class Jugador implements Jugable
-{
+public class Jugador implements Jugable {
+	
 	private Mano cartas;
 	private Mesa mesa;
 	private String nombre;

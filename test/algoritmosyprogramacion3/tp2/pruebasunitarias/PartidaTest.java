@@ -8,6 +8,7 @@ import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
+import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
 import algoritmosyprogramacion3.tp2.modelo.Partida;
 
@@ -23,7 +24,7 @@ public class PartidaTest {
 		this.jugador1 = new Jugador("Juan");
 		this.jugador2 = new Jugador("Pedro");
 		
-		Mesa mesa = new Mesa(Arrays.asList(this.jugador1, this.jugador2), false);
+		Mesa mesa = new MesaSinFlor(Arrays.asList(this.jugador1, this.jugador2));
 		Moderador moderador = new Moderador(mesa);
 		this.partida = new Partida(moderador);	
 		this.partida.iniciarPartida();
