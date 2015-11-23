@@ -201,7 +201,7 @@ public class ModeradorTest {
 	
 	
 	@Test
-	public void cambioDeComportamientoDelModeradorEnMesaConPicaPicaTest(){
+	public void testCambioDeComportamientoDelModeradorEnMesaConPicaPica(){
 		
 		this.moderadorMesaDeSeis.setRotacionStrategy(rotacionEnRonda);
 		Jugador jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
@@ -222,6 +222,7 @@ public class ModeradorTest {
 		/*Fin ronda ahora cambia el comportamiento*/
 		
 		/*Ronda pica pica*/
+		rotacionPicaPica  = new StrategyRotacionPicaPica(jugadoresMesaDeSeis);
 	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionPicaPica);
 	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
 	    Assert.assertTrue(jugadorConTurno == jugador2);
@@ -229,23 +230,108 @@ public class ModeradorTest {
 	    this.moderadorMesaDeSeis.seJugoUnaCarta();
 	    this.moderadorMesaDeSeis.seJugoUnaCarta();
 	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugadorConTurno == jugador1);
+	    Assert.assertTrue(jugadorConTurno == jugador2);
 	    this.moderadorMesaDeSeis.rondaFinalizada();
 	    
 	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
 	    jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
-	    Assert.assertTrue(jugadorConTurno == jugador2);
-	    Assert.assertTrue(jugadorMano == jugador2);
+	    Assert.assertTrue(jugadorConTurno == jugador3);
+	    Assert.assertTrue(jugadorMano == jugador3);
+	    
 	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugadorConTurno == jugador4);
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugadorConTurno == jugador1);
+	    
 	    this.moderadorMesaDeSeis.rondaFinalizada();
 	    /*fin ronda pica pica*/
 	    
 	    /*Vuelve a rotar en ronda*/
+	    rotacionEnRonda = new StrategyRotacionEnRonda(jugadoresMesaDeSeis);
+	    jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
+	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionEnRonda);
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+		Assert.assertTrue(jugadorConTurno == jugador3);
+		Assert.assertTrue(jugadorMano == jugador3);
+	    
+        for(int i=0; i<5 ; i++){
+			
+			this.moderadorMesaDeSeis.seJugoUnaCarta();	
+		}
+        jugadorConTurno =  this.moderadorMesaDeSeis.getJugadorConTurno();
+		Assert.assertTrue(jugadorConTurno == jugador2);
+		this.moderadorMesaDeSeis.rondaFinalizada();
+		jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
+		Assert.assertTrue(jugadorMano == jugador4);
+		/*Fin ronda comun, vuelve a pica pica*/
+		
+		/*Ronda pica pica de nuevo*/
+		rotacionPicaPica = new StrategyRotacionPicaPica(this.jugadoresMesaDeSeis);
+	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionPicaPica);
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugadorConTurno == jugador4);
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugadorConTurno == jugador4);
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
 	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
 	    jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
-	    System.out.println(jugadorConTurno.getNombre());
-	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionEnRonda);
+	    Assert.assertTrue(jugadorConTurno == jugador2);
+	    Assert.assertTrue(jugadorMano == jugador5);
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    /*fin ronda pica pica*/
+		
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
+	    Assert.assertTrue(jugadorConTurno == jugador5);
+	    Assert.assertTrue(jugadorMano == jugador5);
 	    
+	    /*Vuelve a rotar en ronda*/
+	    rotacionEnRonda = new StrategyRotacionEnRonda(jugadoresMesaDeSeis);
+	    jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
+	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionEnRonda);
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+		Assert.assertTrue(jugadorConTurno == jugador5);
+		Assert.assertTrue(jugadorMano == jugador5);
+	    
+        for(int i=0; i<5 ; i++){
+			
+			this.moderadorMesaDeSeis.seJugoUnaCarta();	
+		}
+        jugadorConTurno =  this.moderadorMesaDeSeis.getJugadorConTurno();
+		Assert.assertTrue(jugadorConTurno == jugador4);
+		this.moderadorMesaDeSeis.rondaFinalizada();
+		jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
+		Assert.assertTrue(jugadorMano == jugador6);
+		/*Fin ronda comun, vuelve a pica pica*/
+	    
+		/*Ronda pica pica de nuevo*/
+		rotacionPicaPica = new StrategyRotacionPicaPica(this.jugadoresMesaDeSeis);
+	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionPicaPica);
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugadorConTurno == jugador6);
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugadorConTurno == jugador3);
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    
+	    this.moderadorMesaDeSeis.seJugoUnaCarta();
+	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
+	    Assert.assertTrue(jugadorConTurno == jugador4);
+	    Assert.assertTrue(jugadorMano == jugador1);
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    this.moderadorMesaDeSeis.rondaFinalizada();
+	    /*fin ronda pica pica*/
 	    
 	}
 	

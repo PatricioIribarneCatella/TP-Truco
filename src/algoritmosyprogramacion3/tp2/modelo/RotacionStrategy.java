@@ -5,10 +5,10 @@ public interface RotacionStrategy {
 	
 	
 	/*Devuelve al jugador a quien le corresponde el siguiente turno*/
-	 public Jugador cambiarTurno();
+	 public Jugador getJugadorConTurno();
 	 
 	 
 	 /*Devuelve el siguiente jugador que es mano*/
-	 public Jugador rondaFinalizada();
+	 public Jugador getSiguienteJugadorMano();
 
 }
