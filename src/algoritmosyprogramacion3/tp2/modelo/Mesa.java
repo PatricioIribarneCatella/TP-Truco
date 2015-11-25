@@ -39,7 +39,7 @@ public abstract class Mesa {
     	this.moderador.setRotacionStrategy(estrategiaDeRotacion);
     }*/
     
-     public void recibirCartaJugada(Jugador unJugador,Carta unaCarta){
+     public void recibirCartaJugada(Jugable unJugador,Carta unaCarta){
 
    		if(unaCarta.esValidaParaSerJugada())
    		{
@@ -50,7 +50,7 @@ public abstract class Mesa {
     	 
      }
     
-     private Campo getCampoDelJugador(Jugador unJugador){
+     private Campo getCampoDelJugador(Jugable unJugador){
     	 
     	 for(Campo unCampo:this.camposDeJuego){
     		 

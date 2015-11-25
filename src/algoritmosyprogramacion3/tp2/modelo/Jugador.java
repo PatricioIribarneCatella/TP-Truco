@@ -152,10 +152,15 @@ public class Jugador implements Jugable {
 	}
 
 	@Override
-	public String puntajeAcumulado() {
+	public String puntajeAcumuladoComoString() {
 		
 		String puntajeComoString = Integer.toString(this.puntaje);
 		return puntajeComoString;
+	}
+	
+	@Override
+	public int puntajeAcumulado() {
+		return this.puntaje;
 	}
 	
 	@Override

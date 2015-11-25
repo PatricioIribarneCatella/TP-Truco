@@ -1,17 +1,13 @@
 package algoritmosyprogramacion3.tp2.pruebasunitarias;
 
-import static org.junit.Assert.*;
-
+import  org.junit.Assert;
 import java.util.LinkedList;
-
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
-import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionPicaPica;
 
 public class RotacionEnRondaTest {
 
