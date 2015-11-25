@@ -6,19 +6,20 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionPicaPica;
 
 public class RotacionPicaPicaTest {
 	
-	private Jugador jugador1;
-	private Jugador jugador2;
-	private Jugador jugador3;
-	private Jugador jugador4;
-	private Jugador jugador5;
-	private Jugador jugador6;
-	private LinkedList<Jugador> jugadores;
+	private Jugable jugador1;
+	private Jugable jugador2;
+	private Jugable jugador3;
+	private Jugable jugador4;
+	private Jugable jugador5;
+	private Jugable jugador6;
+	private LinkedList<Jugable> jugadores;
 	private RotacionStrategy rotacionPicaPica;
 	
 	@Before
@@ -31,7 +32,7 @@ public class RotacionPicaPicaTest {
 		jugador5 = new Jugador("Julian");
 		jugador6 = new Jugador("Santiago");
 		
-		jugadores= new LinkedList<Jugador>();
+		jugadores= new LinkedList<Jugable>();
 		jugadores.add(jugador1);
 		jugadores.add(jugador2);
 		jugadores.add(jugador3);
@@ -46,7 +47,7 @@ public class RotacionPicaPicaTest {
 	public void testRotacionDeTurnosRondaPicaPica(){
 		
 		/*Juega la primera pareja (jugador 1 vs jugador 6) */
-	    Jugador jugadorConTurno = jugador1;
+	    Jugable jugadorConTurno = jugador1;
 	    
 	    jugadorConTurno = this.rotacionPicaPica.getJugadorConTurno();
 	    Assert.assertTrue(jugador1== jugadorConTurno);
@@ -84,7 +85,7 @@ public class RotacionPicaPicaTest {
 	@Test
 	public void testRotacionDeManoPartidaPicaPica(){
 	
-       Jugador jugadorMano = jugador1;		
+       Jugable jugadorMano = jugador1;		
        
        jugadorMano = this.rotacionPicaPica.getSiguienteJugadorMano();
        Assert.assertTrue(jugadorMano ==  jugador2);

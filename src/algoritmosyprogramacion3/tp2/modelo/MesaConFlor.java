@@ -4,7 +4,7 @@ import java.util.List;
 
 public class MesaConFlor extends Mesa {
 	
-	public MesaConFlor(List<Jugador> jugadores) {
+	public MesaConFlor(List<Jugable> jugadores) {
 		super(jugadores);
 	}
 

@@ -1,6 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public class Truco extends Evento {
+public class Truco extends Canto {
 
 	public Truco() {
 		this.puntosGanados = 2;
@@ -8,7 +8,7 @@ public class Truco extends Evento {
 	}
 
 	@Override
-	public Evento subirApuesta() {
+	public Canto subirApuesta() {
 		return new ReTruco();
 	}
 

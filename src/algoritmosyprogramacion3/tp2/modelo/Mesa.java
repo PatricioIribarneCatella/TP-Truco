@@ -3,18 +3,20 @@ package algoritmosyprogramacion3.tp2.modelo;
 import java.util.LinkedList;
 import java.util.List;
 
+import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
+
 public abstract class Mesa {
     
-	private List<Jugador> jugadores;
+	private List<Jugable> jugadores;
 	private List<Campo> camposDeJuego; 
     //private Moderador moderador;
 	
     
-    public Mesa(List<Jugador>jugadores) {
+    public Mesa(List<Jugable>jugadores) {
     	
     	this.camposDeJuego = new LinkedList<Campo>();
     	this.jugadores = jugadores;
-    	for(Jugador unJugador:this.jugadores){
+    	for(Jugable unJugador:this.jugadores){
     		
     		Campo nuevoCampo = new Campo(unJugador);
     		this.camposDeJuego.add(nuevoCampo);
@@ -28,25 +30,24 @@ public abstract class Mesa {
     
 	public abstract boolean seJuegaConFlor();
 	
-    public List<Jugador> getJugadores()
+    public List<Jugable> getJugadores()
     {
     	return this.jugadores;
     }
     
     
-    /*public void setRotacionStrategy(RotacionStrategy estrategiaDeRotacion){
-    	
-    	this.moderador.setRotacionStrategy(estrategiaDeRotacion);
-    }*/
     
      public void recibirCartaJugada(Jugable unJugador,Carta unaCarta){
 
-   		if(unaCarta.esValidaParaSerJugada())
-   		{
+   		if(unaCarta.esValidaParaSerJugada()){
     		unaCarta.jugate();
     		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
     		campoDelJugador.recibirCartaJugada(unaCarta);
         }
+   		else{
+   			
+   			throw new CartaYaJugadaException();
+   		}
     	 
      }
     
@@ -62,25 +63,21 @@ public abstract class Mesa {
     	 return null;//nunca va a llegar aca
      }
      
-     /*public Jugador getJugadorConTurno(){
-    	 
-    	 return this.moderador.getJugadorConTurno();
-     }*/
 
     	 
-	public Carta getPrimerCartaJugada(Jugador unJugador) {
+	public Carta getPrimerCartaJugada(Jugable unJugador) {
 		
 		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
 		return campoDelJugador.getPrimerCartaJugada();
 	}
 	
-	public Carta getSegundaCartaJugada(Jugador unJugador) {
+	public Carta getSegundaCartaJugada(Jugable unJugador) {
 		
 		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
 		return campoDelJugador.getSegundaCartaJugada();
 	}
 	
-	public Carta getTercerCartaJugada(Jugador unJugador) {
+	public Carta getTercerCartaJugada(Jugable unJugador) {
 		
 		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
 		return campoDelJugador.getTercerCartaJugada();

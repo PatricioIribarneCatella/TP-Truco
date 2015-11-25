@@ -1,6 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public interface Respuesta {
+public interface Respuesta extends Evento {
 
-	 public boolean involucraCambioDeTurno();
+	public abstract boolean fuePositiva();
 }

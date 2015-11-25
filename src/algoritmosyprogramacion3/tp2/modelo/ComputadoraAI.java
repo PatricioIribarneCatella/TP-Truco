@@ -2,6 +2,8 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.Random;
 
+import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
+
 public class ComputadoraAI implements Jugable {
 
 	private int puntaje;
@@ -17,7 +19,7 @@ public class ComputadoraAI implements Jugable {
 		this.numeroRandom = new Random();
 	}
 	
-	private Respuesta nuevoEvento() {
+	private Evento nuevoCanto() {
 		
 		int numero = this.numeroRandom.nextInt(3);
 		
@@ -29,7 +31,30 @@ public class ComputadoraAI implements Jugable {
 		return new Truco();
 	}
 	
-	public Respuesta darRespuestaAEvento(Evento evento) {
+	private Evento jugarCarta() {
+
+		int numero = this.numeroRandom.nextInt(3);
+		
+		if (numero == 0) {
+			
+			this.jugarPrimerCarta();
+		}
+		else {
+			
+			if(numero == 1){
+				
+				this.jugarSegundaCarta();
+			}
+			else {
+				
+				this.jugarTercerCarta();
+			}
+		}
+		return new JugarCarta();
+	}
+
+	
+	public Evento darRespuestaAEvento(Evento evento) {
 		
 		int numero = this.numeroRandom.nextInt(3);
 		
@@ -41,18 +66,16 @@ public class ComputadoraAI implements Jugable {
 	}
 		
 	
-	public Respuesta darRespuestaATurno() {
+	public Evento darRespuestaATurno() {
 		
 		int numero = this.numeroRandom.nextInt(2);
-		
-		if (numero == 0) {
-			
-			this.moderador.seJugoUnaCarta();
-			Carta cartaRandom = this.cartas.getCartaRandom();
-			this.mesa.recibirCartaJugada(this,cartaRandom);	
-			return new JugarCarta();
+	     
+		if(numero == 0){
+	       
+			return this.jugarCarta();		
 		}
-		return this.nuevoEvento();
+		
+		return this.nuevoCanto();
 	}
 	
 	public void recibirCarta(Carta carta) {
@@ -91,5 +114,63 @@ public class ComputadoraAI implements Jugable {
 	@Override
 	public void sumarPuntos(int puntos) {
 		this.puntaje += puntos; 
+	}
+
+	
+	private boolean esMiTurno() {
+		
+		return (this == this.moderador.getJugadorConTurno());
+	}
+	
+	@Override
+	public void jugarPrimerCarta() {
+	    
+		Carta cartaAJugar = this.cartas.getPrimerCarta();
+		
+		if (this.esMiTurno()) {
+		
+			this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			this.moderador.seJugoUnaCarta();
+			
+		} else {
+			
+			throw new TurnoEquivocadoException();
+		}
+		
+	}
+
+
+	@Override
+	public void jugarSegundaCarta() {
+	
+		Carta cartaAJugar = this.cartas.getSegundaCarta();
+		
+		if (this.esMiTurno()) {
+		
+			this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			this.moderador.seJugoUnaCarta();
+			
+		} else {
+			
+			throw new TurnoEquivocadoException();
+		}
+		
+	}
+
+	@Override
+	public void jugarTercerCarta() {
+	 
+		Carta cartaAJugar = this.cartas.getTercerCarta();
+		
+		if (this.esMiTurno()) {
+		
+			this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			this.moderador.seJugoUnaCarta();
+			
+		} else {
+			
+			throw new TurnoEquivocadoException();
+		}
+		
 	}
 }

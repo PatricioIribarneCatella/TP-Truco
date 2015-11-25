@@ -1,11 +1,13 @@
 package algoritmosyprogramacion3.tp2.pruebasunitarias;
 
 import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
@@ -15,8 +17,8 @@ import algoritmosyprogramacion3.tp2.modelo.Partida;
 public class PartidaTest {
 
 	private Partida partida;
-	private Jugador jugador1;
-	private Jugador jugador2;
+	private Jugable jugador1;
+	private Jugable jugador2;
 	
 	@Before
 	public void setUp() {

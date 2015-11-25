@@ -24,7 +24,7 @@ public class Partida {
 	public void jugarCarta() {
 	
 		if (!this.estado.esValidoParaJugarCarta()) throw new AccionInvalidaException();
-		this.moderador.cambiarTurno();
+		this.moderador.seJugoUnaCarta();
 	}
 	
 	public void cantarTruco() {

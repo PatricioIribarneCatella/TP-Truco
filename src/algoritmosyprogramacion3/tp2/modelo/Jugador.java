@@ -38,7 +38,7 @@ public class Jugador implements Jugable {
 	
 	public void cantarEnvido()
 	{
-		this.moderador.canteEnvido();
+		this.moderador.envidoCantado();
 	}
 	
 	public void cantarRealEnvido()
@@ -75,12 +75,12 @@ public class Jugador implements Jugable {
 	}
 	
 	
-	public void Aceptar()
+	public void aceptar()
 	{
 	      	
 	}
 	
-	public void Rechazar()
+	public void rechazar()
 	{
 		
 	}

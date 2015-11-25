@@ -5,12 +5,13 @@ import java.util.List;
 public class Moderador {
 	
 	
-	private Jugable contrincante;
-    private Jugador jugadorDeTurno;   
-    private Jugador jugadorMano;
+	private Jugable jugadorConDecision;
+    private Jugable jugadorConTurno;   
+    private Jugable jugadorMano;
     private Mesa mesaACargo;
-    private List<Jugador> jugadores;
+    private List<Jugable> jugadores;
     private Mazo mazo;
+    private Partida partidaEnCurso;
     private RotacionStrategy criterioDeRotacion;
     
     
@@ -20,31 +21,39 @@ public class Moderador {
 		this.mazo = new  Mazo();
 		this.mesaACargo = unaMesa;
 		this.jugadores = this.mesaACargo.getJugadores();
-		this.jugadorDeTurno = this.jugadores.get(0);
+		this.jugadorConTurno = this.jugadores.get(0);
 		this.jugadorMano = this.jugadores.get(0); //Seteo por default que en toda partida el primer jugador es mano
+		this.jugadorConDecision = this.jugadorConTurno;
 	}
 	
 	
-	
-	public void Aceptar(){
+	public void setRotacionStrategy(RotacionStrategy criterioDeRotacion){
 		
+		this.criterioDeRotacion = criterioDeRotacion;
+		this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno();
+		this.jugadorConDecision = this.criterioDeRotacion.getJugadorConDecision();
+	}
+	
+	public void setPartida(Partida unaPartida){
+		
+		this.partidaEnCurso = unaPartida;
+	}
+	
+	public void aceptar(){
+		
+		this.partidaEnCurso.aceptar();
 	}
 	
 	public void rechazar(){
 		
-	    /*if(this.jugadaCantada.terminaLaRonda()){
-	    	this.rondaFinalizada();
-	    }
-	    	    
-    	//sumo los puntajes correspondientes
-	    this.contrincante.sumarPuntos(this.jugadaCantada.getPuntosPorRechazo());*/
+		this.partidaEnCurso.rechazar();
 	}
 	
 	public void repartirCartas(){
 		
 	   for(int i = 0;i<3 ;i++){
 		   
-	  	  for(Jugador unJugador:this.jugadores){
+	  	  for(Jugable unJugador:this.jugadores){
 		 		
 		    	unJugador.recibirCarta(this.mazo.darCarta());	
 			
@@ -53,44 +62,33 @@ public class Moderador {
 
 	}
 
-	public void setRotacionStrategy(RotacionStrategy criterioDeRotacion){
-		
-		this.criterioDeRotacion = criterioDeRotacion;
-		this.jugadorDeTurno = this.criterioDeRotacion.getJugadorConTurno();
-	}
 	
      public void seJugoUnaCarta() {
 	    	 
-    	this.jugadorDeTurno = this.criterioDeRotacion.getJugadorConTurno(); 
+    	this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno(); 
      }
 	    
 	 public void rondaFinalizada(){
 	   	
     	this.jugadorMano = this.criterioDeRotacion.getSiguienteJugadorMano();
-    	this.jugadorDeTurno = this.jugadorMano;
+    	this.jugadorConTurno = this.jugadorMano;
     }
 		 
-	public Jugador getJugadorConTurno(){
+	public Jugable getJugadorConTurno(){
 	    	
-		return this.jugadorDeTurno;
+		return this.jugadorConTurno;
 	}
 		 
 		 
-	public Jugador getJugadorMano(){
+	public Jugable getJugadorMano(){
 		    	
 		 return this.jugadorMano;
 	 }
 
 
 
-	public void canteEnvido() {
+	public void envidoCantado() {
 
-	}
-
-
-
-	public void cambiarTurno() {
-		
-		this.jugadorDeTurno = this.criterioDeRotacion.getJugadorConTurno(); 
+		this.partidaEnCurso.cantarEnvido();
 	}
 }

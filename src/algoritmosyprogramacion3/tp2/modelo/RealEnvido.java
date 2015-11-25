@@ -1,6 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public class RealEnvido extends Evento {
+public class RealEnvido extends Canto {
 
 	public RealEnvido() {
 		this.puntosGanados = 3;
@@ -8,7 +8,7 @@ public class RealEnvido extends Evento {
 	}
 
 	@Override
-	public Evento subirApuesta() {
+	public Canto subirApuesta() {
 		return new FaltaEnvido();
 	}
 

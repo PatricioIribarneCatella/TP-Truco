@@ -9,4 +9,16 @@ public interface Jugable {
 	public int puntajeAcumulado();
 	
 	public void sumarPuntos(int puntos);
+
+	public void setMesa(Mesa mesa);
+
+	public void recibirCarta(Carta darCarta);
+
+	public void setModerador(Moderador moderador);
+
+	public void jugarPrimerCarta();
+
+	public void jugarSegundaCarta();
+
+	public void jugarTercerCarta();
 }

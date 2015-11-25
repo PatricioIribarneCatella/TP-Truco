@@ -1,13 +1,13 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public class FaltaEnvido extends Evento {
+public class FaltaEnvido extends Canto {
 	
 	public FaltaEnvido() {
 		this.puntosPorRechazo = 1;
 	}
 
 	@Override
-	public Evento subirApuesta() {
+	public Canto subirApuesta() {
 		return null;
 	}
 

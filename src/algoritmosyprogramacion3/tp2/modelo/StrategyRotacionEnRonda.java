@@ -5,16 +5,16 @@ import java.util.ListIterator;
 
 public class StrategyRotacionEnRonda implements RotacionStrategy{
 
-    private ListIterator<Jugador> iteradorTurno;
-    private List<Jugador> jugadores;
+    private ListIterator<Jugable> iteradorTurno;
+    private List<Jugable> jugadores;
     
-	public StrategyRotacionEnRonda(List<Jugador>jugadores){
+	public StrategyRotacionEnRonda(List<Jugable>jugadores){
 		this.jugadores = jugadores;
 		iteradorTurno = this.jugadores.listIterator(0);
 	}
 	
 	
-    public Jugador getJugadorConTurno() {
+    public Jugable getJugadorConTurno() {
 		if(this.iteradorTurno.hasNext()){
 	   		   
 	       return (this.iteradorTurno.next());
@@ -27,7 +27,7 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 
 
 
-	public Jugador getSiguienteJugadorMano() {
+	public Jugable getSiguienteJugadorMano() {
 		
 		this.cambiarOrdenJugadores();
 	    return (this.jugadores.get(0));
@@ -35,9 +35,16 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 	
 	/*Coloca el primer jugador al final de la lista y corre los demas a la izquierda*/
 	private void cambiarOrdenJugadores(){
-		Jugador primerJugador = this.jugadores.remove(0);
+		Jugable primerJugador = this.jugadores.remove(0);
 		this.jugadores.add(primerJugador);
 		this.iteradorTurno = this.jugadores.listIterator();
+	}
+
+
+	@Override
+	public Jugable getJugadorConDecision() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

@@ -4,17 +4,17 @@ import java.util.LinkedList;
 
 public class Campo {
 	
-	private Jugador jugador;
+	private Jugable jugador;
 	private LinkedList<Carta> cartasEnJuego;
     
 	
-	public Campo(Jugador jugadorDelCampo){
+	public Campo(Jugable jugadorDelCampo){
 		
 		this.jugador = jugadorDelCampo;
 		this.cartasEnJuego = new LinkedList<Carta>();
 	}
 	
-	public Jugador getJugador(){
+	public Jugable getJugador(){
 		
 		return this.jugador;
 	}

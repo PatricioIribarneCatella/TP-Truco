@@ -7,22 +7,22 @@ import java.util.ListIterator;
 public class StrategyRotacionPicaPica implements RotacionStrategy {
 
 	
-    private ListIterator<List<Jugador>> iteradorPareja;
-    private List<List<Jugador>> parejas;
-    private List<Jugador> primerPareja;
-    private List<Jugador> segundaPareja;
-    private List<Jugador> terceraPareja;
-    private List<Jugador> parejaActual;
+    private ListIterator<List<Jugable>> iteradorPareja;
+    private List<List<Jugable>> parejas;
+    private List<Jugable> primerPareja;
+    private List<Jugable> segundaPareja;
+    private List<Jugable> terceraPareja;
+    private List<Jugable> parejaActual;
     private RotacionStrategy rotacionEnRonda;
-    private List<Jugador> todosLosJugadores;
+    private List<Jugable> todosLosJugadores;
 	
-	public StrategyRotacionPicaPica(List<Jugador>jugadores){
+	public StrategyRotacionPicaPica(List<Jugable>jugadores){
 		
 		todosLosJugadores = jugadores;
-		this.primerPareja = new LinkedList<Jugador>();
-		this.segundaPareja = new LinkedList<Jugador>();
-		this.terceraPareja = new LinkedList<Jugador>();
-		this.parejas = new LinkedList<List<Jugador>>();
+		this.primerPareja = new LinkedList<Jugable>();
+		this.segundaPareja = new LinkedList<Jugable>();
+		this.terceraPareja = new LinkedList<Jugable>();
+		this.parejas = new LinkedList<List<Jugable>>();
 		
 		//jugador 1 vs jugador 4
 		this.primerPareja.add(jugadores.get(0));
@@ -46,13 +46,13 @@ public class StrategyRotacionPicaPica implements RotacionStrategy {
 	}
 	
 	@Override
-	public Jugador getJugadorConTurno() {
+	public Jugable getJugadorConTurno() {
       		
 		return this.rotacionEnRonda.getJugadorConTurno();
 	}
 
 
-	public Jugador getSiguienteJugadorMano() {
+	public Jugable getSiguienteJugadorMano() {
 
         if(this.iteradorPareja.hasNext()){
         	
@@ -62,6 +62,12 @@ public class StrategyRotacionPicaPica implements RotacionStrategy {
         }
         this.rotacionEnRonda = new StrategyRotacionEnRonda(todosLosJugadores);
         return this.rotacionEnRonda.getSiguienteJugadorMano();
+	}
+
+	@Override
+	public Jugable getJugadorConDecision() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

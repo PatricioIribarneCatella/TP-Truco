@@ -1,23 +1,26 @@
 package algoritmosyprogramacion3.tp2.pruebasunitarias;
 
 import  org.junit.Assert;
+
 import java.util.LinkedList;
+
 import org.junit.Before;
 import org.junit.Test;
 
+import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
 
 public class RotacionEnRondaTest {
 
-	private Jugador jugador1;
-	private Jugador jugador2;
-	private Jugador jugador3;
-	private Jugador jugador4;
-	private Jugador jugador5;
-	private Jugador jugador6;
-	private LinkedList<Jugador> jugadores;
+	private Jugable jugador1;
+	private Jugable jugador2;
+	private Jugable jugador3;
+	private Jugable jugador4;
+	private Jugable jugador5;
+	private Jugable jugador6;
+	private LinkedList<Jugable> jugadores;
 	private RotacionStrategy rotacionEnRonda;
 	
 	
@@ -31,7 +34,7 @@ public class RotacionEnRondaTest {
 		jugador5 = new Jugador("5");
 		jugador6 = new Jugador("6");
 		
-		jugadores= new LinkedList<Jugador>();
+		jugadores= new LinkedList<Jugable>();
 		jugadores.add(jugador1);
 		jugadores.add(jugador2);
 		jugadores.add(jugador3);
@@ -45,7 +48,7 @@ public class RotacionEnRondaTest {
 	@Test
 	public void testRotacionDeTurnosEnRonda(){
 		
-		Jugador jugadorConTurno =  jugador1;
+		Jugable jugadorConTurno =  jugador1;
 		
 		jugadorConTurno = this.rotacionEnRonda.getJugadorConTurno();
 		Assert.assertTrue(jugadorConTurno == jugador1);
@@ -72,7 +75,7 @@ public class RotacionEnRondaTest {
 	@Test
 	public void testRotacionDeManoEnRonda(){
 		
-		Jugador jugadorMano = jugador1;
+		Jugable jugadorMano = jugador1;
 		
 		for(int i = 0 ; i<6;i++){
 			jugadorMano = this.rotacionEnRonda.getSiguienteJugadorMano();

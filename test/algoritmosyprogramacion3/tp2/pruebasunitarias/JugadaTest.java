@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.CincoDeCopa;
+import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
@@ -24,8 +25,8 @@ import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
 
 public class JugadaTest {
 
-	private Jugador jugador1;
-	private Jugador jugador2;
+	private Jugable jugador1;
+	private Jugable jugador2;
 	private Carta unoDeEspada;
 	private Carta unoDeCopa;
 	private Carta unoDeOro;
