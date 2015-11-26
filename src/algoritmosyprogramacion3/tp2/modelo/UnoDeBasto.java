@@ -1,5 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import javafx.scene.image.Image;
+
 public class UnoDeBasto extends Carta {
 
 	public UnoDeBasto() {
@@ -9,6 +11,7 @@ public class UnoDeBasto extends Carta {
 		this.valorEnvido = 1;
 		this.valorFlor = 1;
 		this.valorComoString = "1";
+		this.imagen = new Image("file:resources/imagenes/cartas/basto/uno-de-basto.jpg", 100, 400, false, true);
 	}
 	
 	@Override

@@ -1,5 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import javafx.scene.image.Image;
+
 public class SieteDeEspada extends Carta {
 
 	public SieteDeEspada() {
@@ -9,6 +11,7 @@ public class SieteDeEspada extends Carta {
 		this.valorEnvido = 7;
 		this.valorFlor = 7;
 		this.valorComoString = "7";
+		this.imagen = new Image("file:resources/imagenes/cartas/basto/siete-de-espada.jpg", 100, 400, false, true);
 	}
 	
 	@Override

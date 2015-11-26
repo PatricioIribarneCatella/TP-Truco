@@ -1,5 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import javafx.scene.image.Image;
+
 public abstract class Carta {
 
 	protected Palo palo;
@@ -7,6 +9,7 @@ public abstract class Carta {
 	protected int valorEnvido;
 	protected int valorFlor;
 	protected EstadoDeCarta estado;
+	protected Image imagen;
 	
 	public Carta() {
 		
@@ -28,6 +31,10 @@ public abstract class Carta {
 	
 	public int getValorEnvido() {
 		return this.valorEnvido;
+	}
+	
+	public Image getImagen() {
+		return this.imagen;
 	}
 	
 	public void entregada() {

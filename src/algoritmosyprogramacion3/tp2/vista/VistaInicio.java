@@ -56,7 +56,7 @@ public class VistaInicio implements Vista {
 	
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:resources/imagenes/fondo-con-cartas-1.jpg", 1000, 600, false, true);
+		Image imagen = new Image("file:resources/imagenes/fondos/fondo-con-cartas-1.jpg", 1000, 600, false, true);
 		
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		

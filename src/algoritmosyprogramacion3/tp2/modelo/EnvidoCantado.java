@@ -9,7 +9,7 @@ public class EnvidoCantado implements EstadoPartida {
 
 	@Override
 	public boolean esValidoParaCantarTruco() {
-		return false;
+		return true;
 	}
 
 	@Override
