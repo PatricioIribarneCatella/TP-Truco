@@ -2,6 +2,9 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.List;
 
+import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
+
 public class Moderador {
 	
 	
@@ -23,7 +26,7 @@ public class Moderador {
 		this.jugadores = this.mesaACargo.getJugadores();
 		this.jugadorConTurno = this.jugadores.get(0);
 		this.jugadorMano = this.jugadores.get(0); //Seteo por default que en toda partida el primer jugador es mano
-		this.jugadorConDecision = this.jugadorConTurno;
+		this.jugadorConDecision = this.jugadores.get(0);
 	}
 	
 	
@@ -38,17 +41,7 @@ public class Moderador {
 		
 		this.partidaEnCurso = unaPartida;
 	}
-	
-	public void aceptar(){
 		
-		this.partidaEnCurso.aceptar();
-	}
-	
-	public void rechazar(){
-		
-		this.partidaEnCurso.rechazar();
-	}
-	
 	public void repartirCartas(){
 		
 	   for(int i = 0;i<3 ;i++){
@@ -56,10 +49,8 @@ public class Moderador {
 	  	  for(Jugable unJugador:this.jugadores){
 		 		
 		    	unJugador.recibirCarta(this.mazo.darCarta());	
-			
 		  }
 	   }
-
 	}
 
 	
@@ -85,10 +76,148 @@ public class Moderador {
 		 return this.jugadorMano;
 	 }
 
+	
+	private Jugable getJugadorConDecision() {
+		
+		return this.criterioDeRotacion.getJugadorConDecision();
+	}
+	
+
+	public void envidoCantado(Jugable jugadorQueCanto) {
+       
+		if(this.jugadorConDecision == jugadorQueCanto){
+			
+			try{
+				
+				this.partidaEnCurso.cantarEnvido();
+			}
+			catch(CantidadDeEnvidosMaximosSuperadaException e){
+			
+				throw new CantidadDeEnvidosMaximosSuperadaException();
+			}
+			
+			this.jugadorConDecision = this.getJugadorConDecision(); // ahora el que decide si acepta o no es otro.
+		}
+		else{
+			
+			throw new TurnoParaTomarDecisionEquivocadoException();
+	    }
+		
+	}
 
 
-	public void envidoCantado() {
 
-		this.partidaEnCurso.cantarEnvido();
+	public void realEnvidoCantado(Jugable jugadorQueCanto) {
+		
+		if(this.jugadorConDecision == jugadorQueCanto){
+			
+			this.partidaEnCurso.cantarRealEnvido();		
+			this.jugadorConDecision = this.getJugadorConDecision();
+		}
+		else{
+			
+			throw new TurnoParaTomarDecisionEquivocadoException();
+	    }	
+	}
+
+
+	public void faltaEnvidoCantado(Jugable jugadorQueCanto) {
+	
+		if(this.jugadorConDecision == jugadorQueCanto){
+			
+			this.partidaEnCurso.cantarFaltaEnvido();	
+			this.jugadorConDecision = this.getJugadorConDecision();
+		}
+		else{
+			
+			throw new TurnoParaTomarDecisionEquivocadoException();
+	    }
+	}
+
+
+	public void trucoCantado(Jugable jugadorQueCanto) {
+        
+		if(this.jugadorConDecision == jugadorQueCanto){
+			
+			this.partidaEnCurso.cantarTruco();		
+			this.jugadorConDecision = this.getJugadorConDecision();
+		}
+		else{
+			
+			throw new TurnoParaTomarDecisionEquivocadoException();
+	    }
+	}
+
+
+	public void reTrucoCantado(Jugable jugadorQueCanto) {
+		
+		if(this.jugadorConDecision == jugadorQueCanto){
+			
+			this.partidaEnCurso.cantarReTruco();	
+			this.jugadorConDecision = this.getJugadorConDecision();
+		}
+		else{
+			
+			throw new TurnoParaTomarDecisionEquivocadoException();
+	    }
+		
+	}
+
+
+	public void valeCuatroCantado(Jugable jugadorQueCanto) {
+
+		if(this.jugadorConDecision == jugadorQueCanto){
+			
+			this.partidaEnCurso.cantarValeCuatro();	
+			this.jugadorConDecision = this.getJugadorConDecision();
+		}
+		else{
+			
+			throw new TurnoParaTomarDecisionEquivocadoException();
+	    }
+		
+	}
+
+
+	public void jugadorAcepta(Jugable jugadorQueResponde) {
+
+		if(this.jugadorConDecision == jugadorQueResponde){
+			
+			this.partidaEnCurso.aceptar();	
+			this.jugadorConDecision = this.getJugadorConDecision();
+		}
+		else{
+			
+			throw new TurnoParaTomarDecisionEquivocadoException();
+	    }		
+	}
+	
+	
+	
+	
+	public void jugadorRechazaVarianteEnvido(Jugable jugadorQueResponde) {
+
+		if(this.jugadorConDecision == jugadorQueResponde){
+			
+			this.partidaEnCurso.rechazarVarianteDeEnvido();		
+			this.jugadorConDecision = this.getJugadorConDecision();
+		}
+		else{
+			
+			throw new TurnoParaTomarDecisionEquivocadoException();
+	    }	
+	}
+	
+	public void jugadorRechazaVarianteTruco(Jugable jugadorQueResponde) {
+
+		if(this.jugadorConDecision == jugadorQueResponde){
+			
+			this.partidaEnCurso.rechazarVarianteDeTruco();	
+			this.jugadorConDecision = this.getJugadorConDecision();
+		}
+		else{
+			
+			throw new TurnoParaTomarDecisionEquivocadoException();
+	    }	
 	}
 }

@@ -3,19 +3,16 @@ package algoritmosyprogramacion3.tp2.modelo;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class Mano {
 
 	private List<Carta> cartas;
 	private Carta ultimaCartaJugada;
-	private Random numeroRandom;
 	
 	public Mano() {
 		
 		this.cartas = new LinkedList<Carta>();
-		this.numeroRandom = new Random();
 	}
 	
 	private List<Carta> filtrarCartasPorPalo(Palo palo) {
@@ -164,13 +161,6 @@ public class Mano {
 
 	public Carta getUltimaCartaJugada() {
 		return this.ultimaCartaJugada;
-	}
-
-	public Carta getCartaRandom() {
-		
-		int numero = this.numeroRandom.nextInt(3);
-		
-		return this.cartas.get(numero);
 	}
 	
 	public boolean hayCartasJugadas() {

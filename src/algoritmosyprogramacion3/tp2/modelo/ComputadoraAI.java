@@ -19,7 +19,7 @@ public class ComputadoraAI implements Jugable {
 		this.numeroRandom = new Random();
 	}
 	
-	private Evento nuevoCanto() {
+	private Evento nuevoEvento() {
 		
 		int numero = this.numeroRandom.nextInt(3);
 		
@@ -30,29 +30,6 @@ public class ComputadoraAI implements Jugable {
 		}
 		return new Truco();
 	}
-	
-	private Evento jugarCarta() {
-
-		int numero = this.numeroRandom.nextInt(3);
-		
-		if (numero == 0) {
-			
-			this.jugarPrimerCarta();
-		}
-		else {
-			
-			if(numero == 1){
-				
-				this.jugarSegundaCarta();
-			}
-			else {
-				
-				this.jugarTercerCarta();
-			}
-		}
-		return new JugarCarta();
-	}
-
 	
 	public Evento darRespuestaAEvento(Evento evento) {
 		
@@ -75,9 +52,31 @@ public class ComputadoraAI implements Jugable {
 			return this.jugarCarta();		
 		}
 		
-		return this.nuevoCanto();
+		return this.nuevoEvento();
 	}
 	
+	private Evento jugarCarta() {
+
+		int numero = this.numeroRandom.nextInt(3);
+		if (numero == 0) {
+			
+			this.jugarPrimerCarta();
+		}
+		else{
+			
+			if(numero == 1){
+				
+				this.jugarSegundaCarta();
+			}
+			else{
+				
+				this.jugarTercerCarta();
+			}
+				
+		}
+		return new JugarCarta();
+	}
+
 	public void recibirCarta(Carta carta) {
 		
 		carta.entregada();

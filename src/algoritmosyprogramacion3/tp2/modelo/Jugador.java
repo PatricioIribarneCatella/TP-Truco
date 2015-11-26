@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 
 public class Jugador implements Jugable {
@@ -38,31 +39,40 @@ public class Jugador implements Jugable {
 	
 	public void cantarEnvido()
 	{
-		this.moderador.envidoCantado();
-	}
-	
-	public void cantarRealEnvido()
-	{
+		try{
 		
+			this.moderador.envidoCantado(this);
+		}
+		catch(CantidadDeEnvidosMaximosSuperadaException e){
+			
+		}
 	}
 	
-	public void cantarFaltaEnvido()
-	{
+	public void cantarRealEnvido(){
 		
+		this.moderador.realEnvidoCantado(this);
 	}
 	
-	public void cantarTruco()
-	{
-	}
-	
-	public void cantarRetruco()
-	{
-	}
-	
-	public void cantarValeCuatro()
-	{
+	public void cantarFaltaEnvido(){
 		
+		this.moderador.faltaEnvidoCantado(this);
 	}
+	
+	public void cantarTruco(){
+		
+		this.moderador.trucoCantado(this);
+	}
+	
+	public void cantarRetruco(){
+		
+		this.moderador.reTrucoCantado(this);
+	}
+	
+	public void cantarValeCuatro(){
+		
+		this.moderador.valeCuatroCantado(this);
+	}	
+	
 	
 	public boolean cantarFlor()
 	{
@@ -72,17 +82,23 @@ public class Jugador implements Jugable {
 	public void irseAlMazo()
 	{
 		this.cartas.removerCartas();
+		//this.moderador.jugadorSeFueAlMazo(this);
 	}
 	
 	
 	public void aceptar()
 	{
-	      	
+	     this.moderador.jugadorAcepta(this);
+	}
+		
+	public void rechazarVarianteEnvido()
+	{
+		this.moderador.jugadorRechazaVarianteEnvido(this);
 	}
 	
-	public void rechazar()
+	public void rechazarVarianteTruco()
 	{
-		
+		this.moderador.jugadorRechazaVarianteTruco(this);
 	}
 
 	/*El jugador declara la cantidad de puntos que suman sus cartas en el envido*/

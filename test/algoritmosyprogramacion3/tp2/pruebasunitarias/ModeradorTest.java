@@ -6,12 +6,16 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
+import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaConFlor;
 import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
+import algoritmosyprogramacion3.tp2.modelo.Partida;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionPicaPica;
@@ -336,13 +340,82 @@ public class ModeradorTest {
 	    
 	}
 	
-	@Test
-	public void testRotacionDeManoPartidaPicaPica(){
+	
+	
+	
+	@Test(expected = TurnoParaTomarDecisionEquivocadoException.class)
+	public void testElJugadorQueCantoEnvidoNoPuedeCantarDeNuevoHastaQueElOtroRespondaEnMesaDeDos(){
 		
+		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
+		unaRonda.iniciarPartida();
+		moderadorMesaDeDos.setPartida(unaRonda);
+		this.moderadorMesaDeDos.envidoCantado(jugador1);
+		this.moderadorMesaDeDos.envidoCantado(jugador2);
+		this.moderadorMesaDeDos.realEnvidoCantado(jugador1);
+		this.moderadorMesaDeDos.jugadorAcepta(jugador1);
 		
-	    
 	}
 	
+	@Test(expected = CantidadDeEnvidosMaximosSuperadaException.class)
+	public void testEnvidoExcedeMaximoParaMesaDeDos(){
+		
+		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
+		unaRonda.iniciarPartida();
+		moderadorMesaDeDos.setPartida(unaRonda);
+		this.moderadorMesaDeDos.envidoCantado(jugador1);
+		this.moderadorMesaDeDos.envidoCantado(jugador2);
+		this.moderadorMesaDeDos.envidoCantado(jugador1);
+		this.moderadorMesaDeDos.envidoCantado(jugador2);
+	}
 	
+	@Test(expected = TurnoParaTomarDecisionEquivocadoException.class)
+	public void testTrucoPartidaDeDos(){
+		
+		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
+		unaRonda.iniciarPartida();
+		moderadorMesaDeDos.setPartida(unaRonda);
+		this.moderadorMesaDeDos.trucoCantado(jugador1);
+		this.moderadorMesaDeDos.reTrucoCantado(jugador2);
+		this.moderadorMesaDeDos.jugadorAcepta(jugador2);
+	}
+	
+	@Test(expected = AccionInvalidaException.class)
+	public void testNoSePuedeCantarReTrucoDirectamente(){
+		
+		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
+		unaRonda.iniciarPartida();
+		moderadorMesaDeDos.setPartida(unaRonda);
+		this.moderadorMesaDeDos.reTrucoCantado(jugador1);  	
+	}
+	
+	@Test(expected = AccionInvalidaException.class)
+	public void testNoSePuedeCantarValeCuatroDirectamente(){
+		
+		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
+		unaRonda.iniciarPartida();
+		moderadorMesaDeDos.setPartida(unaRonda);
+		this.moderadorMesaDeDos.valeCuatroCantado(jugador1);  	
+	}
+	
+	@Test(expected = AccionInvalidaException.class)
+	public void testNoSePuedeCantarTrucoSiPrimeroSeCantoEnvido(){
+	
+		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
+		unaRonda.iniciarPartida();
+		moderadorMesaDeDos.setPartida(unaRonda);
+		this.moderadorMesaDeDos.envidoCantado(jugador1);
+		this.moderadorMesaDeDos.trucoCantado(jugador2);
+	}
+	
+	@Test
+	public void testEnvidoYTrucoEnUnaMismaRonaMesaDeDos(){
+		
+		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
+		unaRonda.iniciarPartida();
+		moderadorMesaDeDos.setPartida(unaRonda);
+		this.moderadorMesaDeDos.envidoCantado(jugador1);
+		this.moderadorMesaDeDos.jugadorRechazaVarianteEnvido(jugador2);
+		this.moderadorMesaDeDos.trucoCantado(jugador1);
+	}
 
 }

@@ -64,10 +64,10 @@ public class StrategyRotacionPicaPica implements RotacionStrategy {
         return this.rotacionEnRonda.getSiguienteJugadorMano();
 	}
 
-	@Override
+	
 	public Jugable getJugadorConDecision() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.rotacionEnRonda.getJugadorConDecision();
 	}
 
 }

@@ -72,11 +72,18 @@ public class Partida {
 		if (!this.estado.esValidoParaAceptar()) throw new AccionInvalidaException();
 	}
 	
-	public void rechazar() {
+	public void rechazarVarianteDeTruco() {
 		
 		if (!this.estado.esValidoParaRechazar()) throw new AccionInvalidaException();
 		this.estado = new PartidaFinalizada();
 		this.cantidadDeEnvidosCantados = 0;
 		this.moderador.rondaFinalizada();
 	}
+	
+    public void rechazarVarianteDeEnvido() {
+		
+		if (!this.estado.esValidoParaRechazar()) throw new AccionInvalidaException();
+		this.cantidadDeEnvidosCantados = 0;
+	}
+
 }
