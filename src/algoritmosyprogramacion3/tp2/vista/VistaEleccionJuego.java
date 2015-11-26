@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.vista;
 
+import algoritmosyprogramacion3.tp2.manejadores.BotonVolverEventHandler;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -74,6 +75,12 @@ public class VistaEleccionJuego implements Vista {
 		BackgroundFill fondoDeColorJuegosExistentes = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonJuegosExistentes.setBackground(new Background(fondoDeColorJuegosExistentes));
 		
+		botonJuegosExistentes.setOnAction(e -> {
+			
+			VistaJuegosExistentes nuevaVista = new VistaJuegosExistentes(this);
+			nuevaVista.mostrar();
+		});
+		
 		Button botonNuevoJuego = new Button("Nuevo juego");
 		botonNuevoJuego.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		botonNuevoJuego.setTextFill(Color.WHITE);
@@ -81,12 +88,20 @@ public class VistaEleccionJuego implements Vista {
 		BackgroundFill fondoDeColorNuevoJuego = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonNuevoJuego.setBackground(new Background(fondoDeColorNuevoJuego));
 		
+		botonNuevoJuego.setOnAction(e -> {
+			
+			VistaEleccionTipoDeMesa nuevaVista = new VistaEleccionTipoDeMesa(this);
+			nuevaVista.mostrar();
+		});
+		
 		this.botonVolver = new Button("Volver");
 		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		this.botonVolver.setTextFill(Color.WHITE);
 		
 		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
+		
+		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
 		
 		this.contenedor.getChildren().addAll(botonJuegosExistentes, botonNuevoJuego, this.botonVolver);
 	}

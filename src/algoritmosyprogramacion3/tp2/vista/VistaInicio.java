@@ -86,6 +86,12 @@ public class VistaInicio implements Vista {
 		botonJugar.setAlignment(Pos.TOP_CENTER);
 		botonJugar.setMaxSize(100, 30);
 		
+		botonJugar.setOnAction(e -> {
+			
+			VistaEleccionJuego nuevaVista = new VistaEleccionJuego(this);
+			nuevaVista.mostrar();
+		});
+		
 		HBox contenedorBotonJugar = this.setCaracateristicasAlContendorBotonJugar();
 		contenedorBotonJugar.getChildren().add(botonJugar);
 		

@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.vista;
 
+import algoritmosyprogramacion3.tp2.manejadores.BotonVolverEventHandler;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -74,12 +75,24 @@ public class VistaEleccionTipoDeMesa implements Vista {
 		BackgroundFill fondoDeColorComputadora = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonMesaComputadora.setBackground(new Background(fondoDeColorComputadora));
 		
+		botonMesaComputadora.setOnAction(e -> {
+			
+			VistaNuevaMesaContraComputadora nuevaVista = new VistaNuevaMesaContraComputadora(this);
+			nuevaVista.mostrar();
+		});
+		
 		Button botonMesaDeDos = new Button("Mesa de Dos");
 		botonMesaDeDos.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		botonMesaDeDos.setTextFill(Color.WHITE);
 		
 		BackgroundFill fondoDeColorMesaDos = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonMesaDeDos.setBackground(new Background(fondoDeColorMesaDos));
+		
+		botonMesaDeDos.setOnAction(e -> {
+			
+			VistaNuevaMesaDeDos nuevaVista = new VistaNuevaMesaDeDos(this);
+			nuevaVista.mostrar();
+		});
 		
 		Button botonMesaDeCuatro = new Button("Mesa de Cuatro");
 		botonMesaDeCuatro.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
@@ -88,6 +101,12 @@ public class VistaEleccionTipoDeMesa implements Vista {
 		BackgroundFill fondoDeColorMesaCuatro = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonMesaDeCuatro.setBackground(new Background(fondoDeColorMesaCuatro));
 		
+		botonMesaDeCuatro.setOnAction(e -> {
+			
+			VistaNuevaMesaDeCuatro nuevaVista = new VistaNuevaMesaDeCuatro(this);
+			nuevaVista.mostrar();
+		});
+		
 		Button botonMesaDeSeis = new Button("Mesa de Seis (Pica - Pica)");
 		botonMesaDeSeis.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		botonMesaDeSeis.setTextFill(Color.WHITE);
@@ -95,12 +114,20 @@ public class VistaEleccionTipoDeMesa implements Vista {
 		BackgroundFill fondoDeColorMesaSeis = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonMesaDeSeis.setBackground(new Background(fondoDeColorMesaSeis));
 		
+		botonMesaDeSeis.setOnAction(e -> {
+			
+			VistaNuevaMesaDeSeis nuevaVista = new VistaNuevaMesaDeSeis(this);
+			nuevaVista.mostrar();
+		});
+		
 		this.botonVolver = new Button("Volver");
 		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		this.botonVolver.setTextFill(Color.WHITE);
 		
 		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
+		
+		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
 		
 		this.contenedor.getChildren().addAll(botonMesaComputadora, botonMesaDeDos, botonMesaDeCuatro, botonMesaDeSeis, this.botonVolver);
 	}
