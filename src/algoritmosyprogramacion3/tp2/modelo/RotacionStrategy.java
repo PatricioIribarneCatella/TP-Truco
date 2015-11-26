@@ -2,8 +2,6 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 public interface RotacionStrategy {
 	
-	
-	
 	/*Devuelve al jugador a quien le corresponde el siguiente turno*/
 	 public Jugable getJugadorConTurno();
 	 
