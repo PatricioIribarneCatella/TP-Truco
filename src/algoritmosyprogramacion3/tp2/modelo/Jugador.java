@@ -27,7 +27,6 @@ public class Jugador implements Jugable {
 	//Metodo que permite que un usuario reciba nuevas cartas al comienzo de cada ronda
 	public void recibirCarta(Carta unaCarta)
 	{
-		unaCarta.entregada();
 		this.cartas.agregarCarta(unaCarta);
 	}
 

@@ -80,6 +80,7 @@ public class Mazo {
 		
 		Carta carta = this.cartas.get(this.indiceDeCarta);
 		this.indiceDeCarta++;
+		carta.entregada();
 		return carta;
 	}
 	

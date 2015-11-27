@@ -13,7 +13,7 @@ public class JuegoDelTruco extends Application{
 		JuegoTruco modelo = new JuegoTruco();
 		
 		VistaInicio vistaPrincipal = new VistaInicio(modelo, stage);
-		vistaPrincipal.mostrar();	
+		vistaPrincipal.mostrar();
 	}
 
 	public static void main(String[] args){

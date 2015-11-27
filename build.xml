@@ -1,4 +1,4 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="" basedir="." default="test">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="algoritmosyprogramacion3.tp2.aplicacion.JuegoDelTruco" basedir="." default="test">
 
 	<property name="build" location="build" />
 	<property name="libs" location="libs" />
@@ -205,7 +205,7 @@
 	</target>
 
 	<target name="ejecutar.aplicacion" depends="empaquetar">
-		<java classname="" fork="true">
+		<java classname="algoritmosyprogramacion3.tp2.aplicacion.JuegoDelTruco" fork="true">
 			<classpath refid="classpath" />
 			<!--<classpath location="${build}/dist/algo3.jar" />-->
 		</java>
