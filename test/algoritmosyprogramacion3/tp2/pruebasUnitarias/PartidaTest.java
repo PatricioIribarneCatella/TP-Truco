@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.pruebasunitarias;
+package algoritmosyprogramacion3.tp2.pruebasUnitarias;
 
 import java.util.Arrays;
 
