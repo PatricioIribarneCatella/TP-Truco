@@ -6,6 +6,6 @@ public class SotaDeEspada extends Sota {
 		
 		super();
 		this.palo = new Espada();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/espada/diez-de-espada.jpg", 100, 400, false, true);
+		this.imagen = new Imagen("file:resources/imagenes/cartas/espada/diez-de-espada.jpg", 75, 150, false, true);
 	}
 }

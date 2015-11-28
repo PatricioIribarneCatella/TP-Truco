@@ -6,6 +6,6 @@ public class SotaDeOro extends Sota {
 		
 		super();
 		this.palo = new Oro();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/oro/diez-de-oro.jpg", 100, 400, false, true);
+		this.imagen = new Imagen("file:resources/imagenes/cartas/oro/diez-de-oro.jpg", 75, 150, false, true);
 	}
 }

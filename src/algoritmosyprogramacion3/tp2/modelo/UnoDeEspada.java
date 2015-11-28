@@ -9,7 +9,7 @@ public class UnoDeEspada extends Carta {
 		this.valorEnvido = 1;
 		this.valorFlor = 1;
 		this.valorComoString = "1";
-		this.imagen = new Imagen("file:resources/imagenes/cartas/espada/uno-de-espada.jpg", 100, 400, false, true);
+		this.imagen = new Imagen("file:resources/imagenes/cartas/espada/uno-de-espada.jpg", 75, 150, false, true);
 	}
 	
 	@Override

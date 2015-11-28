@@ -9,7 +9,7 @@ public class SieteDeOro extends Carta {
 		this.valorEnvido = 7;
 		this.valorFlor = 7;
 		this.valorComoString = "7";
-		this.imagen = new Imagen("file:resources/imagenes/cartas/oro/siete-de-oro.jpg", 100, 400, false, true);
+		this.imagen = new Imagen("file:resources/imagenes/cartas/oro/siete-de-oro.jpg", 75, 150, false, true);
 	}
 	
 	@Override

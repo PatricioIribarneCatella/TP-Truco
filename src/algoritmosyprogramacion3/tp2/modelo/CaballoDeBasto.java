@@ -6,6 +6,6 @@ public class CaballoDeBasto extends Caballo {
 		
 		super();
 		this.palo = new Basto();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/basto/once-de-basto.jpg", 100, 400, false, true);
+		this.imagen = new Imagen("file:resources/imagenes/cartas/basto/once-de-basto.jpg", 75, 150, false, true);
 	}
 }
