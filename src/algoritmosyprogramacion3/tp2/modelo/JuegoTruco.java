@@ -1,30 +1,34 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class JuegoTruco {
+	
+	private Mesa mesaActual;
+	private HashMap<String,Mesa> mesasDisponibles;
 
-	public void nuevaMesaDeDosSinFlor(List<String> jugadores) {
+	public void nuevaMesaDeDosSinFlor(String nombreMesa, List<String> jugadores) {
 		
 	}
 
-	public void nuevaMesaDeDosConFlor(List<String> jugadores) {
+	public void nuevaMesaDeDosConFlor(String nombreMesa, List<String> jugadores) {
 		
 	}
 	
-	public void nuevaMesaDeCuatroSinFlor(List<String> equipoJugadores1, List<String> equipoJugadores2) {
+	public void nuevaMesaDeCuatroSinFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
 		
 	}
 	
-	public void nuevaMesaDeCuatroConFlor(List<String> equipoJugadores1, List<String> equipoJugadores2) {
+	public void nuevaMesaDeCuatroConFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
 		
 	}
 	
-	public void nuevaMesaDeSeisSinFlor(List<String> equipoJugadores1, List<String> equipoJugadores2) {
+	public void nuevaMesaDeSeisSinFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
 		
 	}
 	
-	public void nuevaMesaDeSeisConFlor(List<String> equipoJugadores1, List<String> equipoJugadores2) {
+	public void nuevaMesaDeSeisConFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
 		
 	}
 	

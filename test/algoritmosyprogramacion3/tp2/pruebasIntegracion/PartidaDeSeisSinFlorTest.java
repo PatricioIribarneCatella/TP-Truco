@@ -16,7 +16,7 @@ public class PartidaDeSeisSinFlorTest {
 	public void setUp() {
 		
 		juego = new JuegoTruco();
-		juego.nuevaMesaDeSeisSinFlor(Arrays.asList("Juan", "Pedro", "Jorge"), Arrays.asList("Rodolfo", "José", "Raul"));
+		juego.nuevaMesaDeSeisSinFlor("mesa1", Arrays.asList("Juan", "Pedro", "Jorge"), Arrays.asList("Rodolfo", "José", "Raul"));
 	}
 
 	@Test

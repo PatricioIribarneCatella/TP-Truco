@@ -16,7 +16,7 @@ public class PartidaDeCuatroSinFlorTest {
 	public void setUp() {
 		
 		juego = new JuegoTruco();
-		juego.nuevaMesaDeCuatroSinFlor(Arrays.asList("Juan", "Pedro"), Arrays.asList("Jorge", "Rodolfo"));
+		juego.nuevaMesaDeCuatroSinFlor("mesa1", Arrays.asList("Juan", "Pedro"), Arrays.asList("Jorge", "Rodolfo"));
 	}
 
 	@Test

@@ -18,7 +18,7 @@ public class PartidaDeDosSinFlorTest {
 	public void setUp() {
 		
 		juego = new JuegoTruco();
-		juego.nuevaMesaDeDosSinFlor(Arrays.asList("Juan", "Pedro"));
+		juego.nuevaMesaDeDosSinFlor("mesa1", Arrays.asList("Juan", "Pedro"));
 		juego.repartirCartas(Arrays.asList(new UnoDeBasto(), new UnoDeEspada()));
 	}
 	

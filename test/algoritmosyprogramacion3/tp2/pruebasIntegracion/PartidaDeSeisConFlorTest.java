@@ -16,7 +16,7 @@ private JuegoTruco juego;
 	public void setUp() {
 		
 		juego = new JuegoTruco();
-		juego.nuevaMesaDeSeisConFlor(Arrays.asList("Juan", "Pedro", "Jorge"), Arrays.asList("Rodolfo", "José", "Raul"));
+		juego.nuevaMesaDeSeisConFlor("mesa1", Arrays.asList("Juan", "Pedro", "Jorge"), Arrays.asList("Rodolfo", "José", "Raul"));
 	}
 
 	@Test

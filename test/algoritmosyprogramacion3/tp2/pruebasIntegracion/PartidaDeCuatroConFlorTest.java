@@ -16,7 +16,7 @@ public class PartidaDeCuatroConFlorTest {
 	public void setUp() {
 		
 		juego = new JuegoTruco();
-		juego.nuevaMesaDeCuatroConFlor(Arrays.asList("Juan", "Pedro"), Arrays.asList("Jorge", "Rodolfo"));
+		juego.nuevaMesaDeCuatroConFlor("mesa1", Arrays.asList("Juan", "Pedro"), Arrays.asList("Jorge", "Rodolfo"));
 	}
 
 	@Test
