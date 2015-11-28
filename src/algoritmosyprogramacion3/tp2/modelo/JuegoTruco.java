@@ -104,5 +104,6 @@ public class JuegoTruco {
 	// Reparte las cartas que se le pasan como parámetro siempre en ese mismo orden
 	public void repartirCartas(List<Carta> listaCartas) {
 		
+		listaCartas.forEach(x -> { x.entregada(); });
 	}
 }
