@@ -80,7 +80,25 @@ public class JuegoTruco {
 		return null;
 	}
 	
-	public boolean jugarCartaPorJugador(String jugador, Carta carta) {
+	public boolean jugarPrimerCartaDeJugador(String jugador) {
 		return false;
+	}
+	
+	public boolean jugarSegundaCartaDeJugador(String jugador) {
+		return false;
+	}
+	
+	public boolean jugarTercerCartaDeJugador(String jugador) {
+		return false;
+	}
+	
+	// Reparte cartas de forma aleatoria
+	public void repartirCartas() {
+		
+	}
+	
+	// Reparte las cartas que se le pasan como parámetro siempre en ese mismo orden
+	public void repartirCartas(List<Carta> listaCartas) {
+		
 	}
 }
