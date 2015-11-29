@@ -5,8 +5,8 @@ import java.util.List;
 
 public class JuegoTruco {
 	
-	private Mesa mesaActual;
-	private HashMap<String,Mesa> mesasDisponibles;
+	private Partida partidaActual;
+	private HashMap<String,Partida> partidasDisponibles;
 
 	public void nuevaMesaContraComputadoraSinFlor(String nombreJugador) {
 		
@@ -117,5 +117,9 @@ public class JuegoTruco {
 	public void repartirCartas(List<Carta> listaCartas) {
 		
 		listaCartas.forEach(x -> { x.entregada(); });
+	}
+	
+	public List<Carta> getCartasJugadorConTurno() {
+		return null;
 	}
 }
