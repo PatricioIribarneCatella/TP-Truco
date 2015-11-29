@@ -7,6 +7,10 @@ public class JuegoTruco {
 	
 	private Partida partidaActual;
 	private HashMap<String,Partida> partidasDisponibles;
+	
+	public JuegoTruco() {
+		this.partidasDisponibles = new HashMap<String,Partida>();
+	}
 
 	public void nuevaMesaContraComputadoraSinFlor(String nombreJugador) {
 		
