@@ -7,30 +7,22 @@ import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
-import algoritmosyprogramacion3.tp2.modelo.Jugable;
-import algoritmosyprogramacion3.tp2.modelo.Jugador;
-import algoritmosyprogramacion3.tp2.modelo.Mesa;
-import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
-import algoritmosyprogramacion3.tp2.modelo.Moderador;
+import algoritmosyprogramacion3.tp2.modelo.Flor;
 import algoritmosyprogramacion3.tp2.modelo.Partida;
-import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
+import algoritmosyprogramacion3.tp2.modelo.PartidaDeDos;
 
 public class PartidaTest {
 
 	private Partida partida;
-	private Jugable jugador1;
-	private Jugable jugador2;
+	private String jugador1;
+	private String jugador2;
 	
 	@Before
 	public void setUp() {
 		
-		this.jugador1 = new Jugador("Juan");
-		this.jugador2 = new Jugador("Pedro");
-		
-		Mesa mesa = new MesaSinFlor(Arrays.asList(this.jugador1, this.jugador2));
-		Moderador moderador = new Moderador(mesa);
-		moderador.setRotacionStrategy(new StrategyRotacionEnRonda(mesa.getJugadores()));
-		this.partida = new Partida(moderador);	
+		this.jugador1 = "Juan";
+		this.jugador2 = "Pedro";
+		this.partida = new PartidaDeDos("partida1", Flor.SIN_FLOR, Arrays.asList(this.jugador1, this.jugador2));	
 		this.partida.iniciarPartida();
 	}
 	

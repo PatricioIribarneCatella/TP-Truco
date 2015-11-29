@@ -5,11 +5,12 @@ import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 
 public class Jugador implements Jugable {
 	
+	private int puntaje;
 	private Mano cartas;
+	private Moderador moderador;
 	private Mesa mesa;
 	private String nombre;
-	private int puntaje;
-	private Moderador moderador;
+	private Equipo equipo;
 	
 	public Jugador(String nombre)
 	{
@@ -23,6 +24,10 @@ public class Jugador implements Jugable {
 		this.moderador =  moderadorDeLaPartida;
 	}
 	
+	public void setMesa(Mesa mesaDeJuego){
+		
+		this.mesa = mesaDeJuego;
+	}
 	
 	//Metodo que permite que un usuario reciba nuevas cartas al comienzo de cada ronda
 	public void recibirCarta(Carta unaCarta)
@@ -30,12 +35,6 @@ public class Jugador implements Jugable {
 		this.cartas.agregarCarta(unaCarta);
 	}
 
-	
-	public void setMesa(Mesa mesaDeJuego){
-		
-		this.mesa = mesaDeJuego;
-	}
-	
 	public void cantarEnvido()
 	{
 		try{
@@ -165,7 +164,7 @@ public class Jugador implements Jugable {
 		}
 	}
 
-
+	@Override
 	public String getNombre() {
 		
 		return this.nombre;
@@ -191,5 +190,15 @@ public class Jugador implements Jugable {
 	@Override
 	public void sumarPuntos(int puntos) {
 		this.puntaje += puntos; 
+	}
+
+	@Override
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
+
+	@Override
+	public Equipo getEquipo() {
+		return this.equipo;
 	}
 }

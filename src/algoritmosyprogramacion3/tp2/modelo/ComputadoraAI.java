@@ -10,6 +10,8 @@ public class ComputadoraAI implements Jugable {
 	private Mano cartas;
 	private Moderador moderador;
 	private Mesa mesa;
+	private String nombre;
+	private Equipo equipo;
 	private Random numeroRandom;
 	
 	public ComputadoraAI() {
@@ -17,6 +19,7 @@ public class ComputadoraAI implements Jugable {
 		this.puntaje = 0;
 		this.cartas = new Mano();
 		this.numeroRandom = new Random();
+		this.nombre = "Computadora";
 	}
 	
 	private Evento nuevoEvento() {
@@ -135,9 +138,7 @@ public class ComputadoraAI implements Jugable {
 			
 			throw new TurnoEquivocadoException();
 		}
-		
 	}
-
 
 	@Override
 	public void jugarSegundaCarta() {
@@ -153,7 +154,6 @@ public class ComputadoraAI implements Jugable {
 			
 			throw new TurnoEquivocadoException();
 		}
-		
 	}
 
 	@Override
@@ -170,11 +170,25 @@ public class ComputadoraAI implements Jugable {
 			
 			throw new TurnoEquivocadoException();
 		}
-		
 	}
 	
 	public String declararPuntosEnvido(){
 		
 		return(this.cartas.puntajeEnvido());
+	}
+	
+	@Override
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	@Override
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
+
+	@Override
+	public Equipo getEquipo() {
+		return this.equipo;
 	}
 }

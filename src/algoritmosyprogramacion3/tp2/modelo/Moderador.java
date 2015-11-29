@@ -268,7 +268,9 @@ public class Moderador {
 	    }	
 	}
 	
-	
+	public Mesa getMesa() {
+		return this.mesaACargo;
+	}
 	
 		
 }

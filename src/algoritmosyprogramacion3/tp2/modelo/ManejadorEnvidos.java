@@ -17,8 +17,6 @@ public class ManejadorEnvidos {
 		this.moderador = unModerador;
 	}
 
-	
-	
 	public void concatenarCanto(Canto unCanto){
 		
 		this.envidosAcumulados.add(unCanto);

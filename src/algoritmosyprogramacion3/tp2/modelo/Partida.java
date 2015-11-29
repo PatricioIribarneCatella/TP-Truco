@@ -1,18 +1,27 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import java.util.HashMap;
+
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
 
-public class Partida {
+public abstract class Partida {
 
 	private EstadoPartida estado;
-	private Moderador moderador;
+	protected Moderador moderador;
+	protected String nombrePartida;
 	private int cantidadDeEnvidosCantados;
+	protected HashMap<String,Jugable> jugadores;
 	
-	public Partida(Moderador moderador) {
+	public Partida(String nombrePartida) {
 		
-		this.moderador = moderador;
+		this.nombrePartida = nombrePartida;
 		this.cantidadDeEnvidosCantados = 0;
+		this.jugadores = new HashMap<String,Jugable>();
+	}
+	
+	public String getNombre() {
+		return this.nombrePartida;
 	}
 	
 	public void iniciarPartida() {
@@ -21,113 +30,126 @@ public class Partida {
 		this.cantidadDeEnvidosCantados = 0;
 	}
 	
-	public void jugarPrimerCartaJugador(Jugable unJugador){
+	public void jugarPrimerCartaJugador(String unJugador){
 		
 		if (!this.estado.esValidoParaJugarCarta()) throw new AccionInvalidaException();
 		
-		this.moderador.jugarPrimerCarta(unJugador);	
+		Jugable jugador = this.jugadores.get(unJugador);
+		this.moderador.jugarPrimerCarta(jugador);	
 	}
 	
-	public void jugarSegundaCartaJugador(Jugable unJugador){
+	public void jugarSegundaCartaJugador(String unJugador){
 	
     	if (!this.estado.esValidoParaJugarCarta()) throw new AccionInvalidaException();
     	
-		this.moderador.jugarSegundaCarta(unJugador);
+    	Jugable jugador = this.jugadores.get(unJugador);
+		this.moderador.jugarSegundaCarta(jugador);
 	}
 
-	public void jugarTercerCartaJugador(Jugable unJugador){
+	public void jugarTercerCartaJugador(String unJugador){
 
 		if (!this.estado.esValidoParaJugarCarta()) throw new AccionInvalidaException();
 	   
-		this.moderador.jugarTercerCarta(unJugador);
+		Jugable jugador = this.jugadores.get(unJugador);
+		this.moderador.jugarTercerCarta(jugador);
 	}
 	
-	
-	public void cantarTruco(Jugable jugadorQueCanta) {
+	public void cantarTruco(String jugadorQueCanta) {
 		
 		if (!this.estado.esValidoParaCantarTruco()) throw new AccionInvalidaException(); 
 	  
-		this.moderador.trucoCantado(jugadorQueCanta);
+		Jugable jugador = this.jugadores.get(jugadorQueCanta);
+		this.moderador.trucoCantado(jugador);
 		this.estado = new TrucoCantado();
 		this.cantidadDeEnvidosCantados = 0;
 	}
 	
-	public void cantarReTruco(Jugable jugadorQueCanta) {
+	public void cantarReTruco(String jugadorQueCanta) {
 		
 		if (!this.estado.esValidoParaCantarReTruco()) throw new AccionInvalidaException(); 
 
-		this.moderador.reTrucoCantado(jugadorQueCanta);
+		Jugable jugador = this.jugadores.get(jugadorQueCanta);
+		this.moderador.reTrucoCantado(jugador);
 		this.estado = new ReTrucoCantado();
 		this.cantidadDeEnvidosCantados = 0;
 	}
 	
-	public void cantarValeCuatro(Jugable jugadorQueCanta) {
+	public void cantarValeCuatro(String jugadorQueCanta) {
 		
 		if (!this.estado.esValidoParaCantarValeCuatro()) throw new AccionInvalidaException(); 
 		
-		this.moderador.valeCuatroCantado(jugadorQueCanta);
+		Jugable jugador = this.jugadores.get(jugadorQueCanta);
+		this.moderador.valeCuatroCantado(jugador);
 		this.estado = new ValeCuatroCantado();
 		this.cantidadDeEnvidosCantados = 0;
 	}
 	
-	public void cantarEnvido(Jugable jugadorQueCanta) {
+	public void cantarEnvido(String jugadorQueCanta) {
 		
 		if (!this.estado.esValidoParaCantarEnvido()) throw new AccionInvalidaException();
 		if (this.cantidadDeEnvidosCantados == 3) throw new CantidadDeEnvidosMaximosSuperadaException();
 		
-		this.moderador.envidoCantado(jugadorQueCanta);
+		Jugable jugador = this.jugadores.get(jugadorQueCanta);
+		this.moderador.envidoCantado(jugador);
 		this.estado = new EnvidoCantado();
 		this.cantidadDeEnvidosCantados++;
 	}
 	
-	public void cantarRealEnvido(Jugable jugadorQueCanta) {
+	public void cantarRealEnvido(String jugadorQueCanta) {
 	
 		if (!this.estado.esValidoParaCantarRealEnvido()) throw new AccionInvalidaException();
 		
-		this.moderador.realEnvidoCantado(jugadorQueCanta);
+		Jugable jugador = this.jugadores.get(jugadorQueCanta);
+		this.moderador.realEnvidoCantado(jugador);
 		this.estado = new RealEnvidoCantado();
 		this.cantidadDeEnvidosCantados = 0;
 	}
 	
-	public void cantarFaltaEnvido(Jugable jugadorQueCanta) {
+	public void cantarFaltaEnvido(String jugadorQueCanta) {
 		
 		if (!this.estado.esValidoParaCantarFaltaEnvido()) throw new AccionInvalidaException();
 		
+		Jugable jugador = this.jugadores.get(jugadorQueCanta);
 		this.estado = new FaltaEnvidoCantado();
-		this.moderador.faltaEnvidoCantado(jugadorQueCanta);
+		this.moderador.faltaEnvidoCantado(jugador);
 		this.estado = new FaltaEnvidoCantado();
 		this.cantidadDeEnvidosCantados = 0;
 	}
 	
-	public void aceptarVarianteEnvido(Jugable jugadorQueAcepta) {
+	public void aceptarVarianteEnvido(String jugadorQueAcepta) {
 		
 		if (!this.estado.esValidoParaAceptar()) throw new AccionInvalidaException();
-			
-		this.moderador.jugadorAceptaVarianteEnvido(jugadorQueAcepta);
+		
+		Jugable jugador = this.jugadores.get(jugadorQueAcepta);
+		this.moderador.jugadorAceptaVarianteEnvido(jugador);
+		this.estado = new TurnoJugador();
 		// habria que crear otro estado que se mantenga hasta que se declaren todos los valores de envido
 	}
 	
-    public void aceptarVarianteTruco(Jugable jugadorQueAcepta) {
+    public void aceptarVarianteTruco(String jugadorQueAcepta) {
 		
 		if (!this.estado.esValidoParaAceptar()) throw new AccionInvalidaException();
-			
-		this.moderador.jugadorAceptaVarianteTruco(jugadorQueAcepta);
+		
+		Jugable jugador = this.jugadores.get(jugadorQueAcepta);
+		this.moderador.jugadorAceptaVarianteTruco(jugador);
 	}
 	
-    public void rechazarVarianteDeEnvido(Jugable jugadorQueRechaza) {
+    public void rechazarVarianteDeEnvido(String jugadorQueRechaza) {
 		
 		if (!this.estado.esValidoParaRechazar()) throw new AccionInvalidaException();
-			
-    	this.moderador.jugadorRechazaVarianteEnvido(jugadorQueRechaza);
+		
+		Jugable jugador = this.jugadores.get(jugadorQueRechaza);
+    	this.moderador.jugadorRechazaVarianteEnvido(jugador);
     	this.cantidadDeEnvidosCantados = 0;
     	this.estado = new TurnoJugador();
 	}
     
-	public void rechazarVarianteDeTruco(Jugable jugadorQueRechaza) {
+	public void rechazarVarianteDeTruco(String jugadorQueRechaza) {
 		
 		if (!this.estado.esValidoParaRechazar()) throw new AccionInvalidaException();
 		
-		this.moderador.jugadorRechazaVarianteTruco(jugadorQueRechaza);
+		Jugable jugador = this.jugadores.get(jugadorQueRechaza);
+		this.moderador.jugadorRechazaVarianteTruco(jugador);
     	this.cantidadDeEnvidosCantados = 0;
     	this.moderador.rondaFinalizada();
     	this.estado = new TurnoJugador();
