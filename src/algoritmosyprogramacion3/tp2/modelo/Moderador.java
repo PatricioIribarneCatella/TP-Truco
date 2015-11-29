@@ -29,7 +29,7 @@ public class Moderador {
 		this.jugadorConTurno = this.jugadores.get(0);
 		this.jugadorMano = this.jugadores.get(0); //Seteo por default que en toda partida el primer jugador es mano
 		this.jugadorConDecision = this.jugadores.get(0);
-		this.manejadorEnvidos = new ManejadorEnvidos(this.jugadores);
+		this.manejadorEnvidos = new ManejadorEnvidos(this.jugadores,this);
 	}
 	
 	

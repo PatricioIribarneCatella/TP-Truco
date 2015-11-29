@@ -172,4 +172,9 @@ public class ComputadoraAI implements Jugable {
 		}
 		
 	}
+	
+	public String declararPuntosEnvido(){
+		
+		return(this.cartas.puntajeEnvido());
+	}
 }

@@ -21,4 +21,7 @@ public interface Jugable {
 	public void jugarSegundaCarta();
 
 	public void jugarTercerCarta();
+	
+	public String declararPuntosEnvido();
+	
 }
