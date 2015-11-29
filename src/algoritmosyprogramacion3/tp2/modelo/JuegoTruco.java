@@ -8,6 +8,14 @@ public class JuegoTruco {
 	private Mesa mesaActual;
 	private HashMap<String,Mesa> mesasDisponibles;
 
+	public void nuevaMesaContraComputadoraSinFlor(String nombreJugador) {
+		
+	}
+	
+	public void nuevaMesaContraComputadoraConFlor(String nombreJugador) {
+		
+	}	
+	
 	public void nuevaMesaDeDosSinFlor(String nombreMesa, List<String> jugadores) {
 		
 	}
@@ -32,71 +40,71 @@ public class JuegoTruco {
 		
 	}
 	
-	public boolean cantarTrucoPorJugador(String jugador) {
+	public boolean cantarTrucoPorJugador(String nombreJugador) {
 		return false;
 	}
 
-	public boolean cantarReTrucoPorJugador(String jugador) {
+	public boolean cantarReTrucoPorJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean cantarValeCuatroPorJugador(String jugador) {
+	public boolean cantarValeCuatroPorJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean cantarEnvidoPorJugador(String jugador) {
+	public boolean cantarEnvidoPorJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean cantarRealEnvidoPorJugador(String jugador) {
+	public boolean cantarRealEnvidoPorJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean cantarFaltaEnvidoPorJugador(String jugador) {
+	public boolean cantarFaltaEnvidoPorJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean cantarFlorPorJugador(String jugador) {
+	public boolean cantarFlorPorJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean aceptarVarianteEnvidoPorJugador(String jugador) {
+	public boolean aceptarVarianteEnvidoPorJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean aceptarVarianteTrucoPorJugador(String jugador) {
+	public boolean aceptarVarianteTrucoPorJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean rechazarVarianteEnvidoPorJugador(String jugador) {
+	public boolean rechazarVarianteEnvidoPorJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean rechazarVarianteTrucoPorJugador(String jugador) {
+	public boolean rechazarVarianteTrucoPorJugador(String nombreJugador) {
 		return false;
 	}
 
-	public String mostrarPuntosDeJugador(String string) {
+	public String mostrarPuntosDeJugador(String nombreJugador) {
 		return null;
 	}
 
-	public String mostrarPuntosEnvido(String jugador) {
+	public String mostrarPuntosEnvido(String nombreJugador) {
 		return null;
 	}
 	
-	public String mostrarPuntosFlor(String jugador) {
+	public String mostrarPuntosFlor(String nombreJugador) {
 		return null;
 	}
 	
-	public boolean jugarPrimerCartaDeJugador(String jugador) {
+	public boolean jugarPrimerCartaDeJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean jugarSegundaCartaDeJugador(String jugador) {
+	public boolean jugarSegundaCartaDeJugador(String nombreJugador) {
 		return false;
 	}
 	
-	public boolean jugarTercerCartaDeJugador(String jugador) {
+	public boolean jugarTercerCartaDeJugador(String nombreJugador) {
 		return false;
 	}
 	
