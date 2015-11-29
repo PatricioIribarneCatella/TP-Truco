@@ -3,6 +3,7 @@ package algoritmosyprogramacion3.tp2.modelo;
 import java.util.List;
 
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
 
 public class Moderador {
@@ -16,6 +17,7 @@ public class Moderador {
     private Mazo mazo;
     private Partida partidaEnCurso;
     private RotacionStrategy criterioDeRotacion;
+    private ManejadorEnvidos manejadorEnvidos;
     
     
 	
@@ -27,6 +29,7 @@ public class Moderador {
 		this.jugadorConTurno = this.jugadores.get(0);
 		this.jugadorMano = this.jugadores.get(0); //Seteo por default que en toda partida el primer jugador es mano
 		this.jugadorConDecision = this.jugadores.get(0);
+		this.manejadorEnvidos = new ManejadorEnvidos(this.jugadores);
 	}
 	
 	
@@ -63,6 +66,7 @@ public class Moderador {
 	   	
     	this.jugadorMano = this.criterioDeRotacion.getSiguienteJugadorMano();
     	this.jugadorConTurno = this.jugadorMano;
+    	this.jugadorConDecision = this.jugadorConTurno;
     }
 		 
 	public Jugable getJugadorConTurno(){
@@ -82,20 +86,47 @@ public class Moderador {
 		return this.criterioDeRotacion.getJugadorConDecision();
 	}
 	
+	
+	public void jugarPrimerCarta(Jugable unJugador){
+		
+		try{
+			unJugador.jugarPrimerCarta();
+		}
+		catch(TurnoEquivocadoException e){
+			
+			throw new TurnoEquivocadoException();
+		}
+	}
+	
+	public void jugarSegundaCarta(Jugable unJugador){
+		
+		try{
+			unJugador.jugarSegundaCarta();
+		}
+		catch(TurnoEquivocadoException e){
+			
+			throw new TurnoEquivocadoException();
+		}
+	}
+	
+	public void jugarTercerCarta(Jugable unJugador){
+		
+		try{
+			unJugador.jugarSegundaCarta();
+		}
+		catch(TurnoEquivocadoException e){
+			
+			throw new TurnoEquivocadoException();
+		}
+	}
+	
 
 	public void envidoCantado(Jugable jugadorQueCanto) {
        
 		if(this.jugadorConDecision == jugadorQueCanto){
 			
-			try{
-				
-				this.partidaEnCurso.cantarEnvido();
-			}
-			catch(CantidadDeEnvidosMaximosSuperadaException e){
-			
-				throw new CantidadDeEnvidosMaximosSuperadaException();
-			}
-			
+			Canto envido = new Envido();
+			this.manejadorEnvidos.concatenarCanto(envido);
 			this.jugadorConDecision = this.getJugadorConDecision(); // ahora el que decide si acepta o no es otro.
 		}
 		else{
@@ -109,24 +140,26 @@ public class Moderador {
 
 	public void realEnvidoCantado(Jugable jugadorQueCanto) {
 		
-		if(this.jugadorConDecision == jugadorQueCanto){
+        if(this.jugadorConDecision == jugadorQueCanto){
 			
-			this.partidaEnCurso.cantarRealEnvido();		
-			this.jugadorConDecision = this.getJugadorConDecision();
+			Canto realEnvido = new RealEnvido();
+			this.manejadorEnvidos.concatenarCanto(realEnvido);
+			this.jugadorConDecision = this.getJugadorConDecision(); 
 		}
 		else{
 			
 			throw new TurnoParaTomarDecisionEquivocadoException();
-	    }	
+	    }
 	}
 
 
 	public void faltaEnvidoCantado(Jugable jugadorQueCanto) {
 	
-		if(this.jugadorConDecision == jugadorQueCanto){
+        if(this.jugadorConDecision == jugadorQueCanto){
 			
-			this.partidaEnCurso.cantarFaltaEnvido();	
-			this.jugadorConDecision = this.getJugadorConDecision();
+			Canto faltaEnvido = new FaltaEnvido();
+			this.manejadorEnvidos.concatenarCanto(faltaEnvido);
+			this.jugadorConDecision = this.getJugadorConDecision(); 
 		}
 		else{
 			
@@ -139,7 +172,7 @@ public class Moderador {
         
 		if(this.jugadorConDecision == jugadorQueCanto){
 			
-			this.partidaEnCurso.cantarTruco();		
+			//falta codigo		
 			this.jugadorConDecision = this.getJugadorConDecision();
 		}
 		else{
@@ -153,7 +186,7 @@ public class Moderador {
 		
 		if(this.jugadorConDecision == jugadorQueCanto){
 			
-			this.partidaEnCurso.cantarReTruco();	
+			//falta codigo	
 			this.jugadorConDecision = this.getJugadorConDecision();
 		}
 		else{
@@ -168,7 +201,7 @@ public class Moderador {
 
 		if(this.jugadorConDecision == jugadorQueCanto){
 			
-			this.partidaEnCurso.cantarValeCuatro();	
+			//falta codigo
 			this.jugadorConDecision = this.getJugadorConDecision();
 		}
 		else{
@@ -178,13 +211,14 @@ public class Moderador {
 		
 	}
 
-
-	public void jugadorAcepta(Jugable jugadorQueResponde) {
+	
+	
+	public void jugadorAceptaVarianteEnvido(Jugable jugadorQueResponde) {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
-			
-			this.partidaEnCurso.aceptar();	
+				
 			this.jugadorConDecision = this.getJugadorConDecision();
+			//el manejador de envidos hace lo suyo
 		}
 		else{
 			
@@ -193,14 +227,28 @@ public class Moderador {
 	}
 	
 	
+	public void jugadorAceptaVarianteTruco(Jugable jugadorQueResponde) {
+
+		if(this.jugadorConDecision == jugadorQueResponde){
+			
+			this.jugadorConDecision = this.getJugadorConDecision();
+			//comienzan a jugar cartas o bien se sube la apuesta (falta codigo)
+		}
+		else{
+			
+			throw new TurnoParaTomarDecisionEquivocadoException();
+	    }		
+	}
 	
+
+
 	
 	public void jugadorRechazaVarianteEnvido(Jugable jugadorQueResponde) {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
-			
-			this.partidaEnCurso.rechazarVarianteDeEnvido();		
+				
 			this.jugadorConDecision = this.getJugadorConDecision();
+			//Borro la lista en el manejador de envidos (a codear)
 		}
 		else{
 			
@@ -212,12 +260,15 @@ public class Moderador {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
 			
-			this.partidaEnCurso.rechazarVarianteDeTruco();	
-			this.jugadorConDecision = this.getJugadorConDecision();
+			this.rondaFinalizada();
 		}
 		else{
 			
 			throw new TurnoParaTomarDecisionEquivocadoException();
 	    }	
 	}
+	
+	
+	
+		
 }

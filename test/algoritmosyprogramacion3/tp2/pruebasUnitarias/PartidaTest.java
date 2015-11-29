@@ -13,6 +13,7 @@ import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
 import algoritmosyprogramacion3.tp2.modelo.Partida;
+import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
 
 public class PartidaTest {
 
@@ -28,6 +29,7 @@ public class PartidaTest {
 		
 		Mesa mesa = new MesaSinFlor(Arrays.asList(this.jugador1, this.jugador2));
 		Moderador moderador = new Moderador(mesa);
+		moderador.setRotacionStrategy(new StrategyRotacionEnRonda(mesa.getJugadores()));
 		this.partida = new Partida(moderador);	
 		this.partida.iniciarPartida();
 	}
@@ -35,91 +37,91 @@ public class PartidaTest {
 	@Test (expected = AccionInvalidaException.class)
 	public void testPartidaSiSeEstaEnTrucoCantadoNoSePuedeJugarUnaCarta() {
 		
-		partida.cantarTruco();
-		partida.jugarCarta();
+		partida.cantarTruco(jugador1);
+		partida.jugarPrimerCartaJugador(jugador1);
 	}
 	
 	@Test (expected = AccionInvalidaException.class)
 	public void testPartidaSiSeEstaEnReTrucoCantadoNoSePuedeJugarUnaCarta() {
 		
-		partida.cantarTruco();
-		partida.cantarReTruco();
-		partida.jugarCarta();
+		partida.cantarTruco(jugador1);
+		partida.cantarReTruco(jugador2);
+		partida.jugarPrimerCartaJugador(jugador1);
 	}
 	
 	@Test (expected = AccionInvalidaException.class)
 	public void testPartidaSiSeEstaValeCuatroCantadoNoSePuedeJugarUnaCarta() {
 		
-		partida.cantarTruco();
-		partida.cantarReTruco();
-		partida.cantarValeCuatro();
-		partida.jugarCarta();
+		partida.cantarTruco(jugador1);
+		partida.cantarReTruco(jugador2);
+		partida.cantarValeCuatro(jugador1);
+		partida.jugarPrimerCartaJugador(jugador1);
 	}
 	
 	@Test (expected = AccionInvalidaException.class)
 	public void testPartidaSiSeEstaEnReTrucoCantadoNoSePuedeCantarTrucoNuevamente() {
 		
-		partida.cantarTruco();
-		partida.cantarReTruco();
-		partida.cantarTruco();
+		partida.cantarTruco(jugador1);
+		partida.cantarReTruco(jugador2);
+		partida.cantarTruco(jugador1);
 	}
 	
 	@Test (expected = AccionInvalidaException.class)
 	public void testPartidaSiSeEstaEnValeCuatroCantadoNoSePuedeCantarTrucoNuevamente() {
 		
-		partida.cantarTruco();
-		partida.cantarReTruco();
-		partida.cantarValeCuatro();
-		partida.cantarTruco();
+		partida.cantarTruco(jugador1);
+		partida.cantarReTruco(jugador2);
+		partida.cantarValeCuatro(jugador1);
+		partida.cantarTruco(jugador2);
 	}
 	
 	@Test (expected = AccionInvalidaException.class)
 	public void testPartidaSiSeEstaEnEnvidoCantadoNoSePuedeJugarUnaCarta() {
 		
-		partida.cantarEnvido();
-		partida.jugarCarta();
+		partida.cantarEnvido(jugador1);
+		partida.jugarPrimerCartaJugador(jugador1);
 	}
 	
 	@Test (expected = AccionInvalidaException.class)
 	public void testPartidaSiSeEstaEnRealEnvidoCantadoNoSePuedeJugarUnaCarta() {
 		
-		partida.cantarEnvido();
-		partida.cantarRealEnvido();
-		partida.jugarCarta();
+		partida.cantarEnvido(jugador1);
+		partida.cantarRealEnvido(jugador2);
+		partida.jugarPrimerCartaJugador(jugador1);
 	}
 	
 	@Test (expected = AccionInvalidaException.class)
 	public void testPartidaSiSeEstaEnFaltaEnvidoCantadoNoSePuedeJugarUnaCarta() {
 		
-		partida.cantarEnvido();
-		partida.cantarRealEnvido();
-		partida.cantarFaltaEnvido();
-		partida.jugarCarta();
+		partida.cantarEnvido(jugador1);
+		partida.cantarRealEnvido(jugador2);
+		partida.cantarFaltaEnvido(jugador1);
+		partida.jugarPrimerCartaJugador(jugador1);
 	}
 	
 	@Test (expected = AccionInvalidaException.class)
 	public void testPartidaSiSeEstaEnRealEnvidoCantadoNoSePuedeCantaEnvidoNuevamente() {
 		
-		partida.cantarEnvido();
-		partida.cantarRealEnvido();
-		partida.cantarEnvido();
+		partida.cantarEnvido(jugador1);
+		partida.cantarRealEnvido(jugador2);
+		partida.cantarEnvido(jugador1);
 	}
 	
 	@Test (expected = AccionInvalidaException.class)
 	public void testPartidaSiSeEstaEnFaltaEnvidoCantadoNoSePuedeCantaEnvidoNuevamente() {
 		
-		partida.cantarEnvido();
-		partida.cantarRealEnvido();
-		partida.cantarFaltaEnvido();
-		partida.cantarEnvido();
+		partida.cantarEnvido(jugador1);
+		partida.cantarRealEnvido(jugador2);
+		partida.cantarFaltaEnvido(jugador1);
+		partida.cantarEnvido(jugador2);
 	}
 	
 	@Test (expected = CantidadDeEnvidosMaximosSuperadaException.class)
 	public void testPartidaCuandoSeCantanMasDeTresEnvidosDeberiaLanzarExcepcion() {
 		
-		partida.cantarEnvido();
-		partida.cantarEnvido();
-		partida.cantarEnvido();
-		partida.cantarEnvido();
+		partida.cantarEnvido(jugador1);
+		partida.cantarEnvido(jugador2);
+		partida.cantarEnvido(jugador1);
+		partida.cantarEnvido(jugador2);
 	}
 }

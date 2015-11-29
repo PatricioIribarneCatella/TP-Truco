@@ -6,8 +6,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
-import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
@@ -351,71 +349,88 @@ public class ModeradorTest {
 		moderadorMesaDeDos.setPartida(unaRonda);
 		this.moderadorMesaDeDos.envidoCantado(jugador1);
 		this.moderadorMesaDeDos.envidoCantado(jugador2);
-		this.moderadorMesaDeDos.realEnvidoCantado(jugador1);
-		this.moderadorMesaDeDos.jugadorAcepta(jugador1);
-		
+		this.moderadorMesaDeDos.envidoCantado(jugador1);
+		this.moderadorMesaDeDos.realEnvidoCantado(jugador1);	
 	}
 	
-	@Test(expected = CantidadDeEnvidosMaximosSuperadaException.class)
-	public void testEnvidoExcedeMaximoParaMesaDeDos(){
-		
-		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
-		unaRonda.iniciarPartida();
-		moderadorMesaDeDos.setPartida(unaRonda);
-		this.moderadorMesaDeDos.envidoCantado(jugador1);
-		this.moderadorMesaDeDos.envidoCantado(jugador2);
-		this.moderadorMesaDeDos.envidoCantado(jugador1);
-		this.moderadorMesaDeDos.envidoCantado(jugador2);
-	}
+	
 	
 	@Test(expected = TurnoParaTomarDecisionEquivocadoException.class)
-	public void testTrucoPartidaDeDos(){
+	public void testJugadorCantaReTrucoYElMismoAceptaLanzaExcepcionPartidaDeDos(){
 		
 		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
 		unaRonda.iniciarPartida();
 		moderadorMesaDeDos.setPartida(unaRonda);
 		this.moderadorMesaDeDos.trucoCantado(jugador1);
 		this.moderadorMesaDeDos.reTrucoCantado(jugador2);
-		this.moderadorMesaDeDos.jugadorAcepta(jugador2);
+		this.moderadorMesaDeDos.jugadorAceptaVarianteTruco(jugador2);
 	}
 	
-	@Test(expected = AccionInvalidaException.class)
-	public void testNoSePuedeCantarReTrucoDirectamente(){
+	
+	@Test(expected = TurnoParaTomarDecisionEquivocadoException.class)
+	public void testElJugadorQueCantoEnvidoNoPuedeCantarDeNuevoHastaQueElOtroRespondaEnMesaDeCuatro(){
 		
-		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
+		Partida unaRonda = new Partida(this.moderadorMesaDeCuatro);
 		unaRonda.iniciarPartida();
-		moderadorMesaDeDos.setPartida(unaRonda);
-		this.moderadorMesaDeDos.reTrucoCantado(jugador1);  	
+		moderadorMesaDeCuatro.setPartida(unaRonda);
+		this.moderadorMesaDeCuatro.envidoCantado(jugador1);
+		this.moderadorMesaDeCuatro.envidoCantado(jugador2);
+		this.moderadorMesaDeCuatro.envidoCantado(jugador1);
 	}
 	
-	@Test(expected = AccionInvalidaException.class)
-	public void testNoSePuedeCantarValeCuatroDirectamente(){
+	
+	
+	@Test(expected = TurnoParaTomarDecisionEquivocadoException.class)
+	public void testJugadorCantaReTrucoYElMismoAceptaLanzaExcepcionPartidaDeCuatro(){
 		
-		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
+		Partida unaRonda = new Partida(this.moderadorMesaDeCuatro);
 		unaRonda.iniciarPartida();
-		moderadorMesaDeDos.setPartida(unaRonda);
-		this.moderadorMesaDeDos.valeCuatroCantado(jugador1);  	
+		moderadorMesaDeCuatro.setPartida(unaRonda);
+		this.moderadorMesaDeCuatro.trucoCantado(jugador1);
+		this.moderadorMesaDeCuatro.reTrucoCantado(jugador2);
+		this.moderadorMesaDeCuatro.jugadorAceptaVarianteTruco(jugador2);
 	}
 	
-	@Test(expected = AccionInvalidaException.class)
-	public void testNoSePuedeCantarTrucoSiPrimeroSeCantoEnvido(){
-	
-		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
+
+	@Test(expected = TurnoParaTomarDecisionEquivocadoException.class)
+	public void testElJugadorQueCantaEnvidoNoTieneDecisionDespuesDeQueUnContrincanteRespondeEnUnaMesaDeCuatro(){
+		
+		Partida unaRonda = new Partida(this.moderadorMesaDeCuatro);
 		unaRonda.iniciarPartida();
-		moderadorMesaDeDos.setPartida(unaRonda);
-		this.moderadorMesaDeDos.envidoCantado(jugador1);
-		this.moderadorMesaDeDos.trucoCantado(jugador2);
+		moderadorMesaDeCuatro.setPartida(unaRonda);
+		this.moderadorMesaDeCuatro.envidoCantado(jugador1);
+		this.moderadorMesaDeCuatro.envidoCantado(jugador2);
+		this.moderadorMesaDeCuatro.envidoCantado(jugador1);
+	}
+	
+	@Test(expected = TurnoParaTomarDecisionEquivocadoException.class)
+	public void testElJugadorQueCantaTrucoNoTieneDecisionDespuesDeQueUnContrincanteRespondeEnUnaMesaDeCuatro(){
+		
+		Partida unaRonda = new Partida(this.moderadorMesaDeCuatro);
+		unaRonda.iniciarPartida();
+		moderadorMesaDeCuatro.setPartida(unaRonda);
+		this.moderadorMesaDeCuatro.trucoCantado(jugador1);
+		this.moderadorMesaDeCuatro.reTrucoCantado(jugador2);
+		this.moderadorMesaDeCuatro.jugadorAceptaVarianteTruco(jugador1);
+	}
+	
+	
+	@Test
+	public void testSoloLosPiesPuedenCantarEnvido(){
+		
 	}
 	
 	@Test
-	public void testEnvidoYTrucoEnUnaMismaRonaMesaDeDos(){
+	public void testElJuegoVuelveASuEstadoNormalDespuesDeUnEnvidoSoloSiTodosLosJugadoresDeclararonSuPuntaje(){
 		
 		Partida unaRonda = new Partida(this.moderadorMesaDeDos);
 		unaRonda.iniciarPartida();
 		moderadorMesaDeDos.setPartida(unaRonda);
 		this.moderadorMesaDeDos.envidoCantado(jugador1);
-		this.moderadorMesaDeDos.jugadorRechazaVarianteEnvido(jugador2);
-		this.moderadorMesaDeDos.trucoCantado(jugador1);
+		this.moderadorMesaDeDos.jugadorAceptaVarianteEnvido(jugador2);
+		this.moderadorMesaDeDos.trucoCantado(jugador1); // no deberia haber problema a partir de ahora
+		
+		//este test es solo para controlar el cambio de estados,despues lo voy  aborrar por que en definitiva no devuelve nada
 	}
 
 }

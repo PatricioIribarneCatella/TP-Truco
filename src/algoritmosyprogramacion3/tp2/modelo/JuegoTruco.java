@@ -60,7 +60,11 @@ public class JuegoTruco {
 		return false;
 	}
 	
-	public boolean aceptarPorJugador(String jugador) {
+	public boolean aceptarVarianteEnvidoPorJugador(String jugador) {
+		return false;
+	}
+	
+	public boolean aceptarVarianteTrucoPorJugador(String jugador) {
 		return false;
 	}
 	

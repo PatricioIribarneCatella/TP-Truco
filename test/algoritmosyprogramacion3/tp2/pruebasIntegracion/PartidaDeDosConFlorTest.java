@@ -31,14 +31,14 @@ public class PartidaDeDosConFlorTest {
 	public void testMismoJugadorCantaTrucoYAceptaNoDeberiaSerPosible() {
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
-		Assert.assertFalse(juego.aceptarPorJugador("Juan"));
+		Assert.assertFalse(juego.aceptarVarianteTrucoPorJugador("Juan"));
 	}
 	
 	@Test
 	public void testMismoJugadorCantaEnvidoYAceptaNoDeberiaSerPosible() {
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
-		Assert.assertFalse(juego.aceptarPorJugador("Juan"));
+		Assert.assertFalse(juego.aceptarVarianteEnvidoPorJugador("Juan"));
 	}
 	
 	@Test
@@ -87,7 +87,7 @@ public class PartidaDeDosConFlorTest {
 	public void testSeCantaTrucoYSeLoQuiere() {
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
-		Assert.assertTrue(juego.aceptarPorJugador("Pedro"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Pedro"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));
@@ -101,7 +101,7 @@ public class PartidaDeDosConFlorTest {
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Pedro"));
-		Assert.assertTrue(juego.aceptarPorJugador("Juan"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Juan"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));
@@ -116,7 +116,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.cantarValeCuatroPorJugador("Juan"));
-		Assert.assertTrue(juego.aceptarPorJugador("Pedro"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Pedro"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));
@@ -129,7 +129,7 @@ public class PartidaDeDosConFlorTest {
 	public void testSeCantaEnvidoSeLoAcepta() {
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
-		Assert.assertTrue(juego.aceptarPorJugador("Pedro"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Pedro"));
 		
 		int numero = juego.mostrarPuntosEnvido("Juan").compareTo(juego.mostrarPuntosEnvido("Pedro"));
 		
@@ -171,7 +171,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.cantarValeCuatroPorJugador("Juan"));
-		Assert.assertTrue(juego.aceptarPorJugador("Pedro"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Pedro"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));
@@ -184,7 +184,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarValeCuatroPorJugador("Pedro"));
-		Assert.assertTrue(juego.aceptarPorJugador("Juan"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Juan"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));
@@ -211,7 +211,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarValeCuatroPorJugador("Pedro"));
-		Assert.assertTrue(juego.aceptarPorJugador("Juan"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Juan"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));
@@ -237,7 +237,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarValeCuatroPorJugador("Pedro"));
-		Assert.assertTrue(juego.aceptarPorJugador("Juan"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Juan"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));
@@ -250,7 +250,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.cantarValeCuatroPorJugador("Juan"));
-		Assert.assertTrue(juego.aceptarPorJugador("Pedro"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Pedro"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));
@@ -284,7 +284,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.cantarValeCuatroPorJugador("Juan"));
-		Assert.assertTrue(juego.aceptarPorJugador("Pedro"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Pedro"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));
@@ -297,7 +297,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarValeCuatroPorJugador("Pedro"));
-		Assert.assertTrue(juego.aceptarPorJugador("Juan"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Juan"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));
@@ -310,7 +310,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.cantarValeCuatroPorJugador("Juan"));
-		Assert.assertTrue(juego.aceptarPorJugador("Pedro"));
+		Assert.assertTrue(juego.aceptarVarianteTrucoPorJugador("Pedro"));
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Juan"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pedro"));

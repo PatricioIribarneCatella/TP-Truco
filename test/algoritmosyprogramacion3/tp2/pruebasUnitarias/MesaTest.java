@@ -72,6 +72,13 @@ public class MesaTest {
 		jugador2.recibirCarta(sieteDeOro);
 		jugador2.recibirCarta(cuatroDeCopa);
 				
+	    sieteDeOro.entregada();
+		sieteDeEspada.entregada();
+		anchoDeBasto.entregada();
+		anchoDeEspada.entregada();
+		cuatroDeCopa.entregada();
+		cuatroDeOro.entregada();
+		
 		moderador = new Moderador(mesaDeDos);
 	}
 	

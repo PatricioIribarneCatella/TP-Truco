@@ -1,11 +1,16 @@
 package algoritmosyprogramacion3.tp2.vista;
 
+import algoritmosyprogramacion3.tp2.modelo.Carta;
+import algoritmosyprogramacion3.tp2.modelo.Imagen;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
+import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -55,12 +60,37 @@ public class VistaJuegoDeTruco implements Vista {
 		
 		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1000, 600, false, true);
 		
-		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		
 		this.contenedor.setBackground(new Background(imagenDeFondo));
 	}
 	
+	private void setCaracteristicasAlContenedorCartas() {
+		
+		//List<Carta> listaCartas = this.modelo.getCartasEnManoDeJugadorConTurno();
+		
+		Carta unoDeBasto = new UnoDeBasto();
+		
+		Imagen imagen = unoDeBasto.getImagen();
+		
+		Image imagenCarta = new Image(imagen.getUrl(), imagen.getWidth(), imagen.getHeigth(), imagen.getPreserveRatio(), imagen.getSmooth());
+		
+		ImageView iv1 = new ImageView();
+		iv1.setImage(imagenCarta);
+		
+		Button botonCarta = new Button();
+		botonCarta.setGraphic(iv1);
+		botonCarta.setDefaultButton(true);
+		botonCarta.setContentDisplay(ContentDisplay.CENTER);
+		
+		this.contenedor.getChildren().add(botonCarta);
+	}
+	
 	private void setCaracteristicasAlContenedorPrincipal() {
+		
+		this.setCaracteristicasAlContenedorCartas();
+		
+		
 		
 	}
 

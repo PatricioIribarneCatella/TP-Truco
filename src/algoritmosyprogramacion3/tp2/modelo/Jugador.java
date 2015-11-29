@@ -85,9 +85,14 @@ public class Jugador implements Jugable {
 	}
 	
 	
-	public void aceptar()
+	public void aceptarVarianteEnvido()
 	{
-	     this.moderador.jugadorAcepta(this);
+	     this.moderador.jugadorAceptaVarianteEnvido(this);
+	}
+	
+	public void aceptarVarianteTruco()
+	{
+	     this.moderador.jugadorAceptaVarianteEnvido(this);
 	}
 		
 	public void rechazarVarianteEnvido()

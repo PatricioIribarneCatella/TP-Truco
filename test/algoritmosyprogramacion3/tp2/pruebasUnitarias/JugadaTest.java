@@ -32,7 +32,7 @@ public class JugadaTest {
 	private Carta unoDeOro;
 	private Carta cincoDeCopa;
 	private Carta unoDeBasto;
-	private Carta siteDeEspada;
+	private Carta sieteDeEspada;
 	private Mesa mesa;
 	private Moderador moderador;
 	private RotacionStrategy rotacionEnRonda;
@@ -42,10 +42,10 @@ public class JugadaTest {
 		
 		this.jugador1 = new Jugador("Pedro");
 		this.cincoDeCopa = new CincoDeCopa();
-		this.siteDeEspada = new SieteDeEspada();
+		this.sieteDeEspada = new SieteDeEspada();
 		this.unoDeCopa = new UnoDeCopa();
 		this.jugador1.recibirCarta(cincoDeCopa);
-		this.jugador1.recibirCarta(siteDeEspada);
+		this.jugador1.recibirCarta(sieteDeEspada);
 		this.jugador1.recibirCarta(unoDeCopa);
 		
 		this.jugador2 = new Jugador("Juan");
@@ -64,6 +64,13 @@ public class JugadaTest {
 		this.jugador2.setModerador(moderador);
 		this.jugador1.setMesa(this.mesa);
 		this.jugador2.setMesa(this.mesa);
+		
+	    cincoDeCopa.entregada();
+		sieteDeEspada.entregada();
+		unoDeBasto.entregada();
+		unoDeEspada.entregada();
+		unoDeOro.entregada();
+		unoDeCopa.entregada();
 		
 	}
 	
