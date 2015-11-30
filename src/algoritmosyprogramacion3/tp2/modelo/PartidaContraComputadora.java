@@ -48,7 +48,7 @@ public class PartidaContraComputadora extends Partida {
 	}
 
 	@Override
-	protected void verificarPuntaje() {
+	protected void verificarEstrategiaDeRotacion() {
 		
 	}
 }

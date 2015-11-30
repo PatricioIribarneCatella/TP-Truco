@@ -8,7 +8,7 @@ public class Empate implements Resultado{
 	}
 
 	@Override
-	public Jugable getJugadorGandador() {
+	public Jugable getJugadorGanador() {
 		return null;
 	}
 }

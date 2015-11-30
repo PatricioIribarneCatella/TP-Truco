@@ -104,7 +104,8 @@ public class ManejadorEnvidoTest {
 		seisDeCopa.entregada();
 		tresDeCopa.entregada();
 		
-		manejadorEnvidos = new ManejadorEnvidos(jugadores,null);
+		manejadorEnvidos = new ManejadorEnvidos();
+		manejadorEnvidos.setJugadoresEnfrentados(jugadores);
 	}
 	
 	@Test

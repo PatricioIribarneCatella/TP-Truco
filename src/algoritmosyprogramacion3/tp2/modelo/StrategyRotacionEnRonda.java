@@ -15,7 +15,6 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 		iteradorDecision = this.jugadores.listIterator(0);
 	}
 	
-	
     public Jugable getJugadorConTurno() {
 		if(this.iteradorTurno.hasNext()){
 	   		   
@@ -26,8 +25,6 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 	    	 return (this.iteradorTurno.next());
 	    }
 	}
-
-
 
 	public Jugable getSiguienteJugadorMano() {
 		
@@ -42,8 +39,6 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 		this.iteradorTurno = this.jugadores.listIterator();
 	}
 
-
-	
 	public Jugable getJugadorConDecision() {
 		
 		if(this.iteradorDecision.hasNext()){
@@ -55,6 +50,14 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 		    	 return (this.iteradorDecision.next());
 		    }
 	}
-	
 
+	public List<Jugable> getJugadoresEnfrentados() {
+		
+		return this.jugadores;
+	}
+
+	@Override
+	public RotacionStrategy getProximaRotacion() {
+		return new StrategyRotacionPicaPica(this.jugadores);
+	}
 }

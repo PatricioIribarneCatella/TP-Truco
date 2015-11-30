@@ -41,7 +41,7 @@ public class PartidaDeDos extends Partida {
 	}
 
 	@Override
-	protected void verificarPuntaje() {
+	protected void verificarEstrategiaDeRotacion() {
 		
 	}
 }

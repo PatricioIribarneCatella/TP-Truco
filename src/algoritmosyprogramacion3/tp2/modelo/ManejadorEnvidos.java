@@ -7,14 +7,11 @@ public class ManejadorEnvidos {
 	
 	private List<Jugable> jugadores;
 	private List<Canto> envidosAcumulados;
-	private Moderador moderador;
 	private Jugable ganador;
 	
-	public ManejadorEnvidos(List<Jugable> jugadores,Moderador unModerador){
+	public ManejadorEnvidos(){
 		
-		this.setJugadoresEnfrentados(jugadores); // pensando en el pica pica
 		this.envidosAcumulados = new LinkedList<Canto>();
-		this.moderador = unModerador;
 	}
 
 	

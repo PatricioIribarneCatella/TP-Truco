@@ -14,7 +14,7 @@ public class GanoJugable implements Resultado {
 	}
 
 	@Override
-	public Jugable getJugadorGandador() {
+	public Jugable getJugadorGanador() {
 		return this.jugadorGandador;
 	}
 }

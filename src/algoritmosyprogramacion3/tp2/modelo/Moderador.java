@@ -18,6 +18,7 @@ public class Moderador {
     private RotacionStrategy criterioDeRotacion;
     private ManejadorEnvidos manejadorEnvidos;
     private ManejadorTruco manejadorTruco;
+    private int cantidadDeCartasDeLaJugada;
     
     
 	
@@ -29,8 +30,9 @@ public class Moderador {
 		this.jugadorConTurno = this.jugadores.get(0);
 		this.jugadorMano = this.jugadores.get(0); //Seteo por default que en toda partida el primer jugador es mano
 		this.jugadorConDecision = this.jugadores.get(0);
-		this.manejadorEnvidos = new ManejadorEnvidos(this.jugadores,this);
-		this.manejadorTruco = new ManejadorTruco(this.mesaACargo);
+		this.manejadorEnvidos = new ManejadorEnvidos();
+		this.manejadorTruco = new ManejadorTruco();
+		this.cantidadDeCartasDeLaJugada = 0;
 	}
 	
 	
@@ -39,6 +41,7 @@ public class Moderador {
 		this.criterioDeRotacion = criterioDeRotacion;
 		this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno();
 		this.jugadorConDecision = this.criterioDeRotacion.getJugadorConDecision();
+		this.manejadorTruco.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
 	}
 	
 	public void setPartida(Partida unaPartida){
@@ -61,21 +64,27 @@ public class Moderador {
 		
 		int indiceCarta = 0;
 		
-		for (int i = 0; i < listaCartas.size()/2; i++) {
-		
-			for (Jugable jugador : this.jugadores) {
-				jugador.recibirCarta(listaCartas.get(indiceCarta));
-				indiceCarta++;
-			}
+		for (Jugable jugador : this.jugadores) {
+			jugador.recibirCarta(listaCartas.get(indiceCarta));
+			indiceCarta++;
 		}
 	}
 	
      public void seJugoUnaCarta() {
 	    	 
+    	this.cantidadDeCartasDeLaJugada++;
     	this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno(); 
+    	List<Jugable> jugadoresEnfrentados = this.criterioDeRotacion.getJugadoresEnfrentados();
     	
     	if(!this.manejadorTruco.trucoCantado()){ // porque las decisiones cambian de alguna forma de comportamiento una vez cantado el truco
     		this.jugadorConDecision = this.criterioDeRotacion.getJugadorConDecision();
+    	}
+    	
+    	if(this.cantidadDeCartasDeLaJugada == jugadoresEnfrentados.size()){
+    		
+    		this.cantidadDeCartasDeLaJugada = 0;
+    		Jugada nuevaJugada = new Jugada();
+    		//this.manejadorTruco.resolverJugada(nuevaJugada);
     	}
     	
      }
@@ -85,6 +94,7 @@ public class Moderador {
     	this.jugadorMano = this.criterioDeRotacion.getSiguienteJugadorMano();
     	this.jugadorConTurno = this.jugadorMano;
     	this.jugadorConDecision = this.jugadorConTurno;
+    	this.manejadorTruco.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados()); //puede que quede en null hasta que en el pica pica cambie el strategy
     }
 		 
 	public Jugable getJugadorConTurno(){
@@ -238,31 +248,29 @@ public class Moderador {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
 			
+			this.manejadorEnvidos.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
 			int puntajeASumar = this.manejadorEnvidos.calcularPuntajeAcumulado();
 			Jugable jugadorGanador = this.manejadorEnvidos.getGanador();
-			jugadorGanador.sumarPuntos(puntajeASumar);
+			this.partidaEnCurso.sumarPuntos(jugadorGanador.getEquipo(),puntajeASumar);
 		}
 		else{
 			
 			throw new TurnoParaTomarDecisionEquivocadoException();
 	    }		
 	}
+	
+	
 	
 	/*Se juega el truco*/
 	public void jugadorAceptaVarianteTruco(Jugable jugadorQueResponde) {
 
-		if(this.jugadorConDecision == jugadorQueResponde){
-			
+		if(!(this.jugadorConDecision == jugadorQueResponde)){
 		
-			//comienzan a jugar cartas o bien se sube la apuesta 
-		}
-		else{
-			
 			throw new TurnoParaTomarDecisionEquivocadoException();
 	    }		
+		// caso contrario simplemente se siguen jugando cartas o subiendo apuestas
 	}
 	
-
 
 	
 	public void jugadorRechazaVarianteEnvido(Jugable jugadorQueResponde) {
@@ -277,6 +285,7 @@ public class Moderador {
 			throw new TurnoParaTomarDecisionEquivocadoException();
 	    }	
 	}
+
 	
 	public void jugadorRechazaVarianteTruco(Jugable jugadorQueResponde) {
 

@@ -4,5 +4,5 @@ public interface Resultado {
 
 	public boolean huboGanador();
 	
-	public Jugable getJugadorGandador();
+	public Jugable getJugadorGanador();
 }

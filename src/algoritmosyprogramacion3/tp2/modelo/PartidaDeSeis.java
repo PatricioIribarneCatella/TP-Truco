@@ -7,6 +7,7 @@ public class PartidaDeSeis extends Partida {
 	
 	private Equipo equipo1;
 	private Equipo equipo2;
+	private ManejadorRotacion manejoDeRotacion;
 	
 	public PartidaDeSeis(String nombrePartida, boolean conFlor, List<String> nombresJugadoresEquipo1, List<String> nombresJugadoresEquipo2) {
 		
@@ -52,16 +53,16 @@ public class PartidaDeSeis extends Partida {
 			this.jugadores.put(jugador.getNombre(), jugador);
 		}
 		
+		this.manejoDeRotacion = new ManejadorRotacion(jugadores);
 		this.equipo1 = equipo1;
 		this.equipo2 = equipo2;
 	}
 
 	@Override
-	protected void verificarPuntaje() {
+	protected void verificarEstrategiaDeRotacion() {
 		
-		if (this.equipo1.getPuntaje() >= 5 || this.equipo2.getPuntaje() >= 5) {
-			this.moderador.setRotacionStrategy(new StrategyRotacionPicaPica((List<Jugable>) this.jugadores.values()));
-		}
-		
+		this.manejoDeRotacion.verificarEstrategiaDeRotacion(this.equipo1, this.equipo2);
+		RotacionStrategy rotacion = this.manejoDeRotacion.getRotacion();
+		this.moderador.setRotacionStrategy(rotacion);
 	}
 }

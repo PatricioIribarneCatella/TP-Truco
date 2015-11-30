@@ -1,5 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import java.util.List;
+
 public interface RotacionStrategy {
 	
 	/*Devuelve al jugador a quien le corresponde el siguiente turno*/
@@ -11,5 +13,10 @@ public interface RotacionStrategy {
 	 
 	 /*Devuelve el jugador al que le corresponde cantar o responder ante un evento*/
 	 public Jugable getJugadorConDecision();
+	 
+	 
+	 public List<Jugable> getJugadoresEnfrentados();
 
+
+	public RotacionStrategy getProximaRotacion(); 
 }

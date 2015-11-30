@@ -126,7 +126,7 @@ public class JugadaCuatroJugadoresTest {
 		Resultado resultado = jugada.confrontar(this.mesa.getJugadores());
 		
 		Assert.assertTrue(resultado.huboGanador());
-		Assert.assertTrue(resultado.getJugadorGandador() == this.jugador2);
+		Assert.assertTrue(resultado.getJugadorGanador() == this.jugador2);
 	}
 	
 	@Test
