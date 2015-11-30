@@ -23,7 +23,7 @@ import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
 
-public class JugadaTest {
+public class JugadaDosJugadoresTest {
 
 	private Jugable jugador1;
 	private Jugable jugador2;
@@ -71,7 +71,6 @@ public class JugadaTest {
 		unoDeEspada.entregada();
 		unoDeOro.entregada();
 		unoDeCopa.entregada();
-		
 	}
 	
 	@Test
@@ -82,7 +81,7 @@ public class JugadaTest {
 		
 		Jugada jugada = new Jugada();
 		
-		Resultado resultado = jugada.confrontar(jugador1, jugador2);
+		Resultado resultado = jugada.confrontar(this.mesa.getJugadores());
 		
 		Assert.assertTrue(resultado.huboGanador());
 		Assert.assertTrue(resultado.getJugadorGandador() == this.jugador2);
@@ -96,7 +95,7 @@ public class JugadaTest {
 		
 		Jugada jugada = new Jugada();
 		
-		Resultado resultado = jugada.confrontar(jugador1, jugador2);
+		Resultado resultado = jugada.confrontar(this.mesa.getJugadores());
 		
 		Assert.assertFalse(resultado.huboGanador());
 	}

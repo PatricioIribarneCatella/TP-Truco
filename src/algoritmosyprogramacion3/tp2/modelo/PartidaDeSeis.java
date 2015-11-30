@@ -55,4 +55,13 @@ public class PartidaDeSeis extends Partida {
 		this.equipo1 = equipo1;
 		this.equipo2 = equipo2;
 	}
+
+	@Override
+	protected void verificarPuntaje() {
+		
+		if (this.equipo1.getPuntaje() >= 5 || this.equipo2.getPuntaje() >= 5) {
+			this.moderador.setRotacionStrategy(new StrategyRotacionPicaPica((List<Jugable>) this.jugadores.values()));
+		}
+		
+	}
 }

@@ -41,7 +41,7 @@ public class Mano {
 		
 		int puntaje = 0;
 		
-		this.cartas.sort(new ComparadorCartas());
+		this.cartas.sort(new ComparadorCartasEnvido());
 		
 		puntaje = this.cartas.get(1).getValorEnvido() + this.cartas.get(2).getValorEnvido();
 		
@@ -52,7 +52,7 @@ public class Mano {
 		
 		int puntaje = 0;
 		
-		Optional<Carta> maximo = this.cartas.stream().max(new ComparadorCartas());
+		Optional<Carta> maximo = this.cartas.stream().max(new ComparadorCartasEnvido());
 		
 		Carta carta = maximo.get();
 		

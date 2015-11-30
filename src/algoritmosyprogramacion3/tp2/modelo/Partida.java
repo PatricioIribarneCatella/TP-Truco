@@ -167,4 +167,11 @@ public abstract class Partida {
 	public List<Carta> getCartasJugadorConTurno() {
 		return this.moderador.getJugadorConTurno().getCartas();
 	}
+	
+	public void sumarPuntos(Jugable jugador, int puntosASumar) {
+		jugador.sumarPuntos(puntosASumar);
+		this.verificarPuntaje();
+	}
+	
+	protected abstract void verificarPuntaje();
 }

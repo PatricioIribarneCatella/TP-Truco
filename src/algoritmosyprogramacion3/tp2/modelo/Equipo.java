@@ -1,7 +1,9 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class Equipo {
 
@@ -20,5 +22,9 @@ public class Equipo {
 	public void agregarIntegrante(Jugable jugador) {
 		jugador.setEquipo(this);
 		this.jugadores.put(jugador.getNombre(), jugador);
+	}
+
+	public int getPuntaje() {
+		return this.puntaje;
 	}
 }

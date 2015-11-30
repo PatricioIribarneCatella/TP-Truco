@@ -2,7 +2,7 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.Comparator;
 
-public class ComparadorCartas implements Comparator<Carta> {
+public class ComparadorCartasEnvido implements Comparator<Carta> {
 
 	@Override
 	public int compare(Carta carta1, Carta carta2) {

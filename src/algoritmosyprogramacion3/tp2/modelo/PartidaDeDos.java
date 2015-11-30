@@ -39,4 +39,9 @@ public class PartidaDeDos extends Partida {
 			this.jugadores.put(jugador.getNombre(), jugador);
 		}
 	}
+
+	@Override
+	protected void verificarPuntaje() {
+		
+	}
 }
