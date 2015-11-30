@@ -12,8 +12,8 @@ public class FaltaEnvido extends Canto {
 	}
 
 	@Override
-	public int getPuntosGanados(Jugable jugador) {
-		return 30 - jugador.puntajeAcumulado();
+	public int getPuntosGanados(Equipo equipo) {
+		return 30 - equipo.getPuntaje();
 	}
 	
 	@Override

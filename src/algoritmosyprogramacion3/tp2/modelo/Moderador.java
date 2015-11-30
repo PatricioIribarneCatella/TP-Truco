@@ -257,8 +257,8 @@ public class Moderador {
 		if(this.jugadorConDecision == jugadorQueResponde){
 			
 			this.manejadorEnvidos.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
-			int puntajeASumar = this.manejadorEnvidos.calcularPuntajeAcumulado();
 			Jugable jugadorGanador = this.manejadorEnvidos.getGanador();
+			int puntajeASumar = this.manejadorEnvidos.calcularPuntajeAcumulado();
 			this.partidaEnCurso.sumarPuntos(jugadorGanador.getEquipo(),puntajeASumar);
 		}
 		else{

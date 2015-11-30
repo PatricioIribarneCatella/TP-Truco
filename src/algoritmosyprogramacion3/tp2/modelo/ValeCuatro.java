@@ -13,7 +13,7 @@ public class ValeCuatro extends Canto {
 	}
 
 	@Override
-	public int getPuntosGanados(Jugable jugador) {
+	public int getPuntosGanados(Equipo equipo) {
 		return this.puntosGanados;
 	}
 	

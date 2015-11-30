@@ -17,6 +17,7 @@ public class ManejadorEnvidos {
 	
 	public void setJugadoresEnfrentados(List<Jugable> jugadoresEnfrentados){
 		
+		this.envidosAcumulados.clear();
 		this.jugadores = jugadoresEnfrentados;
 	}
 	
@@ -29,7 +30,7 @@ public class ManejadorEnvidos {
 	public Jugable getGanador(){
 		
 		Jugable ganador = this.getJugadoresConPuntajeMasAlto().getFirst(); // gana siempre el que esta mas cerca del mazo, en este caso el que esta primero en la lista.
-		this.envidosAcumulados.clear();
+		this.ganador = ganador;
 		return ganador;
 	}
 	
@@ -72,7 +73,7 @@ public class ManejadorEnvidos {
 			
 			for(Canto unCanto:this.envidosAcumulados){
 				
-				puntajeAcumulado += unCanto.getPuntosGanados(this.ganador);
+				puntajeAcumulado += unCanto.getPuntosGanados(this.ganador.getEquipo());
 			}
 		}
 		return puntajeAcumulado;
@@ -88,7 +89,6 @@ public class ManejadorEnvidos {
 				puntajeAcumulado += unCanto.getPuntosPorRechazo();
 			}
 		}
-		
 		return puntajeAcumulado;
 	}
 	

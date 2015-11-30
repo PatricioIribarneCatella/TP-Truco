@@ -15,6 +15,7 @@ import algoritmosyprogramacion3.tp2.modelo.CuatroDeOro;
 import algoritmosyprogramacion3.tp2.modelo.DosDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.DosDeOro;
 import algoritmosyprogramacion3.tp2.modelo.Envido;
+import algoritmosyprogramacion3.tp2.modelo.Equipo;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.ManejadorEnvidos;
@@ -63,6 +64,18 @@ public class ManejadorEnvidoTest {
 		jugadores.add(jugador2);
 		jugadores.add(jugador3);
 		jugadores.add(jugador4);
+		
+		Equipo equipo1 = new Equipo();
+		equipo1.agregarIntegrante(jugador1);
+		equipo1.agregarIntegrante(jugador3);
+		Equipo equipo2 = new Equipo();
+		equipo2.agregarIntegrante(jugador2);
+		equipo2.agregarIntegrante(jugador4);
+		
+		jugador1.setEquipo(equipo1);
+		jugador2.setEquipo(equipo2);
+		jugador3.setEquipo(equipo1);
+		jugador4.setEquipo(equipo2);
 		
 		
         unoDeEspada = new UnoDeEspada();
@@ -129,6 +142,9 @@ public class ManejadorEnvidoTest {
 		Canto envido = new Envido();
 		
 		this.manejadorEnvidos.concatenarCanto(envido);
+		
+		this.manejadorEnvidos.getGanador();
+		
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 2);
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 1);
 	}
@@ -141,6 +157,8 @@ public class ManejadorEnvidoTest {
 		// es probable que haya que instanciar otro envido diferente
 		this.manejadorEnvidos.concatenarCanto(envido);
 		this.manejadorEnvidos.concatenarCanto(envido);
+		
+		this.manejadorEnvidos.getGanador();
 		
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 4);
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 2);
@@ -156,6 +174,8 @@ public class ManejadorEnvidoTest {
 		this.manejadorEnvidos.concatenarCanto(envido);
 		this.manejadorEnvidos.concatenarCanto(envido);
 		
+		this.manejadorEnvidos.getGanador();
+		
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 6);
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 3);
 	}
@@ -166,6 +186,9 @@ public class ManejadorEnvidoTest {
 		Canto realEnvido = new RealEnvido();
 		
 		this.manejadorEnvidos.concatenarCanto(realEnvido);
+		
+		this.manejadorEnvidos.getGanador();
+		
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 3);
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 1);
 	}
@@ -180,6 +203,9 @@ public class ManejadorEnvidoTest {
 		this.manejadorEnvidos.concatenarCanto(envido);
 		this.manejadorEnvidos.concatenarCanto(envido);
 		this.manejadorEnvidos.concatenarCanto(realEnvido);
+		
+		this.manejadorEnvidos.getGanador();
+		
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 9);
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 4);
 	}

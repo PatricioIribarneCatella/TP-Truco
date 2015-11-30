@@ -9,7 +9,7 @@ public abstract class Canto implements Evento {
 		return this.puntosPorRechazo;
 	}
 	
-	public abstract int getPuntosGanados(Jugable jugador);
+	public abstract int getPuntosGanados(Equipo equipo);
 	
 	public abstract Canto subirApuesta();
 	
