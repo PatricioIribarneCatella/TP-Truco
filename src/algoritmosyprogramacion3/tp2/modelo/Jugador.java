@@ -1,5 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import java.util.List;
+
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 
@@ -200,5 +202,10 @@ public class Jugador implements Jugable {
 	@Override
 	public Equipo getEquipo() {
 		return this.equipo;
+	}
+
+	@Override
+	public List<Carta> getCartas() {
+		return this.cartas.getCartas();
 	}
 }

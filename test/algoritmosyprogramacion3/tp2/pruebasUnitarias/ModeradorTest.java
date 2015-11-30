@@ -333,6 +333,5 @@ public class ModeradorTest {
 	    this.moderadorMesaDeSeis.rondaFinalizada();
 	    this.moderadorMesaDeSeis.rondaFinalizada();
 	    /*fin ronda pica pica*/
-	    
 	}
 }

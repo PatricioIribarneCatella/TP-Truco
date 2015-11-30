@@ -1,5 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import java.util.List;
+
 public interface Jugable {
 	
 	public Carta getCartaJugada();
@@ -29,4 +31,6 @@ public interface Jugable {
 	public void setEquipo(Equipo equipo);
 	
 	public Equipo getEquipo();
+
+	public List<Carta> getCartas();
 }

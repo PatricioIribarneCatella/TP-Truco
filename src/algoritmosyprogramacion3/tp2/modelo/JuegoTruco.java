@@ -12,36 +12,84 @@ public class JuegoTruco {
 		this.partidasDisponibles = new HashMap<String,Partida>();
 	}
 
-	public void nuevaMesaContraComputadoraSinFlor(String nombreJugador) {
+	public boolean nuevaMesaContraComputadoraSinFlor(String nombreMesa, String nombreJugador) {
 		
+		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
+		
+		Partida nuevaPartida = new PartidaContraComputadora(nombreMesa, Flor.SIN_FLOR, nombreJugador);
+		this.partidaActual = nuevaPartida;
+		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
+		return true;
 	}
 	
-	public void nuevaMesaContraComputadoraConFlor(String nombreJugador) {
+	public boolean nuevaMesaContraComputadoraConFlor(String nombreMesa, String nombreJugador) {
 		
+		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
+		
+		Partida nuevaPartida = new PartidaContraComputadora(nombreMesa, Flor.CON_FLOR, nombreJugador);
+		this.partidaActual = nuevaPartida;
+		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
+		return true;
 	}	
 	
-	public void nuevaMesaDeDosSinFlor(String nombreMesa, List<String> jugadores) {
+	public boolean nuevaMesaDeDosSinFlor(String nombreMesa, List<String> jugadores) {
 		
+		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
+		
+		Partida nuevaPartida = new PartidaDeDos(nombreMesa, Flor.SIN_FLOR, jugadores);
+		this.partidaActual = nuevaPartida;
+		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
+		return true;
 	}
 
-	public void nuevaMesaDeDosConFlor(String nombreMesa, List<String> jugadores) {
+	public boolean nuevaMesaDeDosConFlor(String nombreMesa, List<String> jugadores) {
 		
+		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
+		
+		Partida nuevaPartida = new PartidaDeDos(nombreMesa, Flor.CON_FLOR, jugadores);
+		this.partidaActual = nuevaPartida;
+		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
+		return true;
 	}
 	
-	public void nuevaMesaDeCuatroSinFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
+	public boolean nuevaMesaDeCuatroSinFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
 		
+		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
+		
+		Partida nuevaPartida = new PartidaDeCuatro(nombreMesa, Flor.SIN_FLOR, equipoJugadores1, equipoJugadores2);
+		this.partidaActual = nuevaPartida;
+		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
+		return true;
 	}
 	
-	public void nuevaMesaDeCuatroConFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
+	public boolean nuevaMesaDeCuatroConFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
 		
+		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
+		
+		Partida nuevaPartida = new PartidaDeCuatro(nombreMesa, Flor.CON_FLOR, equipoJugadores1, equipoJugadores2);
+		this.partidaActual = nuevaPartida;
+		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
+		return true;
 	}
 	
-	public void nuevaMesaDeSeisSinFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
+	public boolean nuevaMesaDeSeisSinFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
 		
+		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
+		
+		Partida nuevaPartida = new PartidaDeSeis(nombreMesa, Flor.SIN_FLOR, equipoJugadores1, equipoJugadores2);
+		this.partidaActual = nuevaPartida;
+		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
+		return true;
 	}
 	
-	public void nuevaMesaDeSeisConFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
+	public boolean nuevaMesaDeSeisConFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
 		
+		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
+		
+		Partida nuevaPartida = new PartidaDeSeis(nombreMesa, Flor.CON_FLOR, equipoJugadores1, equipoJugadores2);
+		this.partidaActual = nuevaPartida;
+		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
+		return true;
 	}
 	
 	public boolean cantarTrucoPorJugador(String nombreJugador) {
@@ -114,16 +162,17 @@ public class JuegoTruco {
 	
 	// Reparte cartas de forma aleatoria
 	public void repartirCartas() {
-		
+		this.partidaActual.repartirCartas();
 	}
 	
 	// Reparte las cartas que se le pasan como parámetro siempre en ese mismo orden
 	public void repartirCartas(List<Carta> listaCartas) {
 		
 		listaCartas.forEach(x -> { x.entregada(); });
+		this.partidaActual.repartirCartas(listaCartas);
 	}
 	
 	public List<Carta> getCartasJugadorConTurno() {
-		return null;
+		return this.partidaActual.getCartasJugadorConTurno();
 	}
 }

@@ -1,6 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.HashMap;
+import java.util.List;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
@@ -153,5 +154,17 @@ public abstract class Partida {
     	this.cantidadDeEnvidosCantados = 0;
     	this.moderador.rondaFinalizada();
     	this.estado = new TurnoJugador();
+	}
+
+	public void repartirCartas() {
+		this.moderador.repartirCartas();
+	}
+
+	public void repartirCartas(List<Carta> listaCartas) {
+		this.moderador.repartirCartas(listaCartas);
+	}
+
+	public List<Carta> getCartasJugadorConTurno() {
+		return this.moderador.getJugadorConTurno().getCartas();
 	}
 }

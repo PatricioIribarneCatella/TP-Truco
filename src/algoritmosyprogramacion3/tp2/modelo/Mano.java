@@ -170,4 +170,8 @@ public class Mano {
  		}
 		return false;
 	}
+
+	public List<Carta> getCartas() {
+		return this.cartas;
+	}
 }

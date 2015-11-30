@@ -2,7 +2,6 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.List;
 
-import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
 
@@ -18,6 +17,7 @@ public class Moderador {
     private Partida partidaEnCurso;
     private RotacionStrategy criterioDeRotacion;
     private ManejadorEnvidos manejadorEnvidos;
+    private ManejadorTruco manejadorTruco;
     
     
 	
@@ -30,6 +30,7 @@ public class Moderador {
 		this.jugadorMano = this.jugadores.get(0); //Seteo por default que en toda partida el primer jugador es mano
 		this.jugadorConDecision = this.jugadores.get(0);
 		this.manejadorEnvidos = new ManejadorEnvidos(this.jugadores,this);
+		this.manejadorTruco = new ManejadorTruco(this.mesaACargo);
 	}
 	
 	
@@ -56,10 +57,24 @@ public class Moderador {
 	   }
 	}
 
+	public void repartirCartas(List<Carta> listaCartas) {
+		
+		int indiceCarta = 0;
+		
+		for (Jugable jugador : this.jugadores) {
+			jugador.recibirCarta(listaCartas.get(indiceCarta));
+			indiceCarta++;
+		}
+	}
 	
      public void seJugoUnaCarta() {
 	    	 
     	this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno(); 
+    	
+    	if(!this.manejadorTruco.trucoCantado()){ // porque las decisiones cambian de alguna forma de comportamiento una vez cantado el truco
+    		this.jugadorConDecision = this.criterioDeRotacion.getJugadorConDecision();
+    	}
+    	
      }
 	    
 	 public void rondaFinalizada(){
@@ -120,7 +135,8 @@ public class Moderador {
 		}
 	}
 	
-
+    /*METODOS DE ENVIDO Y TRUCO*/
+	
 	public void envidoCantado(Jugable jugadorQueCanto) {
        
 		if(this.jugadorConDecision == jugadorQueCanto){
@@ -135,7 +151,6 @@ public class Moderador {
 	    }
 		
 	}
-
 
 
 	public void realEnvidoCantado(Jugable jugadorQueCanto) {
@@ -172,7 +187,8 @@ public class Moderador {
         
 		if(this.jugadorConDecision == jugadorQueCanto){
 			
-			//falta codigo		
+			Canto truco = new Truco();
+			this.manejadorTruco.setNivelApuesta(truco);
 			this.jugadorConDecision = this.getJugadorConDecision();
 		}
 		else{
@@ -186,7 +202,8 @@ public class Moderador {
 		
 		if(this.jugadorConDecision == jugadorQueCanto){
 			
-			//falta codigo	
+			Canto reTruco = new ReTruco();
+			this.manejadorTruco.setNivelApuesta(reTruco);
 			this.jugadorConDecision = this.getJugadorConDecision();
 		}
 		else{
@@ -201,7 +218,8 @@ public class Moderador {
 
 		if(this.jugadorConDecision == jugadorQueCanto){
 			
-			//falta codigo
+			Canto valeCuatro = new ValeCuatro();
+			this.manejadorTruco.setNivelApuesta(valeCuatro);
 			this.jugadorConDecision = this.getJugadorConDecision();
 		}
 		else{
@@ -212,13 +230,14 @@ public class Moderador {
 	}
 
 	
-	
+	/*Se juega el envido*/
 	public void jugadorAceptaVarianteEnvido(Jugable jugadorQueResponde) {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
-				
-			this.jugadorConDecision = this.getJugadorConDecision();
-			//el manejador de envidos hace lo suyo
+			
+			int puntajeASumar = this.manejadorEnvidos.calcularPuntajeAcumulado();
+			Jugable jugadorGanador = this.manejadorEnvidos.getGanador();
+			jugadorGanador.sumarPuntos(puntajeASumar);
 		}
 		else{
 			
@@ -226,13 +245,13 @@ public class Moderador {
 	    }		
 	}
 	
-	
+	/*Se juega el truco*/
 	public void jugadorAceptaVarianteTruco(Jugable jugadorQueResponde) {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
 			
-			this.jugadorConDecision = this.getJugadorConDecision();
-			//comienzan a jugar cartas o bien se sube la apuesta (falta codigo)
+		
+			//comienzan a jugar cartas o bien se sube la apuesta 
 		}
 		else{
 			
@@ -248,7 +267,7 @@ public class Moderador {
 		if(this.jugadorConDecision == jugadorQueResponde){
 				
 			this.jugadorConDecision = this.getJugadorConDecision();
-			//Borro la lista en el manejador de envidos (a codear)
+			this.manejadorEnvidos.envidoNoQuerido();
 		}
 		else{
 			
@@ -260,6 +279,7 @@ public class Moderador {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
 			
+			this.manejadorTruco.trucoNoQuerido();
 			this.rondaFinalizada();
 		}
 		else{
@@ -270,7 +290,5 @@ public class Moderador {
 	
 	public Mesa getMesa() {
 		return this.mesaACargo;
-	}
-	
-		
+	}		
 }

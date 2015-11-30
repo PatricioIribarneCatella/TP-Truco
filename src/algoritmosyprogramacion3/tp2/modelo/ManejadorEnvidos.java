@@ -12,11 +12,18 @@ public class ManejadorEnvidos {
 	
 	public ManejadorEnvidos(List<Jugable> jugadores,Moderador unModerador){
 		
-		this.jugadores = jugadores;
+		this.setJugadoresEnfrentados(jugadores); // pensando en el pica pica
 		this.envidosAcumulados = new LinkedList<Canto>();
 		this.moderador = unModerador;
 	}
 
+	
+	public void setJugadoresEnfrentados(List<Jugable> jugadoresEnfrentados){
+		
+		this.jugadores = jugadoresEnfrentados;
+	}
+	
+	
 	public void concatenarCanto(Canto unCanto){
 		
 		this.envidosAcumulados.add(unCanto);
@@ -24,7 +31,9 @@ public class ManejadorEnvidos {
 	
 	public Jugable getGanador(){
 		
-		return this.getJugadoresConPuntajeMasAlto().getFirst(); // gana siempre el que esta mas cerca del mazo, en este caso el que esta primero en la lista.
+		Jugable ganador = this.getJugadoresConPuntajeMasAlto().getFirst(); // gana siempre el que esta mas cerca del mazo, en este caso el que esta primero en la lista.
+		this.envidosAcumulados.clear();
+		return ganador;
 	}
 	
 	private LinkedList<Jugable> getJugadoresConPuntajeMasAlto(){
@@ -85,4 +94,14 @@ public class ManejadorEnvidos {
 		
 		return puntajeAcumulado;
 	}
+	
+	
+	public void envidoNoQuerido(){
+		
+		this.envidosAcumulados.clear();
+	}
+
+
+
+
 }
