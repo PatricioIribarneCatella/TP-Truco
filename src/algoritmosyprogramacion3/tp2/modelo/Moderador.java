@@ -84,7 +84,14 @@ public class Moderador {
     		
     		this.cantidadDeCartasDeLaJugada = 0;
     		Jugada nuevaJugada = new Jugada();
-    		//this.manejadorTruco.resolverJugada(nuevaJugada);
+    		this.manejadorTruco.resolverJugada(nuevaJugada);
+    		if(this.manejadorTruco.alguienGanoDosDeTres()){
+
+    			int puntajeASumar = this.manejadorTruco.getPuntajePorGanar();
+    			Equipo equipoGanador = this.manejadorTruco.getGanador();
+    			this.partidaEnCurso.sumarPuntos(equipoGanador,puntajeASumar);
+    			this.rondaFinalizada();
+    		}
     	}
     	
      }
@@ -94,6 +101,7 @@ public class Moderador {
     	this.jugadorMano = this.criterioDeRotacion.getSiguienteJugadorMano();
     	this.jugadorConTurno = this.jugadorMano;
     	this.jugadorConDecision = this.jugadorConTurno;
+    	this.manejadorTruco.nuevaRonda();
     	this.manejadorTruco.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados()); //puede que quede en null hasta que en el pica pica cambie el strategy
     }
 		 
@@ -278,7 +286,9 @@ public class Moderador {
 		if(this.jugadorConDecision == jugadorQueResponde){
 				
 			this.jugadorConDecision = this.getJugadorConDecision();
+			int puntajeASumar = this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo();
 			this.manejadorEnvidos.envidoNoQuerido();
+			this.partidaEnCurso.sumarPuntos(jugadorConDecision.getEquipo(),puntajeASumar);
 		}
 		else{
 			
@@ -293,6 +303,7 @@ public class Moderador {
 			
 			this.manejadorTruco.trucoNoQuerido();
 			this.rondaFinalizada();
+			//falta sumar el puntaje al jugador correspondiente
 		}
 		else{
 			
