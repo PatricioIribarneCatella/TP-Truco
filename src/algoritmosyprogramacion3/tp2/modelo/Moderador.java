@@ -61,9 +61,12 @@ public class Moderador {
 		
 		int indiceCarta = 0;
 		
-		for (Jugable jugador : this.jugadores) {
-			jugador.recibirCarta(listaCartas.get(indiceCarta));
-			indiceCarta++;
+		for (int i = 0; i < listaCartas.size()/2; i++) {
+		
+			for (Jugable jugador : this.jugadores) {
+				jugador.recibirCarta(listaCartas.get(indiceCarta));
+				indiceCarta++;
+			}
 		}
 	}
 	
