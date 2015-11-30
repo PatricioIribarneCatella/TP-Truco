@@ -191,7 +191,7 @@ public class Jugador implements Jugable {
 
 	@Override
 	public void sumarPuntos(int puntos) {
-		this.puntaje += puntos; 
+		this.equipo.sumarPuntos(puntos); 
 	}
 
 	@Override

@@ -116,10 +116,9 @@ public class ComputadoraAI implements Jugable {
 
 	@Override
 	public void sumarPuntos(int puntos) {
-		this.puntaje += puntos; 
+		this.equipo.sumarPuntos(puntos);
 	}
 
-	
 	private boolean esMiTurno() {
 		
 		return (this == this.moderador.getJugadorConTurno());
