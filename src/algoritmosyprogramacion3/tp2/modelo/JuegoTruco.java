@@ -2,6 +2,7 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class JuegoTruco {
 	
@@ -174,5 +175,13 @@ public class JuegoTruco {
 	
 	public List<Carta> getCartasJugadorConTurno() {
 		return this.partidaActual.getCartasJugadorConTurno();
+	}
+	
+	public Set<String> getMesasDisponilbles() {
+		return this.partidasDisponibles.keySet();
+	}
+
+	public void cargarMesa(String nombreMesa) {
+		this.partidaActual = this.partidasDisponibles.get(nombreMesa);
 	}
 }

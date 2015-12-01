@@ -1,97 +1,44 @@
 package algoritmosyprogramacion3.tp2.vista;
 
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.scene.control.TextField;
 
-public class VistaNuevaMesaContraComputadora implements Vista {
-
-	private JuegoTruco modelo;
-	private Stage stage;
-	private Scene escena;
-	private VBox contenedor;
-	private Button botonVolver;
-	private Vista vistaAnterior;
+public class VistaNuevaMesaContraComputadora extends VistaNuevaMesa {
+	
+	private TextField textoJugador;
 	
 	public VistaNuevaMesaContraComputadora(Vista vistaAnterior) {
 		
-		this.vistaAnterior = vistaAnterior;
-		this.modelo = vistaAnterior.getModelo();
-		this.stage = vistaAnterior.getStage();
-		this.initialize();
-	}
-
-	private void initialize() {
-		
-		this.contenedor = new VBox();
-		
-		this.setContenedorPrincipal();
-		
-		this.setImagenDeFondo();
-		
-		this.setCaracteristicasAlContenedorPrincipal();
-		
-		this.escena = new Scene(this.contenedor, 1000, 600);
-	}
-	
-	private void setContenedorPrincipal() {
-		
-		this.contenedor.setAlignment(Pos.CENTER);
-		this.contenedor.setSpacing(25);
-		this.contenedor.setPadding(new Insets(25));
-	}
-
-	private void setImagenDeFondo() {
-		
-		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1000, 600, false, true);
-		
-		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-		
-		this.contenedor.setBackground(new Background(imagenDeFondo));
-	}
-	
-	private void setCaracteristicasAlContenedorPrincipal() {
-		
-	}
-	
-	@Override
-	public void mostrar() {
-		
-		this.stage.setTitle("FonTruco");
-		this.stage.setScene(this.escena);
-		this.stage.show();
-	}
-
-	public Vista getVistaAnterior() {
-		return this.vistaAnterior;
-	}
-	
-	@Override
-	public Stage getStage() {
-		return this.stage;
+		super(vistaAnterior);
+		this.etiquetaJugadores.setText("Jugador");
 	}
 
 	@Override
-	public JuegoTruco getModelo() {
-		return this.modelo;
+	protected boolean actualizarModelo() {
+		
+		String nombreMesa = this.textoMesa.getText();
+		String nombreJugador = this.textoJugador.getText();
+		
+		if (this.botonConFlor.isPressed()) {
+			
+			return this.modelo.nuevaMesaContraComputadoraConFlor(nombreMesa, nombreJugador);
+			
+		} else {
+			
+			return this.modelo.nuevaMesaContraComputadoraSinFlor(nombreMesa, nombreJugador);
+		}
 	}
 
 	@Override
-	public void setModelo(JuegoTruco modelo) {
-		this.modelo = modelo;
+	protected boolean hayDatosCargados() {
+		
+		return (!this.textoMesa.getText().trim().equals("")
+				&& !this.textoJugador.getText().trim().equals(""));
 	}
-	
-	public Button getBotonVolver() {
-		return this.botonVolver;
+
+	@Override
+	protected void setCantidadJugadores() {
+		
+		this.textoJugador = new TextField();
+		this.contenedorCentral.add(this.textoJugador, 1, 2);
 	}
 }

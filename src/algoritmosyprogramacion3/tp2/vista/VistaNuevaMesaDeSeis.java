@@ -1,97 +1,80 @@
 package algoritmosyprogramacion3.tp2.vista;
 
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import java.util.Arrays;
 
-public class VistaNuevaMesaDeSeis implements Vista {
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
-	private JuegoTruco modelo;
-	private Stage stage;
-	private Scene escena;
-	private VBox contenedor;
-	private Button botonVolver;
-	private Vista vistaAnterior;
+public class VistaNuevaMesaDeSeis extends VistaNuevaMesa {
+
+	private TextField textoJugador1;
+	private TextField textoJugador2;
+	private TextField textoJugador3;
+	private TextField textoJugador4;
+	private TextField textoJugador5;
+	private TextField textoJugador6;
+	private Label etiquetaEquipo2;
 	
 	public VistaNuevaMesaDeSeis(Vista vistaAnterior) {
 		
-		this.vistaAnterior = vistaAnterior;
-		this.modelo = vistaAnterior.getModelo();
-		this.stage = vistaAnterior.getStage();
-		this.initialize();
-	}
-
-	private void initialize() {
-		
-		this.contenedor = new VBox();
-		
-		this.setContenedorPrincipal();
-		
-		this.setImagenDeFondo();
-		
-		this.setCaracteristicasAlContenedorPrincipal();
-		
-		this.escena = new Scene(this.contenedor, 1000, 600);
-	}
-	
-	private void setContenedorPrincipal() {
-		
-		this.contenedor.setAlignment(Pos.CENTER);
-		this.contenedor.setSpacing(25);
-		this.contenedor.setPadding(new Insets(25));
-	}
-
-	private void setImagenDeFondo() {
-		
-		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1000, 600, false, true);
-		
-		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-		
-		this.contenedor.setBackground(new Background(imagenDeFondo));
-	}
-	
-	private void setCaracteristicasAlContenedorPrincipal() {
-		
-	}
-	
-	@Override
-	public void mostrar() {
-		
-		this.stage.setTitle("FonTruco");
-		this.stage.setScene(this.escena);
-		this.stage.show();
-	}
-
-	public Vista getVistaAnterior() {
-		return this.vistaAnterior;
-	}
-	
-	@Override
-	public Stage getStage() {
-		return this.stage;
+		super(vistaAnterior);
+		this.etiquetaJugadores.setText("Equipo 1");
+		this.etiquetaEquipo2 = new Label("Equipo 2");
+		this.etiquetaEquipo2.setTextFill(Color.WHITE);
+		this.etiquetaEquipo2.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
+		this.contenedorCentral.add(this.etiquetaEquipo2, 0, 5);
 	}
 
 	@Override
-	public JuegoTruco getModelo() {
-		return this.modelo;
+	protected boolean actualizarModelo() {
+		
+		String nombreMesa = this.textoMesa.getText();
+		String nombreJugador1 = this.textoJugador1.getText();
+		String nombreJugador2 = this.textoJugador2.getText();
+		String nombreJugador3 = this.textoJugador3.getText();
+		String nombreJugador4 = this.textoJugador4.getText();
+		String nombreJugador5 = this.textoJugador5.getText();
+		String nombreJugador6 = this.textoJugador6.getText();
+		
+		if (this.botonConFlor.isPressed()) {
+			
+			return this.modelo.nuevaMesaDeSeisConFlor(nombreMesa, Arrays.asList(nombreJugador1, nombreJugador2, nombreJugador3), Arrays.asList(nombreJugador4, nombreJugador5, nombreJugador6));
+			
+		} else {
+			
+			return this.modelo.nuevaMesaDeSeisSinFlor(nombreMesa, Arrays.asList(nombreJugador1, nombreJugador2, nombreJugador3), Arrays.asList(nombreJugador4, nombreJugador5, nombreJugador6));
+		}
 	}
 
 	@Override
-	public void setModelo(JuegoTruco modelo) {
-		this.modelo = modelo;
+	protected boolean hayDatosCargados() {
+		
+		return (!this.textoMesa.getText().trim().equals("")
+				&& !this.textoJugador1.getText().trim().equals("")
+					&& !this.textoJugador2.getText().trim().equals("")
+						&& !this.textoJugador3.getText().trim().equals("")
+							&& !this.textoJugador4.getText().trim().equals("")
+								&& !this.textoJugador5.getText().trim().equals("")
+									&& !this.textoJugador6.getText().trim().equals(""));
 	}
-	
-	public Button getBotonVolver() {
-		return this.botonVolver;
+
+	@Override
+	protected void setCantidadJugadores() {
+		
+		this.textoJugador1 = new TextField();
+		this.textoJugador2 = new TextField();
+		this.textoJugador3 = new TextField();
+		this.textoJugador4 = new TextField();
+		this.textoJugador5 = new TextField();
+		this.textoJugador6 = new TextField();
+		this.contenedorCentral.add(this.textoJugador1, 1, 2);
+		this.contenedorCentral.add(this.textoJugador2, 1, 3);
+		this.contenedorCentral.add(this.textoJugador3, 1, 4);
+		this.contenedorCentral.add(this.textoJugador4, 1, 5);
+		this.contenedorCentral.add(this.textoJugador5, 1, 6);
+		this.contenedorCentral.add(this.textoJugador6, 1, 7);
 	}
 }
