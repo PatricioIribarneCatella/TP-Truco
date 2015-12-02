@@ -73,8 +73,8 @@ public class Jugador implements Jugable {
 		this.moderador.valeCuatroCantado(this);
 	}	
 	
-	
-	public boolean cantarFlor()
+	@Override
+	public boolean tieneFlor()
 	{
 	    return this.cartas.hayFlor();
 	}
@@ -84,7 +84,6 @@ public class Jugador implements Jugable {
 		this.cartas.removerCartas();
 		//this.moderador.jugadorSeFueAlMazo(this);
 	}
-	
 	
 	public void aceptarVarianteEnvido()
 	{
@@ -116,7 +115,6 @@ public class Jugador implements Jugable {
 	{
 		return this.cartas.puntajeFlor().toString();
 	}
-	
 	
 	private boolean esMiTurno() {
 		

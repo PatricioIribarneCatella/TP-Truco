@@ -37,4 +37,6 @@ public interface Jugable {
 	public List<Carta> getCartas();
 
 	public void devolverCartasAlMazo();
+
+	public boolean tieneFlor();
 }

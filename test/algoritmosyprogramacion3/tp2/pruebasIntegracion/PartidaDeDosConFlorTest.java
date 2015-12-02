@@ -244,7 +244,6 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.cantarFlorPorJugador("Pedro"));
 		Assert.assertTrue(juego.rechazarFlorPorJugador("Juan"));
 		
-		//System.out.println(juego.mostrarPuntosDeJugador("Juan"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("1"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("3"));
 	}

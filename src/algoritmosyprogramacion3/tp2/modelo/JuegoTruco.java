@@ -7,6 +7,7 @@ import java.util.Set;
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
 import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
+import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
 import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
@@ -186,7 +187,7 @@ public class JuegoTruco {
 			this.partidaActual.cantarFlor(nombreJugador);
 			return true;
 			
-		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException | PartidaSinFlorException e) {
+		} catch (JugadorSinFlorException | AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException | PartidaSinFlorException e) {
 			
 			throw e;
 		}
@@ -361,5 +362,9 @@ public class JuegoTruco {
 	
 	public void cargarMesa(String nombreMesa) {
 		this.partidaActual = this.partidasDisponibles.get(nombreMesa);
+	}
+
+	public String getNombreJugadorActual() {
+		return this.partidaActual.getNombreJugadorActual();
 	}
 }

@@ -206,4 +206,9 @@ public class ComputadoraAI implements Jugable {
 	public void devolverCartasAlMazo() {
 		this.cartas.vaciar();
 	}
+
+	@Override
+	public boolean tieneFlor() {
+		return this.cartas.hayFlor();
+	}
 }

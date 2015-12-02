@@ -5,6 +5,7 @@ import java.util.List;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
 import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
 
 public abstract class Partida {
@@ -88,7 +89,8 @@ public abstract class Partida {
 	
     public void cantarFlor(String jugadorQueCanta) {
 		
-    	if(!this.moderador.getMesa().seJuegaConFlor()) throw new PartidaSinFlorException();
+    	if (!this.moderador.getMesa().seJuegaConFlor()) throw new PartidaSinFlorException();
+    	if (!this.jugadores.get(jugadorQueCanta).tieneFlor()) throw new JugadorSinFlorException();
 		if (!this.estado.esValidoParaCantarFlor()) throw new AccionInvalidaException();
 		
 		Jugable jugador = this.jugadores.get(jugadorQueCanta);
@@ -240,5 +242,9 @@ public abstract class Partida {
 		
 		Jugable jugador = this.jugadores.get(nombreJugador);
 		return jugador.declararPuntosFlor();
+	}
+
+	public String getNombreJugadorActual() {
+		return this.moderador.getJugadorConTurno().getNombre();
 	}
 }
