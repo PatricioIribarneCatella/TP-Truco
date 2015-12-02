@@ -191,8 +191,8 @@ public class ModeradorTest {
 	    this.moderadorMesaDeSeis.rondaFinalizada();
 	    
 	    /*Juega la segunda pareja (jugador 2 vs jugador 5)  */
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
-	    Assert.assertTrue(jugador2 == jugadorConTurno);
+	    //jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    Assert.assertTrue(jugador2 == this.moderadorMesaDeSeis.getJugadorConTurno());
 	    
 	    this.jugador2.jugarPrimerCarta();
 	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
@@ -204,7 +204,7 @@ public class ModeradorTest {
 	    this.moderadorMesaDeSeis.rondaFinalizada();
 	    
 	    /*Juega la tercera pareja (jugador 3 vs jugador 6)  */
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    //jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
 	    Assert.assertTrue(jugador3 == jugadorConTurno);
 	    
 	    this.jugador3.jugarSegundaCarta();
@@ -250,13 +250,13 @@ public class ModeradorTest {
 	    Assert.assertTrue(jugadorConTurno == jugador2);
 	    this.moderadorMesaDeSeis.rondaFinalizada();
 	    
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    //jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
 	    jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
 	    Assert.assertTrue(jugadorConTurno == jugador3);
 	    Assert.assertTrue(jugadorMano == jugador3);
 	    
 	    this.moderadorMesaDeSeis.rondaFinalizada();
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    //jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
 	    Assert.assertTrue(jugadorConTurno == jugador4);
 	    this.moderadorMesaDeSeis.seJugoUnaCarta();
 	    
@@ -306,7 +306,7 @@ public class ModeradorTest {
 	    this.moderadorMesaDeSeis.rondaFinalizada();
 	    /*fin ronda pica pica*/
 		
-	    jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
+	    //jugadorConTurno = this.moderadorMesaDeSeis.getJugadorConTurno();
 	    jugadorMano = this.moderadorMesaDeSeis.getJugadorMano();
 	    Assert.assertTrue(jugadorConTurno == jugador5);
 	    Assert.assertTrue(jugadorMano == jugador5);

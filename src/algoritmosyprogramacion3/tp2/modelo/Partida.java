@@ -94,7 +94,7 @@ public abstract class Partida {
 		Jugable jugador = this.jugadores.get(jugadorQueCanta);
 		this.moderador.florCantada(jugador);
 		this.estado = new FlorCantada();
-		this.cantidadDeEnvidosCantados = 0;
+		this.cantidadDeEnvidosCantados = 0; // cuando se canta flor no importa mas el envido
 	}
 	
 	public void cantarEnvido(String jugadorQueCanta) {
@@ -149,7 +149,7 @@ public abstract class Partida {
 		this.estado = new TurnoJugador();
 	}
 	
-    public void aceptarVarianteTruco(String jugadorQueAcepta) {
+	private void manejarVarianteTruco(String jugadorQueAcepta) {
 		
 		if (!this.estado.esValidoParaAceptar()) throw new AccionInvalidaException();
 		
@@ -157,6 +157,33 @@ public abstract class Partida {
 		this.moderador.jugadorAceptaVarianteTruco(jugador);
 	}
 	
+    public void aceptarTruco(String jugadorQueAcepta) {
+		
+		this.manejarVarianteTruco(jugadorQueAcepta);
+		this.estado = new TrucoAceptado();
+	}
+	
+    public void aceptarReTruco(String jugadorQueAcepta) {
+		
+    	this.manejarVarianteTruco(jugadorQueAcepta);
+		this.estado = new ReTrucoAceptado();
+	}
+    
+    public void aceptarValeCuatro(String jugadorQueAcepta) {
+		
+    	this.manejarVarianteTruco(jugadorQueAcepta);
+		this.estado = new ValeCuatroAceptado();
+	}
+    
+    public void rechazarFlor(String jugadorQueRechaza){
+    	
+        if (!this.estado.esValidoParaRechazar()) throw new AccionInvalidaException();
+		
+		Jugable jugador = this.jugadores.get(jugadorQueRechaza);
+    	this.moderador.jugadorRechazaFlor(jugador);
+    	this.estado = new TurnoJugador();
+    }
+    
     public void rechazarVarianteDeEnvido(String jugadorQueRechaza) {
 		
 		if (!this.estado.esValidoParaRechazar()) throw new AccionInvalidaException();
@@ -174,7 +201,6 @@ public abstract class Partida {
 		Jugable jugador = this.jugadores.get(jugadorQueRechaza);
 		this.moderador.jugadorRechazaVarianteTruco(jugador);
     	this.cantidadDeEnvidosCantados = 0;
-    	this.moderador.rondaFinalizada();
     	this.estado = new TurnoJugador();
 	}
 
@@ -193,7 +219,26 @@ public abstract class Partida {
 	public void sumarPuntos(Equipo equipo, int puntosASumar) {
 		equipo.sumarPuntos(puntosASumar);
 		this.verificarEstrategiaDeRotacion();
+		this.estado = new TurnoJugador();
 	}
 	
 	protected abstract void verificarEstrategiaDeRotacion();
+
+	public String mostrarPuntosJugador(String nombreJugador) {
+		
+		Jugable jugador = this.jugadores.get(nombreJugador);
+		return jugador.getEquipo().getPuntajeComoString();
+	}
+
+	public String mostrarPuntosEnvido(String nombreJugador) {
+		
+		Jugable jugador = this.jugadores.get(nombreJugador);
+		return jugador.declararPuntosEnvido();
+	}
+
+	public String mostrarPuntosFlor(String nombreJugador) {
+		
+		Jugable jugador = this.jugadores.get(nombreJugador);
+		return jugador.declararPuntosFlor();
+	}
 }

@@ -60,13 +60,17 @@ public class Moderador {
 	   }
 	}
 
+	// Metodo exclusivo para realizar tests de integración
 	public void repartirCartas(List<Carta> listaCartas) {
 		
-		int indiceCarta = 0;
-		
+		int i;
+		int j = 0;
+		 
 		for (Jugable jugador : this.jugadores) {
-			jugador.recibirCarta(listaCartas.get(indiceCarta));
-			indiceCarta++;
+			for (i = 0; i < 3; i++) {
+				jugador.recibirCarta(listaCartas.get(i + j));
+			}
+			j = i;
 		}
 	}
 	
@@ -100,13 +104,18 @@ public class Moderador {
 	 public void rondaFinalizada(){
 	   	
     	this.jugadorMano = this.criterioDeRotacion.getSiguienteJugadorMano();
-    	this.jugadorConTurno = this.jugadorMano;
-    	this.jugadorConDecision = this.jugadorConTurno;
+    	this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno();
+    	this.jugadorConDecision = this.getJugadorConDecision();
     	this.manejadorEnvidos.nuevaRonda();
     	this.manejadorFlor.nuevaRonda();
     	this.manejadorTruco.nuevaRonda();
     	this.manejadorTruco.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados()); //puede que quede en null hasta que en el pica pica cambie el strategy
-    }
+    	
+    	List<Jugable> jugadoresEnfrentados = this.criterioDeRotacion.getJugadoresEnfrentados();
+    	for (Jugable jugador : jugadoresEnfrentados) {
+    		jugador.devolverCartasAlMazo();
+    	}
+	 }
 		 
 	public Jugable getJugadorConTurno(){
 	    	
@@ -151,7 +160,7 @@ public class Moderador {
 	public void jugarTercerCarta(Jugable unJugador){
 		
 		try{
-			unJugador.jugarSegundaCarta();
+			unJugador.jugarTercerCarta();
 		}
 		catch(TurnoEquivocadoException e){
 			
@@ -165,7 +174,7 @@ public class Moderador {
 	public void florCantada(Jugable jugadorQueCanto) {
 		
 	    if(this.jugadorConDecision == jugadorQueCanto){
-			
+			 
 	    	this.manejadorEnvidos.envidoNoQuerido(); //la flor reemplaza al envido
 			Canto flor = new Flor();
 			this.manejadorFlor.florCantada(flor);
@@ -315,9 +324,6 @@ public class Moderador {
 		// caso contrario simplemente se siguen jugando cartas o subiendo apuestas
 	}
 	
-
-	
-	
 	public void jugadorRechazaFlor(Jugable jugadorQueResponde) {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
@@ -341,7 +347,7 @@ public class Moderador {
 			this.jugadorConDecision = this.getJugadorConDecision();
 			int puntajeASumar = this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo();
 			this.manejadorEnvidos.envidoNoQuerido();
-			this.partidaEnCurso.sumarPuntos(jugadorConDecision.getEquipo(),puntajeASumar);
+			this.partidaEnCurso.sumarPuntos(this.jugadorConDecision.getEquipo(),puntajeASumar);
 		}
 		else{
 			
@@ -349,7 +355,6 @@ public class Moderador {
 	    }	
 	}
 
-	
 	public void jugadorRechazaVarianteTruco(Jugable jugadorQueResponde) {
 
 		if(this.jugadorConDecision == jugadorQueResponde){

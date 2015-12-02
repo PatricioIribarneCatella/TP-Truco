@@ -21,6 +21,4 @@ public interface EstadoPartida {
 	public boolean esValidoParaAceptar();
 	
 	public boolean esValidoParaRechazar();
-	
-	
 }

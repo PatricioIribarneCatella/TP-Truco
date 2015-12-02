@@ -134,8 +134,8 @@ public class EstadoPartidaTest {
 		
 		Assert.assertTrue(estado.esValidoParaJugarCarta());
 		Assert.assertTrue(estado.esValidoParaCantarEnvido());
-		Assert.assertFalse(estado.esValidoParaCantarFaltaEnvido());
-		Assert.assertFalse(estado.esValidoParaCantarRealEnvido());
+		Assert.assertTrue(estado.esValidoParaCantarFaltaEnvido());
+		Assert.assertTrue(estado.esValidoParaCantarRealEnvido());
 		Assert.assertTrue(estado.esValidoParaCantarTruco());
 		Assert.assertFalse(estado.esValidoParaCantarReTruco());
 		Assert.assertFalse(estado.esValidoParaCantarValeCuatro());

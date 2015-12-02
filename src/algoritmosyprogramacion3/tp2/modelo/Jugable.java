@@ -35,4 +35,6 @@ public interface Jugable {
 	public Equipo getEquipo();
 
 	public List<Carta> getCartas();
+
+	public void devolverCartasAlMazo();
 }

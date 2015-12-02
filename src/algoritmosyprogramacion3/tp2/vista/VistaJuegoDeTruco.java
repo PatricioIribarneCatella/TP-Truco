@@ -1,5 +1,7 @@
 package algoritmosyprogramacion3.tp2.vista;
 
+import java.util.List;
+
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
@@ -68,7 +70,7 @@ public class VistaJuegoDeTruco implements Vista {
 	
 	private void setCaracteristicasAlContenedorCartas() {
 		
-		//List<Carta> listaCartas = this.modelo.getCartasEnManoDeJugadorConTurno();
+		List<Carta> listaCartas = this.modelo.getCartasJugadorConTurno();
 		
 		Carta unoDeBasto = new UnoDeBasto();
 		

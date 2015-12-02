@@ -102,6 +102,6 @@ public class ManoTest {
 		mano.agregarCarta(carta2);
 		mano.agregarCarta(carta3);
 		
-		Assert.assertTrue(mano.puntajeEnvido().equals("27"));
+		Assert.assertTrue(mano.puntajeEnvido().equals("7"));
 	}	
 }

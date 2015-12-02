@@ -82,7 +82,7 @@ public class ManejadorFlor {
 	
 	public int calcularPuntajeAcumuladoPorRechazo(){
 		
-		return this.getPuntajeAEntregar();
+		return this.floresAcumuladas.get(0).getPuntosPorRechazo();
 	}
 	
 	

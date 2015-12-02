@@ -201,4 +201,9 @@ public class ComputadoraAI implements Jugable {
 	{
 		return this.cartas.puntajeFlor().toString();
 	}
+
+	@Override
+	public void devolverCartasAlMazo() {
+		this.cartas.vaciar();
+	}
 }

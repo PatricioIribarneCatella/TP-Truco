@@ -208,4 +208,9 @@ public class Jugador implements Jugable {
 	public List<Carta> getCartas() {
 		return this.cartas.getCartas();
 	}
+
+	@Override
+	public void devolverCartasAlMazo() {
+		this.cartas.vaciar();
+	}
 }

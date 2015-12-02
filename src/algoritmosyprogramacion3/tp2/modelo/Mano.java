@@ -121,7 +121,7 @@ public class Mano {
 			
 		} else {
 			
-			puntajeParcial = this.calcularPuntajeEnvidoMentiroso();
+			return Integer.toString(this.calcularPuntajeEnvidoMentiroso());
 		}
 		
 		puntaje += puntajeParcial;
@@ -173,5 +173,13 @@ public class Mano {
 
 	public List<Carta> getCartas() {
 		return this.cartas;
+	}
+
+	public void vaciar() {
+		
+		for (Carta carta : this.cartas) {
+			carta.volveAlMazo();
+		}
+		this.cartas.clear();
 	}
 }

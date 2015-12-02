@@ -29,12 +29,12 @@ public class TurnoJugador implements EstadoPartida {
 
 	@Override
 	public boolean esValidoParaCantarRealEnvido() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean esValidoParaCantarFaltaEnvido() {
-		return false;
+		return true;
 	}
 
 	@Override

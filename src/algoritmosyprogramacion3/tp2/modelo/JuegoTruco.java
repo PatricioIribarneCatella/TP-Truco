@@ -4,6 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
+import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
+import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
+import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
+import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
+
 public class JuegoTruco {
 	
 	private Partida partidaActual;
@@ -19,6 +26,7 @@ public class JuegoTruco {
 		
 		Partida nuevaPartida = new PartidaContraComputadora(nombreMesa, Flor.SIN_FLOR, nombreJugador);
 		this.partidaActual = nuevaPartida;
+		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
 		return true;
 	}
@@ -29,6 +37,7 @@ public class JuegoTruco {
 		
 		Partida nuevaPartida = new PartidaContraComputadora(nombreMesa, Flor.CON_FLOR, nombreJugador);
 		this.partidaActual = nuevaPartida;
+		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
 		return true;
 	}	
@@ -39,6 +48,7 @@ public class JuegoTruco {
 		
 		Partida nuevaPartida = new PartidaDeDos(nombreMesa, Flor.SIN_FLOR, jugadores);
 		this.partidaActual = nuevaPartida;
+		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
 		return true;
 	}
@@ -49,6 +59,7 @@ public class JuegoTruco {
 		
 		Partida nuevaPartida = new PartidaDeDos(nombreMesa, Flor.CON_FLOR, jugadores);
 		this.partidaActual = nuevaPartida;
+		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
 		return true;
 	}
@@ -59,6 +70,7 @@ public class JuegoTruco {
 		
 		Partida nuevaPartida = new PartidaDeCuatro(nombreMesa, Flor.SIN_FLOR, equipoJugadores1, equipoJugadores2);
 		this.partidaActual = nuevaPartida;
+		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
 		return true;
 	}
@@ -69,6 +81,7 @@ public class JuegoTruco {
 		
 		Partida nuevaPartida = new PartidaDeCuatro(nombreMesa, Flor.CON_FLOR, equipoJugadores1, equipoJugadores2);
 		this.partidaActual = nuevaPartida;
+		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
 		return true;
 	}
@@ -79,6 +92,7 @@ public class JuegoTruco {
 		
 		Partida nuevaPartida = new PartidaDeSeis(nombreMesa, Flor.SIN_FLOR, equipoJugadores1, equipoJugadores2);
 		this.partidaActual = nuevaPartida;
+		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
 		return true;
 	}
@@ -89,76 +103,240 @@ public class JuegoTruco {
 		
 		Partida nuevaPartida = new PartidaDeSeis(nombreMesa, Flor.CON_FLOR, equipoJugadores1, equipoJugadores2);
 		this.partidaActual = nuevaPartida;
+		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
 		return true;
 	}
 	
 	public boolean cantarTrucoPorJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.cantarTruco(nombreJugador);
+			return true;
+			
+		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
 	}
 
 	public boolean cantarReTrucoPorJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.cantarReTruco(nombreJugador);
+			return true;
+			
+		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
 	}
 	
 	public boolean cantarValeCuatroPorJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.cantarValeCuatro(nombreJugador);
+			return true;
+			
+		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
 	}
 	
 	public boolean cantarEnvidoPorJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.cantarEnvido(nombreJugador);
+			return true;
+			
+		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
 	}
 	
 	public boolean cantarRealEnvidoPorJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.cantarRealEnvido(nombreJugador);
+			return true;
+			
+		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
 	}
 	
 	public boolean cantarFaltaEnvidoPorJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.cantarFaltaEnvido(nombreJugador);
+			return true;
+			
+		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
 	}
 	
 	public boolean cantarFlorPorJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.cantarFlor(nombreJugador);
+			return true;
+			
+		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException | PartidaSinFlorException e) {
+			
+			throw e;
+		}
+	}
+	
+	public boolean aceptarFlorPorJugador(String nombreJugador){
+		
+		try {
+			this.partidaActual.aceptarFlor(nombreJugador);
+			return true;
+		}
+		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
 	}
 	
 	public boolean aceptarVarianteEnvidoPorJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.aceptarVarianteEnvido(nombreJugador);
+			return true;
+		}
+		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException | CantidadDeEnvidosMaximosSuperadaException e) {
+			
+			throw e;
+		}
 	}
 	
-	public boolean aceptarVarianteTrucoPorJugador(String nombreJugador) {
-		return false;
+	public boolean aceptarTrucoPorJugador(String nombreJugador) {
+		
+		try {
+			this.partidaActual.aceptarTruco(nombreJugador);
+			return true;
+		}
+		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
+	}
+	
+	public boolean aceptarReTrucoPorJugador(String nombreJugador) {
+		
+		try {
+			this.partidaActual.aceptarReTruco(nombreJugador);
+			return true;
+		}
+		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
+	}
+	
+	public boolean aceptarValeCuatroPorJugador(String nombreJugador) {
+		
+		try {
+			this.partidaActual.aceptarValeCuatro(nombreJugador);
+			return true;
+		}
+		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
+	}
+	
+	public boolean rechazarFlorPorJugador(String nombreJugador){
+		
+		try {
+			this.partidaActual.rechazarFlor(nombreJugador);
+			return true;
+			
+		}catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
 	}
 	
 	public boolean rechazarVarianteEnvidoPorJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.rechazarVarianteDeEnvido(nombreJugador);
+			return true;
+			
+		}catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
 	}
 	
 	public boolean rechazarVarianteTrucoPorJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.rechazarVarianteDeTruco(nombreJugador);
+			return true;
+			
+		}catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+			
+			throw e;
+		}
 	}
 
 	public String mostrarPuntosDeJugador(String nombreJugador) {
-		return null;
+		
+		return this.partidaActual.mostrarPuntosJugador(nombreJugador);
 	}
 
 	public String mostrarPuntosEnvido(String nombreJugador) {
-		return null;
+		
+		return this.partidaActual.mostrarPuntosEnvido(nombreJugador);
 	}
 	
 	public String mostrarPuntosFlor(String nombreJugador) {
-		return null;
+		
+		return this.partidaActual.mostrarPuntosFlor(nombreJugador);
 	}
 	
 	public boolean jugarPrimerCartaDeJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.jugarPrimerCartaJugador(nombreJugador);
+			return true;
+			
+		} catch (TurnoEquivocadoException | AccionInvalidaException | CartaYaJugadaException e) {
+			
+			throw e;
+		}
 	}
 	
 	public boolean jugarSegundaCartaDeJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.jugarSegundaCartaJugador(nombreJugador);
+			return true;
+			
+		} catch (TurnoEquivocadoException | AccionInvalidaException | CartaYaJugadaException e) {
+			
+			throw e;
+		}
 	}
 	
 	public boolean jugarTercerCartaDeJugador(String nombreJugador) {
-		return false;
+		
+		try {
+			this.partidaActual.jugarTercerCartaJugador(nombreJugador);
+			return true;
+			
+		} catch (TurnoEquivocadoException | AccionInvalidaException | CartaYaJugadaException e) {
+			
+			throw e;
+		}
 	}
 	
 	// Reparte cartas de forma aleatoria
@@ -180,7 +358,7 @@ public class JuegoTruco {
 	public Set<String> getMesasDisponilbles() {
 		return this.partidasDisponibles.keySet();
 	}
-
+	
 	public void cargarMesa(String nombreMesa) {
 		this.partidaActual = this.partidasDisponibles.get(nombreMesa);
 	}

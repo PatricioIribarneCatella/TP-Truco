@@ -24,4 +24,9 @@ public class Equipo {
 	public int getPuntaje() {
 		return this.puntaje;
 	}
+
+	public String getPuntajeComoString() {
+		
+		return Integer.toString(this.puntaje);
+	}
 }
