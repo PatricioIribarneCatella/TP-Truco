@@ -6,6 +6,5 @@ public class SeisDeOro extends Seis{
 		
 		super();
 		this.palo = new Oro();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/oro/seis-de-oro.jpg", 75, 150, false, true);	
 	}
 }

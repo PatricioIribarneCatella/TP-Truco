@@ -5,6 +5,7 @@ import java.util.List;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
 
 public abstract class Partida {
 
@@ -85,6 +86,17 @@ public abstract class Partida {
 		this.cantidadDeEnvidosCantados = 0;
 	}
 	
+    public void cantarFlor(String jugadorQueCanta) {
+		
+    	if(!this.moderador.getMesa().seJuegaConFlor()) throw new PartidaSinFlorException();
+		if (!this.estado.esValidoParaCantarFlor()) throw new AccionInvalidaException();
+		
+		Jugable jugador = this.jugadores.get(jugadorQueCanta);
+		this.moderador.florCantada(jugador);
+		this.estado = new FlorCantada();
+		this.cantidadDeEnvidosCantados = 0;
+	}
+	
 	public void cantarEnvido(String jugadorQueCanta) {
 		
 		if (!this.estado.esValidoParaCantarEnvido()) throw new AccionInvalidaException();
@@ -117,6 +129,17 @@ public abstract class Partida {
 		this.cantidadDeEnvidosCantados = 0;
 	}
 	
+	
+	public void aceptarFlor(String jugadorQueAcepta) { //sinonimo de contraflor
+		
+		if (!this.estado.esValidoParaAceptar()) throw new AccionInvalidaException();
+		
+		Jugable jugador = this.jugadores.get(jugadorQueAcepta);
+		this.moderador.jugadorAceptaFlor(jugador);
+		this.estado = new TurnoJugador();
+	}
+	
+	
 	public void aceptarVarianteEnvido(String jugadorQueAcepta) {
 		
 		if (!this.estado.esValidoParaAceptar()) throw new AccionInvalidaException();
@@ -124,7 +147,6 @@ public abstract class Partida {
 		Jugable jugador = this.jugadores.get(jugadorQueAcepta);
 		this.moderador.jugadorAceptaVarianteEnvido(jugador);
 		this.estado = new TurnoJugador();
-		// habria que crear otro estado que se mantenga hasta que se declaren todos los valores de envido
 	}
 	
     public void aceptarVarianteTruco(String jugadorQueAcepta) {

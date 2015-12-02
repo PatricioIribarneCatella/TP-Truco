@@ -6,6 +6,5 @@ public class DosDeEspada extends Dos {
 		
 		super();
 		this.palo = new Espada();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/espada/dos-de-espada.jpg", 75, 150, false, true);
 	}
 }

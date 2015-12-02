@@ -6,6 +6,5 @@ public class SeisDeBasto extends Seis {
 			
 		super();
 		this.palo = new Basto();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/basto/seis-de-basto.jpg", 75, 150, false, true);
 	}
 }

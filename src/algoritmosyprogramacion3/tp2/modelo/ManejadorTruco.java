@@ -11,14 +11,12 @@ public class ManejadorTruco {
 	private List<Resultado> resultadosJugadas;
 	private Equipo equipo1;
 	private Equipo equipo2;
-	private int rondasJugadas; // para llevar la cuenta si son 1 2 o 3 en caso de empate en alguna
-	private boolean ventaja;
+
 	
 	public ManejadorTruco(){
 		
 		 this.nivelDeApuesta = null; // No hay ningun estado posible a menos que se cante algo 
 		 this.resultadosJugadas = new LinkedList<Resultado>();
-		 this.ventaja = false;
 	}
 
 	
@@ -38,6 +36,9 @@ public class ManejadorTruco {
 	
 	public int getPuntajePorGanar(){
 		
+		if(this.nivelDeApuesta == null){
+			return 1;
+		}
 		return this.nivelDeApuesta.getPuntosGanados(this.equipoGanador);
 	}
 	
@@ -48,7 +49,7 @@ public class ManejadorTruco {
 	
 	public void trucoNoQuerido() {
 		
-		this.nivelDeApuesta = null;
+		this.nuevaRonda();
 	}
 	
 	public boolean trucoCantado(){
@@ -64,8 +65,6 @@ public class ManejadorTruco {
         
         if(this.resultadosJugadas.size()>1){ //ya puede haber un ganador
         
-        	System.out.println(resultadosJugadas.get(0).getJugadorGanador().getNombre());
-        	System.out.println(resultadosJugadas.get(1).getJugadorGanador().getNombre());
         	jugadasGanadasEquipo1 = this.rondasGanadasEquipo(equipo1);
         	jugadasGanadasEquipo2 = this.rondasGanadasEquipo(equipo2);
         	
@@ -147,6 +146,7 @@ public class ManejadorTruco {
 	public void nuevaRonda(){
 		
 		this.nivelDeApuesta = null;
+		this.equipoGanador = null;
 		this.resultadosJugadas.clear();
 	}
 

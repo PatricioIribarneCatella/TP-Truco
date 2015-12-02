@@ -46,4 +46,9 @@ public class TurnoJugador implements EstadoPartida {
 	public boolean esValidoParaRechazar() {
 		return false;
 	}
+
+	@Override
+	public boolean esValidoParaCantarFlor() {
+		return true;
+	}
 }

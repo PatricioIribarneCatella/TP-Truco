@@ -46,4 +46,9 @@ public class ValeCuatroCantado implements EstadoPartida {
 	public boolean esValidoParaRechazar() {
 		return true;
 	}
+
+	@Override
+	public boolean esValidoParaCantarFlor() {
+		return false;
+	}
 }

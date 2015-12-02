@@ -6,6 +6,5 @@ public class TresDeBasto extends Tres {
 		
 		super();
 		this.palo = new Basto();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/basto/tres-de-basto.jpg", 75, 150, false, true);
 	}
 }

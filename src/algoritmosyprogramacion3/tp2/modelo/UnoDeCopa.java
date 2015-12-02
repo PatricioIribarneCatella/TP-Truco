@@ -6,6 +6,5 @@ public class UnoDeCopa extends UnoFalso{
 		
 		super();
 		this.palo = new Copa();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/copa/uno-de-copa.jpg", 75, 150, false, true);	
 	}
 }

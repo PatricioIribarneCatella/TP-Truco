@@ -3,9 +3,6 @@ package algoritmosyprogramacion3.tp2.pruebasUnitarias;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,12 +14,11 @@ import algoritmosyprogramacion3.tp2.modelo.CincoDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.CuatroDeOro;
 import algoritmosyprogramacion3.tp2.modelo.DosDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.DosDeOro;
-import algoritmosyprogramacion3.tp2.modelo.Envido;
 import algoritmosyprogramacion3.tp2.modelo.Equipo;
+import algoritmosyprogramacion3.tp2.modelo.Flor;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
-import algoritmosyprogramacion3.tp2.modelo.ManejadorEnvidos;
-import algoritmosyprogramacion3.tp2.modelo.RealEnvido;
+import algoritmosyprogramacion3.tp2.modelo.ManejadorFlor;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
@@ -31,7 +27,7 @@ import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
 
-public class ManejadorEnvidoTest {
+public class ManejadorFlorTest {
 
 	//private static final Carta UnoDeBasto = null;
 	private Jugable jugador1;
@@ -52,7 +48,7 @@ public class ManejadorEnvidoTest {
 	private Carta sieteDeCopa;
 	private List<Jugable> jugadores;
 	
-	private ManejadorEnvidos manejadorEnvidos;
+	private ManejadorFlor manejadorFlor;
 	
 	@Before
 	public void setup(){
@@ -95,16 +91,16 @@ public class ManejadorEnvidoTest {
 		
 		jugador1.recibirCarta(unoDeBasto); 
 		jugador1.recibirCarta(sieteDeBasto);
-		jugador1.recibirCarta(dosDeBasto); //el jugador 1 tiene 29 puntos de envido
+		jugador1.recibirCarta(dosDeBasto); //el jugador 1 tiene 30 puntos de flor
 		jugador2.recibirCarta(unoDeEspada);
 		jugador2.recibirCarta(sieteDeEspada);
-		jugador2.recibirCarta(cincoDeEspada);// el jugador 2 tiene 32 puntos de envido pero esta mas cerca del mazo que el jugador 4
+		jugador2.recibirCarta(cincoDeEspada);// el jugador 2 tiene 33 puntos de flor pero esta mas cerca del mazo que el jugador 4
 		jugador3.recibirCarta(unoDeOro);
 		jugador3.recibirCarta(dosDeOro);
-		jugador3.recibirCarta(cuatroDeOro);// el jugador 3 tiene 26 puntos de envido
+		jugador3.recibirCarta(cuatroDeOro);// el jugador 3 tiene 27 puntos de flor
 		jugador4.recibirCarta(unoDeCopa);
 		jugador4.recibirCarta(cincoDeCopa);
-		jugador4.recibirCarta(sieteDeCopa);// el jugador 4 tiene 32 de envido
+		jugador4.recibirCarta(sieteDeCopa);// el jugador 4 tiene 33 puntos de flor
 	
 		unoDeEspada.entregada();
 	    sieteDeEspada.entregada();
@@ -119,14 +115,14 @@ public class ManejadorEnvidoTest {
 		cincoDeCopa.entregada();
 		sieteDeCopa.entregada();
 		
-		manejadorEnvidos = new ManejadorEnvidos();
-		manejadorEnvidos.setJugadoresEnfrentados(jugadores);
+		manejadorFlor = new ManejadorFlor();
+		manejadorFlor.setJugadoresEnfrentados(jugadores);
 	}
 	
 	@Test
-	public void testJugadorDosGanaElEnvido() {
+	public void testJugadorDosGanaElflor() {
 
-           Jugable jugadorGanador = this.manejadorEnvidos.getGanador();
+           Jugable jugadorGanador = this.manejadorFlor.getGanador();
            Assert.assertTrue(jugadorGanador == jugador2);
 		
 	}
@@ -134,81 +130,36 @@ public class ManejadorEnvidoTest {
 	@Test
 	public void testObtenerElPuntajeDelGanadorDevuelveElPuntajeEsperado() {
 
-           int puntajeGanador = this.manejadorEnvidos.getPuntajeGanador();
-           Assert.assertTrue(puntajeGanador == 32);	
+           int puntajeGanador = this.manejadorFlor.getPuntajeGanador();
+           Assert.assertTrue(puntajeGanador == 33);	
 	}
 	
 	@Test
-	public void calculoDePuntajesAcumuladosConUnSoloEnvido(){
+	public void calculoDePuntajesAcumuladosConUnaSolaflor(){
 		
-		Canto envido = new Envido();
 		
-		this.manejadorEnvidos.concatenarCanto(envido);
+		this.manejadorFlor.florCantada(new Flor());
 		
-		this.manejadorEnvidos.getGanador();
+		this.manejadorFlor.getGanador();
 		
-		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 2);
-		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 1);
-	}
-	
-	
-	@Test
-	public void calculoDePuntajesAcumuladosConDosEnvidos(){
-		
-		Canto envido = new Envido();
-		// es probable que haya que instanciar otro envido diferente
-		this.manejadorEnvidos.concatenarCanto(envido);
-		this.manejadorEnvidos.concatenarCanto(envido);
-		
-		this.manejadorEnvidos.getGanador();
-		
-		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 4);
-		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 2);
-	}
-	
-	
-	@Test
-	public void calculoDePuntajesAcumuladosConTresEnvidos(){
-		
-		Canto envido = new Envido();
-	
-		this.manejadorEnvidos.concatenarCanto(envido);
-		this.manejadorEnvidos.concatenarCanto(envido);
-		this.manejadorEnvidos.concatenarCanto(envido);
-		
-		this.manejadorEnvidos.getGanador();
-		
-		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 6);
-		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 3);
+		Assert.assertTrue(this.manejadorFlor.getPuntajeAEntregar() == 3);
+		Assert.assertTrue(this.manejadorFlor.calcularPuntajeAcumuladoPorRechazo() == 3);
 	}
 	
 	@Test
-	public void calculoDePuntajesAcumuladosConRealEnvido(){
+	public void calculoDePuntajesAcumuladosConDosFlores(){ // seria el caso de contraflor
 		
-		Canto realEnvido = new RealEnvido();
+		Canto flor = new Flor();
+
+		this.manejadorFlor.florCantada(flor);
+		this.manejadorFlor.florCantada(flor);
 		
-		this.manejadorEnvidos.concatenarCanto(realEnvido);
+		this.manejadorFlor.getGanador();
 		
-		this.manejadorEnvidos.getGanador();
-		
-		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 3);
-		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 1);
+		Assert.assertTrue(this.manejadorFlor.getPuntajeAEntregar() == 6);
+		Assert.assertTrue(this.manejadorFlor.calcularPuntajeAcumuladoPorRechazo() == 6);
 	}
 	
-	@Test
-	public void calculoDePuntajesAcumuladosConEnvidoYRealEnvido(){
-		
-		Canto envido = new Envido();
-		Canto realEnvido = new RealEnvido();
-		
-		this.manejadorEnvidos.concatenarCanto(envido);
-		this.manejadorEnvidos.concatenarCanto(envido);
-		this.manejadorEnvidos.concatenarCanto(envido);
-		this.manejadorEnvidos.concatenarCanto(realEnvido);
-		
-		this.manejadorEnvidos.getGanador();
-		
-		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 9);
-		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 4);
-	}
+	
+
 }

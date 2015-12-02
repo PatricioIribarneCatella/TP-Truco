@@ -6,6 +6,5 @@ public class CincoDeBasto extends Cinco {
 		
 		super();
 		this.palo = new Basto();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/basto/cinco-de-basto.jpg", 75, 150, false, true);
 	}
 }

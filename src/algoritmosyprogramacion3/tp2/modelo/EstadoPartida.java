@@ -16,7 +16,11 @@ public interface EstadoPartida {
 	
 	public boolean esValidoParaCantarFaltaEnvido();
 	
+	public boolean esValidoParaCantarFlor();
+	
 	public boolean esValidoParaAceptar();
 	
 	public boolean esValidoParaRechazar();
+	
+	
 }

@@ -3,15 +3,15 @@ package algoritmosyprogramacion3.tp2.modelo;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ManejadorEnvidos {
-	
+public class ManejadorFlor {
+
 	private List<Jugable> jugadores;
-	private List<Canto> envidosAcumulados;
+	private List<Canto> floresAcumuladas; //pueden ser a lo sumo 2
 	private Jugable ganador;
 	
-	public ManejadorEnvidos(){
+	public ManejadorFlor(){
 		
-		this.envidosAcumulados = new LinkedList<Canto>();
+		this.floresAcumuladas = new LinkedList<Canto>();
 	}
 
 	
@@ -21,9 +21,9 @@ public class ManejadorEnvidos {
 	}
 	
 	
-	public void concatenarCanto(Canto unCanto){
+	public void florCantada(Canto unCanto){
 		
-		this.envidosAcumulados.add(unCanto);
+		this.floresAcumuladas.add(unCanto);
 	}
 	
 	public Jugable getGanador(){
@@ -40,7 +40,7 @@ public class ManejadorEnvidos {
 		
 		for(Jugable unJugador:this.jugadores){
 			
-		   int puntajeJugador = Integer.parseInt(unJugador.declararPuntosEnvido());
+		   int puntajeJugador = Integer.parseInt(unJugador.declararPuntosFlor());
 		   if(puntajeJugador == puntajeGanador){
 			   
 			   jugadoresConPuntajeMaximo.add(unJugador);
@@ -53,24 +53,26 @@ public class ManejadorEnvidos {
 	
    public int getPuntajeGanador(){
 	   
-	    int envidoDelJugador;
-		int envidoMasAlto = -1; // -1 para que el primer jugador de la lista supere este numero siempre
+	    int florDelJugador;
+		int florMasAlta = -1; // -1 para que el primer jugador de la lista supere este numero siempre
 		for(Jugable unJugador:this.jugadores){
 			
-			envidoDelJugador = Integer.parseInt(unJugador.declararPuntosEnvido());
-			if(envidoDelJugador > envidoMasAlto){
+			florDelJugador = Integer.parseInt(unJugador.declararPuntosFlor());
+			if(florDelJugador > florMasAlta){
 				
-				envidoMasAlto =  envidoDelJugador;
+				florMasAlta =  florDelJugador;
 			}
 		}
-		return envidoMasAlto;
+		return florMasAlta;
    }
-   public int calcularPuntajeAcumulado(){
+   
+   
+   public int getPuntajeAEntregar(){
 		
 		int puntajeAcumulado = 0; 
-		if(!this.envidosAcumulados.isEmpty()){
+		if(!this.floresAcumuladas.isEmpty()){
 			
-			for(Canto unCanto:this.envidosAcumulados){
+			for(Canto unCanto:this.floresAcumuladas){
 				
 				puntajeAcumulado += unCanto.getPuntosGanados(this.ganador.getEquipo());
 			}
@@ -80,30 +82,19 @@ public class ManejadorEnvidos {
 	
 	public int calcularPuntajeAcumuladoPorRechazo(){
 		
-		int puntajeAcumulado = 0; 
-		if(!this.envidosAcumulados.isEmpty()){
-			
-			for(Canto unCanto:this.envidosAcumulados){
-				
-				puntajeAcumulado += unCanto.getPuntosPorRechazo();
-			}
-		}
-		return puntajeAcumulado;
+		return this.getPuntajeAEntregar();
 	}
 	
 	
-	public void envidoNoQuerido(){
+	public void florNoQuerida(){
 		
-		this.envidosAcumulados.clear();
+		this.floresAcumuladas.clear();
 	}
 	
 	public void nuevaRonda(){
 		
 		this.ganador = null;
-		this.envidosAcumulados.clear();
+		this.floresAcumuladas.clear();
 	}
-
-
-
-
+	
 }

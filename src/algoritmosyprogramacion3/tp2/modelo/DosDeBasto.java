@@ -6,6 +6,5 @@ public class DosDeBasto extends Dos {
 	
 		super();
 		this.palo = new Basto();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/basto/dos-de-basto.jpg", 75, 150, false, true);
 	}
 }

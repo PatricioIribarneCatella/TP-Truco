@@ -196,4 +196,9 @@ public class ComputadoraAI implements Jugable {
 	public List<Carta> getCartas() {
 		return this.cartas.getCartas();
 	}
+	
+	public String declararPuntosFlor()
+	{
+		return this.cartas.puntajeFlor().toString();
+	}
 }

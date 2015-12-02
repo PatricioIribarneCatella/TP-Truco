@@ -26,6 +26,8 @@ public interface Jugable {
 	
 	public String declararPuntosEnvido();
 	
+	public String declararPuntosFlor();
+	
 	public String getNombre();
 
 	public void setEquipo(Equipo equipo);

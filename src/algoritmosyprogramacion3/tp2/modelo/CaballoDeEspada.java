@@ -6,6 +6,5 @@ public class CaballoDeEspada extends Caballo {
 		
 		super();
 		this.palo = new Espada();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/espada/once-de-espada.jpg", 75, 150, false, true);
 	}
 }

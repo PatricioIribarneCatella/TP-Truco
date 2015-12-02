@@ -24,6 +24,15 @@ import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
 public class CartaTest {
 
 	@Test
+	public void testDosCartasQueSonInstanciasDeLaMismaCartaTieneIgualHashCode() {
+		
+		Carta carta1 = new UnoDeEspada();
+		Carta carta2 = new UnoDeEspada();
+		
+		Assert.assertTrue(carta1.hashCode() == carta2.hashCode());
+	}
+	
+	@Test
 	public void testCartaArrancaEnMazo() {
 		
 		Carta carta = new UnoDeEspada();

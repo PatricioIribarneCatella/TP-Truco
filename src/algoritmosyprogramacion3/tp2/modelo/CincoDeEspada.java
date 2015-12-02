@@ -6,6 +6,5 @@ public class CincoDeEspada extends Cinco {
 		
 		super();
 		this.palo = new Espada();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/espada/cinco-de-espada.jpg", 75, 150, false, true);
 	}
 }

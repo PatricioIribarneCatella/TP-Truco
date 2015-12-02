@@ -6,7 +6,7 @@ public class Flor extends Canto {
 	public static boolean SIN_FLOR = true;
 	
 	public Flor() {
-		this.puntosGanados = 4;
+		this.puntosGanados = 3;
 		this.puntosPorRechazo = 0;
 	}
 

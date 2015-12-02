@@ -6,6 +6,5 @@ public class ReyDeEspada extends Rey {
 		
 		super();
 		this.palo = new Espada();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/espada/doce-de-espada.jpg", 75, 150, false, true);
 	}
 }

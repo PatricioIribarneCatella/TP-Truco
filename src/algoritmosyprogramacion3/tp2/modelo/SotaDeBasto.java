@@ -6,6 +6,5 @@ public class SotaDeBasto extends Sota {
 		
 		super();
 		this.palo = new Basto();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/basto/diez-de-basto.jpg", 75, 150, false, true);
 	}
 }

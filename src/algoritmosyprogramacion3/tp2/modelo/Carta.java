@@ -7,7 +7,6 @@ public abstract class Carta {
 	protected int valorEnvido;
 	protected int valorFlor;
 	protected EstadoDeCarta estado;
-	protected Imagen imagen;
 	
 	public Carta() {
 		
@@ -31,10 +30,6 @@ public abstract class Carta {
 		return this.valorEnvido;
 	}
 	
-	public Imagen getImagen() {
-		return this.imagen;
-	}
-	
 	public void entregada() {
 		
 		this.estado = this.estado.proximoEstado();
@@ -48,6 +43,11 @@ public abstract class Carta {
 	public void volveAlMazo() {
 		
 		this.estado = new EnMazo();
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.valorComoString.hashCode() + this.palo.getValor().hashCode();
 	}
 	
 	public abstract Carta jugarContra(Carta carta);

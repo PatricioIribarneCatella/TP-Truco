@@ -46,4 +46,9 @@ public class EnvidoCantado implements EstadoPartida {
 	public boolean esValidoParaRechazar() {
 		return true;
 	}
+
+	@Override
+	public boolean esValidoParaCantarFlor() {
+		return true;
+	}
 }

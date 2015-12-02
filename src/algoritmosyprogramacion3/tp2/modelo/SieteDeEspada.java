@@ -9,7 +9,6 @@ public class SieteDeEspada extends Carta {
 		this.valorEnvido = 7;
 		this.valorFlor = 7;
 		this.valorComoString = "7";
-		this.imagen = new Imagen("file:resources/imagenes/cartas/espada/siete-de-espada.jpg", 75, 150, false, true);
 	}
 	
 	@Override

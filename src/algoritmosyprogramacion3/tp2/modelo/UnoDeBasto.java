@@ -9,7 +9,6 @@ public class UnoDeBasto extends Carta {
 		this.valorEnvido = 1;
 		this.valorFlor = 1;
 		this.valorComoString = "1";
-		this.imagen = new Imagen("file:resources/imagenes/cartas/basto/uno-de-basto.jpg", 75, 150, false, true);
 	}
 	
 	@Override

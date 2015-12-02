@@ -1,7 +1,6 @@
 package algoritmosyprogramacion3.tp2.vista;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.Imagen;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import javafx.geometry.Insets;
@@ -27,12 +26,14 @@ public class VistaJuegoDeTruco implements Vista {
 	private VBox contenedor;
 	private Button botonVolver;
 	private Vista vistaAnterior;
+	private GraficadorCartas graficadorCartas;
 	
 	public VistaJuegoDeTruco(Vista vistaAnterior) {
 		
 		this.vistaAnterior = vistaAnterior;
 		this.modelo = vistaAnterior.getModelo();
 		this.stage = vistaAnterior.getStage();
+		this.graficadorCartas = new GraficadorCartas();
 		this.initialize();
 	}
 	
@@ -71,17 +72,14 @@ public class VistaJuegoDeTruco implements Vista {
 		
 		Carta unoDeBasto = new UnoDeBasto();
 		
-		Imagen imagen = unoDeBasto.getImagen();
+		Imagen imagen = this.graficadorCartas.getImagen(unoDeBasto);
 		
 		Image imagenCarta = new Image(imagen.getUrl(), imagen.getWidth(), imagen.getHeigth(), imagen.getPreserveRatio(), imagen.getSmooth());
 		
-		ImageView iv1 = new ImageView();
-		iv1.setImage(imagenCarta);
-		
 		Button botonCarta = new Button();
-		botonCarta.setGraphic(iv1);
+		botonCarta.setGraphic(new ImageView(imagenCarta));
 		botonCarta.setDefaultButton(true);
-		botonCarta.setContentDisplay(ContentDisplay.CENTER);
+		botonCarta.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
 		
 		this.contenedor.getChildren().add(botonCarta);
 	}

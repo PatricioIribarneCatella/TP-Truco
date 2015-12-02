@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package algoritmosyprogramacion3.tp2.vista;
 
 public class Imagen {
 

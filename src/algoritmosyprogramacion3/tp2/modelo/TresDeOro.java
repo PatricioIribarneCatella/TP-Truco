@@ -6,6 +6,5 @@ public class TresDeOro extends Tres {
 		
 		super();
 		this.palo = new Oro();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/oro/tres-de-oro.jpg", 75, 150, false, true);
 	}
 }

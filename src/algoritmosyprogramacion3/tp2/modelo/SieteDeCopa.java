@@ -6,6 +6,5 @@ public class SieteDeCopa extends SieteFalso {
 		
 		super();
 		this.palo = new Copa();
-		this.imagen = new Imagen("file:resources/imagenes/cartas/copa/siete-de-copa.jpg", 75, 150, false, true);
 	}
 }
