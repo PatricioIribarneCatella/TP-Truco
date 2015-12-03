@@ -8,7 +8,8 @@ import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocado
 public class Moderador {
 	
 	
-	private Jugable jugadorConDecision;
+	private Jugable jugadorConDecisionTruco;
+	private Jugable jugadorConDecision; //para la flor y el envido
     private Jugable jugadorConTurno;   
     private Jugable jugadorMano;
     private Mesa mesaACargo;
@@ -29,6 +30,7 @@ public class Moderador {
 		this.jugadorConTurno = this.jugadores.get(0);
 		this.jugadorMano = this.jugadores.get(0); //Seteo por default que en toda partida el primer jugador es mano
 		this.jugadorConDecision = this.jugadores.get(0);
+		this.jugadorConDecisionTruco = this.jugadores.get(0);
 		this.manejadorEnvidos = new ManejadorEnvidos();
 		this.manejadorTruco = new ManejadorTruco();
 		this.manejadorFlor = new ManejadorFlor();
@@ -41,6 +43,7 @@ public class Moderador {
 		this.criterioDeRotacion = criterioDeRotacion;
 		this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno();
 		this.jugadorConDecision = this.criterioDeRotacion.getJugadorConDecision();
+		this.jugadorConDecisionTruco = this.criterioDeRotacion.getJugadorConDecisionTruco();
 		this.manejadorTruco.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
 	}
 	
@@ -70,7 +73,7 @@ public class Moderador {
 			for (i = 0; i < 3; i++) {
 				jugador.recibirCarta(listaCartas.get(i + j));
 			}
-			j = i;
+			j += i;
 		}
 	}
 	
@@ -82,6 +85,7 @@ public class Moderador {
     	
     	if(!this.manejadorTruco.trucoCantado()){ // porque las decisiones cambian de alguna forma de comportamiento una vez cantado el truco
     		this.jugadorConDecision = this.criterioDeRotacion.getJugadorConDecision();
+    		this.jugadorConDecisionTruco = this.criterioDeRotacion.getJugadorConDecisionTruco();
     	}
     	
     	
@@ -106,6 +110,7 @@ public class Moderador {
     	this.jugadorMano = this.criterioDeRotacion.getSiguienteJugadorMano();
     	this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno();
     	this.jugadorConDecision = this.getJugadorConDecision();
+    	this.jugadorConDecisionTruco = this.getJugadorConDecisionTruco();
     	this.manejadorEnvidos.nuevaRonda();
     	this.manejadorFlor.nuevaRonda();
     	this.manejadorTruco.nuevaRonda();
@@ -115,8 +120,12 @@ public class Moderador {
     	for (Jugable jugador : jugadoresEnfrentados) {
     		jugador.devolverCartasAlMazo();
     	}
+    	
 	 }
 		 
+
+
+
 	public Jugable getJugadorConTurno(){
 	    	
 		return this.jugadorConTurno;
@@ -132,6 +141,11 @@ public class Moderador {
 	private Jugable getJugadorConDecision() {
 		
 		return this.criterioDeRotacion.getJugadorConDecision();
+	}
+		
+	private Jugable getJugadorConDecisionTruco() {
+		
+		return this.criterioDeRotacion.getJugadorConDecisionTruco();
 	}
 	
 	
@@ -234,11 +248,12 @@ public class Moderador {
 
 	public void trucoCantado(Jugable jugadorQueCanto) {
         
-		if(this.jugadorConDecision == jugadorQueCanto){
+		
+		if(this.jugadorConDecisionTruco == jugadorQueCanto){
 			
 			Canto truco = new Truco();
 			this.manejadorTruco.setNivelApuesta(truco);
-			this.jugadorConDecision = this.getJugadorConDecision();
+			this.jugadorConDecisionTruco = this.getJugadorConDecisionTruco();
 		}
 		else{
 			
@@ -249,11 +264,11 @@ public class Moderador {
 
 	public void reTrucoCantado(Jugable jugadorQueCanto) {
 		
-		if(this.jugadorConDecision == jugadorQueCanto){
+		if(this.jugadorConDecisionTruco == jugadorQueCanto){
 			
 			Canto reTruco = new ReTruco();
 			this.manejadorTruco.setNivelApuesta(reTruco);
-			this.jugadorConDecision = this.getJugadorConDecision();
+			this.jugadorConDecisionTruco = this.getJugadorConDecisionTruco();
 		}
 		else{
 			
@@ -265,11 +280,11 @@ public class Moderador {
 
 	public void valeCuatroCantado(Jugable jugadorQueCanto) {
 
-		if(this.jugadorConDecision == jugadorQueCanto){
+		if(this.jugadorConDecisionTruco == jugadorQueCanto){
 			
 			Canto valeCuatro = new ValeCuatro();
 			this.manejadorTruco.setNivelApuesta(valeCuatro);
-			this.jugadorConDecision = this.getJugadorConDecision();
+			this.jugadorConDecisionTruco = this.getJugadorConDecisionTruco();
 		}
 		else{
 			
@@ -317,7 +332,7 @@ public class Moderador {
 	
 	public void jugadorAceptaVarianteTruco(Jugable jugadorQueResponde) {
 
-		if(!(this.jugadorConDecision == jugadorQueResponde)){
+		if(!(this.jugadorConDecisionTruco == jugadorQueResponde)){
 		
 			throw new TurnoParaTomarDecisionEquivocadoException();
 	    }		
@@ -357,11 +372,11 @@ public class Moderador {
 
 	public void jugadorRechazaVarianteTruco(Jugable jugadorQueResponde) {
 
-		if(this.jugadorConDecision == jugadorQueResponde){
+		if(this.jugadorConDecisionTruco == jugadorQueResponde){
 			
-			this.jugadorConDecision = this.getJugadorConDecision();
+			this.jugadorConDecisionTruco = getJugadorConDecisionTruco();
 			int puntajeASumar = this.manejadorTruco.getPuntajePorRechazar();
-			this.partidaEnCurso.sumarPuntos(jugadorConDecision.getEquipo(), puntajeASumar);
+			this.partidaEnCurso.sumarPuntos(jugadorConDecisionTruco.getEquipo(), puntajeASumar);
 			this.manejadorTruco.trucoNoQuerido();
 			this.rondaFinalizada();
 		}

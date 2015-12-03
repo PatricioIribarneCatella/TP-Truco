@@ -14,31 +14,30 @@ public class PartidaDeCuatro extends Partida {
 	
 	private void initialize(List<String> nombresJugadoresEquipo1, List<String> nombresJugadoresEquipo2, boolean conFlor) {
 		
-		Mesa mesaDeDos;
+		Mesa mesaDeCuatro;
 		
 		List<Jugable> jugadores = new LinkedList<Jugable>();
 		
 		Equipo equipo1 = new Equipo();
-		
-		for (String nombreJugador : nombresJugadoresEquipo1) {
-			
-			Jugable jugador = new Jugador(nombreJugador);
-			equipo1.agregarIntegrante(jugador);
-			jugadores.add(jugador);
-		}
-		
 		Equipo equipo2 = new Equipo();
 		
-		for (String nombreJugador : nombresJugadoresEquipo2) {
-			
-			Jugable jugador = new Jugador(nombreJugador);
-			equipo2.agregarIntegrante(jugador);
-			jugadores.add(jugador);
-		}
+		Jugable jugador1 = new Jugador(nombresJugadoresEquipo1.get(0));
+		Jugable jugador2 = new Jugador(nombresJugadoresEquipo2.get(0));
+		Jugable jugador3 = new Jugador(nombresJugadoresEquipo1.get(1));
+		Jugable jugador4 = new Jugador(nombresJugadoresEquipo2.get(1));
+		equipo1.agregarIntegrante(jugador1);
+		equipo1.agregarIntegrante(jugador3);
+		equipo2.agregarIntegrante(jugador2);
+		equipo2.agregarIntegrante(jugador4);
+		jugadores.add(jugador1);
+		jugadores.add(jugador2);
+		jugadores.add(jugador3);
+		jugadores.add(jugador4);
+				
 		
-		if (conFlor) mesaDeDos = new MesaConFlor(jugadores);
-		else mesaDeDos = new MesaSinFlor(jugadores);
-		this.moderador = new Moderador(mesaDeDos);
+		if (conFlor) mesaDeCuatro = new MesaConFlor(jugadores);
+		else mesaDeCuatro = new MesaSinFlor(jugadores);
+		this.moderador = new Moderador(mesaDeCuatro);
 		this.moderador.setPartida(this);
 		this.moderador.setRotacionStrategy(new StrategyRotacionEnRonda(jugadores));
 		
@@ -52,6 +51,6 @@ public class PartidaDeCuatro extends Partida {
 
 	@Override
 	protected void verificarEstrategiaDeRotacion() {
-		
+		// No verifica ninguna estrategia ya que la ronda es la única que hay
 	}
 }

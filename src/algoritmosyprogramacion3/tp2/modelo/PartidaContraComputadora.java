@@ -49,6 +49,6 @@ public class PartidaContraComputadora extends Partida {
 
 	@Override
 	protected void verificarEstrategiaDeRotacion() {
-		
+		// No verifica ninguna estrategia ya que la ronda es la única que hay
 	}
 }

@@ -173,6 +173,21 @@ public class PartidaDeDosSinFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosEnvido("Juan").equals("28"));
 		Assert.assertTrue(juego.mostrarPuntosEnvido("Pedro").equals("7"));
 	}
+
+	
+	@Test
+	public void testJugadorCantaEnvidoSeSubeLaApuestaSeRechazaYLuegoOcurreLoMismoConElTruco(){
+		
+		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
+		Assert.assertTrue(juego.cantarEnvidoPorJugador("Pedro"));
+		Assert.assertTrue(juego.rechazarVarianteEnvidoPorJugador("Juan"));
+		
+		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
+		Assert.assertTrue(juego.rechazarVarianteTrucoPorJugador("Pedro"));
+		
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("2"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("1"));
+	}
 	
 	@Test
 	public void testSeCantaEnvidoTresVecesSeguidasSeLoAcepta() {

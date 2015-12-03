@@ -6,13 +6,15 @@ import java.util.ListIterator;
 public class StrategyRotacionEnRonda implements RotacionStrategy{
 
     private ListIterator<Jugable> iteradorTurno;
-    private ListIterator<Jugable> iteradorDecision;
+    private ListIterator<Jugable> iteradorDecision; //para el envido
+    private ListIterator<Jugable> iteradorDecisionTruco;
     private List<Jugable> jugadores;
     
 	public StrategyRotacionEnRonda(List<Jugable>jugadores){
 		this.jugadores = jugadores;
 		iteradorTurno = this.jugadores.listIterator(0);
 		iteradorDecision = this.jugadores.listIterator(0);
+		iteradorDecisionTruco = this.jugadores.listIterator(0);
 	}
 	
     public Jugable getJugadorConTurno() {
@@ -38,6 +40,7 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 		this.jugadores.add(primerJugador);
 		this.iteradorTurno = this.jugadores.listIterator(0);
 		this.iteradorDecision = this.jugadores.listIterator(0);
+		this.iteradorDecisionTruco = this.jugadores.listIterator(0);
 	}
 
 	public Jugable getJugadorConDecision() {
@@ -51,6 +54,19 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 		    	 return (this.iteradorDecision.next());
 		    }
 	}
+	
+    public Jugable getJugadorConDecisionTruco() {
+		
+		if(this.iteradorDecisionTruco.hasNext()){
+	   		   
+		       return (this.iteradorDecisionTruco.next());
+		    }
+	    	else{
+	        	 this.iteradorDecisionTruco = this.jugadores.listIterator(); 
+		    	 return (this.iteradorDecisionTruco.next());
+		    }
+	}
+	
 
 	public List<Jugable> getJugadoresEnfrentados() {
 		

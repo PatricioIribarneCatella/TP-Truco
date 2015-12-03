@@ -71,13 +71,23 @@ public class StrategyRotacionPicaPica implements RotacionStrategy {
 	}
 
 	
+    public Jugable getJugadorConDecisionTruco() {
+		
+    	return this.rotacionEnRonda.getJugadorConDecisionTruco();
+	}
+	
+
+	
 	public List<Jugable> getJugadoresEnfrentados() {
 		
 		return this.parejaActual;
 	}
 
+	
 	@Override
 	public RotacionStrategy getProximaRotacion() {
 		return new StrategyRotacionEnRonda(this.todosLosJugadores);
 	}
+
+	
 }

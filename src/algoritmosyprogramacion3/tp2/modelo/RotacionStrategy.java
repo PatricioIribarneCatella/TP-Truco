@@ -18,5 +18,8 @@ public interface RotacionStrategy {
 	 public List<Jugable> getJugadoresEnfrentados();
 
 
-	public RotacionStrategy getProximaRotacion(); 
+	public RotacionStrategy getProximaRotacion();
+
+    public Jugable getJugadorConDecisionTruco();
+	
 }
