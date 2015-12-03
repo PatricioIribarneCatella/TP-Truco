@@ -19,7 +19,7 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 	protected void setBotonTerminarTurno() {
 		
 		Button botonTerminarTurno = new Button("Terminar turno");
-		botonTerminarTurno.setFont(Font.font("Tahoma", FontWeight.NORMAL, 12));
+		botonTerminarTurno.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
 		botonTerminarTurno.setTextFill(Color.WHITE);
 		
 		BackgroundFill fondoDeColorBotonTerminarTurno = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));

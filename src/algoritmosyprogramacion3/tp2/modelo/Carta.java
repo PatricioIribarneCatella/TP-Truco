@@ -30,6 +30,10 @@ public abstract class Carta {
 		return this.valorEnvido;
 	}
 	
+	public String getValor() {
+		return this.valorComoString;
+	}
+	
 	public void entregada() {
 		
 		this.estado = this.estado.proximoEstado();
@@ -48,6 +52,17 @@ public abstract class Carta {
 	@Override
 	public int hashCode() {
 		return this.valorComoString.hashCode() + this.palo.getValor().hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		
+		if (!(o instanceof Carta)) return false;
+		if (o == this) return true;
+		
+		Carta c = (Carta) o;
+		
+		return (this.valorComoString.equals(c.getValor()) && this.palo.getValor().equals(c.getPalo().getValor()));
 	}
 	
 	public abstract Carta jugarContra(Carta carta);

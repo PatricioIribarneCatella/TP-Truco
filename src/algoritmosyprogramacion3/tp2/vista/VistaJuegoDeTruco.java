@@ -118,6 +118,8 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 	
 	private void setCaracteristicasAlContenedorIzquierdo() {
 		
+		this.contenedorBotones = new VBox();
+		
 		Button botonTruco = new Button("Truco");
 		botonTruco.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
 		botonTruco.setTextFill(Color.WHITE);
@@ -265,9 +267,9 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			}
 		});
 		
+		this.contenedorBotones.getChildren().addAll(botonTruco, botonReTruco, botonValeCuatro, botonEnvido, botonRealEnvido, botonFaltaEnvido, botonFlor);
 		this.setBotonTerminarTurno();
 		
-		this.contenedorBotones = new VBox(botonTruco, botonReTruco, botonValeCuatro, botonEnvido, botonRealEnvido, botonFaltaEnvido, botonFlor);
 		this.contenedorBotones.setSpacing(15);
 		this.contenedorBotones.setPadding(new Insets(20));
 		this.contenedorBotones.setAlignment(Pos.CENTER);
