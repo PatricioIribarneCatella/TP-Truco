@@ -172,7 +172,14 @@ public class Mano {
 	}
 
 	public List<Carta> getCartas() {
-		return this.cartas;
+		
+		List<Carta> listaCartas = new LinkedList<Carta>();
+		
+		for (Carta carta : this.cartas) {
+			if (carta.esValidaParaSerJugada()) listaCartas.add(carta);
+		}
+		
+		return listaCartas;
 	}
 
 	public void vaciar() {

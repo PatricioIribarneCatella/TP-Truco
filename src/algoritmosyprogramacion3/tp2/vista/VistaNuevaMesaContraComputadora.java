@@ -41,4 +41,9 @@ public class VistaNuevaMesaContraComputadora extends VistaNuevaMesa {
 		this.textoJugador = new TextField();
 		this.contenedorCentral.add(this.textoJugador, 1, 2);
 	}
+
+	@Override
+	protected Vista nuevaVistaDependiendoModalidad(Vista vistaAnterior) {
+		return new VistaJuegoDeTrucoComputadora(vistaAnterior);
+	}
 }

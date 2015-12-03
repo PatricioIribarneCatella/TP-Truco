@@ -53,4 +53,9 @@ public class PartidaDeCuatro extends Partida {
 	protected void verificarEstrategiaDeRotacion() {
 		// No verifica ninguna estrategia ya que la ronda es la única que hay
 	}
+
+	@Override
+	public boolean esContraComputadora() {
+		return false;
+	}
 }

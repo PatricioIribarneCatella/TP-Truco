@@ -58,7 +58,7 @@ public abstract class VistaNuevaMesa implements Vista {
 		
 		this.setCaracteristicasAlContenedorPrincipal();
 		
-		this.escena = new Scene(this.contenedor, 1000, 600);
+		this.escena = new Scene(this.contenedor, 1300, 700);
 	}
 	
 	private void setContenedorPrincipal() {
@@ -68,7 +68,7 @@ public abstract class VistaNuevaMesa implements Vista {
 
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1000, 600, false, true);
+		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1300, 700, false, true);
 		
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		
@@ -80,6 +80,8 @@ public abstract class VistaNuevaMesa implements Vista {
 	protected abstract boolean hayDatosCargados();
 	
 	protected abstract void setCantidadJugadores();
+	
+	protected abstract Vista nuevaVistaDependiendoModalidad(Vista vistaAnterior);
 	
 	protected void setMensajeInformacionInvalida(String mensaje) {
 		
@@ -158,7 +160,7 @@ public abstract class VistaNuevaMesa implements Vista {
 			} else {
 				
 				if (this.actualizarModelo()) {
-					VistaJuegoDeTruco nuevaVista = new VistaJuegoDeTruco(this);
+					Vista nuevaVista = this.nuevaVistaDependiendoModalidad(this);
 					nuevaVista.mostrar();
 				} else {
 					this.setMensajeInformacionInvalida("El nombre de la mesa ya existe");

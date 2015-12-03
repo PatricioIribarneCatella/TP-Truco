@@ -2,6 +2,7 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Observable;
 import java.util.Set;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
@@ -12,13 +13,18 @@ import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
 
-public class JuegoTruco {
+public class JuegoTruco extends Observable {
 	
 	private Partida partidaActual;
 	private HashMap<String,Partida> partidasDisponibles;
 	
 	public JuegoTruco() {
 		this.partidasDisponibles = new HashMap<String,Partida>();
+	}
+	
+	private void actualizarObservadores() {
+		setChanged();
+		notifyObservers();
 	}
 
 	public boolean nuevaMesaContraComputadoraSinFlor(String nombreMesa, String nombreJugador) {
@@ -113,6 +119,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.cantarTruco(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -125,6 +132,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.cantarReTruco(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -137,6 +145,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.cantarValeCuatro(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -149,6 +158,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.cantarEnvido(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -161,6 +171,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.cantarRealEnvido(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -173,6 +184,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.cantarFaltaEnvido(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -185,6 +197,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.cantarFlor(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		} catch (JugadorSinFlorException | AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException | PartidaSinFlorException e) {
@@ -197,6 +210,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.aceptarFlor(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 		}
 		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -209,6 +223,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.aceptarVarianteEnvido(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 		}
 		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException | CantidadDeEnvidosMaximosSuperadaException e) {
@@ -221,6 +236,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.aceptarTruco(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 		}
 		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -233,6 +249,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.aceptarReTruco(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 		}
 		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -245,6 +262,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.aceptarValeCuatro(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 		}
 		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -257,6 +275,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.rechazarFlor(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		}catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -269,6 +288,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.rechazarVarianteDeEnvido(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		}catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -281,6 +301,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.rechazarVarianteDeTruco(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		}catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -308,6 +329,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.jugarPrimerCartaJugador(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		} catch (TurnoEquivocadoException | AccionInvalidaException | CartaYaJugadaException e) {
@@ -320,6 +342,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.jugarSegundaCartaJugador(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		} catch (TurnoEquivocadoException | AccionInvalidaException | CartaYaJugadaException e) {
@@ -332,6 +355,7 @@ public class JuegoTruco {
 		
 		try {
 			this.partidaActual.jugarTercerCartaJugador(nombreJugador);
+			this.actualizarObservadores();
 			return true;
 			
 		} catch (TurnoEquivocadoException | AccionInvalidaException | CartaYaJugadaException e) {
@@ -366,5 +390,9 @@ public class JuegoTruco {
 
 	public String getNombreJugadorActual() {
 		return this.partidaActual.getNombreJugadorActual();
+	}
+
+	public boolean mesaActualContraComputadora() {
+		return this.partidaActual.esContraComputadora();
 	}
 }

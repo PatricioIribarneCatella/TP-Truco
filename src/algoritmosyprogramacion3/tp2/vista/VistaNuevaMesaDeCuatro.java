@@ -67,4 +67,9 @@ public class VistaNuevaMesaDeCuatro extends VistaNuevaMesa {
 		this.contenedorCentral.add(this.textoJugador3, 1, 4);
 		this.contenedorCentral.add(this.textoJugador4, 1, 5);
 	}
+
+	@Override
+	protected Vista nuevaVistaDependiendoModalidad(Vista vistaAnterior) {
+		return new VistaJuegoDeTrucoPorTurnos(vistaAnterior);
+	}
 }

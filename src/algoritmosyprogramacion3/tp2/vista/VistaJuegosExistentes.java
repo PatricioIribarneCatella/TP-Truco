@@ -50,7 +50,7 @@ public class VistaJuegosExistentes implements Vista {
 		
 		this.setCaracteristicasAlContenedorPrincipal();
 		
-		this.escena = new Scene(this.contenedor, 1000, 600);
+		this.escena = new Scene(this.contenedor, 1300, 800);
 	}
 	
 	private void setContenedorPrincipal() {
@@ -62,7 +62,7 @@ public class VistaJuegosExistentes implements Vista {
 
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1000, 600, false, true);
+		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1300, 800, false, true);
 		
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		
@@ -93,8 +93,18 @@ public class VistaJuegosExistentes implements Vista {
 				
 				botonMesa.setOnAction(e -> {
 					
+					Vista nuevaVista;
+					
 					this.modelo.cargarMesa(nombreMesa);
-					VistaJuegoDeTruco nuevaVista = new VistaJuegoDeTruco(this);
+					
+					if (this.modelo.mesaActualContraComputadora()) {
+						
+						nuevaVista = new VistaJuegoDeTrucoComputadora(this);
+						
+					} else {
+						
+						nuevaVista = new VistaJuegoDeTrucoPorTurnos(this);
+					}
 					nuevaVista.mostrar();
 				});
 				

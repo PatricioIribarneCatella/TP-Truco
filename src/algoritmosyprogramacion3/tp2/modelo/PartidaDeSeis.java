@@ -65,4 +65,9 @@ public class PartidaDeSeis extends Partida {
 		RotacionStrategy rotacion = this.manejoDeRotacion.getRotacion();
 		this.moderador.setRotacionStrategy(rotacion);
 	}
+
+	@Override
+	public boolean esContraComputadora() {
+		return false;
+	}
 }

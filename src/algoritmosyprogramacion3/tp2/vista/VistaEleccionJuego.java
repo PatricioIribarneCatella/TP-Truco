@@ -1,6 +1,5 @@
 package algoritmosyprogramacion3.tp2.vista;
 
-import algoritmosyprogramacion3.tp2.manejadores.BotonVolverEventHandler;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -47,7 +46,7 @@ public class VistaEleccionJuego implements Vista {
 		
 		this.setCaracteristicasAlContenedorPrincipal();
 		
-		this.escena = new Scene(this.contenedor, 1000, 600);
+		this.escena = new Scene(this.contenedor, 1300, 700);
 	}
 	
 	private void setContenedorPrincipal() {
@@ -59,7 +58,7 @@ public class VistaEleccionJuego implements Vista {
 
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1000, 600, false, true);
+		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1300, 700, false, true);
 		
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		
@@ -94,16 +93,7 @@ public class VistaEleccionJuego implements Vista {
 			nuevaVista.mostrar();
 		});
 		
-		this.botonVolver = new Button("Volver");
-		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-		this.botonVolver.setTextFill(Color.WHITE);
-		
-		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
-		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
-		
-		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
-		
-		this.contenedor.getChildren().addAll(botonJuegosExistentes, botonNuevoJuego, this.botonVolver);
+		this.contenedor.getChildren().addAll(botonJuegosExistentes, botonNuevoJuego);
 	}
 	
 	@Override

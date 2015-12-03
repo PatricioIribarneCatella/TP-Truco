@@ -48,4 +48,9 @@ public class VistaNuevaMesaDeDos extends VistaNuevaMesa {
 		this.contenedorCentral.add(this.textoJugador1, 1, 2);
 		this.contenedorCentral.add(textoJugador2, 1, 3);
 	}
+
+	@Override
+	protected Vista nuevaVistaDependiendoModalidad(Vista vistaAnterior) {
+		return new VistaJuegoDeTrucoPorTurnos(vistaAnterior);
+	}
 }

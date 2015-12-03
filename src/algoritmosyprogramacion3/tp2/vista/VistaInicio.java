@@ -44,7 +44,7 @@ public class VistaInicio implements Vista {
 		
 		this.setCaracteristicasAlContenedorPrincipal();
 		
-		this.escena = new Scene(this.contenedor, 1000, 600);
+		this.escena = new Scene(this.contenedor, 733, 540);
 	}
 	
 	private void setContenedorPrincipal() {
@@ -56,7 +56,7 @@ public class VistaInicio implements Vista {
 	
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:resources/imagenes/fondos/fondo-con-cartas-1.jpg", 1000, 600, false, true);
+		Image imagen = new Image("file:resources/imagenes/fondos/fondo-con-cartas-1.jpg", 733, 540, false, true);
 		
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		

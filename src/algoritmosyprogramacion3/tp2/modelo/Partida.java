@@ -247,4 +247,6 @@ public abstract class Partida {
 	public String getNombreJugadorActual() {
 		return this.moderador.getJugadorConTurno().getNombre();
 	}
+
+	public abstract boolean esContraComputadora();
 }
