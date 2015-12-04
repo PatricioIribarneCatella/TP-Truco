@@ -30,8 +30,12 @@ public abstract class Carta {
 		return this.valorEnvido;
 	}
 	
-	public String getValor() {
+	public String getValorComoString() {
 		return this.valorComoString;
+	}
+	
+	public int getValor() {
+		return Integer.parseInt(valorComoString);
 	}
 	
 	public void entregada() {
@@ -62,7 +66,7 @@ public abstract class Carta {
 		
 		Carta c = (Carta) o;
 		
-		return (this.valorComoString.equals(c.getValor()) && this.palo.getValor().equals(c.getPalo().getValor()));
+		return (this.valorComoString.equals(c.getValorComoString()) && this.palo.getValor().equals(c.getPalo().getValor()));
 	}
 	
 	public abstract Carta jugarContra(Carta carta);

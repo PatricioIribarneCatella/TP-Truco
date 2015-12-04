@@ -7,7 +7,6 @@ import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocado
 
 public class Moderador {
 	
-	
 	private Jugable jugadorConDecisionTruco;
 	private Jugable jugadorConDecision; //para la flor y el envido
     private Jugable jugadorConTurno;   
@@ -36,7 +35,6 @@ public class Moderador {
 		this.manejadorFlor = new ManejadorFlor();
 		this.cantidadDeCartasDeLaJugada = 0;
 	}
-	
 	
 	public void setRotacionStrategy(RotacionStrategy criterioDeRotacion){
 		
@@ -77,24 +75,23 @@ public class Moderador {
 		}
 	}
 	
-     public void seJugoUnaCarta() {
+	public void seJugoUnaCarta() {
 	    	 
     	this.cantidadDeCartasDeLaJugada++;
     	this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno(); 
     	List<Jugable> jugadoresEnfrentados = this.criterioDeRotacion.getJugadoresEnfrentados();
     	
-    	if(!this.manejadorTruco.trucoCantado()){ // porque las decisiones cambian de alguna forma de comportamiento una vez cantado el truco
+    	if (!this.manejadorTruco.trucoCantado()) { // porque las decisiones cambian de alguna forma de comportamiento una vez cantado el truco
     		this.jugadorConDecision = this.criterioDeRotacion.getJugadorConDecision();
     		this.jugadorConDecisionTruco = this.criterioDeRotacion.getJugadorConDecisionTruco();
     	}
     	
-    	
-    	if(this.cantidadDeCartasDeLaJugada == jugadoresEnfrentados.size()){
+    	if (this.cantidadDeCartasDeLaJugada == jugadoresEnfrentados.size()) {
     		
     		this.cantidadDeCartasDeLaJugada = 0;
     		Jugada nuevaJugada = new Jugada();
     		this.manejadorTruco.resolverJugada(nuevaJugada);
-    		if(this.manejadorTruco.alguienGanoDosDeTres()){
+    		if (this.manejadorTruco.alguienGanoDosDeTres()) {
                 
     			int puntajeASumar = this.manejadorTruco.getPuntajePorGanar();
     			Equipo equipoGanador = this.manejadorTruco.getGanador();
@@ -102,11 +99,10 @@ public class Moderador {
     			this.rondaFinalizada();
     		}
     	}
-    	
-     }
+    }
 	    
-	 public void rondaFinalizada(){
-	   	
+	public void rondaFinalizada(){
+	  	
     	this.jugadorMano = this.criterioDeRotacion.getSiguienteJugadorMano();
     	this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno();
     	this.jugadorConDecision = this.getJugadorConDecision();
@@ -120,24 +116,18 @@ public class Moderador {
     	for (Jugable jugador : jugadoresEnfrentados) {
     		jugador.devolverCartasAlMazo();
     	}
-    	
-	 }
-		 
-
-
-
+	}
+	
 	public Jugable getJugadorConTurno(){
 	    	
 		return this.jugadorConTurno;
 	}
-		 
-		 
+	
 	public Jugable getJugadorMano(){
 		    	
 		 return this.jugadorMano;
-	 }
+	}
 
-	
 	private Jugable getJugadorConDecision() {
 		
 		return this.criterioDeRotacion.getJugadorConDecision();
@@ -147,8 +137,7 @@ public class Moderador {
 		
 		return this.criterioDeRotacion.getJugadorConDecisionTruco();
 	}
-	
-	
+		
 	public void jugarPrimerCarta(Jugable unJugador){
 		
 		try{
@@ -184,7 +173,6 @@ public class Moderador {
 	
     /*METODOS DE ENVIDO Y TRUCO*/
 	
-	
 	public void florCantada(Jugable jugadorQueCanto) {
 		
 	    if(this.jugadorConDecision == jugadorQueCanto){
@@ -212,9 +200,7 @@ public class Moderador {
 			
 			throw new TurnoParaTomarDecisionEquivocadoException();
 	    }
-		
 	}
-
 
 	public void realEnvidoCantado(Jugable jugadorQueCanto) {
 		
@@ -230,7 +216,6 @@ public class Moderador {
 	    }
 	}
 
-
 	public void faltaEnvidoCantado(Jugable jugadorQueCanto) {
 	
         if(this.jugadorConDecision == jugadorQueCanto){
@@ -244,7 +229,6 @@ public class Moderador {
 			throw new TurnoParaTomarDecisionEquivocadoException();
 	    }
 	}
-
 
 	public void trucoCantado(Jugable jugadorQueCanto) {
         
@@ -261,7 +245,6 @@ public class Moderador {
 	    }
 	}
 
-
 	public void reTrucoCantado(Jugable jugadorQueCanto) {
 		
 		if(this.jugadorConDecisionTruco == jugadorQueCanto){
@@ -273,10 +256,8 @@ public class Moderador {
 		else{
 			
 			throw new TurnoParaTomarDecisionEquivocadoException();
-	    }
-		
+	    }	
 	}
-
 
 	public void valeCuatroCantado(Jugable jugadorQueCanto) {
 
@@ -292,7 +273,6 @@ public class Moderador {
 	    }	
 	}
 
-	
 	/*Se juega el envido o flor*/
 	
 	public void jugadorAceptaFlor(Jugable jugadorQueResponde) {
@@ -311,6 +291,7 @@ public class Moderador {
 			throw new TurnoParaTomarDecisionEquivocadoException();
 	    }	
 	}
+	
 	public void jugadorAceptaVarianteEnvido(Jugable jugadorQueResponde) {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
@@ -326,7 +307,6 @@ public class Moderador {
 			throw new TurnoParaTomarDecisionEquivocadoException();
 	    }		
 	}
-	
 	
 	/*Se juega el truco*/
 	
@@ -353,7 +333,6 @@ public class Moderador {
 			throw new TurnoParaTomarDecisionEquivocadoException();
 	    }	
 	}
-	
 	
 	public void jugadorRechazaVarianteEnvido(Jugable jugadorQueResponde) {
 
@@ -389,5 +368,4 @@ public class Moderador {
 	public Mesa getMesa() {
 		return this.mesaACargo;
 	}
-	
 }

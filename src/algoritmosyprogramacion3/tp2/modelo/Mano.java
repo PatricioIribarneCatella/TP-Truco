@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -26,39 +27,47 @@ public class Mano {
 		return lista;
 	}
 	
-	private int calcularPuntajeEnvido(List<Carta> lista) {
+	private String calcularPuntajeEnvidoConFlor() {
 		
-		int puntaje = 0;
-		
-		for (Carta carta : lista) {
-			puntaje += carta.getValorEnvido();	
-		}
-		
-		return puntaje;
-	}
-	
-	private int calcularPuntajeEnvidoConFlor() {
-		
-		int puntaje = 0;
+		int puntaje = 20;
 		
 		this.cartas.sort(new ComparadorCartasEnvido());
 		
-		puntaje = this.cartas.get(1).getValorEnvido() + this.cartas.get(2).getValorEnvido();
+		puntaje += this.cartas.get(1).getValorEnvido() + this.cartas.get(2).getValorEnvido();
 		
+		return Integer.toString(puntaje);
+	}
+	
+	private List<Palo> getListaPalos() {
+		return Arrays.asList(new Basto(), new Oro(), new Espada(), new Copa());
+	}
+	
+	private int calcularPuntajeEnvidoPara(Palo palo) {
+	
+		List<Carta> cartasFiltradas = this.filtrarCartasPorPalo(palo);
+		
+		if (cartasFiltradas.isEmpty()) return 0;
+		if (cartasFiltradas.size() == 1) return cartasFiltradas.get(0).getValor();
+		
+		int puntaje = 20;
+		
+		for (Carta carta : cartasFiltradas) {
+			puntaje += carta.getValorEnvido();
+		}
 		return puntaje;
 	}
-
-	private int calcularPuntajeEnvidoMentiroso() {
+	
+	private String calcularPuntajeEnvido() {
 		
-		int puntaje = 0;
+		List<Integer> envidos = new LinkedList<Integer>();
+		List<Palo> palos = this.getListaPalos();
 		
-		Optional<Carta> maximo = this.cartas.stream().max(new ComparadorCartasEnvido());
+		for (Palo palo : palos) {
+			envidos.add(this.calcularPuntajeEnvidoPara(palo));
+		}
 		
-		Carta carta = maximo.get();
-		
-		puntaje = carta.getValorEnvido();
-		
-		return puntaje;
+		Optional<Integer> maximo = envidos.stream().max(Integer::compare);
+		return Integer.toString(maximo.get());
 	}
 	
 	public boolean hayFlor() {
@@ -90,44 +99,8 @@ public class Mano {
 		
 	public String puntajeEnvido() {
 		
-		String puntajeComoString;
-		int puntaje = 20;
-		int puntajeParcial = 0;
-		
-		List<Carta> listaEspada = this.filtrarCartasPorPalo(new Espada());
-		List<Carta> listaBasto = this.filtrarCartasPorPalo(new Basto());
-		List<Carta> listaOro = this.filtrarCartasPorPalo(new Oro());
-		List<Carta> listaCopa = this.filtrarCartasPorPalo(new Copa());
-		
-		if (listaEspada.size() == 2) {
-			
-			puntajeParcial = this.calcularPuntajeEnvido(listaEspada);
-			
-		} else if (listaBasto.size() == 2) {
-			
-			puntajeParcial = this.calcularPuntajeEnvido(listaBasto);
-			
-		} else if (listaOro.size() == 2) {
-			
-			puntajeParcial = this.calcularPuntajeEnvido(listaOro);
-			
-		} else if (listaCopa.size() == 2) {
-			
-			puntajeParcial = this.calcularPuntajeEnvido(listaCopa);
-			
-		} else if (hayFlor()) {
-			
-			puntajeParcial = this.calcularPuntajeEnvidoConFlor();
-			
-		} else {
-			
-			return Integer.toString(this.calcularPuntajeEnvidoMentiroso());
-		}
-		
-		puntaje += puntajeParcial;
-		puntajeComoString = Integer.toString(puntaje);
-		
-		return puntajeComoString;
+		if (hayFlor()) return this.calcularPuntajeEnvidoConFlor();
+		else return this.calcularPuntajeEnvido();
 	}
 	
 	public void agregarCarta(Carta nuevaCarta) {

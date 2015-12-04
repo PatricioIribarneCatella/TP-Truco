@@ -8,9 +8,7 @@ import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
 public abstract class Mesa {
     
 	private List<Jugable> jugadores;
-	private List<Campo> camposDeJuego; 
-    //private Moderador moderador;
-	
+	private List<Campo> camposDeJuego;
     
     public Mesa(List<Jugable>jugadores) {
     	
@@ -22,10 +20,6 @@ public abstract class Mesa {
     		this.camposDeJuego.add(nuevoCampo);
             unJugador.setMesa(this);
     	}
-    	
-    	/*this.moderador = new Moderador(this);
-    	RotacionStrategy estrategiaDeRotacion = new StrategyRotacionEnRonda(this.jugadores);
-    	this.setRotacionStrategy(estrategiaDeRotacion);*/
     }
     
 	public abstract boolean seJuegaConFlor();
@@ -35,36 +29,32 @@ public abstract class Mesa {
     	return this.jugadores;
     }
     
+    private Campo getCampoDelJugador(Jugable unJugador){
+    	 
+    	for (Campo unCampo : this.camposDeJuego){
+    		 
+    		if (unCampo.getJugador() == unJugador)
+    		{
+    			 return unCampo;
+    		}
+    	}
+    	return null;//nunca va a llegar aca
+    }
     
-    
-     public void recibirCartaJugada(Jugable unJugador,Carta unaCarta){
+    public void recibirCartaJugada(Jugable unJugador,Carta unaCarta) {
 
-   		if(unaCarta.esValidaParaSerJugada()){
+   		if (unaCarta.esValidaParaSerJugada()) {
+   			
     		unaCarta.jugate();
     		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
     		campoDelJugador.recibirCartaJugada(unaCarta);
         }
-   		else{
+   		else {
    			
    			throw new CartaYaJugadaException();
    		}
-    	 
-     }
+    }
     
-     private Campo getCampoDelJugador(Jugable unJugador){
-    	 
-    	 for(Campo unCampo:this.camposDeJuego){
-    		 
-    		 if(unCampo.getJugador() == unJugador)
-    		 {
-    			 return unCampo;
-    		 }
-    	 }
-    	 return null;//nunca va a llegar aca
-     }
-     
-
-    	 
 	public Carta getPrimerCartaJugada(Jugable unJugador) {
 		
 		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
