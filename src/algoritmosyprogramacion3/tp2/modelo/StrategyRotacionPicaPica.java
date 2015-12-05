@@ -58,7 +58,7 @@ public class StrategyRotacionPicaPica implements RotacionStrategy {
         	
         	this.parejaActual = iteradorPareja.next();
         	this.rotacionEnRonda = new StrategyRotacionEnRonda(parejaActual);
-        	return (this.rotacionEnRonda.getJugadorConTurno());//devuelvo el nuevo jugador mano que en definitiva es el que tiene el siguiente turno 
+        	return (parejaActual.get(0));//devuelvo el nuevo jugador mano que en definitiva siempre queda al principio de esta lista
         }
         this.rotacionEnRonda = new StrategyRotacionEnRonda(todosLosJugadores);
         return this.rotacionEnRonda.getSiguienteJugadorMano();

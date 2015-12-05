@@ -51,7 +51,7 @@ public class Moderador {
 	}
 		
 	public void repartirCartas(){
-		
+				
 	   for(int i = 0;i<3 ;i++){
 		   
 	  	  for(Jugable unJugador:this.jugadores){
@@ -103,6 +103,10 @@ public class Moderador {
 	    
 	public void rondaFinalizada(){
 	  	
+		List<Jugable> jugadoresEnfrentados = this.criterioDeRotacion.getJugadoresEnfrentados();
+    	for (Jugable jugador : jugadoresEnfrentados) {
+    		jugador.devolverCartasAlMazo();
+    	}
     	this.jugadorMano = this.criterioDeRotacion.getSiguienteJugadorMano();
     	this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno();
     	this.jugadorConDecision = this.getJugadorConDecision();
@@ -112,10 +116,6 @@ public class Moderador {
     	this.manejadorTruco.nuevaRonda();
     	this.manejadorTruco.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados()); //puede que quede en null hasta que en el pica pica cambie el strategy
     	
-    	List<Jugable> jugadoresEnfrentados = this.criterioDeRotacion.getJugadoresEnfrentados();
-    	for (Jugable jugador : jugadoresEnfrentados) {
-    		jugador.devolverCartasAlMazo();
-    	}
 	}
 	
 	public Jugable getJugadorConTurno(){

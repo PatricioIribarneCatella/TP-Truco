@@ -10,8 +10,6 @@ public abstract class Palo {
 	
 	public boolean compararCon(Palo palo) {
 		
-		if (palo.getValor().equals(this.valor)) return true;
-		
-		return false;
+		return palo.getValor().equals(this.valor);
 	}
 }
