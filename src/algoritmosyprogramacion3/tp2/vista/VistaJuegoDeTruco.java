@@ -9,6 +9,7 @@ import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
 import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
+import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -136,6 +137,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			} catch (AccionInvalidaException ex) {
 				
 				this.setMensajeInformacion("No se puede cantar Truco en este momento");
+				
+			} catch (TurnoParaTomarDecisionEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
 			}
 		});
 		
@@ -156,6 +161,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			} catch (AccionInvalidaException ex) {
 				
 				this.setMensajeInformacion("No se puede cantar Re-Truco en este momento");
+				
+			} catch (TurnoParaTomarDecisionEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
 			}
 		});
 		
@@ -176,6 +185,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			} catch (AccionInvalidaException ex) {
 				
 				this.setMensajeInformacion("No se puede cantar Vale cuatro en este momento");
+				
+			} catch (TurnoParaTomarDecisionEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
 			}
 		});
 		
@@ -196,6 +209,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			} catch (AccionInvalidaException ex) {
 				
 				this.setMensajeInformacion("No se puede cantar Envido en este momento");
+				
+			} catch (TurnoParaTomarDecisionEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
 			}
 		});
 		
@@ -216,6 +233,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			} catch (AccionInvalidaException ex) {
 				
 				this.setMensajeInformacion("No se puede cantar Real Envido en este momento");
+				
+			} catch (TurnoParaTomarDecisionEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
 			}
 		});
 		
@@ -236,6 +257,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			} catch (AccionInvalidaException ex) {
 				
 				this.setMensajeInformacion("No se puede cantar Falta Envido en este momento");
+				
+			} catch (TurnoParaTomarDecisionEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
 			}
 		});
 		
@@ -264,6 +289,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			} catch (JugadorSinFlorException ex) {
 				
 				this.setMensajeInformacion("No posee tres cartas del mismo palo");
+				
+			} catch (TurnoParaTomarDecisionEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
 			}
 		});
 		
