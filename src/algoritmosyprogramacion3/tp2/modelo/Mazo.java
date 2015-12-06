@@ -23,50 +23,50 @@ public class Mazo {
 		this.cartas.add(new UnoDeCopa());
 		this.cartas.add(new UnoDeOro());
 		
-		this.cartas.add(new DosDeEspada());
-		this.cartas.add(new DosDeBasto());
-		this.cartas.add(new DosDeCopa());
-		this.cartas.add(new DosDeOro());
+		this.cartas.add(new Dos(Palo.ESPADA));
+		this.cartas.add(new Dos(Palo.BASTO));
+		this.cartas.add(new Dos(Palo.COPA));
+		this.cartas.add(new Dos(Palo.ORO));
 		
-		this.cartas.add(new TresDeEspada());
-		this.cartas.add(new TresDeBasto());
-		this.cartas.add(new TresDeCopa());
-		this.cartas.add(new TresDeOro());
+		this.cartas.add(new Tres(Palo.ESPADA));
+		this.cartas.add(new Tres(Palo.BASTO));
+		this.cartas.add(new Tres(Palo.COPA));
+		this.cartas.add(new Tres(Palo.ORO));
 		
-		this.cartas.add(new CuatroDeEspada());
-		this.cartas.add(new CuatroDeBasto());
-		this.cartas.add(new CuatroDeCopa());
-		this.cartas.add(new CuatroDeOro());
+		this.cartas.add(new Cuatro(Palo.ESPADA));
+		this.cartas.add(new Cuatro(Palo.BASTO));
+		this.cartas.add(new Cuatro(Palo.COPA));
+		this.cartas.add(new Cuatro(Palo.ORO));
 		
-		this.cartas.add(new CincoDeEspada());
-		this.cartas.add(new CincoDeBasto());
-		this.cartas.add(new CincoDeCopa());
-		this.cartas.add(new CincoDeOro());
+		this.cartas.add(new Cinco(Palo.ESPADA));
+		this.cartas.add(new Cinco(Palo.BASTO));
+		this.cartas.add(new Cinco(Palo.COPA));
+		this.cartas.add(new Cinco(Palo.ORO));
 		
-		this.cartas.add(new SeisDeEspada());
-		this.cartas.add(new SeisDeBasto());
-		this.cartas.add(new SeisDeCopa());
-		this.cartas.add(new SeisDeOro());
+		this.cartas.add(new Seis(Palo.ESPADA));
+		this.cartas.add(new Seis(Palo.BASTO));
+		this.cartas.add(new Seis(Palo.COPA));
+		this.cartas.add(new Seis(Palo.ORO));
 		
 		this.cartas.add(new SieteDeEspada());
 		this.cartas.add(new SieteDeBasto());
 		this.cartas.add(new SieteDeCopa());
 		this.cartas.add(new SieteDeOro());
 		
-		this.cartas.add(new SotaDeEspada());
-		this.cartas.add(new SotaDeBasto());
-		this.cartas.add(new SotaDeCopa());
-		this.cartas.add(new SotaDeOro());
+		this.cartas.add(new Sota(Palo.ESPADA));
+		this.cartas.add(new Sota(Palo.BASTO));
+		this.cartas.add(new Sota(Palo.COPA));
+		this.cartas.add(new Sota(Palo.ORO));
 		
-		this.cartas.add(new CaballoDeEspada());
-		this.cartas.add(new CaballoDeBasto());
-		this.cartas.add(new CaballoDeCopa());
-		this.cartas.add(new CaballoDeOro());
+		this.cartas.add(new Caballo(Palo.ESPADA));
+		this.cartas.add(new Caballo(Palo.BASTO));
+		this.cartas.add(new Caballo(Palo.COPA));
+		this.cartas.add(new Caballo(Palo.ORO));
 		
-		this.cartas.add(new ReyDeEspada());
-		this.cartas.add(new ReyDeBasto());
-		this.cartas.add(new ReyDeCopa());
-		this.cartas.add(new ReyDeOro());
+		this.cartas.add(new Rey(Palo.ESPADA));
+		this.cartas.add(new Rey(Palo.BASTO));
+		this.cartas.add(new Rey(Palo.COPA));
+		this.cartas.add(new Rey(Palo.ORO));
 		
 		this.mezclarCartas();
 	}

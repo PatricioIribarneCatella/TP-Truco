@@ -1,10 +1,21 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public abstract class Caballo extends Figura {
+public class Caballo extends Figura {
 	
 	public Caballo() {
 		
 		super();
+		this.initialize();
+	}
+	
+	public Caballo(Palo palo) {
+		
+		super();
+		this.initialize();
+		this.palo = palo;
+	}
+	
+	private void initialize() {
 		this.valorComoString = "11";
 	}
 	

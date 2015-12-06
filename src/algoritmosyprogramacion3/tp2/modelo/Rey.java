@@ -1,10 +1,22 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public abstract class Rey extends Figura {
+public class Rey extends Figura {
 	
 	public Rey() {
 		
 		super();
+		this.initialize();
+	}
+	
+	public Rey(Palo palo) {
+		
+		super();
+		this.initialize();
+		this.palo = palo;
+	}
+	
+	private void initialize() {
+		
 		this.valorComoString = "12";
 	}
 	

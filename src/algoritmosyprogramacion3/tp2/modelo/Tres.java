@@ -1,10 +1,22 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public abstract class Tres extends Carta {
+public class Tres extends Carta {
 
 	public Tres() {
 		
 		super();
+		this.initialize();
+	}
+	
+	public Tres(Palo palo) {
+		
+		super();
+		this.initialize();
+		this.palo = palo;
+	}
+	
+	private void initialize() {
+		
 		this.valorEnvido = 3;
 		this.valorFlor = 3;
 		this.valorComoString = "3";

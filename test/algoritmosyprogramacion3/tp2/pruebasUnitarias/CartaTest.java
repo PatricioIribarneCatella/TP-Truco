@@ -3,23 +3,23 @@ package algoritmosyprogramacion3.tp2.pruebasUnitarias;
 import org.junit.Assert;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.CaballoDeOro;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.CincoDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.CuatroDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.DosDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.ReyDeOro;
-import algoritmosyprogramacion3.tp2.modelo.SeisDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeOro;
-import algoritmosyprogramacion3.tp2.modelo.SotaDeOro;
-import algoritmosyprogramacion3.tp2.modelo.TresDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
+import algoritmosyprogramacion3.tp2.modelo.Dos;
+import algoritmosyprogramacion3.tp2.modelo.Tres;
+import algoritmosyprogramacion3.tp2.modelo.Cuatro;
+import algoritmosyprogramacion3.tp2.modelo.Cinco;
+import algoritmosyprogramacion3.tp2.modelo.Seis;
+import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
+import algoritmosyprogramacion3.tp2.modelo.SieteDeCopa;
+import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
+import algoritmosyprogramacion3.tp2.modelo.SieteDeOro;
+import algoritmosyprogramacion3.tp2.modelo.Sota;
+import algoritmosyprogramacion3.tp2.modelo.Caballo;
+import algoritmosyprogramacion3.tp2.modelo.Rey;
 
 public class CartaTest {
 
@@ -125,7 +125,7 @@ public class CartaTest {
 	public void testUnoDeEspadaGanaALosTres() {
 		
 		Carta carta1 = new UnoDeEspada();
-		Carta carta2 = new TresDeBasto();
+		Carta carta2 = new Tres();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -134,7 +134,7 @@ public class CartaTest {
 	public void testUnoDeEspadaGanaALosDos() {
 		
 		Carta carta1 = new UnoDeEspada();
-		Carta carta2 = new DosDeEspada();
+		Carta carta2 = new Dos();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -152,7 +152,7 @@ public class CartaTest {
 	public void testUnoDeEspadaGanaALosReyes() {
 		
 		Carta carta1 = new UnoDeEspada();
-		Carta carta2 = new ReyDeOro();
+		Carta carta2 = new Rey();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -161,7 +161,7 @@ public class CartaTest {
 	public void testUnoDeEspadaGanaALosCaballos() {
 		
 		Carta carta1 = new UnoDeEspada();
-		Carta carta2 = new CaballoDeOro();
+		Carta carta2 = new Caballo();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -170,7 +170,7 @@ public class CartaTest {
 	public void testUnoDeEspadaGanaALosSotas() {
 		
 		Carta carta1 = new UnoDeEspada();
-		Carta carta2 = new SotaDeOro();
+		Carta carta2 = new Sota();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -188,36 +188,27 @@ public class CartaTest {
 	public void testUnoDeEspadaGanaALosSeis() {
 		
 		Carta carta1 = new UnoDeEspada();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
 	
 	@Test
-	public void testUnoDeEspadaGanaALosCinco() {
+	public void testUnoDeEspadaGanaALosCincos() {
 		
 		Carta carta1 = new UnoDeEspada();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
 	
 	@Test
-	public void testUnoDeEspadaGanaALosCuatro() {
+	public void testUnoDeEspadaGanaALosCuatros() {
 		
 		Carta carta1 = new UnoDeEspada();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
-	}
-	
-	@Test
-	public void testCompararDosCartasPorJerarquia2() {
-		
-		Carta carta1 = new DosDeEspada();
-		Carta carta2 = new TresDeBasto();
-		
-		Assert.assertTrue(carta1.jugarContra(carta2) == carta2);
 	}
 	
 	// Uno de Basto
@@ -244,7 +235,7 @@ public class CartaTest {
 	public void testUnoDeBastoGanaALosTres() {
 		
 		Carta carta1 = new UnoDeBasto();
-		Carta carta2 = new TresDeBasto();
+		Carta carta2 = new Tres();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -253,7 +244,7 @@ public class CartaTest {
 	public void testUnoDeBastoGanaALosDos() {
 		
 		Carta carta1 = new UnoDeBasto();
-		Carta carta2 = new DosDeEspada();
+		Carta carta2 = new Dos();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -271,7 +262,7 @@ public class CartaTest {
 	public void testUnoDeBastoGanaALosReyes() {
 		
 		Carta carta1 = new UnoDeBasto();
-		Carta carta2 = new ReyDeOro();
+		Carta carta2 = new Rey();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -280,7 +271,7 @@ public class CartaTest {
 	public void testUnoDeBastoGanaALosCaballos() {
 		
 		Carta carta1 = new UnoDeBasto();
-		Carta carta2 = new CaballoDeOro();
+		Carta carta2 = new Caballo();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -289,7 +280,7 @@ public class CartaTest {
 	public void testUnoDeBastoGanaALosSotas() {
 		
 		Carta carta1 = new UnoDeBasto();
-		Carta carta2 = new SotaDeOro();
+		Carta carta2 = new Sota();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -307,25 +298,25 @@ public class CartaTest {
 	public void testUnoDeBastoGanaALosSeis() {
 		
 		Carta carta1 = new UnoDeBasto();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
 	
 	@Test
-	public void testUnoDeBastoGanaALosCinco() {
+	public void testUnoDeBastoGanaALosCincos() {
 		
 		Carta carta1 = new UnoDeBasto();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
 	
 	@Test
-	public void testUnoDeBastoGanaALosCuatro() {
+	public void testUnoDeBastoGanaALosCuatros() {
 		
 		Carta carta1 = new UnoDeBasto();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -345,7 +336,7 @@ public class CartaTest {
 	public void testSieteDeEspadaGanaALosTres() {
 		
 		Carta carta1 = new SieteDeEspada();
-		Carta carta2 = new TresDeBasto();
+		Carta carta2 = new Tres();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -354,7 +345,7 @@ public class CartaTest {
 	public void testSieteDeEspadaGanaALosDos() {
 		
 		Carta carta1 = new SieteDeEspada();
-		Carta carta2 = new DosDeEspada();
+		Carta carta2 = new Dos();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -372,7 +363,7 @@ public class CartaTest {
 	public void testSieteDeEspadaGanaALosReyes() {
 		
 		Carta carta1 = new SieteDeEspada();
-		Carta carta2 = new ReyDeOro();
+		Carta carta2 = new Rey();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -381,7 +372,7 @@ public class CartaTest {
 	public void testSieteDeEspadaGanaALosCaballos() {
 		
 		Carta carta1 = new SieteDeEspada();
-		Carta carta2 = new CaballoDeOro();
+		Carta carta2 = new Caballo();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -390,7 +381,7 @@ public class CartaTest {
 	public void testSieteDeEspadaGanaALosSotas() {
 		
 		Carta carta1 = new SieteDeEspada();
-		Carta carta2 = new SotaDeOro();
+		Carta carta2 = new Sota();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -408,7 +399,7 @@ public class CartaTest {
 	public void testSieteDeEspadaGanaALosSeis() {
 		
 		Carta carta1 = new SieteDeEspada();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -417,7 +408,7 @@ public class CartaTest {
 	public void testSieteDeEspadaGanaALosCinco() {
 		
 		Carta carta1 = new SieteDeEspada();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -426,7 +417,7 @@ public class CartaTest {
 	public void testSieteDeEspadaGanaALosCuatro() {
 		
 		Carta carta1 = new SieteDeEspada();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -437,7 +428,7 @@ public class CartaTest {
 	public void testSieteDeOroGanaALosTres() {
 		
 		Carta carta1 = new SieteDeOro();
-		Carta carta2 = new TresDeBasto();
+		Carta carta2 = new Tres();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -446,7 +437,7 @@ public class CartaTest {
 	public void testSieteDeOroGanaALosDos() {
 		
 		Carta carta1 = new SieteDeOro();
-		Carta carta2 = new DosDeEspada();
+		Carta carta2 = new Dos();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -464,7 +455,7 @@ public class CartaTest {
 	public void testSieteDeOroGanaALosReyes() {
 		
 		Carta carta1 = new SieteDeOro();
-		Carta carta2 = new ReyDeOro();
+		Carta carta2 = new Rey();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -473,7 +464,7 @@ public class CartaTest {
 	public void testSieteDeOroGanaALosCaballos() {
 		
 		Carta carta1 = new SieteDeOro();
-		Carta carta2 = new CaballoDeOro();
+		Carta carta2 = new Caballo();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -482,7 +473,7 @@ public class CartaTest {
 	public void testSieteDeOroGanaALosSotas() {
 		
 		Carta carta1 = new SieteDeOro();
-		Carta carta2 = new SotaDeOro();
+		Carta carta2 = new Sota();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -500,7 +491,7 @@ public class CartaTest {
 	public void testSieteDeOroGanaALosSeis() {
 		
 		Carta carta1 = new SieteDeOro();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -509,7 +500,7 @@ public class CartaTest {
 	public void testSieteDeOroGanaALosCinco() {
 		
 		Carta carta1 = new SieteDeOro();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -518,7 +509,7 @@ public class CartaTest {
 	public void testSieteDeOroGanaALosCuatro() {
 		
 		Carta carta1 = new SieteDeOro();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -528,8 +519,8 @@ public class CartaTest {
 	@Test
 	public void testTresGanaALosDos() {
 		
-		Carta carta1 = new TresDeBasto();
-		Carta carta2 = new DosDeEspada();
+		Carta carta1 = new Tres();
+		Carta carta2 = new Dos();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -537,7 +528,7 @@ public class CartaTest {
 	@Test
 	public void testTresGanaALosUnosFalsos() {
 		
-		Carta carta1 = new TresDeBasto();
+		Carta carta1 = new Tres();
 		Carta carta2 = new UnoDeOro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
@@ -546,8 +537,8 @@ public class CartaTest {
 	@Test
 	public void testTresGanaALosReyes() {
 		
-		Carta carta1 = new TresDeBasto();
-		Carta carta2 = new ReyDeOro();
+		Carta carta1 = new Tres();
+		Carta carta2 = new Rey();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -555,8 +546,8 @@ public class CartaTest {
 	@Test
 	public void testTresGanaALosCaballos() {
 		
-		Carta carta1 = new TresDeBasto();
-		Carta carta2 = new CaballoDeOro();
+		Carta carta1 = new Tres();
+		Carta carta2 = new Caballo();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -564,8 +555,8 @@ public class CartaTest {
 	@Test
 	public void testTresGanaALosSotas() {
 		
-		Carta carta1 = new TresDeBasto();
-		Carta carta2 = new SotaDeOro();
+		Carta carta1 = new Tres();
+		Carta carta2 = new Sota();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -573,7 +564,7 @@ public class CartaTest {
 	@Test
 	public void testTresGanaALosSietesFalsos() {
 		
-		Carta carta1 = new TresDeBasto();
+		Carta carta1 = new Tres();
 		Carta carta2 = new SieteDeCopa();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
@@ -582,8 +573,8 @@ public class CartaTest {
 	@Test
 	public void testTresGanaALosSeis() {
 		
-		Carta carta1 = new TresDeBasto();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta1 = new Tres();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -591,8 +582,8 @@ public class CartaTest {
 	@Test
 	public void testTresGanaALosCinco() {
 		
-		Carta carta1 = new TresDeBasto();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta1 = new Tres();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -600,8 +591,8 @@ public class CartaTest {
 	@Test
 	public void testTresGanaALosCuatro() {
 		
-		Carta carta1 = new TresDeBasto();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta1 = new Tres();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -611,7 +602,7 @@ public class CartaTest {
 	@Test
 	public void testDosGanaALosUnosFalsos() {
 		
-		Carta carta1 = new DosDeEspada();
+		Carta carta1 = new Dos();
 		Carta carta2 = new UnoDeOro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
@@ -620,8 +611,8 @@ public class CartaTest {
 	@Test
 	public void testDosGanaALosReyes() {
 		
-		Carta carta1 = new DosDeEspada();
-		Carta carta2 = new ReyDeOro();
+		Carta carta1 = new Dos();
+		Carta carta2 = new Rey();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -629,8 +620,8 @@ public class CartaTest {
 	@Test
 	public void testDosGanaALosCaballos() {
 		
-		Carta carta1 = new DosDeEspada();
-		Carta carta2 = new CaballoDeOro();
+		Carta carta1 = new Dos();
+		Carta carta2 = new Caballo();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -638,8 +629,8 @@ public class CartaTest {
 	@Test
 	public void testDosGanaALosSotas() {
 		
-		Carta carta1 = new DosDeEspada();
-		Carta carta2 = new SotaDeOro();
+		Carta carta1 = new Dos();
+		Carta carta2 = new Sota();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -647,7 +638,7 @@ public class CartaTest {
 	@Test
 	public void testDosGanaALosSietesFalsos() {
 		
-		Carta carta1 = new DosDeEspada();
+		Carta carta1 = new Dos();
 		Carta carta2 = new SieteDeCopa();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
@@ -656,8 +647,8 @@ public class CartaTest {
 	@Test
 	public void testDosGanaALosSeis() {
 		
-		Carta carta1 = new DosDeEspada();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta1 = new Dos();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -665,8 +656,8 @@ public class CartaTest {
 	@Test
 	public void testDosGanaALosCinco() {
 		
-		Carta carta1 = new DosDeEspada();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta1 = new Dos();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -674,8 +665,8 @@ public class CartaTest {
 	@Test
 	public void testDosGanaALosCuatro() {
 		
-		Carta carta1 = new DosDeEspada();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta1 = new Dos();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -686,7 +677,7 @@ public class CartaTest {
 	public void testUnosFalsosGanaALosReyes() {
 		
 		Carta carta1 = new UnoDeOro();
-		Carta carta2 = new ReyDeOro();
+		Carta carta2 = new Rey();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -695,7 +686,7 @@ public class CartaTest {
 	public void testUnosFalsosGanaALosCaballos() {
 		
 		Carta carta1 = new UnoDeOro();
-		Carta carta2 = new CaballoDeOro();
+		Carta carta2 = new Caballo();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -704,7 +695,7 @@ public class CartaTest {
 	public void testUnosFalsosGanaALosSotas() {
 		
 		Carta carta1 = new UnoDeOro();
-		Carta carta2 = new SotaDeOro();
+		Carta carta2 = new Sota();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -722,7 +713,7 @@ public class CartaTest {
 	public void testUnosFalsosGanaALosSeis() {
 		
 		Carta carta1 = new UnoDeOro();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -731,7 +722,7 @@ public class CartaTest {
 	public void testUnosFalsosGanaALosCinco() {
 		
 		Carta carta1 = new UnoDeOro();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -740,7 +731,7 @@ public class CartaTest {
 	public void testUnosFalsosGanaALosCuatro() {
 		
 		Carta carta1 = new UnoDeOro();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -750,8 +741,8 @@ public class CartaTest {
 	@Test
 	public void testReyGanaALosCaballos() {
 		
-		Carta carta1 = new ReyDeOro();
-		Carta carta2 = new CaballoDeOro();
+		Carta carta1 = new Rey();
+		Carta carta2 = new Caballo();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -759,8 +750,8 @@ public class CartaTest {
 	@Test
 	public void testReyGanaALosSotas() {
 		
-		Carta carta1 = new ReyDeOro();
-		Carta carta2 = new SotaDeOro();
+		Carta carta1 = new Rey();
+		Carta carta2 = new Sota();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -768,7 +759,7 @@ public class CartaTest {
 	@Test
 	public void testReyGanaALosSietesFalsos() {
 		
-		Carta carta1 = new ReyDeOro();
+		Carta carta1 = new Rey();
 		Carta carta2 = new SieteDeCopa();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
@@ -777,8 +768,8 @@ public class CartaTest {
 	@Test
 	public void testReyGanaALosSeis() {
 		
-		Carta carta1 = new ReyDeOro();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta1 = new Rey();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -786,8 +777,8 @@ public class CartaTest {
 	@Test
 	public void testReyGanaALosCinco() {
 		
-		Carta carta1 = new ReyDeOro();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta1 = new Rey();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -795,8 +786,8 @@ public class CartaTest {
 	@Test
 	public void testReyDeOroGanaALosCuatro() {
 		
-		Carta carta1 = new ReyDeOro();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta1 = new Rey();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -806,8 +797,8 @@ public class CartaTest {
 	@Test
 	public void testCaballoGanaALosSotas() {
 		
-		Carta carta1 = new CaballoDeOro();
-		Carta carta2 = new SotaDeOro();
+		Carta carta1 = new Caballo();
+		Carta carta2 = new Sota();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -815,7 +806,7 @@ public class CartaTest {
 	@Test
 	public void testCaballoGanaALosSietesFalsos() {
 		
-		Carta carta1 = new CaballoDeOro();
+		Carta carta1 = new Caballo();
 		Carta carta2 = new SieteDeCopa();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
@@ -824,8 +815,8 @@ public class CartaTest {
 	@Test
 	public void testCaballoGanaALosSeis() {
 		
-		Carta carta1 = new CaballoDeOro();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta1 = new Caballo();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -833,8 +824,8 @@ public class CartaTest {
 	@Test
 	public void testCaballoGanaALosCinco() {
 		
-		Carta carta1 = new CaballoDeOro();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta1 = new Caballo();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -842,8 +833,8 @@ public class CartaTest {
 	@Test
 	public void testCaballoDeOroGanaALosCuatro() {
 		
-		Carta carta1 = new CaballoDeOro();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta1 = new Caballo();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -853,7 +844,7 @@ public class CartaTest {
 	@Test
 	public void testSotaGanaALosSietesFalsos() {
 		
-		Carta carta1 = new SotaDeOro();
+		Carta carta1 = new Sota();
 		Carta carta2 = new SieteDeCopa();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
@@ -862,8 +853,8 @@ public class CartaTest {
 	@Test
 	public void testSotaGanaALosSeis() {
 		
-		Carta carta1 = new SotaDeOro();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta1 = new Sota();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -871,8 +862,8 @@ public class CartaTest {
 	@Test
 	public void testSotaGanaALosCinco() {
 		
-		Carta carta1 = new SotaDeOro();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta1 = new Sota();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -880,8 +871,8 @@ public class CartaTest {
 	@Test
 	public void testSotaDeOroGanaALosCuatro() {
 		
-		Carta carta1 = new SotaDeOro();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta1 = new Sota();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -892,7 +883,7 @@ public class CartaTest {
 	public void testSieteFalsosGanaALosSeis() {
 		
 		Carta carta1 = new SieteDeCopa();
-		Carta carta2 = new SeisDeCopa();
+		Carta carta2 = new Seis();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -901,7 +892,7 @@ public class CartaTest {
 	public void testSieteFalsosGanaALosCinco() {
 		
 		Carta carta1 = new SieteDeCopa();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -910,7 +901,7 @@ public class CartaTest {
 	public void testSieteFalsosGanaALosCuatro() {
 		
 		Carta carta1 = new SieteDeCopa();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -920,8 +911,8 @@ public class CartaTest {
 	@Test
 	public void testSeisGanaALosCinco() {
 		
-		Carta carta1 = new SeisDeCopa();
-		Carta carta2 = new CincoDeCopa();
+		Carta carta1 = new Seis();
+		Carta carta2 = new Cinco();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -929,8 +920,8 @@ public class CartaTest {
 	@Test
 	public void testSeisGanaALosCuatro() {
 		
-		Carta carta1 = new SeisDeCopa();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta1 = new Seis();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}
@@ -940,8 +931,8 @@ public class CartaTest {
 	@Test
 	public void testCincoGanaALosCuatro() {
 		
-		Carta carta1 = new CincoDeCopa();
-		Carta carta2 = new CuatroDeCopa();
+		Carta carta1 = new Cinco();
+		Carta carta2 = new Cuatro();
 		
 		Assert.assertTrue(carta1.jugarContra(carta2) == carta1);
 	}

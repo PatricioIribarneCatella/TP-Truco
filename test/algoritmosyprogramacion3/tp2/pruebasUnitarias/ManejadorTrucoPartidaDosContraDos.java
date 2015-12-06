@@ -7,11 +7,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.CaballoDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.CincoDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.DosDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.DosDeOro;
+import algoritmosyprogramacion3.tp2.modelo.Dos;
+import algoritmosyprogramacion3.tp2.modelo.Tres;
+import algoritmosyprogramacion3.tp2.modelo.Cinco;
+import algoritmosyprogramacion3.tp2.modelo.Seis;
+import algoritmosyprogramacion3.tp2.modelo.Caballo;
 import algoritmosyprogramacion3.tp2.modelo.Equipo;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
@@ -20,11 +21,10 @@ import algoritmosyprogramacion3.tp2.modelo.ManejadorTruco;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
-import algoritmosyprogramacion3.tp2.modelo.SeisDeCopa;
+import algoritmosyprogramacion3.tp2.modelo.Palo;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
-import algoritmosyprogramacion3.tp2.modelo.TresDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
@@ -55,9 +55,6 @@ public class ManejadorTrucoPartidaDosContraDos {
 	private Carta cincoDeEspada;
 	private ManejadorTruco manejador = new ManejadorTruco();
 	
-	
-	
-	
 	@Before
 	public void setUp() {
 		
@@ -76,15 +73,15 @@ public class ManejadorTrucoPartidaDosContraDos {
 		unoDeEspada = new UnoDeEspada();
 		unoDeBasto = new UnoDeBasto();
 		sieteDeEspada = new SieteDeEspada();
-		tresDeCopa = new TresDeCopa();
-		dosDeBasto = new DosDeBasto();
-	    dosDeOro = new DosDeOro();
+		tresDeCopa = new Tres(Palo.COPA);
+		dosDeBasto = new Dos(Palo.BASTO);
+	    dosDeOro = new Dos(Palo.ORO);
 		unoDeOro = new UnoDeOro();
 		unoDeCopa = new UnoDeCopa();
-		caballoDeEspada = new CaballoDeEspada();
+		caballoDeEspada = new Caballo(Palo.ESPADA);
 		sieteDeBasto = new SieteDeBasto();
-		seisDeCopa = new SeisDeCopa();
-		cincoDeEspada = new CincoDeEspada();
+		seisDeCopa = new Seis(Palo.COPA);
+		cincoDeEspada = new Cinco(Palo.ESPADA);
 		mesa = new MesaSinFlor(jugadores);
 		
 		jugador1.recibirCarta(unoDeEspada);
@@ -139,8 +136,6 @@ public class ManejadorTrucoPartidaDosContraDos {
 		manejador.setJugadoresEnfrentados(jugadores);
 	}
 	
-	
-
 	@Test
 	public void testGanaEquipoUno(){
 		
@@ -236,7 +231,6 @@ public class ManejadorTrucoPartidaDosContraDos {
 		Assert.assertTrue(this.manejador.getGanador() == jugador2.getEquipo());	
 	}
 	
-	
 	@Test
 	public void testEmpatePrimeraGanaSegundaEquipoUno(){
 	
@@ -258,7 +252,6 @@ public class ManejadorTrucoPartidaDosContraDos {
 		Assert.assertTrue(this.manejador.getGanador() == jugador3.getEquipo());	
 	}
 	
-	
 	@Test
 	public void testEmpatePrimeraGanaSegundaEquipoDos(){
 	
@@ -279,7 +272,6 @@ public class ManejadorTrucoPartidaDosContraDos {
 		Assert.assertTrue(this.manejador.getGanador() == jugador2.getEquipo());	
 		Assert.assertTrue(this.manejador.getGanador() == jugador4.getEquipo());	
 	}
-	
 	
 	@Test
 	public void testEmpatanTerceraDefinePrimeraMano(){
@@ -308,11 +300,4 @@ public class ManejadorTrucoPartidaDosContraDos {
 		Assert.assertTrue(this.manejador.getGanador() == jugador1.getEquipo());	
 		Assert.assertTrue(this.manejador.getGanador() == jugador3.getEquipo());	
 	}
-	
-	
-	
-	
-
 }
-
-

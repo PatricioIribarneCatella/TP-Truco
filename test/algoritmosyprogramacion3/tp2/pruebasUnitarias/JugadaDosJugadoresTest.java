@@ -7,13 +7,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.CincoDeCopa;
+import algoritmosyprogramacion3.tp2.modelo.Cinco;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
+import algoritmosyprogramacion3.tp2.modelo.Palo;
 import algoritmosyprogramacion3.tp2.modelo.Resultado;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
@@ -41,7 +42,7 @@ public class JugadaDosJugadoresTest {
 	public void setUp() {
 		
 		this.jugador1 = new Jugador("Pedro");
-		this.cincoDeCopa = new CincoDeCopa();
+		this.cincoDeCopa = new Cinco(Palo.COPA);
 		this.sieteDeEspada = new SieteDeEspada();
 		this.unoDeCopa = new UnoDeCopa();
 		this.jugador1.recibirCarta(cincoDeCopa);

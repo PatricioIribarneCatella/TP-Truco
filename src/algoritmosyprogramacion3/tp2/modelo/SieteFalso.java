@@ -1,13 +1,9 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public abstract class SieteFalso extends Carta {
+public abstract class SieteFalso extends Siete {
 
 	public SieteFalso() {
-		
 		super();
-		this.valorEnvido = 7;
-		this.valorFlor = 7;
-		this.valorComoString = "7";
 	}
 	
 	@Override

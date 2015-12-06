@@ -1,14 +1,11 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public class SieteDeOro extends Carta {
+public class SieteDeOro extends Siete {
 
 	public SieteDeOro() {
 		
 		super();
 		this.palo = new Oro();
-		this.valorEnvido = 7;
-		this.valorFlor = 7;
-		this.valorComoString = "7";
 	}
 	
 	@Override

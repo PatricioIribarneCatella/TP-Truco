@@ -3,25 +3,21 @@ package algoritmosyprogramacion3.tp2.pruebasUnitarias;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.modelo.Canto;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.CincoDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.CincoDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.CuatroDeOro;
-import algoritmosyprogramacion3.tp2.modelo.DosDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.DosDeOro;
+import algoritmosyprogramacion3.tp2.modelo.Cinco;
+import algoritmosyprogramacion3.tp2.modelo.Cuatro;
+import algoritmosyprogramacion3.tp2.modelo.Dos;
 import algoritmosyprogramacion3.tp2.modelo.Envido;
 import algoritmosyprogramacion3.tp2.modelo.Equipo;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.ManejadorEnvidos;
+import algoritmosyprogramacion3.tp2.modelo.Palo;
 import algoritmosyprogramacion3.tp2.modelo.RealEnvido;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeCopa;
@@ -32,8 +28,7 @@ import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
 
 public class ManejadorEnvidoTest {
-
-	//private static final Carta UnoDeBasto = null;
+	
 	private Jugable jugador1;
 	private Jugable jugador2;
 	private Jugable jugador3;
@@ -82,15 +77,15 @@ public class ManejadorEnvidoTest {
 		
         unoDeEspada = new UnoDeEspada();
 	    sieteDeEspada = new SieteDeEspada();
-		cincoDeEspada =  new CincoDeEspada();
+		cincoDeEspada =  new Cinco(Palo.ESPADA);
 		unoDeBasto = new UnoDeBasto();
 		sieteDeBasto = new SieteDeBasto();
-		dosDeBasto= new DosDeBasto();
+		dosDeBasto= new Dos(Palo.BASTO);
 		unoDeOro = new UnoDeOro();
-		dosDeOro = new DosDeOro();
-		cuatroDeOro = new CuatroDeOro();
+		dosDeOro = new Dos(Palo.ORO);
+		cuatroDeOro = new Cuatro(Palo.ORO);
 		unoDeCopa = new UnoDeCopa();
-		cincoDeCopa =  new CincoDeCopa();
+		cincoDeCopa =  new Cinco(Palo.COPA);
 		sieteDeCopa =  new SieteDeCopa();
 		
 		jugador1.recibirCarta(unoDeBasto); 

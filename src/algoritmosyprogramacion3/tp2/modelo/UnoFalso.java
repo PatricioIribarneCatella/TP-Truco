@@ -1,13 +1,9 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public abstract class UnoFalso extends Carta {
+public abstract class UnoFalso extends Uno {
 
 	public UnoFalso() {
-		
 		super();
-		this.valorEnvido = 1;
-		this.valorFlor = 1;
-		this.valorComoString = "1";
 	}
 	
 	@Override

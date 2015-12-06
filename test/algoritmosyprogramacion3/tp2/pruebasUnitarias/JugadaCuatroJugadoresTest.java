@@ -7,23 +7,22 @@ import org.junit.Before;
 import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.CincoDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.CincoDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.DosDeEspada;
+import algoritmosyprogramacion3.tp2.modelo.Cinco;
+import algoritmosyprogramacion3.tp2.modelo.Dos;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
+import algoritmosyprogramacion3.tp2.modelo.Palo;
 import algoritmosyprogramacion3.tp2.modelo.Resultado;
-import algoritmosyprogramacion3.tp2.modelo.ReyDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.ReyDeCopa;
+import algoritmosyprogramacion3.tp2.modelo.Rey;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
-import algoritmosyprogramacion3.tp2.modelo.SeisDeEspada;
+import algoritmosyprogramacion3.tp2.modelo.Seis;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
-import algoritmosyprogramacion3.tp2.modelo.TresDeEspada;
+import algoritmosyprogramacion3.tp2.modelo.Tres;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
@@ -55,7 +54,7 @@ public class JugadaCuatroJugadoresTest {
 	public void setUp() {
 		
 		this.jugador1 = new Jugador("Pedro");
-		this.cincoDeCopa = new CincoDeCopa();
+		this.cincoDeCopa = new Cinco(Palo.COPA);
 		this.sieteDeEspada = new SieteDeEspada();
 		this.unoDeCopa = new UnoDeCopa();
 		this.jugador1.recibirCarta(cincoDeCopa);
@@ -71,17 +70,17 @@ public class JugadaCuatroJugadoresTest {
 		this.jugador2.recibirCarta(unoDeOro);
 		
 		this.jugador3 = new Jugador("Carlos");
-		this.reyDeCopa = new ReyDeCopa();
-		this.seisDeEspada = new SeisDeEspada();
-		this.dosDeEspada = new DosDeEspada();
+		this.reyDeCopa = new Rey(Palo.COPA);
+		this.seisDeEspada = new Seis(Palo.ESPADA);
+		this.dosDeEspada = new Dos(Palo.ESPADA);
 		this.jugador3.recibirCarta(reyDeCopa);
 		this.jugador3.recibirCarta(seisDeEspada);
 		this.jugador3.recibirCarta(dosDeEspada);
 		
 		this.jugador4 = new Jugador("Raul");
-		this.reyDeBasto = new ReyDeBasto();
-		this.cincoDeEspada = new CincoDeEspada();
-		this.tresDeEspada = new TresDeEspada();
+		this.reyDeBasto = new Rey(Palo.BASTO);
+		this.cincoDeEspada = new Cinco(Palo.ESPADA);
+		this.tresDeEspada = new Tres(Palo.ESPADA);
 		this.jugador4.recibirCarta(reyDeBasto);
 		this.jugador4.recibirCarta(cincoDeEspada);
 		this.jugador4.recibirCarta(tresDeEspada);

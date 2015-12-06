@@ -1,10 +1,22 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public abstract class Sota extends Figura {
+public class Sota extends Figura {
 	
 	public Sota() {
 		
 		super();
+		this.initialize();
+	}
+	
+	public Sota(Palo palo) {
+		
+		super();
+		this.initialize();
+		this.palo = palo;
+	}
+	
+	private void initialize() {
+	
 		this.valorComoString = "10";
 	}
 	

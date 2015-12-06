@@ -1,10 +1,22 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public abstract class Cuatro extends Carta {
+public class Cuatro extends Carta {
 
 	public Cuatro() {
 		
 		super();
+		this.initialize();
+	}
+	
+	public Cuatro(Palo palo) {
+		
+		super();
+		this.initialize();
+		this.palo = palo;
+	}
+	
+	private void initialize() {
+		
 		this.valorEnvido = 4;
 		this.valorFlor = 4;
 		this.valorComoString = "4";

@@ -1,14 +1,11 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public class UnoDeBasto extends Carta {
+public class UnoDeBasto extends Uno {
 
 	public UnoDeBasto() {
 		
 		super();
 		this.palo = new Basto();
-		this.valorEnvido = 1;
-		this.valorFlor = 1;
-		this.valorComoString = "1";
 	}
 	
 	@Override

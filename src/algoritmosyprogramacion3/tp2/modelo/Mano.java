@@ -20,7 +20,7 @@ public class Mano {
 		
 		List<Carta> lista = new LinkedList<Carta>();
 		
-		Stream<Carta> cartasFiltradas = this.cartas.stream().filter(x -> palo.compararCon(x.getPalo()));
+		Stream<Carta> cartasFiltradas = this.cartas.stream().filter(x -> Palo.compararPalos(palo, x.getPalo()));
 		
 		cartasFiltradas.forEach(y -> lista.add(y));
 		

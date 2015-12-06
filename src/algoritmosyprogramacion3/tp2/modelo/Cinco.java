@@ -1,10 +1,22 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public abstract class Cinco extends Carta {
+public class Cinco extends Carta {
 
 	public Cinco() {
 		
 		super();
+		this.initialize();
+	}
+	
+	public Cinco(Palo palo) {
+		
+		super();
+		this.initialize();
+		this.palo = palo;
+	}
+	
+	private void initialize() {
+		
 		this.valorEnvido = 5;
 		this.valorFlor = 5;
 		this.valorComoString = "5";

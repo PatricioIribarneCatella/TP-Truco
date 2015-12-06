@@ -10,19 +10,16 @@ import org.junit.Test;
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.CincoDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.CincoDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.CuatroDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.DosDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.DosDeOro;
+import algoritmosyprogramacion3.tp2.modelo.Cinco;
+import algoritmosyprogramacion3.tp2.modelo.Cuatro;
+import algoritmosyprogramacion3.tp2.modelo.Dos;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import algoritmosyprogramacion3.tp2.modelo.SeisDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.SeisDeCopa;
+import algoritmosyprogramacion3.tp2.modelo.Palo;
+import algoritmosyprogramacion3.tp2.modelo.Seis;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.TresDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.TresDeCopa;
+import algoritmosyprogramacion3.tp2.modelo.Tres;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
@@ -46,14 +43,14 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testCantarFlorDeberiaSerPosible() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeBasto(), new TresDeBasto(), new CuatroDeBasto(), new CincoDeBasto(), new SeisDeBasto()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.BASTO), new Tres(Palo.BASTO), new Cuatro(Palo.BASTO), new Cinco(Palo.BASTO), new Seis(Palo.BASTO)));
 		Assert.assertTrue(juego.cantarFlorPorJugador("Juan"));
 	}
 	
 	@Test (expected = TurnoParaTomarDecisionEquivocadoException.class)
 	public void testMismoJugadorCantaTrucoYAceptaNoDeberiaSerPosible() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		juego.aceptarTrucoPorJugador("Juan");
 	}
@@ -61,7 +58,7 @@ public class PartidaDeDosConFlorTest {
 	@Test (expected = TurnoParaTomarDecisionEquivocadoException.class)
 	public void testMismoJugadorCantaEnvidoYAceptaNoDeberiaSerPosible() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
 		juego.aceptarVarianteEnvidoPorJugador("Juan");
 	}
@@ -69,21 +66,21 @@ public class PartidaDeDosConFlorTest {
 	@Test (expected = AccionInvalidaException.class)
 	public void testNoDeberiaSerPosibleCantarReTrucoCuandoEmpiezaLaPartida() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		juego.cantarReTrucoPorJugador("Juan");
 	}
 	
 	@Test (expected = AccionInvalidaException.class)
 	public void testNoDeberiaSerPosibleCantarValeCuatroCuandoEmpiezaLaPartida() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		juego.cantarValeCuatroPorJugador("Juan");
 	}
 	
 	@Test (expected = TurnoParaTomarDecisionEquivocadoException.class)
 	public void testMismoJugadorCantaTrucoYReTruco() {
 	
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		juego.cantarReTrucoPorJugador("Juan");
 	}
@@ -91,7 +88,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaTrucoYNoSeLoQuiere() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.rechazarVarianteTrucoPorJugador("Pedro"));
@@ -103,7 +100,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaEnvidoNoSeLoQuiereSeCantaTrucoNoSeLoQuiere() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.rechazarVarianteEnvidoPorJugador("Pedro"));
@@ -118,7 +115,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaTrucoYSeLoQuiere() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.aceptarTrucoPorJugador("Pedro"));
@@ -135,7 +132,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaTrucoSeCantaReTrucoSeLoQuiere() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.aceptarTrucoPorJugador("Pedro"));
@@ -157,7 +154,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaTrucoSeCantaReTrucoSeCantaValeCuatroSeLoQuiere() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Pedro"));
@@ -178,7 +175,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaEnvidoSeLoAcepta() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.aceptarVarianteEnvidoPorJugador("Pedro"));
@@ -192,7 +189,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaEnvidoDosVecesSeguidasSeLoAcepta() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Pedro"));
@@ -207,7 +204,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaEnvidoTresVecesSeguidasSeLoAcepta() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Pedro"));
@@ -223,7 +220,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaRealEnvidoSeLoAcepta() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarRealEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.aceptarVarianteEnvidoPorJugador("Pedro"));
@@ -237,7 +234,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaEnvidoTresVecesSeguidasYRealEnvidoSeLoAcepta() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Pedro"));
@@ -254,7 +251,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaFaltaEnvidoSeLoAcepta() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarFaltaEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.aceptarVarianteEnvidoPorJugador("Pedro"));
@@ -268,14 +265,14 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaTrucoSeCantaFlorYNoSeAcepta() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		// Juan
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.rechazarVarianteTrucoPorJugador("Pedro"));
 		
 		// Pedro
-		juego.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeBasto(), new TresDeBasto(), new CuatroDeBasto(), new CincoDeBasto(), new SeisDeBasto()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.BASTO), new Tres(Palo.BASTO), new Cuatro(Palo.BASTO), new Cinco(Palo.BASTO), new Seis(Palo.BASTO)));
 		Assert.assertTrue(juego.cantarFlorPorJugador("Pedro"));
 		Assert.assertTrue(juego.rechazarFlorPorJugador("Juan"));
 		
@@ -286,14 +283,14 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testSeCantaTrucoSeCantaFlorYSeAcepta() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		// Juan
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.rechazarVarianteTrucoPorJugador("Pedro"));
 		
 		// Pedro
-		juego.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeBasto(), new TresDeBasto(), new CuatroDeBasto(), new CincoDeBasto(), new SeisDeBasto()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.BASTO), new Tres(Palo.BASTO), new Cuatro(Palo.BASTO), new Cinco(Palo.BASTO), new Seis(Palo.BASTO)));
 		Assert.assertTrue(juego.cantarFlorPorJugador("Pedro"));
 		Assert.assertTrue(juego.aceptarFlorPorJugador("Juan"));
 		
@@ -304,7 +301,7 @@ public class PartidaDeDosConFlorTest {
 	@Test
 	public void testPartidaCompleta() {
 		
-		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		// Juan
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
@@ -320,7 +317,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("0"));
 		
 		// Pedro
-		juego.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.rechazarVarianteTrucoPorJugador("Juan"));
@@ -329,7 +326,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("1"));
 	
 		// Juan
-		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa(), new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada()));
+		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA), new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Pedro"));
@@ -347,7 +344,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("5"));
 		
 		// Pedro
-		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa(), new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada()));
+		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA), new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.aceptarTrucoPorJugador("Juan"));
@@ -371,7 +368,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("9"));
 		
 		// Juan
-		juego.repartirCartas(Arrays.asList(new UnoDeBasto(), new DosDeOro(), new SieteDeBasto(), new UnoDeEspada(), new DosDeBasto(), new SieteDeCopa()));
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.rechazarVarianteEnvidoPorJugador("Pedro"));
@@ -386,7 +383,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("9"));
 		
 		// Pedro
-		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa(), new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada()));
+		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA), new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.aceptarTrucoPorJugador("Juan"));
@@ -410,7 +407,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("13"));
 		
 		// Juan
-		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa(), new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada()));
+		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA), new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.rechazarVarianteEnvidoPorJugador("Pedro"));
@@ -425,7 +422,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("13"));
 		
 		// Pedro
-		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa(), new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada()));
+		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA), new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.aceptarTrucoPorJugador("Juan"));
@@ -449,7 +446,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("17"));
 		
 		// Juan
-		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa(), new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada()));
+		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA), new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Pedro"));
@@ -465,7 +462,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("17"));
 		
 		// Pedro
-		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa(), new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada()));
+		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA), new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Pedro"));
 		Assert.assertTrue(juego.rechazarVarianteEnvidoPorJugador("Juan"));
@@ -480,7 +477,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("19"));
 		
 		// Juan
-		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa(), new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada()));
+		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA), new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.rechazarVarianteEnvidoPorJugador("Pedro"));
@@ -504,7 +501,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("23"));
 		
 		// Pedro
-		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa(), new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada()));
+		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA), new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Pedro"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Juan"));
@@ -520,7 +517,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("23"));
 		
 		// Juan
-		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa(), new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada()));
+		juego.repartirCartas(Arrays.asList(new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA), new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarReTrucoPorJugador("Pedro"));
@@ -538,7 +535,7 @@ public class PartidaDeDosConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("27"));
 		
 		// Pedro
-		juego.repartirCartas(Arrays.asList( new TresDeCopa(), new UnoDeCopa(), new CincoDeEspada(), new SieteDeEspada(), new UnoDeOro(), new SeisDeCopa()));
+		juego.repartirCartas(Arrays.asList( new Tres(Palo.COPA), new UnoDeCopa(), new Cinco(Palo.ESPADA), new SieteDeEspada(), new UnoDeOro(), new Seis(Palo.COPA)));
 		
 		Assert.assertTrue(juego.cantarFaltaEnvidoPorJugador("Pedro"));
 		Assert.assertTrue(juego.aceptarVarianteEnvidoPorJugador("Juan"));

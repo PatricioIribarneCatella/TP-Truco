@@ -7,14 +7,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.CaballoDeEspada;
+import algoritmosyprogramacion3.tp2.modelo.Caballo;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.CincoDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.CuatroDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.CuatroDeOro;
-import algoritmosyprogramacion3.tp2.modelo.DosDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.DosDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.DosDeOro;
+import algoritmosyprogramacion3.tp2.modelo.Cinco;
+import algoritmosyprogramacion3.tp2.modelo.Cuatro;
+import algoritmosyprogramacion3.tp2.modelo.Dos;
 import algoritmosyprogramacion3.tp2.modelo.Equipo;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
@@ -23,14 +20,13 @@ import algoritmosyprogramacion3.tp2.modelo.ManejadorTruco;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
-import algoritmosyprogramacion3.tp2.modelo.ReyDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.ReyDeOro;
-import algoritmosyprogramacion3.tp2.modelo.SeisDeCopa;
+import algoritmosyprogramacion3.tp2.modelo.Palo;
+import algoritmosyprogramacion3.tp2.modelo.Rey;
+import algoritmosyprogramacion3.tp2.modelo.Seis;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
-import algoritmosyprogramacion3.tp2.modelo.TresDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.TresDeEspada;
+import algoritmosyprogramacion3.tp2.modelo.Tres;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
@@ -69,9 +65,6 @@ public class ManejadorTrucoPartidaPicaPicaTest {
 	private Carta cuatroDeCopa;
 	private ManejadorTruco manejador = new ManejadorTruco();
 	
-	
-	
-	
 	@Before
 	public void setUp() {
 		
@@ -94,21 +87,21 @@ public class ManejadorTrucoPartidaPicaPicaTest {
 		unoDeEspada = new UnoDeEspada();
 		unoDeBasto = new UnoDeBasto();
 		sieteDeEspada = new SieteDeEspada();
-		tresDeCopa = new TresDeCopa();
-		tresDeEspada = new TresDeEspada();
-		dosDeEspada = new DosDeEspada();
-		dosDeBasto = new DosDeBasto();
-	    dosDeOro = new DosDeOro();
+		tresDeCopa = new Tres(Palo.COPA);
+		tresDeEspada = new Tres(Palo.ESPADA);
+		dosDeEspada = new Dos(Palo.ESPADA);
+		dosDeBasto = new Dos(Palo.BASTO);
+	    dosDeOro = new Dos(Palo.ORO);
 		unoDeOro = new UnoDeOro();
 		unoDeCopa = new UnoDeCopa();
-		reyDeBasto = new ReyDeBasto();
-		reyDeOro = new ReyDeOro();
-		caballoDeEspada = new CaballoDeEspada();
+		reyDeBasto = new Rey(Palo.BASTO);
+		reyDeOro = new Rey(Palo.ORO);
+		caballoDeEspada = new Caballo(Palo.ESPADA);
 		sieteDeBasto = new SieteDeBasto();
-		seisDeCopa = new SeisDeCopa();
-		cincoDeEspada = new CincoDeEspada();
-		cuatroDeOro = new CuatroDeOro();
-		cuatroDeCopa = new CuatroDeCopa();
+		seisDeCopa = new Seis(Palo.COPA);
+		cincoDeEspada = new Cinco(Palo.ESPADA);
+		cuatroDeOro = new Cuatro(Palo.ORO);
+		cuatroDeCopa = new Cuatro(Palo.COPA);
 		mesa = new MesaSinFlor(jugadores);
 		
 		jugador1.recibirCarta(unoDeEspada);
@@ -182,9 +175,6 @@ public class ManejadorTrucoPartidaPicaPicaTest {
 		
 	}
 	
-	
-	
-
 	@Test
 	public void testGanaEquipoUno(){
 		
@@ -425,10 +415,4 @@ public class ManejadorTrucoPartidaPicaPicaTest {
 		
 	} el tema con este test es que, al pedirle los jugadores a enfrentar del rotacion Strategy se me relacionan con aquellos del moderador
 	 por lo tanto me tira un null pointer exception */
-	
-	
-	
-
 }
-
-

@@ -9,13 +9,13 @@ import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.CuatroDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.CuatroDeOro;
+import algoritmosyprogramacion3.tp2.modelo.Cuatro;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaConFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
+import algoritmosyprogramacion3.tp2.modelo.Palo;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeOro;
@@ -61,8 +61,8 @@ public class MesaTest {
 	    anchoDeBasto = new UnoDeBasto();
 		sieteDeEspada = new SieteDeEspada();
 		sieteDeOro = new SieteDeOro();
-		cuatroDeCopa = new CuatroDeCopa();
-		cuatroDeOro = new CuatroDeOro();
+		cuatroDeCopa = new Cuatro(Palo.COPA);
+		cuatroDeOro = new Cuatro(Palo.ORO);
 		
 		jugador1.recibirCarta(anchoDeEspada);
 		jugador1.recibirCarta(sieteDeEspada);

@@ -8,8 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.DosDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.DosDeOro;
+import algoritmosyprogramacion3.tp2.modelo.Dos;
 import algoritmosyprogramacion3.tp2.modelo.Equipo;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
@@ -18,6 +17,7 @@ import algoritmosyprogramacion3.tp2.modelo.ManejadorTruco;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
+import algoritmosyprogramacion3.tp2.modelo.Palo;
 import algoritmosyprogramacion3.tp2.modelo.ReTruco;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeCopa;
@@ -58,8 +58,8 @@ public class ManejadorTrucoPartidaUnoContraUnoTest {
 		
 		unoDeEspada = new UnoDeEspada();
 		unoDeBasto = new UnoDeBasto();
-		dosDeBasto = new DosDeBasto();
-	    dosDeOro = new DosDeOro();
+		dosDeBasto = new Dos(Palo.BASTO);
+	    dosDeOro = new Dos(Palo.ORO);
 		sieteDeCopa = new SieteDeCopa();
 		sieteDeBasto = new SieteDeBasto();
 		
@@ -94,8 +94,6 @@ public class ManejadorTrucoPartidaUnoContraUnoTest {
 		jugador2.setEquipo(equipo2);
 		this.manejador.setJugadoresEnfrentados(this.jugadores);
 	}
-	
-	
 	
 	@Test
 	public void puntajeSinHaberCantadoDevuelveLoEsperado(){
@@ -320,6 +318,4 @@ public class ManejadorTrucoPartidaUnoContraUnoTest {
 		Assert.assertTrue(this.manejador.getPuntajePorGanar() == 1);
 		Assert.assertTrue(this.manejador.getGanador() == null);
 	}
-	
-
 }
