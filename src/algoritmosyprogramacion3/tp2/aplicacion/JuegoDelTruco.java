@@ -5,7 +5,7 @@ import algoritmosyprogramacion3.tp2.vista.VistaInicio;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class JuegoDelTruco extends Application{
+public class JuegoDelTruco extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {

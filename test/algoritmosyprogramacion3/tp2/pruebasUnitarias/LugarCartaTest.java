@@ -13,21 +13,21 @@ public class LugarCartaTest {
 	@Test
 	public void testEstadoEnMazoNoEsValidoParaSerJugada() {
 		
-		LugarCarta estado = new EnMazo();
-		Assert.assertFalse(estado.sosValidoParaQueSeJuegueLaCarta());
+		LugarCarta lugar = new EnMazo();
+		Assert.assertFalse(lugar.sosValidoParaQueSeJuegueLaCarta());
 	}
 	
 	@Test
 	public void testEstadoEnManoEsValidoParaSerJugada() {
 		
-		LugarCarta estado = new EnMano();
-		Assert.assertTrue(estado.sosValidoParaQueSeJuegueLaCarta());
+		LugarCarta lugar = new EnMano();
+		Assert.assertTrue(lugar.sosValidoParaQueSeJuegueLaCarta());
 	}
 	
 	@Test
 	public void testEstadoEnMesaNoEsValidoParaSerJugada() {
 		
-		LugarCarta estado = new EnMesa();
-		Assert.assertFalse(estado.sosValidoParaQueSeJuegueLaCarta());
+		LugarCarta lugar = new EnMesa();
+		Assert.assertFalse(lugar.sosValidoParaQueSeJuegueLaCarta());
 	}
 }

@@ -12,7 +12,6 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -63,9 +62,9 @@ public class VistaInicio implements Vista {
 		this.contenedor.setBackground(new Background(imagenDeFondo));
 	}
 	
-	private HBox setCaracateristicasAlContendorBotonJugar() {
+	private VBox setCaracateristicasAlContendorBotonJugar() {
 		
-		HBox contenedor = new HBox();
+		VBox contenedor = new VBox();
 		
 		contenedor.setAlignment(Pos.CENTER);
 		contenedor.setSpacing(20);
@@ -92,8 +91,23 @@ public class VistaInicio implements Vista {
 			nuevaVista.mostrar();
 		});
 		
-		HBox contenedorBotonJugar = this.setCaracateristicasAlContendorBotonJugar();
-		contenedorBotonJugar.getChildren().add(botonJugar);
+		Button botonAcerca = new Button("Acerca");
+		botonAcerca.setTextFill(Color.BLACK);
+		
+		BackgroundFill fondoDeColorAcerca = new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+		botonAcerca.setBackground(new Background(fondoDeColorAcerca));
+		
+		botonAcerca.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
+		botonAcerca.setAlignment(Pos.TOP_CENTER);
+		
+		botonAcerca.setOnAction(e -> {
+			
+			VistaCreditos nuevaVista = new VistaCreditos(this);
+			nuevaVista.mostrar();
+		});
+		
+		VBox contenedorBotonJugar = this.setCaracateristicasAlContendorBotonJugar();
+		contenedorBotonJugar.getChildren().addAll(botonJugar, botonAcerca);
 		
 		this.contenedor.getChildren().add(contenedorBotonJugar);
 	}

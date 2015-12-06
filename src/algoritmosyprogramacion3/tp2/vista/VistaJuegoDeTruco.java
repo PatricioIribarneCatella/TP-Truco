@@ -109,7 +109,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		// faltan hacer los cuadros donde se muestra la informacion de los jugadores
 		
 		this.contenedorInformacionJugadores = new VBox();
-		this.contenedorInformacionJugadores.setSpacing(30);
+		this.contenedorInformacionJugadores.setSpacing(10);
 		this.contenedorInformacionJugadores.setPadding(new Insets(20));
 		this.contenedorInformacionJugadores.setAlignment(Pos.CENTER);
 		this.contenedor.setRight(this.contenedorInformacionJugadores);
@@ -360,7 +360,8 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			botonCarta.setContentDisplay(ContentDisplay.CENTER);
 			
 			botonCarta.setOnAction(e -> {
-				// se va de la mano del jugador y aparece en el centro de la pantalla
+				
+				// falta que se mueva la carta
 			});
 			
 			contenedorCartas.getChildren().add(botonCarta);
