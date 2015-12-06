@@ -19,25 +19,25 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class VistaEleccionJuego implements Vista {
+public class VistaEleccionVarianteFlor implements Vista {
 
 	private JuegoTruco modelo;
 	private Stage stage;
 	private Scene escena;
 	private VBox contenedor;
-	private Button botonVolver;
 	private Vista vistaAnterior;
+	private boolean conFlor;
 	
-	public VistaEleccionJuego(Vista vistaAnterior) {
+	public VistaEleccionVarianteFlor(Vista vistaAnterior) {
 		
 		this.vistaAnterior = vistaAnterior;
 		this.modelo = vistaAnterior.getModelo();
 		this.stage = vistaAnterior.getStage();
 		this.initialize();
 	}
-	
+
 	private void initialize() {
-		
+	
 		this.contenedor = new VBox();
 		
 		this.setContenedorPrincipal();
@@ -48,14 +48,14 @@ public class VistaEleccionJuego implements Vista {
 		
 		this.escena = new Scene(this.contenedor, 1300, 700);
 	}
-	
+
 	private void setContenedorPrincipal() {
 		
 		this.contenedor.setAlignment(Pos.CENTER);
-		this.contenedor.setSpacing(25);
+		this.contenedor.setSpacing(20);
 		this.contenedor.setPadding(new Insets(25));
 	}
-
+	
 	private void setImagenDeFondo() {
 		
 		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1300, 700, false, true);
@@ -67,33 +67,39 @@ public class VistaEleccionJuego implements Vista {
 	
 	private void setCaracteristicasAlContenedorPrincipal() {
 		
-		Button botonJuegosExistentes = new Button("Juegos existentes");
-		botonJuegosExistentes.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-		botonJuegosExistentes.setTextFill(Color.WHITE);
+		Button botonConFlor = new Button("Con Flor");
+		botonConFlor.setTextFill(Color.WHITE);
 		
-		BackgroundFill fondoDeColorJuegosExistentes = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
-		botonJuegosExistentes.setBackground(new Background(fondoDeColorJuegosExistentes));
+		BackgroundFill fondoDeColorConFlor = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+		botonConFlor.setBackground(new Background(fondoDeColorConFlor));
 		
-		botonJuegosExistentes.setOnAction(e -> {
+		botonConFlor.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		botonConFlor.setAlignment(Pos.TOP_CENTER);
+		
+		botonConFlor.setOnAction(e -> {
 			
-			VistaJuegosExistentes nuevaVista = new VistaJuegosExistentes(this);
+			this.conFlor = true;
+			VistaEleccionTipoDeMesa nuevaVista = new VistaEleccionTipoDeMesa(this);
 			nuevaVista.mostrar();
 		});
 		
-		Button botonNuevoJuego = new Button("Nuevo juego");
-		botonNuevoJuego.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-		botonNuevoJuego.setTextFill(Color.WHITE);
+		Button botonSinFlor = new Button("Sin Flor");
+		botonSinFlor.setTextFill(Color.WHITE);
 		
-		BackgroundFill fondoDeColorNuevoJuego = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
-		botonNuevoJuego.setBackground(new Background(fondoDeColorNuevoJuego));
+		BackgroundFill fondoDeColorSinFlor = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+		botonSinFlor.setBackground(new Background(fondoDeColorSinFlor));
 		
-		botonNuevoJuego.setOnAction(e -> {
+		botonSinFlor.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		botonSinFlor.setAlignment(Pos.TOP_CENTER);
+		
+		botonSinFlor.setOnAction(e -> {
 			
-			VistaEleccionVarianteFlor nuevaVista = new VistaEleccionVarianteFlor(this);
+			this.conFlor = false;
+			VistaEleccionTipoDeMesa nuevaVista = new VistaEleccionTipoDeMesa(this);
 			nuevaVista.mostrar();
 		});
 		
-		this.contenedor.getChildren().addAll(botonJuegosExistentes, botonNuevoJuego);
+		this.contenedor.getChildren().addAll(botonConFlor, botonSinFlor);
 	}
 	
 	@Override
@@ -104,6 +110,10 @@ public class VistaEleccionJuego implements Vista {
 		this.stage.show();
 	}
 
+	public boolean getSeJuegaConFlor() {
+		return this.conFlor;
+	}
+	
 	public Vista getVistaAnterior() {
 		return this.vistaAnterior;
 	}
@@ -121,9 +131,5 @@ public class VistaEleccionJuego implements Vista {
 	@Override
 	public void setModelo(JuegoTruco modelo) {
 		this.modelo = modelo;
-	}
-	
-	public Button getBotonVolver() {
-		return this.botonVolver;
 	}
 }

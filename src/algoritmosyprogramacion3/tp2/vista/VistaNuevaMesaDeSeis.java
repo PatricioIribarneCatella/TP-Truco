@@ -18,7 +18,7 @@ public class VistaNuevaMesaDeSeis extends VistaNuevaMesa {
 	private TextField textoJugador6;
 	private Label etiquetaEquipo2;
 	
-	public VistaNuevaMesaDeSeis(Vista vistaAnterior) {
+	public VistaNuevaMesaDeSeis(VistaEleccionTipoDeMesa vistaAnterior) {
 		
 		super(vistaAnterior);
 		this.etiquetaJugadores.setText("Equipo 1");
@@ -39,7 +39,7 @@ public class VistaNuevaMesaDeSeis extends VistaNuevaMesa {
 		String nombreJugador5 = this.textoJugador5.getText();
 		String nombreJugador6 = this.textoJugador6.getText();
 		
-		if (this.botonConFlor.isPressed()) {
+		if (this.seJuegaConFlor) {
 			
 			return this.modelo.nuevaMesaDeSeisConFlor(nombreMesa, Arrays.asList(nombreJugador1, nombreJugador2, nombreJugador3), Arrays.asList(nombreJugador4, nombreJugador5, nombreJugador6));
 			

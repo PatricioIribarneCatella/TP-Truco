@@ -6,7 +6,7 @@ public class VistaNuevaMesaContraComputadora extends VistaNuevaMesa {
 	
 	private TextField textoJugador;
 	
-	public VistaNuevaMesaContraComputadora(Vista vistaAnterior) {
+	public VistaNuevaMesaContraComputadora(VistaEleccionTipoDeMesa vistaAnterior) {
 		
 		super(vistaAnterior);
 		this.etiquetaJugadores.setText("Jugador");
@@ -18,7 +18,7 @@ public class VistaNuevaMesaContraComputadora extends VistaNuevaMesa {
 		String nombreMesa = this.textoMesa.getText();
 		String nombreJugador = this.textoJugador.getText();
 		
-		if (this.botonConFlor.isPressed()) {
+		if (this.seJuegaConFlor) {
 			
 			return this.modelo.nuevaMesaContraComputadoraConFlor(nombreMesa, nombreJugador);
 			

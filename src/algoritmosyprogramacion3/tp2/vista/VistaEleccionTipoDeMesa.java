@@ -27,11 +27,13 @@ public class VistaEleccionTipoDeMesa implements Vista {
 	private Scene escena;
 	private VBox contenedor;
 	private Button botonVolver;
-	private Vista vistaAnterior;
+	private boolean conFlor;
+	private VistaEleccionVarianteFlor vistaAnterior;
 	
-	public VistaEleccionTipoDeMesa(Vista vistaAnterior) {
+	public VistaEleccionTipoDeMesa(VistaEleccionVarianteFlor vistaAnterior) {
 		
 		this.vistaAnterior = vistaAnterior;
+		this.conFlor = vistaAnterior.getSeJuegaConFlor();
 		this.modelo = vistaAnterior.getModelo();
 		this.stage = vistaAnterior.getStage();
 		this.initialize();
@@ -140,8 +142,12 @@ public class VistaEleccionTipoDeMesa implements Vista {
 		this.stage.show();
 	}
 
-	public Vista getVistaAnterior() {
+	public VistaEleccionVarianteFlor getVistaAnterior() {
 		return this.vistaAnterior;
+	}
+	
+	public boolean seJuegaConFlor() {
+		return this.conFlor;
 	}
 	
 	@Override

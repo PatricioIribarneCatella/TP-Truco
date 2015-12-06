@@ -7,7 +7,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -35,14 +34,14 @@ public abstract class VistaNuevaMesa implements Vista {
 	protected Button botonVolver;
 	private Label etiquetaDatosInvalidos;
 	protected TextField textoMesa;
-	protected RadioButton botonConFlor;
-	protected RadioButton botonSinFlor;
 	protected Label etiquetaJugadores;
-	protected Vista vistaAnterior;
+	protected boolean seJuegaConFlor;
+	protected VistaEleccionTipoDeMesa vistaAnterior;
 	
-	public VistaNuevaMesa(Vista vistaAnterior) {
+	public VistaNuevaMesa(VistaEleccionTipoDeMesa vistaAnterior) {
 		
 		this.vistaAnterior = vistaAnterior;
+		this.seJuegaConFlor = vistaAnterior.seJuegaConFlor();
 		this.modelo = vistaAnterior.getModelo();
 		this.stage = vistaAnterior.getStage();
 		this.initialize();
@@ -120,28 +119,6 @@ public abstract class VistaNuevaMesa implements Vista {
 		this.contenedor.setCenter(this.contenedorCentral);
 	}
 	
-	private void setCaracteristicasAlContenedorSuperior() {
-		
-		this.botonConFlor = new RadioButton("Con Flor");
-		this.botonConFlor.setTextFill(Color.WHITE);
-		this.botonConFlor.setOnMouseClicked(e -> {
-			
-			if (this.botonSinFlor.isPressed()) this.setMensajeInformacionInvalida("Solo puede seleccionar una opción");
-		});
-		
-		this.botonSinFlor = new RadioButton("Sin Flor");
-		this.botonSinFlor.setTextFill(Color.WHITE);
-		this.botonSinFlor.setOnMouseClicked(e -> {
-			
-			if (this.botonConFlor.isPressed()) this.setMensajeInformacionInvalida("Solo puede seleccionar una opción");
-		});
-		
-		HBox contendorSuperior = new HBox(this.botonConFlor, this.botonSinFlor);
-		contendorSuperior.setAlignment(Pos.CENTER);
-		contendorSuperior.setSpacing(50);
-		this.contenedor.setTop(contendorSuperior);
-	}
-	
 	private void setCaracteristicasAlContenedorInferior() {
 		
 		Button botonCrear = new Button("Crear");
@@ -185,7 +162,6 @@ public abstract class VistaNuevaMesa implements Vista {
 
 	private void setCaracteristicasAlContenedorPrincipal() {
 		
-		this.setCaracteristicasAlContenedorSuperior();
 		this.setCaracteristicasAlContenedorInferior();
 		this.setCaracteristicasAlContenedorCentro();
 	}
@@ -199,7 +175,7 @@ public abstract class VistaNuevaMesa implements Vista {
 		this.stage.show();
 	}
 
-	public Vista getVistaAnterior() {
+	public VistaEleccionTipoDeMesa getVistaAnterior() {
 		return this.vistaAnterior;
 	}
 	
