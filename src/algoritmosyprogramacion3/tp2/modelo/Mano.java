@@ -139,7 +139,7 @@ public class Mano {
 	public boolean hayCartasJugadas() {
 		
 		for (Carta carta : this.cartas) {
-			if (!carta.esValidaParaSerJugada()) return true;
+			if (!carta.estaEnUnLugarValidoParaSerJugada()) return true;
  		}
 		return false;
 	}
@@ -149,7 +149,7 @@ public class Mano {
 		List<Carta> listaCartas = new LinkedList<Carta>();
 		
 		for (Carta carta : this.cartas) {
-			if (carta.esValidaParaSerJugada()) listaCartas.add(carta);
+			if (carta.estaEnUnLugarValidoParaSerJugada()) listaCartas.add(carta);
 		}
 		
 		return listaCartas;
@@ -158,7 +158,7 @@ public class Mano {
 	public void vaciar() {
 		
 		for (Carta carta : this.cartas) {
-			carta.volveAlMazo();
+			carta.pasaAEstar(new EnMazo());
 		}
 		this.cartas.clear();
 	}

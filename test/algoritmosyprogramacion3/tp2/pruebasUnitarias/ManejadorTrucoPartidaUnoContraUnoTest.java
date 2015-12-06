@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.pruebasUnitarias;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.Dos;
+import algoritmosyprogramacion3.tp2.modelo.EnMano;
 import algoritmosyprogramacion3.tp2.modelo.Equipo;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
@@ -63,6 +65,8 @@ public class ManejadorTrucoPartidaUnoContraUnoTest {
 		sieteDeCopa = new SieteDeCopa();
 		sieteDeBasto = new SieteDeBasto();
 		
+		List<Carta> cartas = Arrays.asList(unoDeEspada, unoDeBasto, dosDeBasto, dosDeOro, sieteDeCopa, sieteDeBasto);
+		
 		mesa = new MesaSinFlor(jugadores);
 		
 		jugador1.recibirCarta(unoDeEspada);
@@ -77,12 +81,9 @@ public class ManejadorTrucoPartidaUnoContraUnoTest {
 		moderador = new Moderador(mesa);
 		moderador.setRotacionStrategy(new StrategyRotacionEnRonda(jugadores));
 		
-		unoDeEspada.entregada(); 
-		unoDeBasto.entregada(); 
-		dosDeBasto.entregada(); 
-	    dosDeOro.entregada(); 
-		sieteDeBasto.entregada();	
-		sieteDeCopa.entregada();
+		for (Carta carta : cartas) {
+			carta.pasaAEstar(new EnMano());
+		}
 		
 		this.jugador1.setModerador(this.moderador);
 		this.jugador2.setModerador(this.moderador);

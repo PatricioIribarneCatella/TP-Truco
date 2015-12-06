@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.pruebasUnitarias;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.Cinco;
 import algoritmosyprogramacion3.tp2.modelo.Cuatro;
 import algoritmosyprogramacion3.tp2.modelo.Dos;
+import algoritmosyprogramacion3.tp2.modelo.EnMano;
 import algoritmosyprogramacion3.tp2.modelo.Envido;
 import algoritmosyprogramacion3.tp2.modelo.Equipo;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
@@ -80,13 +82,15 @@ public class ManejadorEnvidoTest {
 		cincoDeEspada =  new Cinco(Palo.ESPADA);
 		unoDeBasto = new UnoDeBasto();
 		sieteDeBasto = new SieteDeBasto();
-		dosDeBasto= new Dos(Palo.BASTO);
+		dosDeBasto = new Dos(Palo.BASTO);
 		unoDeOro = new UnoDeOro();
 		dosDeOro = new Dos(Palo.ORO);
 		cuatroDeOro = new Cuatro(Palo.ORO);
 		unoDeCopa = new UnoDeCopa();
 		cincoDeCopa =  new Cinco(Palo.COPA);
 		sieteDeCopa =  new SieteDeCopa();
+		
+		List<Carta> cartas = Arrays.asList(unoDeEspada, sieteDeEspada, cincoDeEspada, unoDeBasto, sieteDeBasto, dosDeBasto, unoDeOro, dosDeOro, cuatroDeOro, unoDeCopa, cincoDeCopa, sieteDeCopa);
 		
 		jugador1.recibirCarta(unoDeBasto); 
 		jugador1.recibirCarta(sieteDeBasto);
@@ -101,18 +105,9 @@ public class ManejadorEnvidoTest {
 		jugador4.recibirCarta(cincoDeCopa);
 		jugador4.recibirCarta(sieteDeCopa);// el jugador 4 tiene 32 de envido
 	
-		unoDeEspada.entregada();
-	    sieteDeEspada.entregada();
-		cincoDeEspada.entregada();
-		unoDeBasto.entregada();
-		sieteDeBasto.entregada();
-		dosDeBasto.entregada();
-		unoDeOro.entregada();
-		dosDeOro.entregada();
-		cuatroDeOro.entregada();
-		unoDeCopa.entregada();
-		cincoDeCopa.entregada();
-		sieteDeCopa.entregada();
+		for(Carta carta : cartas) {
+			carta.pasaAEstar(new EnMano());
+		}
 		
 		manejadorEnvidos = new ManejadorEnvidos();
 		manejadorEnvidos.setJugadoresEnfrentados(jugadores);

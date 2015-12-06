@@ -2,7 +2,9 @@ package algoritmosyprogramacion3.tp2.pruebasUnitarias;
 
 import  org.junit.Assert;
 
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +12,7 @@ import org.junit.Test;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.Cuatro;
+import algoritmosyprogramacion3.tp2.modelo.EnMano;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
@@ -41,7 +44,7 @@ public class MesaTest {
 	
 	@Before
     public void setUp()
-	{
+    {
 		jugadoresPartidaDeDos = new LinkedList<Jugable>();
 		jugador1= new Jugador("Pepe");
 	    jugador2 = new Jugador("Jorgito");
@@ -63,6 +66,7 @@ public class MesaTest {
 		sieteDeOro = new SieteDeOro();
 		cuatroDeCopa = new Cuatro(Palo.COPA);
 		cuatroDeOro = new Cuatro(Palo.ORO);
+		List<Carta> cartas = Arrays.asList(anchoDeEspada, anchoDeBasto, sieteDeEspada, sieteDeOro, cuatroDeCopa, cuatroDeOro);
 		
 		jugador1.recibirCarta(anchoDeEspada);
 		jugador1.recibirCarta(sieteDeEspada);
@@ -72,12 +76,9 @@ public class MesaTest {
 		jugador2.recibirCarta(sieteDeOro);
 		jugador2.recibirCarta(cuatroDeCopa);
 				
-	    sieteDeOro.entregada();
-		sieteDeEspada.entregada();
-		anchoDeBasto.entregada();
-		anchoDeEspada.entregada();
-		cuatroDeCopa.entregada();
-		cuatroDeOro.entregada();
+	    for (Carta carta : cartas) {
+	    	carta.pasaAEstar(new EnMano());
+	    }
 		
 		moderador = new Moderador(mesaDeDos);
 	}

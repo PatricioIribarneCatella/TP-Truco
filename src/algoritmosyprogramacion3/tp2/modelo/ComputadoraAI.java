@@ -83,7 +83,6 @@ public class ComputadoraAI implements Jugable {
 
 	public void recibirCarta(Carta carta) {
 		
-		carta.entregada();
 		this.cartas.agregarCarta(carta);
 	}
 	

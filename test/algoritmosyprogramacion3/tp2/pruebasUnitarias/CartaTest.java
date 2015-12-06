@@ -9,6 +9,9 @@ import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
 import algoritmosyprogramacion3.tp2.modelo.Dos;
+import algoritmosyprogramacion3.tp2.modelo.EnMano;
+import algoritmosyprogramacion3.tp2.modelo.EnMazo;
+import algoritmosyprogramacion3.tp2.modelo.EnMesa;
 import algoritmosyprogramacion3.tp2.modelo.Tres;
 import algoritmosyprogramacion3.tp2.modelo.Cuatro;
 import algoritmosyprogramacion3.tp2.modelo.Cinco;
@@ -37,7 +40,7 @@ public class CartaTest {
 		
 		Carta carta = new UnoDeEspada();
 		
-		Assert.assertFalse(carta.esValidaParaSerJugada());
+		Assert.assertFalse(carta.estaEnUnLugarValidoParaSerJugada());
 	}
 	
 	@Test
@@ -45,9 +48,9 @@ public class CartaTest {
 		
 		Carta carta = new UnoDeEspada();
 		
-		carta.entregada();
+		carta.pasaAEstar(new EnMano());;
 		
-		Assert.assertTrue(carta.esValidaParaSerJugada());
+		Assert.assertTrue(carta.estaEnUnLugarValidoParaSerJugada());
 	}
 	
 	@Test
@@ -55,10 +58,10 @@ public class CartaTest {
 		
 		Carta carta = new UnoDeEspada();
 		
-		carta.entregada();
-		carta.jugate();
+		carta.pasaAEstar(new EnMano());
+		carta.pasaAEstar(new EnMesa());
 		
-		Assert.assertFalse(carta.esValidaParaSerJugada());
+		Assert.assertFalse(carta.estaEnUnLugarValidoParaSerJugada());
 	}
 	
 	@Test
@@ -66,11 +69,11 @@ public class CartaTest {
 		
 		Carta carta = new UnoDeEspada();
 		
-		carta.entregada();
-		carta.jugate();
-		carta.volveAlMazo();
+		carta.pasaAEstar(new EnMano());
+		carta.pasaAEstar(new EnMesa());
+		carta.pasaAEstar(new EnMazo());
 		
-		Assert.assertFalse(carta.esValidaParaSerJugada());
+		Assert.assertFalse(carta.estaEnUnLugarValidoParaSerJugada());
 	}
 	
 	@Test

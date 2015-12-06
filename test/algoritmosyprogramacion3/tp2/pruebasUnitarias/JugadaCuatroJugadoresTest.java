@@ -1,6 +1,8 @@
 package algoritmosyprogramacion3.tp2.pruebasUnitarias;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,6 +11,7 @@ import org.junit.Test;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.Cinco;
 import algoritmosyprogramacion3.tp2.modelo.Dos;
+import algoritmosyprogramacion3.tp2.modelo.EnMano;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
@@ -53,6 +56,8 @@ public class JugadaCuatroJugadoresTest {
 	@Before
 	public void setUp() {
 		
+		List<Carta> cartas = new LinkedList<Carta>();
+		
 		this.jugador1 = new Jugador("Pedro");
 		this.cincoDeCopa = new Cinco(Palo.COPA);
 		this.sieteDeEspada = new SieteDeEspada();
@@ -60,6 +65,7 @@ public class JugadaCuatroJugadoresTest {
 		this.jugador1.recibirCarta(cincoDeCopa);
 		this.jugador1.recibirCarta(sieteDeEspada);
 		this.jugador1.recibirCarta(unoDeCopa);
+		cartas.add(cincoDeCopa); cartas.add(sieteDeEspada); cartas.add(unoDeCopa);
 		
 		this.jugador2 = new Jugador("Juan");
 		this.unoDeBasto = new UnoDeBasto();
@@ -68,6 +74,7 @@ public class JugadaCuatroJugadoresTest {
 		this.jugador2.recibirCarta(unoDeBasto);
 		this.jugador2.recibirCarta(unoDeEspada);
 		this.jugador2.recibirCarta(unoDeOro);
+		cartas.add(unoDeBasto); cartas.add(unoDeEspada); cartas.add(unoDeOro);
 		
 		this.jugador3 = new Jugador("Carlos");
 		this.reyDeCopa = new Rey(Palo.COPA);
@@ -76,6 +83,7 @@ public class JugadaCuatroJugadoresTest {
 		this.jugador3.recibirCarta(reyDeCopa);
 		this.jugador3.recibirCarta(seisDeEspada);
 		this.jugador3.recibirCarta(dosDeEspada);
+		cartas.add(reyDeCopa); cartas.add(seisDeEspada); cartas.add(dosDeEspada);
 		
 		this.jugador4 = new Jugador("Raul");
 		this.reyDeBasto = new Rey(Palo.BASTO);
@@ -84,6 +92,7 @@ public class JugadaCuatroJugadoresTest {
 		this.jugador4.recibirCarta(reyDeBasto);
 		this.jugador4.recibirCarta(cincoDeEspada);
 		this.jugador4.recibirCarta(tresDeEspada);
+		cartas.add(reyDeBasto); cartas.add(cincoDeEspada); cartas.add(tresDeEspada);
 		
 		this.mesa = new MesaSinFlor(Arrays.asList(this.jugador1, this.jugador2, this.jugador3, this.jugador4));
 		this.rotacionEnRonda = new StrategyRotacionEnRonda(this.mesa.getJugadores());
@@ -98,18 +107,9 @@ public class JugadaCuatroJugadoresTest {
 		this.jugador3.setMesa(mesa);
 		this.jugador4.setMesa(mesa);
 		
-		cincoDeCopa.entregada();
-		sieteDeEspada.entregada();
-		unoDeCopa.entregada();
-		unoDeBasto.entregada();
-		unoDeEspada.entregada();
-		unoDeOro.entregada();
-		reyDeCopa.entregada();
-		seisDeEspada.entregada();
-		dosDeEspada.entregada();
-		reyDeBasto.entregada();
-		cincoDeEspada.entregada();
-		tresDeEspada.entregada();
+		for (Carta carta : cartas) {
+			carta.pasaAEstar(new EnMano());
+		}
 	}
 	
 	@Test

@@ -1,14 +1,9 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
-public class EnMesa implements EstadoDeCarta {
+public class EnMesa implements LugarCarta {
 
 	@Override
-	public boolean esValidoParaSerJugada() {
+	public boolean sosValidoParaQueSeJuegueLaCarta() {
 		return false;
-	}
-
-	@Override
-	public EstadoDeCarta proximoEstado() {
-		return new EnMazo();
 	}
 }

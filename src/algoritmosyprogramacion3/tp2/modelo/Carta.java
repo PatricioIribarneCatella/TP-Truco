@@ -6,16 +6,16 @@ public abstract class Carta {
 	protected String valorComoString;
 	protected int valorEnvido;
 	protected int valorFlor;
-	protected EstadoDeCarta estado;
+	protected LugarCarta lugar;
 	
 	public Carta() {
 		
-		this.estado = new EnMazo();
+		this.lugar = new EnMazo();
 	}
 	
-	public boolean esValidaParaSerJugada() {
+	public boolean estaEnUnLugarValidoParaSerJugada() {
 		
-		return this.estado.esValidoParaSerJugada();
+		return this.lugar.sosValidoParaQueSeJuegueLaCarta();
 	}
 	
 	public Palo getPalo() {
@@ -38,19 +38,8 @@ public abstract class Carta {
 		return Integer.parseInt(valorComoString);
 	}
 	
-	public void entregada() {
-		
-		this.estado = this.estado.proximoEstado();
-	}
-	
-	public void jugate() {
-		
-		if (this.estado.esValidoParaSerJugada()) this.estado = this.estado.proximoEstado();
-	}
-	
-	public void volveAlMazo() {
-		
-		this.estado = new EnMazo();
+	public void pasaAEstar(LugarCarta nuevoLugar) {
+		this.lugar = nuevoLugar;
 	}
 	
 	@Override

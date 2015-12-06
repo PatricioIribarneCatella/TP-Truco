@@ -372,7 +372,7 @@ public class JuegoTruco extends Observable {
 	// Reparte las cartas que se le pasan como parámetro siempre en ese mismo orden
 	public void repartirCartas(List<Carta> listaCartas) {
 		
-		listaCartas.forEach(x -> { x.entregada(); });
+		listaCartas.forEach(x -> { x.pasaAEstar(new EnMano());; });
 		this.partidaActual.repartirCartas(listaCartas);
 	}
 	

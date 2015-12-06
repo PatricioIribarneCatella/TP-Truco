@@ -41,13 +41,13 @@ public abstract class Mesa {
     	return null;//nunca va a llegar aca
     }
     
-    public void recibirCartaJugada(Jugable unJugador,Carta unaCarta) {
+    public void recibirCartaJugada(Jugable unJugador, Carta carta) {
 
-   		if (unaCarta.esValidaParaSerJugada()) {
+   		if (carta.estaEnUnLugarValidoParaSerJugada()) {
    			
-    		unaCarta.jugate();
+    		carta.pasaAEstar(new EnMesa());
     		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
-    		campoDelJugador.recibirCartaJugada(unaCarta);
+    		campoDelJugador.recibirCartaJugada(carta);
         }
    		else {
    			

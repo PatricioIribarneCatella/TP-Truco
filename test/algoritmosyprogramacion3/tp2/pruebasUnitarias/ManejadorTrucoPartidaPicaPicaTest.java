@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.pruebasUnitarias;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.Cinco;
 import algoritmosyprogramacion3.tp2.modelo.Cuatro;
 import algoritmosyprogramacion3.tp2.modelo.Dos;
+import algoritmosyprogramacion3.tp2.modelo.EnMano;
 import algoritmosyprogramacion3.tp2.modelo.Equipo;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
@@ -102,6 +104,9 @@ public class ManejadorTrucoPartidaPicaPicaTest {
 		cincoDeEspada = new Cinco(Palo.ESPADA);
 		cuatroDeOro = new Cuatro(Palo.ORO);
 		cuatroDeCopa = new Cuatro(Palo.COPA);
+		
+		List<Carta> cartas = Arrays.asList(unoDeEspada, unoDeBasto, sieteDeEspada, tresDeCopa, tresDeEspada, dosDeEspada, dosDeBasto, dosDeOro, unoDeOro, unoDeCopa, reyDeBasto, reyDeOro, caballoDeEspada, sieteDeBasto, seisDeCopa, cincoDeEspada, cuatroDeOro, cuatroDeCopa);
+		
 		mesa = new MesaSinFlor(jugadores);
 		
 		jugador1.recibirCarta(unoDeEspada);
@@ -131,24 +136,9 @@ public class ManejadorTrucoPartidaPicaPicaTest {
 		moderador = new Moderador(mesa);
 		moderador.setRotacionStrategy(new StrategyRotacionEnRonda(jugadores));
 		
-		unoDeEspada.entregada(); 
-		unoDeBasto.entregada(); 
-		sieteDeEspada.entregada(); 
-		tresDeCopa.entregada(); 
-		tresDeEspada.entregada(); 
-		dosDeEspada.entregada(); 
-		dosDeBasto.entregada(); 
-	    dosDeOro.entregada(); 
-		unoDeOro.entregada(); 
-		unoDeCopa.entregada(); 
-		reyDeBasto.entregada(); 
-		reyDeOro.entregada(); 
-		caballoDeEspada.entregada(); 
-		sieteDeBasto.entregada();
-		seisDeCopa.entregada(); 
-		cincoDeEspada.entregada(); 
-		cuatroDeOro.entregada(); 
-		cuatroDeCopa.entregada();	
+		for (Carta carta : cartas) {
+			carta.pasaAEstar(new EnMano());
+		}
 		
 		this.jugador1.setModerador(this.moderador);
 		this.jugador2.setModerador(this.moderador);

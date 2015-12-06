@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.pruebasUnitarias;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.Dos;
+import algoritmosyprogramacion3.tp2.modelo.EnMano;
 import algoritmosyprogramacion3.tp2.modelo.Tres;
 import algoritmosyprogramacion3.tp2.modelo.Cinco;
 import algoritmosyprogramacion3.tp2.modelo.Seis;
@@ -82,6 +84,9 @@ public class ManejadorTrucoPartidaDosContraDos {
 		sieteDeBasto = new SieteDeBasto();
 		seisDeCopa = new Seis(Palo.COPA);
 		cincoDeEspada = new Cinco(Palo.ESPADA);
+		
+		List<Carta> cartas = Arrays.asList(unoDeEspada, unoDeBasto, sieteDeEspada, tresDeCopa, dosDeBasto, dosDeOro, unoDeOro, unoDeCopa, caballoDeEspada, sieteDeBasto, seisDeCopa, cincoDeEspada);
+		
 		mesa = new MesaSinFlor(jugadores);
 		
 		jugador1.recibirCarta(unoDeEspada);
@@ -103,20 +108,9 @@ public class ManejadorTrucoPartidaDosContraDos {
 		moderador = new Moderador(mesa);
 		moderador.setRotacionStrategy(new StrategyRotacionEnRonda(jugadores));
 		
-		
-		unoDeEspada.entregada(); 
-		unoDeBasto.entregada(); 
-		sieteDeEspada.entregada(); 
-		tresDeCopa.entregada();  
-		dosDeBasto.entregada(); 
-	    dosDeOro.entregada(); 
-		unoDeOro.entregada(); 
-		unoDeCopa.entregada(); 
-		caballoDeEspada.entregada(); 
-		sieteDeBasto.entregada();
-		seisDeCopa.entregada(); 
-		cincoDeEspada.entregada(); 	
-		
+		for (Carta carta : cartas) {
+			carta.pasaAEstar(new EnMano());
+		}
 		
 		this.jugador1.setModerador(this.moderador);
 		this.jugador2.setModerador(this.moderador);
