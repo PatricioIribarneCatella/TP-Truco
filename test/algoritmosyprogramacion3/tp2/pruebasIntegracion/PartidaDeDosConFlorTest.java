@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
+import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.Cinco;
 import algoritmosyprogramacion3.tp2.modelo.Cuatro;
@@ -45,6 +46,13 @@ public class PartidaDeDosConFlorTest {
 		
 		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.BASTO), new Tres(Palo.BASTO), new Cuatro(Palo.BASTO), new Cinco(Palo.BASTO), new Seis(Palo.BASTO)));
 		Assert.assertTrue(juego.cantarFlorPorJugador("Juan"));
+	}
+	
+	@Test (expected = JugadorSinFlorException.class)
+	public void testCantarFlorSiNoSeTieneDeberiaLanzarExcepcion() {
+		
+		this.repartirCartas(Arrays.asList(new UnoDeBasto(), new Dos(Palo.ORO), new SieteDeBasto(), new UnoDeEspada(), new Dos(Palo.BASTO), new SieteDeCopa()));
+		juego.cantarFlorPorJugador("Juan");
 	}
 	
 	@Test (expected = TurnoParaTomarDecisionEquivocadoException.class)
