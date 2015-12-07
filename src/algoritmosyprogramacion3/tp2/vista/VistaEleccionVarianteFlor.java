@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.vista;
 
+import algoritmosyprogramacion3.tp2.manejadores.BotonVolverEventHandler;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -27,6 +28,7 @@ public class VistaEleccionVarianteFlor implements Vista {
 	private VBox contenedor;
 	private Vista vistaAnterior;
 	private boolean conFlor;
+	private Button botonVolver;
 	
 	public VistaEleccionVarianteFlor(Vista vistaAnterior) {
 		
@@ -46,7 +48,7 @@ public class VistaEleccionVarianteFlor implements Vista {
 		
 		this.setCaracteristicasAlContenedorPrincipal();
 		
-		this.escena = new Scene(this.contenedor, 1300, 700);
+		this.escena = new Scene(this.contenedor, 800, 600);
 	}
 
 	private void setContenedorPrincipal() {
@@ -58,7 +60,7 @@ public class VistaEleccionVarianteFlor implements Vista {
 	
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1300, 700, false, true);
+		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 800, 600, false, true);
 		
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		
@@ -99,7 +101,16 @@ public class VistaEleccionVarianteFlor implements Vista {
 			nuevaVista.mostrar();
 		});
 		
-		this.contenedor.getChildren().addAll(botonConFlor, botonSinFlor);
+		this.botonVolver = new Button("Volver");
+		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		this.botonVolver.setTextFill(Color.WHITE);
+		
+		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
+		
+		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
+		
+		this.contenedor.getChildren().addAll(botonConFlor, botonSinFlor, this.botonVolver);
 	}
 	
 	@Override
@@ -131,5 +142,9 @@ public class VistaEleccionVarianteFlor implements Vista {
 	@Override
 	public void setModelo(JuegoTruco modelo) {
 		this.modelo = modelo;
+	}
+	
+	public Button getBotonVolver() {
+		return this.botonVolver;
 	}
 }

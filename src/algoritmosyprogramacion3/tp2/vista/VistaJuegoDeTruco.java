@@ -99,7 +99,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		this.contenedorCartasJugadas = new HBox();
 		this.contenedorCartasJugadas.setSpacing(80);
-		this.contenedorCartasJugadas.setPadding(new Insets(20));
+		this.contenedorCartasJugadas.setPadding(new Insets(10));
 		this.contenedorCartasJugadas.setAlignment(Pos.CENTER);
 		this.contenedor.setCenter(this.contenedorCartasJugadas);
 	}
@@ -362,12 +362,14 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			botonCarta.setDefaultButton(true);
 			botonCarta.setContentDisplay(ContentDisplay.CENTER);
 			
+			contenedorCartas.getChildren().add(botonCarta);
+			
 			botonCarta.setOnAction(e -> {
 				
-				// falta que se mueva la carta
+				// falta jugar la carta por el modelo
+				contenedorCartas.getChildren().remove(botonCarta);
+				this.contenedorCartasJugadas.getChildren().add(botonCarta);
 			});
-			
-			contenedorCartas.getChildren().add(botonCarta);
 		}
 		
 		VBox contenedorInferior = new VBox(this.etiquetaDatos, contenedorCartas);

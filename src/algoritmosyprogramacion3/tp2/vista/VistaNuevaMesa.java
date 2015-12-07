@@ -57,7 +57,7 @@ public abstract class VistaNuevaMesa implements Vista {
 		
 		this.setCaracteristicasAlContenedorPrincipal();
 		
-		this.escena = new Scene(this.contenedor, 1300, 700);
+		this.escena = new Scene(this.contenedor, 800, 600);
 	}
 	
 	private void setContenedorPrincipal() {
@@ -67,7 +67,7 @@ public abstract class VistaNuevaMesa implements Vista {
 
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1300, 700, false, true);
+		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 800, 600, false, true);
 		
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
 		
@@ -137,16 +137,19 @@ public abstract class VistaNuevaMesa implements Vista {
 			} else {
 				
 				if (this.actualizarModelo()) {
+					
 					Vista nuevaVista = this.nuevaVistaDependiendoModalidad(this);
 					nuevaVista.mostrar();
+					
 				} else {
+					
 					this.setMensajeInformacionInvalida("El nombre de la mesa ya existe");
 				}
 			}
 		});
 		
 		this.botonVolver = new Button("Volver");
-		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 16));
 		this.botonVolver.setTextFill(Color.WHITE);
 		
 		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
