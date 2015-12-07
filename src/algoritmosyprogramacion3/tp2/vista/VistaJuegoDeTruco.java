@@ -104,9 +104,11 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.contenedor.setCenter(this.contenedorCartasJugadas);
 	}
 	
+	protected abstract void setCaracteristicasAlContenedorInformacionJugadores();
+	
 	private void setCaracteristicasAlContenedorDerecho() {
 		
-		// faltan hacer los cuadros donde se muestra la informacion de los jugadores
+		this.setCaracteristicasAlContenedorInformacionJugadores();
 		
 		this.contenedorInformacionJugadores = new VBox();
 		this.contenedorInformacionJugadores.setSpacing(10);
@@ -416,6 +418,5 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		this.etiquetaNombreJugador.setText("Nombre: " + this.modelo.getNombreJugadorActual());
 		this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorActual()));
-		// faltan actualizar los cuadors de informacion de los jugadores
 	}
 }

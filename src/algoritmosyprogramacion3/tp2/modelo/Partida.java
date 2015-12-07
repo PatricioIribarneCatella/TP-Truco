@@ -249,4 +249,10 @@ public abstract class Partida {
 	}
 
 	public abstract boolean esContraComputadora();
+
+	public String getCantidadCartasEnManoDeJugador(String nombreJugador) {
+		
+		Jugable jugador = this.jugadores.get(nombreJugador);
+		return jugador.getCantidadCartasEnMano();
+	}
 }

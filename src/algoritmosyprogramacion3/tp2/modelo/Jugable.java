@@ -39,4 +39,6 @@ public interface Jugable {
 	public void devolverCartasAlMazo();
 
 	public boolean tieneFlor();
+
+	public String getCantidadCartasEnMano();
 }

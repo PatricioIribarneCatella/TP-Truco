@@ -27,4 +27,9 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 		
 		this.contenedorBotones.getChildren().add(botonTerminarTurno);
 	}
+
+	@Override
+	protected void setCaracteristicasAlContenedorInformacionJugadores() {
+		
+	}
 }

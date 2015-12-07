@@ -211,4 +211,9 @@ public class Jugador implements Jugable {
 	public void devolverCartasAlMazo() {
 		this.cartas.vaciar();
 	}
+
+	@Override
+	public String getCantidadCartasEnMano() {
+		return Integer.toString(this.cartas.getCartas().size());
+	}
 }

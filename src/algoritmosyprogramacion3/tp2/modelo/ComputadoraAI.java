@@ -210,4 +210,9 @@ public class ComputadoraAI implements Jugable {
 	public boolean tieneFlor() {
 		return this.cartas.hayFlor();
 	}
+
+	@Override
+	public String getCantidadCartasEnMano() {
+		return Integer.toString(this.cartas.getCartas().size());
+	}
 }

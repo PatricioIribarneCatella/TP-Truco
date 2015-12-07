@@ -10,4 +10,9 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco {
 	protected void setBotonTerminarTurno() {
 		// Esta vista no posee el boton terminar turno
 	}
+
+	@Override
+	protected void setCaracteristicasAlContenedorInformacionJugadores() {
+		
+	}
 }

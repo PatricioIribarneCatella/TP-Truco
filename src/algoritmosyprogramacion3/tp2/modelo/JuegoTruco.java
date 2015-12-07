@@ -395,4 +395,8 @@ public class JuegoTruco extends Observable {
 	public boolean mesaActualContraComputadora() {
 		return this.partidaActual.esContraComputadora();
 	}
+
+	public String getCantidadCartasEnManoDeJugador(String nombreJugador) {
+		return this.partidaActual.getCantidadCartasEnManoDeJugador(nombreJugador);
+	}
 }
