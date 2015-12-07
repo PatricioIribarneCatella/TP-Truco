@@ -108,12 +108,13 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 	
 	private void setCaracteristicasAlContenedorDerecho() {
 		
-		this.setCaracteristicasAlContenedorInformacionJugadores();
-		
 		this.contenedorInformacionJugadores = new VBox();
 		this.contenedorInformacionJugadores.setSpacing(10);
 		this.contenedorInformacionJugadores.setPadding(new Insets(20));
 		this.contenedorInformacionJugadores.setAlignment(Pos.CENTER);
+		
+		this.setCaracteristicasAlContenedorInformacionJugadores();
+		
 		this.contenedor.setRight(this.contenedorInformacionJugadores);
 	}
 	

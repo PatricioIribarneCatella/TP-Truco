@@ -5,6 +5,8 @@ import java.util.Observer;
 
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -27,6 +29,10 @@ public class VistaInformacionJugador extends Application implements Observer {
 	public void start(Stage stage) throws Exception {
 		
 		GridPane contenedor = new GridPane();
+		contenedor.setAlignment(Pos.CENTER);
+		contenedor.setPadding(new Insets(10));
+		contenedor.setHgap(10);
+		contenedor.setVgap(10);
 		
 		Label etiquetaNombre = new Label("Nombre: ");
 		Label etiquetaPuntos = new Label("Puntos: ");
@@ -44,7 +50,7 @@ public class VistaInformacionJugador extends Application implements Observer {
 		contenedor.add(this.etiquetaCantidadPuntos, 1, 1);
 		contenedor.add(this.etiquetaCantidadCartas, 1, 2);
 		
-		Scene escena = new Scene(contenedor, 1300, 700);
+		Scene escena = new Scene(contenedor, 300, 100);
 		
 		stage.setTitle("Informacion jugador");
 		stage.setScene(escena);
