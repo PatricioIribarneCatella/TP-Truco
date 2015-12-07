@@ -20,11 +20,11 @@ public class ManejadorRotacion {
 	
 	public void verificarEstrategiaDeRotacion(Equipo equipo1, Equipo equipo2) {
 		
-		if (equipo1.getPuntaje() >= 5 || equipo2.getPuntaje() >= 5 && this.esPrimeraVezParaCinco) {
+		if ((equipo1.getPuntaje() >= 5 || equipo2.getPuntaje() >= 5) && this.esPrimeraVezParaCinco) {
 			this.esPrimeraVezParaCinco = false;
 			this.estado = new MayorQueCincoYMenorQueVenticinco();
 		}
-		else if (equipo1.getPuntaje() >= 25 || equipo2.getPuntaje() >= 25 && this.esPrimeraVezParaVenticinco){
+		else if ((equipo1.getPuntaje() >= 25 || equipo2.getPuntaje() >= 25) && this.esPrimeraVezParaVenticinco){
 			this.esPrimeraVezParaVenticinco = false;
 			this.estado = new MayorQueVeinticinco();
 		}
