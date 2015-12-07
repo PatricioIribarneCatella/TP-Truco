@@ -69,6 +69,10 @@ public class VistaCreditos implements Vista {
 	
 	private void setCaracteristicasAlContenedorPrincipal() {
 		
+		Label etiquetaNombreVersion = new Label("FonTruco - v1.0");
+		etiquetaNombreVersion.setFont(Font.font("Tahoma", FontWeight.NORMAL, 22));
+		etiquetaNombreVersion.setTextFill(Color.WHITE);
+		
 		Label etiquetaAutores = new Label("Autores");
 		etiquetaAutores.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		etiquetaAutores.setTextFill(Color.WHITE);
@@ -94,7 +98,7 @@ public class VistaCreditos implements Vista {
 		
 		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
 		
-		this.contenedor.getChildren().addAll(etiquetaAutores, etiquetaSantiago, etiquetaPatricio, this.botonVolver);
+		this.contenedor.getChildren().addAll(etiquetaNombreVersion, etiquetaAutores, etiquetaSantiago, etiquetaPatricio, this.botonVolver);
 	}
 	
 	@Override
