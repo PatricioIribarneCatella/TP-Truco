@@ -22,4 +22,5 @@ public interface RotacionStrategy {
 
     public Jugable getJugadorConDecisionTruco();
 	
+    public boolean rotacionCompleta(); // es para la ronda pica pica para saber cuando jugaron todas las parejas.
 }

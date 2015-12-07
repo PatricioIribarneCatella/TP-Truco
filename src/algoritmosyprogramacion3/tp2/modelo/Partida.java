@@ -220,8 +220,12 @@ public abstract class Partida {
 	
 	public void sumarPuntos(Equipo equipo, int puntosASumar) {
 		equipo.sumarPuntos(puntosASumar);
-		this.verificarEstrategiaDeRotacion();
 		this.estado = new TurnoJugador();
+	}
+	
+	public void rondaFinalizada(){
+		
+		this.verificarEstrategiaDeRotacion();
 	}
 	
 	protected abstract void verificarEstrategiaDeRotacion();
@@ -249,7 +253,7 @@ public abstract class Partida {
 	}
 
 	public abstract boolean esContraComputadora();
-
+	
 	public String getCantidadCartasEnManoDeJugador(String nombreJugador) {
 		
 		Jugable jugador = this.jugadores.get(nombreJugador);

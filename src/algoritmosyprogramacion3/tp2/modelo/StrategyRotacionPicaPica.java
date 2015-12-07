@@ -15,9 +15,11 @@ public class StrategyRotacionPicaPica implements RotacionStrategy {
     private List<Jugable> parejaActual;
     private RotacionStrategy rotacionEnRonda;
     private List<Jugable> todosLosJugadores;
+    private boolean todasLasParejasJugaron;
 	
 	public StrategyRotacionPicaPica(List<Jugable>jugadores){
 		
+		this.todasLasParejasJugaron = false;
 		todosLosJugadores = jugadores;
 		this.primerPareja = new LinkedList<Jugable>();
 		this.segundaPareja = new LinkedList<Jugable>();
@@ -61,6 +63,7 @@ public class StrategyRotacionPicaPica implements RotacionStrategy {
         	return (parejaActual.get(0));//devuelvo el nuevo jugador mano que en definitiva siempre queda al principio de esta lista
         }
         this.rotacionEnRonda = new StrategyRotacionEnRonda(todosLosJugadores);
+        this.todasLasParejasJugaron = true;
         return this.rotacionEnRonda.getSiguienteJugadorMano();
 	}
 
@@ -75,19 +78,19 @@ public class StrategyRotacionPicaPica implements RotacionStrategy {
 		
     	return this.rotacionEnRonda.getJugadorConDecisionTruco();
 	}
-	
-
-	
+    
 	public List<Jugable> getJugadoresEnfrentados() {
-		
 		return this.parejaActual;
 	}
-
 	
 	@Override
 	public RotacionStrategy getProximaRotacion() {
 		return new StrategyRotacionEnRonda(this.todosLosJugadores);
 	}
 
-	
+	@Override
+	public boolean rotacionCompleta() {
+
+		return todasLasParejasJugaron;	 
+	}
 }

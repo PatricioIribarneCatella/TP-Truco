@@ -77,4 +77,9 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 	public RotacionStrategy getProximaRotacion() {
 		return new StrategyRotacionPicaPica(this.jugadores);
 	}
+
+	@Override
+	public boolean rotacionCompleta() {
+		return true;
+	}
 }

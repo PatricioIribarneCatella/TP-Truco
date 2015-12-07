@@ -102,7 +102,7 @@ public class Moderador {
     }
 	    
 	public void rondaFinalizada(){
-	  	
+	
 		List<Jugable> jugadoresEnfrentados = this.criterioDeRotacion.getJugadoresEnfrentados();
     	for (Jugable jugador : jugadoresEnfrentados) {
     		jugador.devolverCartasAlMazo();
@@ -116,6 +116,7 @@ public class Moderador {
     	this.manejadorTruco.nuevaRonda();
     	this.manejadorTruco.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados()); //puede que quede en null hasta que en el pica pica cambie el strategy
     	
+    	if(this.criterioDeRotacion.rotacionCompleta()) this.partidaEnCurso.rondaFinalizada();
 	}
 	
 	public Jugable getJugadorConTurno(){
@@ -232,7 +233,6 @@ public class Moderador {
 
 	public void trucoCantado(Jugable jugadorQueCanto) {
         
-		
 		if(this.jugadorConDecisionTruco == jugadorQueCanto){
 			
 			Canto truco = new Truco();

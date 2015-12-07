@@ -12,6 +12,9 @@ import algoritmosyprogramacion3.tp2.modelo.Mesa;
 import algoritmosyprogramacion3.tp2.modelo.MesaConFlor;
 import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
+import algoritmosyprogramacion3.tp2.modelo.PartidaDeCuatro;
+import algoritmosyprogramacion3.tp2.modelo.PartidaDeDos;
+import algoritmosyprogramacion3.tp2.modelo.PartidaDeSeis;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionPicaPica;
@@ -61,6 +64,27 @@ public class ModeradorTest {
 		jugadoresMesaDeSeis.add(jugador5);
 		jugadoresMesaDeSeis.add(jugador6);
 		
+		LinkedList<String> equiposMesaDeDos = new LinkedList<String>();
+		equiposMesaDeDos.add("1");
+		equiposMesaDeDos.add("2");
+		
+		LinkedList<String> equipoUnoMesaDeCuatro = new LinkedList<String>();
+		LinkedList<String> equipoDosMesaDeCuatro = new LinkedList<String>();
+		equipoUnoMesaDeCuatro.add("1");
+		equipoDosMesaDeCuatro.add("2");
+		equipoUnoMesaDeCuatro.add("3");
+		equipoDosMesaDeCuatro.add("4");
+		
+		LinkedList<String> equipoUnoMesaDeSeis = new LinkedList<String>();
+		LinkedList<String> equipoDosMesaDeSeis = new LinkedList<String>();
+		equipoUnoMesaDeSeis.add("1");
+		equipoDosMesaDeSeis.add("2");
+		equipoUnoMesaDeSeis.add("3");
+		equipoDosMesaDeSeis.add("4");
+		equipoUnoMesaDeSeis.add("5");
+		equipoDosMesaDeSeis.add("6");
+		
+		
 	    RotacionStrategy criterioRotacionMesaDeDos = new StrategyRotacionEnRonda(this.jugadoresMesaDeDos);
 	    RotacionStrategy criterioRotacionMesaDeCuatro = new StrategyRotacionEnRonda(this.jugadoresMesaDeCuatro);
 	    rotacionPicaPica = new StrategyRotacionPicaPica(this.jugadoresMesaDeSeis);
@@ -75,6 +99,10 @@ public class ModeradorTest {
 	    this.moderadorMesaDeCuatro.setRotacionStrategy(criterioRotacionMesaDeCuatro);
 	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionPicaPica);
 	    
+	    
+	    this.moderadorMesaDeDos.setPartida(new PartidaDeDos("",false,equiposMesaDeDos));
+	    this.moderadorMesaDeCuatro.setPartida(new PartidaDeCuatro("",false,equipoUnoMesaDeCuatro,equipoDosMesaDeCuatro));
+	    this.moderadorMesaDeSeis.setPartida(new PartidaDeSeis("",false,equipoUnoMesaDeSeis,equipoDosMesaDeSeis));
 	    this.moderadorMesaDeDos.repartirCartas();
 	    this.moderadorMesaDeCuatro.repartirCartas();
 	    this.moderadorMesaDeSeis.repartirCartas();
