@@ -2,6 +2,7 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
@@ -258,5 +259,9 @@ public abstract class Partida {
 		
 		Jugable jugador = this.jugadores.get(nombreJugador);
 		return jugador.getCantidadCartasEnMano();
+	}
+
+	public Set<String> getNombresDeJugadores() {
+		return this.jugadores.keySet();
 	}
 }

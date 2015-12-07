@@ -399,4 +399,8 @@ public class JuegoTruco extends Observable {
 	public String getCantidadCartasEnManoDeJugador(String nombreJugador) {
 		return this.partidaActual.getCantidadCartasEnManoDeJugador(nombreJugador);
 	}
+	
+	public Set<String> getNombresDeJugadores() {
+		return this.partidaActual.getNombresDeJugadores();
+	}
 }

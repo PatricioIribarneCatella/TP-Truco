@@ -1,5 +1,7 @@
 package algoritmosyprogramacion3.tp2.vista;
 
+import java.util.Set;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
@@ -8,6 +10,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 
@@ -31,5 +34,29 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 	@Override
 	protected void setCaracteristicasAlContenedorInformacionJugadores() {
 		
+		Set<String> nombres = this.modelo.getNombresDeJugadores();
+		
+		for (String nombre : nombres) {
+			
+			Button botonNombreJugador = new Button("Información Jugador: " + nombre);
+			
+			botonNombreJugador.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
+			botonNombreJugador.setTextFill(Color.WHITE);
+			
+			BackgroundFill fondoDeColorBotonInformacion = new BackgroundFill(Color.BROWN, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+			botonNombreJugador.setBackground(new Background(fondoDeColorBotonInformacion));
+			
+			botonNombreJugador.setOnAction(e -> {
+				
+				VistaInformacionJugador vista = new VistaInformacionJugador(this.modelo, nombre);
+				try {
+					vista.start(new Stage());
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			});
+			
+			this.contenedorInformacionJugadores.getChildren().add(botonNombreJugador);
+		}
 	}
 }
