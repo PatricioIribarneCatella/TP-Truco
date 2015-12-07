@@ -47,7 +47,7 @@ public class Mano {
 		List<Carta> cartasFiltradas = this.filtrarCartasPorPalo(palo);
 		
 		if (cartasFiltradas.isEmpty()) return 0;
-		if (cartasFiltradas.size() == 1) return cartasFiltradas.get(0).getValor();
+		if (cartasFiltradas.size() == 1) return cartasFiltradas.get(0).getValorEnvido();
 		
 		int puntaje = 20;
 		

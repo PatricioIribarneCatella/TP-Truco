@@ -32,7 +32,13 @@ public class ManejadorRotacion {
 	
 	public RotacionStrategy getRotacion() {
 		
-		if (this.estado.esValidaParaCambiarComportamiento()) this.rotacion = this.rotacion.getProximaRotacion();
+		if (this.estado.esValidaParaCambiarComportamiento()){
+			this.rotacion = this.rotacion.getProximaRotacion();
+		}
+		else{
+			this.rotacion = new StrategyRotacionEnRonda(this.jugadores);
+		}
+			
 		return this.rotacion;
 	}
 }
