@@ -357,6 +357,7 @@ public class Moderador {
 			int puntajeASumar = this.manejadorTruco.getPuntajePorRechazar();
 			this.partidaEnCurso.sumarPuntos(jugadorConDecisionTruco.getEquipo(), puntajeASumar);
 			this.manejadorTruco.trucoNoQuerido();
+			this.cantidadDeCartasDeLaJugada = 0;
 			this.rondaFinalizada();
 		}
 		else{
