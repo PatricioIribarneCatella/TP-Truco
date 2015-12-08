@@ -620,16 +620,6 @@ public class PartidaDeSeisSinFlorTest {
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Patricio"));
 		Assert.assertTrue(juego.rechazarVarianteTrucoPorJugador("Pepe"));
 		
-		/*Assert.assertTrue(juego.cantarTrucoPorJugador("Pepe"));
-		Assert.assertTrue(juego.cantarReTrucoPorJugador("Patricio"));
-		Assert.assertTrue(juego.aceptarReTrucoPorJugador("Pepe"));
-		
-		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pepe"));
-		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Patricio"));// Patricio gana primera
-		
-		Assert.assertTrue(juego.jugarSegundaCartaDeJugador("Pepe"));
-		Assert.assertTrue(juego.jugarSegundaCartaDeJugador("Patricio")); // Patricio gana segunda*/
-		
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("21"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("9"));
