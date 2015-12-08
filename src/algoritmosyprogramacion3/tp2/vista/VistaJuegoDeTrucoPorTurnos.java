@@ -28,6 +28,18 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 		BackgroundFill fondoDeColorBotonTerminarTurno = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonTerminarTurno.setBackground(new Background(fondoDeColorBotonTerminarTurno));
 		
+		botonTerminarTurno.setOnMouseEntered(e -> {
+			
+			botonTerminarTurno.setScaleX(1.2);
+			botonTerminarTurno.setScaleY(1.2);
+		});
+		
+		botonTerminarTurno.setOnMouseExited(e -> {
+			
+			botonTerminarTurno.setScaleX(1);
+			botonTerminarTurno.setScaleY(1);
+		});
+		
 		this.contenedorBotones.getChildren().add(botonTerminarTurno);
 	}
 
@@ -45,6 +57,18 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 			
 			BackgroundFill fondoDeColorBotonInformacion = new BackgroundFill(Color.BROWN, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 			botonNombreJugador.setBackground(new Background(fondoDeColorBotonInformacion));
+			
+			botonNombreJugador.setOnMouseEntered(e -> {
+				
+				botonNombreJugador.setScaleX(1.2);
+				botonNombreJugador.setScaleY(1.2);
+			});
+			
+			botonNombreJugador.setOnMouseExited(e -> {
+				
+				botonNombreJugador.setScaleX(1);
+				botonNombreJugador.setScaleY(1);
+			});
 			
 			botonNombreJugador.setOnAction(e -> {
 				

@@ -85,6 +85,18 @@ public class VistaInicio implements Vista {
 		botonJugar.setAlignment(Pos.TOP_CENTER);
 		botonJugar.setMaxSize(100, 30);
 		
+		botonJugar.setOnMouseEntered(e -> {
+			
+			botonJugar.setScaleX(1.2);
+			botonJugar.setScaleY(1.2);
+		});
+		
+		botonJugar.setOnMouseExited(e -> {
+			
+			botonJugar.setScaleX(1);
+			botonJugar.setScaleY(1);
+		});
+		
 		botonJugar.setOnAction(e -> {
 			
 			VistaEleccionJuego nuevaVista = new VistaEleccionJuego(this);
@@ -99,6 +111,18 @@ public class VistaInicio implements Vista {
 		
 		botonAcerca.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
 		botonAcerca.setAlignment(Pos.TOP_CENTER);
+		
+		botonAcerca.setOnMouseEntered(e -> {
+			
+			botonAcerca.setScaleX(1.3);
+			botonAcerca.setScaleY(1.3);
+		});
+		
+		botonAcerca.setOnMouseExited(e -> {
+			
+			botonAcerca.setScaleX(1);
+			botonAcerca.setScaleY(1);
+		});
 		
 		botonAcerca.setOnAction(e -> {
 			

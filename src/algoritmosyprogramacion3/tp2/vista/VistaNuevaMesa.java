@@ -122,11 +122,23 @@ public abstract class VistaNuevaMesa implements Vista {
 	private void setCaracteristicasAlContenedorInferior() {
 		
 		Button botonCrear = new Button("Crear");
-		botonCrear.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+		botonCrear.setFont(Font.font("Tahoma", FontWeight.NORMAL, 18));
 		botonCrear.setTextFill(Color.WHITE);
 		
 		BackgroundFill fondoDeColorBotonCrear = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonCrear.setBackground(new Background(fondoDeColorBotonCrear));
+		
+		botonCrear.setOnMouseEntered(e -> {
+			
+			botonCrear.setScaleX(1.3);
+			botonCrear.setScaleY(1.3);
+		});
+		
+		botonCrear.setOnMouseExited(e -> {
+			
+			botonCrear.setScaleX(1);
+			botonCrear.setScaleY(1);
+		});
 		
 		botonCrear.setOnAction(e -> {
 			
@@ -149,11 +161,23 @@ public abstract class VistaNuevaMesa implements Vista {
 		});
 		
 		this.botonVolver = new Button("Volver");
-		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 16));
+		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 18));
 		this.botonVolver.setTextFill(Color.WHITE);
 		
 		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
+		
+		this.botonVolver.setOnMouseEntered(e -> {
+			
+			this.botonVolver.setScaleX(1.2);
+			this.botonVolver.setScaleY(1.2);
+		});
+		
+		this.botonVolver.setOnMouseExited(e -> {
+			
+			this.botonVolver.setScaleX(1);
+			this.botonVolver.setScaleY(1);
+		});
 		
 		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
 		

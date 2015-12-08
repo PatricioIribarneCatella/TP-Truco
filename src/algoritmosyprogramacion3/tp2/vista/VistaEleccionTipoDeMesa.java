@@ -77,6 +77,18 @@ public class VistaEleccionTipoDeMesa implements Vista {
 		BackgroundFill fondoDeColorComputadora = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonMesaComputadora.setBackground(new Background(fondoDeColorComputadora));
 		
+		botonMesaComputadora.setOnMouseEntered(e -> {
+			
+			botonMesaComputadora.setScaleX(1.3);
+			botonMesaComputadora.setScaleY(1.3);
+		});
+		
+		botonMesaComputadora.setOnMouseExited(e -> {
+			
+			botonMesaComputadora.setScaleX(1);
+			botonMesaComputadora.setScaleY(1);
+		});
+		
 		botonMesaComputadora.setOnAction(e -> {
 			
 			VistaNuevaMesaContraComputadora nuevaVista = new VistaNuevaMesaContraComputadora(this);
@@ -89,6 +101,18 @@ public class VistaEleccionTipoDeMesa implements Vista {
 		
 		BackgroundFill fondoDeColorMesaDos = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonMesaDeDos.setBackground(new Background(fondoDeColorMesaDos));
+		
+		botonMesaDeDos.setOnMouseEntered(e -> {
+			
+			botonMesaDeDos.setScaleX(1.3);
+			botonMesaDeDos.setScaleY(1.3);
+		});
+		
+		botonMesaDeDos.setOnMouseExited(e -> {
+			
+			botonMesaDeDos.setScaleX(1);
+			botonMesaDeDos.setScaleY(1);
+		});
 		
 		botonMesaDeDos.setOnAction(e -> {
 			
@@ -103,6 +127,18 @@ public class VistaEleccionTipoDeMesa implements Vista {
 		BackgroundFill fondoDeColorMesaCuatro = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonMesaDeCuatro.setBackground(new Background(fondoDeColorMesaCuatro));
 		
+		botonMesaDeCuatro.setOnMouseEntered(e -> {
+			
+			botonMesaDeCuatro.setScaleX(1.3);
+			botonMesaDeCuatro.setScaleY(1.3);
+		});
+		
+		botonMesaDeCuatro.setOnMouseExited(e -> {
+			
+			botonMesaDeCuatro.setScaleX(1);
+			botonMesaDeCuatro.setScaleY(1);
+		});
+		
 		botonMesaDeCuatro.setOnAction(e -> {
 			
 			VistaNuevaMesaDeCuatro nuevaVista = new VistaNuevaMesaDeCuatro(this);
@@ -116,6 +152,18 @@ public class VistaEleccionTipoDeMesa implements Vista {
 		BackgroundFill fondoDeColorMesaSeis = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonMesaDeSeis.setBackground(new Background(fondoDeColorMesaSeis));
 		
+		botonMesaDeSeis.setOnMouseEntered(e -> {
+			
+			botonMesaDeSeis.setScaleX(1.3);
+			botonMesaDeSeis.setScaleY(1.3);
+		});
+		
+		botonMesaDeSeis.setOnMouseExited(e -> {
+			
+			botonMesaDeSeis.setScaleX(1);
+			botonMesaDeSeis.setScaleY(1);
+		});
+		
 		botonMesaDeSeis.setOnAction(e -> {
 			
 			VistaNuevaMesaDeSeis nuevaVista = new VistaNuevaMesaDeSeis(this);
@@ -128,6 +176,18 @@ public class VistaEleccionTipoDeMesa implements Vista {
 		
 		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
+		
+		this.botonVolver.setOnMouseEntered(e -> {
+			
+			this.botonVolver.setScaleX(1.3);
+			this.botonVolver.setScaleY(1.3);
+		});
+		
+		this.botonVolver.setOnMouseExited(e -> {
+			
+			this.botonVolver.setScaleX(1);
+			this.botonVolver.setScaleY(1);
+		});
 		
 		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
 		

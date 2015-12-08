@@ -91,6 +91,18 @@ public class VistaJuegosExistentes implements Vista {
 				BackgroundFill fondoDeColorBotonMesa = new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 				botonMesa.setBackground(new Background(fondoDeColorBotonMesa));
 				
+				botonMesa.setOnMouseEntered(e -> {
+					
+					botonMesa.setScaleX(1.3);
+					botonMesa.setScaleY(1.3);
+				});
+				
+				botonMesa.setOnMouseExited(e -> {
+					
+					botonMesa.setScaleX(1);
+					botonMesa.setScaleY(1);
+				});
+				
 				botonMesa.setOnAction(e -> {
 					
 					Vista nuevaVista;
@@ -118,6 +130,18 @@ public class VistaJuegosExistentes implements Vista {
 		
 		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
+		
+		this.botonVolver.setOnMouseEntered(e -> {
+			
+			this.botonVolver.setScaleX(1.2);
+			this.botonVolver.setScaleY(1.2);
+		});
+		
+		this.botonVolver.setOnMouseExited(e -> {
+			
+			this.botonVolver.setScaleX(1);
+			this.botonVolver.setScaleY(1);
+		});
 		
 		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
 		

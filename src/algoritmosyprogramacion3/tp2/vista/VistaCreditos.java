@@ -96,6 +96,18 @@ public class VistaCreditos implements Vista {
 		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
 		
+		this.botonVolver.setOnMouseEntered(e -> {
+			
+			this.botonVolver.setScaleX(1.2);
+			this.botonVolver.setScaleY(1.2);
+		});
+		
+		this.botonVolver.setOnMouseExited(e -> {
+			
+			this.botonVolver.setScaleX(1);
+			this.botonVolver.setScaleY(1);
+		});
+		
 		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
 		
 		this.contenedor.getChildren().addAll(etiquetaNombreVersion, etiquetaAutores, etiquetaSantiago, etiquetaPatricio, this.botonVolver);

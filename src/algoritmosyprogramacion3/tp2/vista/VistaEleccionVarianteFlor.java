@@ -78,6 +78,18 @@ public class VistaEleccionVarianteFlor implements Vista {
 		botonConFlor.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		botonConFlor.setAlignment(Pos.TOP_CENTER);
 		
+		botonConFlor.setOnMouseEntered(e -> {
+			
+			botonConFlor.setScaleX(1.3);
+			botonConFlor.setScaleY(1.3);
+		});
+		
+		botonConFlor.setOnMouseExited(e -> {
+			
+			botonConFlor.setScaleX(1);
+			botonConFlor.setScaleY(1);
+		});
+		
 		botonConFlor.setOnAction(e -> {
 			
 			this.conFlor = true;
@@ -94,6 +106,18 @@ public class VistaEleccionVarianteFlor implements Vista {
 		botonSinFlor.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		botonSinFlor.setAlignment(Pos.TOP_CENTER);
 		
+		botonSinFlor.setOnMouseEntered(e -> {
+			
+			botonSinFlor.setScaleX(1.3);
+			botonSinFlor.setScaleY(1.3);
+		});
+		
+		botonSinFlor.setOnMouseExited(e -> {
+			
+			botonSinFlor.setScaleX(1);
+			botonSinFlor.setScaleY(1);
+		});
+		
 		botonSinFlor.setOnAction(e -> {
 			
 			this.conFlor = false;
@@ -107,6 +131,18 @@ public class VistaEleccionVarianteFlor implements Vista {
 		
 		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
+		
+		this.botonVolver.setOnMouseEntered(e -> {
+			
+			this.botonVolver.setScaleX(1.3);
+			this.botonVolver.setScaleY(1.3);
+		});
+		
+		this.botonVolver.setOnMouseExited(e -> {
+			
+			this.botonVolver.setScaleX(1);
+			this.botonVolver.setScaleY(1);
+		});
 		
 		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
 		

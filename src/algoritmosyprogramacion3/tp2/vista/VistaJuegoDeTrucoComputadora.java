@@ -32,6 +32,18 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco {
 		BackgroundFill fondoDeColorBotonInformacion = new BackgroundFill(Color.BROWN, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonComputadora.setBackground(new Background(fondoDeColorBotonInformacion));
 		
+		botonComputadora.setOnMouseEntered(e -> {
+			
+			botonComputadora.setScaleX(1.2);
+			botonComputadora.setScaleY(1.2);
+		});
+		
+		botonComputadora.setOnMouseExited(e -> {
+			
+			botonComputadora.setScaleX(1);
+			botonComputadora.setScaleY(1);
+		});
+		
 		botonComputadora.setOnAction(e -> {
 			
 			VistaInformacionJugador vista = new VistaInformacionJugador(this.modelo, "Computadora");

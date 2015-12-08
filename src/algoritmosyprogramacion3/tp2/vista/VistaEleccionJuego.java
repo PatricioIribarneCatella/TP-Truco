@@ -74,6 +74,18 @@ public class VistaEleccionJuego implements Vista {
 		BackgroundFill fondoDeColorJuegosExistentes = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonJuegosExistentes.setBackground(new Background(fondoDeColorJuegosExistentes));
 		
+		botonJuegosExistentes.setOnMouseEntered(e -> {
+			
+			botonJuegosExistentes.setScaleX(1.3);
+			botonJuegosExistentes.setScaleY(1.3);
+		});
+		
+		botonJuegosExistentes.setOnMouseExited(e -> {
+			
+			botonJuegosExistentes.setScaleX(1);
+			botonJuegosExistentes.setScaleY(1);
+		});
+		
 		botonJuegosExistentes.setOnAction(e -> {
 			
 			VistaJuegosExistentes nuevaVista = new VistaJuegosExistentes(this);
@@ -86,6 +98,18 @@ public class VistaEleccionJuego implements Vista {
 		
 		BackgroundFill fondoDeColorNuevoJuego = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonNuevoJuego.setBackground(new Background(fondoDeColorNuevoJuego));
+		
+		botonNuevoJuego.setOnMouseEntered(e -> {
+			
+			botonNuevoJuego.setScaleX(1.3);
+			botonNuevoJuego.setScaleY(1.3);
+		});
+		
+		botonNuevoJuego.setOnMouseExited(e -> {
+			
+			botonNuevoJuego.setScaleX(1);
+			botonNuevoJuego.setScaleY(1);
+		});
 		
 		botonNuevoJuego.setOnAction(e -> {
 			

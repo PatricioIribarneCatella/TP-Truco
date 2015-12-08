@@ -6,9 +6,11 @@ import java.util.Observer;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
+import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
 import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
+import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -47,6 +49,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 	protected Label etiquetaNombreJugador;
 	protected Label etiquetaPuntosJugador;
 	protected VBox contenedorBotones;
+	private HBox contenedorCartas;
 	
 	public VistaJuegoDeTruco(Vista vistaAnterior) {
 		
@@ -98,7 +101,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 	private void setCaracteristicasAlContenedorCentro() {
 		
 		this.contenedorCartasJugadas = new HBox();
-		this.contenedorCartasJugadas.setSpacing(80);
+		this.contenedorCartasJugadas.setSpacing(30);
 		this.contenedorCartasJugadas.setPadding(new Insets(10));
 		this.contenedorCartasJugadas.setAlignment(Pos.CENTER);
 		this.contenedor.setCenter(this.contenedorCartasJugadas);
@@ -110,8 +113,8 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		this.contenedorInformacionJugadores = new VBox();
 		this.contenedorInformacionJugadores.setSpacing(10);
-		this.contenedorInformacionJugadores.setPadding(new Insets(20));
-		this.contenedorInformacionJugadores.setAlignment(Pos.CENTER);
+		this.contenedorInformacionJugadores.setPadding(new Insets(10));
+		this.contenedorInformacionJugadores.setAlignment(Pos.TOP_CENTER);
 		
 		this.setCaracteristicasAlContenedorInformacionJugadores();
 		
@@ -130,6 +133,18 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		BackgroundFill fondoDeColorBotonTruco = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonTruco.setBackground(new Background(fondoDeColorBotonTruco));
+		
+		botonTruco.setOnMouseEntered(e -> {
+			
+			botonTruco.setScaleX(1.2);
+			botonTruco.setScaleY(1.2);
+		});
+		
+		botonTruco.setOnMouseExited(e -> {
+			
+			botonTruco.setScaleX(1);
+			botonTruco.setScaleY(1);
+		});
 		
 		botonTruco.setOnAction(e -> {
 		
@@ -153,6 +168,18 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		BackgroundFill fondoDeColorBotonReTruco = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonReTruco.setBackground(new Background(fondoDeColorBotonReTruco));
+		
+		botonReTruco.setOnMouseEntered(e -> {
+			
+			botonReTruco.setScaleX(1.2);
+			botonReTruco.setScaleY(1.2);
+		});
+		
+		botonReTruco.setOnMouseExited(e -> {
+			
+			botonReTruco.setScaleX(1);
+			botonReTruco.setScaleY(1);
+		});
 		
 		botonReTruco.setOnAction(e -> {
 			
@@ -178,6 +205,18 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		BackgroundFill fondoDeColorBotonValeCuatro = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonValeCuatro.setBackground(new Background(fondoDeColorBotonValeCuatro));
 		
+		botonValeCuatro.setOnMouseEntered(e -> {
+			
+			botonValeCuatro.setScaleX(1.2);
+			botonValeCuatro.setScaleY(1.2);
+		});
+		
+		botonValeCuatro.setOnMouseExited(e -> {
+			
+			botonValeCuatro.setScaleX(1);
+			botonValeCuatro.setScaleY(1);
+		});
+		
 		botonValeCuatro.setOnAction(e -> {
 			
 			try {
@@ -201,6 +240,18 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		BackgroundFill fondoDeColorBotonEnvido = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonEnvido.setBackground(new Background(fondoDeColorBotonEnvido));
+		
+		botonEnvido.setOnMouseEntered(e -> {
+			
+			botonEnvido.setScaleX(1.2);
+			botonEnvido.setScaleY(1.2);
+		});
+		
+		botonEnvido.setOnMouseExited(e -> {
+			
+			botonEnvido.setScaleX(1);
+			botonEnvido.setScaleY(1);
+		});
 		
 		botonEnvido.setOnAction(e -> {
 			
@@ -226,6 +277,18 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		BackgroundFill fondoDeColorBotonRealEnvido = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonRealEnvido.setBackground(new Background(fondoDeColorBotonRealEnvido));
 		
+		botonRealEnvido.setOnMouseEntered(e -> {
+			
+			botonRealEnvido.setScaleX(1.2);
+			botonRealEnvido.setScaleY(1.2);
+		});
+		
+		botonRealEnvido.setOnMouseExited(e -> {
+			
+			botonRealEnvido.setScaleX(1);
+			botonRealEnvido.setScaleY(1);
+		});
+		
 		botonRealEnvido.setOnAction(e -> {
 			
 			try {
@@ -250,6 +313,18 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		BackgroundFill fondoDeColorBotonFaltaEnvido = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonFaltaEnvido.setBackground(new Background(fondoDeColorBotonFaltaEnvido));
 		
+		botonFaltaEnvido.setOnMouseEntered(e -> {
+			
+			botonFaltaEnvido.setScaleX(1.2);
+			botonFaltaEnvido.setScaleY(1.2);
+		});
+		
+		botonFaltaEnvido.setOnMouseExited(e -> {
+			
+			botonFaltaEnvido.setScaleX(1);
+			botonFaltaEnvido.setScaleY(1);
+		});
+		
 		botonFaltaEnvido.setOnAction(e -> {
 			
 			try {
@@ -273,6 +348,18 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		BackgroundFill fondoDeColorBotonFlor = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonFlor.setBackground(new Background(fondoDeColorBotonFlor));
+		
+		botonFlor.setOnMouseEntered(e -> {
+			
+			botonFlor.setScaleX(1.2);
+			botonFlor.setScaleY(1.2);
+		});
+		
+		botonFlor.setOnMouseExited(e -> {
+			
+			botonFlor.setScaleX(1);
+			botonFlor.setScaleY(1);
+		});
 		
 		botonFlor.setOnAction(e -> {
 			
@@ -303,8 +390,8 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.setBotonTerminarTurno();
 		
 		this.contenedorBotones.setSpacing(15);
-		this.contenedorBotones.setPadding(new Insets(20));
-		this.contenedorBotones.setAlignment(Pos.CENTER);
+		this.contenedorBotones.setPadding(new Insets(10));
+		this.contenedorBotones.setAlignment(Pos.TOP_CENTER);
 		this.contenedor.setLeft(this.contenedorBotones);
 	}
 
@@ -321,6 +408,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		HBox contenedorEtiquetasJugador = new HBox(this.etiquetaNombreJugador, this.etiquetaPuntosJugador);
 		contenedorEtiquetasJugador.setSpacing(15);
 		contenedorEtiquetasJugador.setPadding(new Insets(10));
+		contenedorEtiquetasJugador.setAlignment(Pos.CENTER_LEFT);
 		
 		Button botonVolverAlMenu = new Button("Volver al menu principal");
 		botonVolverAlMenu.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
@@ -328,6 +416,18 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		BackgroundFill fondoDeColorBotonVolverAlMenu = new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonVolverAlMenu.setBackground(new Background(fondoDeColorBotonVolverAlMenu));
+		
+		botonVolverAlMenu.setOnMouseEntered(e -> {
+			
+			botonVolverAlMenu.setScaleX(1.2);
+			botonVolverAlMenu.setScaleY(1.2);
+		});
+		
+		botonVolverAlMenu.setOnMouseExited(e -> {
+			
+			botonVolverAlMenu.setScaleX(1);
+			botonVolverAlMenu.setScaleY(1);
+		});
 		
 		botonVolverAlMenu.setOnAction(e -> {
 			
@@ -342,37 +442,153 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.contenedor.setTop(contenedorSuperior);
 	}
 	
-	private void setCaracteristicasAlContenedorInferior() {
+	private Image getImagenCarta(Carta carta) {
 		
-		HBox contenedorCartas = new HBox();
-		contenedorCartas.setSpacing(15);
-		contenedorCartas.setPadding(new Insets(10));
-		contenedorCartas.setAlignment(Pos.CENTER);
+		Imagen imagen = this.graficadorCartas.getImagen(carta);
+		return new Image(imagen.getUrl(), imagen.getWidth(), imagen.getHeigth(), imagen.getPreserveRatio(), imagen.getSmooth());
+	}
+	
+	private void setCaracteristicasAlContenedorCartas() {
+		
+		this.contenedorCartas = new HBox();
+		this.contenedorCartas.setSpacing(15);
+		this.contenedorCartas.setPadding(new Insets(10));
+		this.contenedorCartas.setAlignment(Pos.CENTER);
 		
 		List<Carta> listaCartas = this.modelo.getCartasJugadorConTurno();
 		
-		for (Carta carta : listaCartas) {
-			
-			Imagen imagen = this.graficadorCartas.getImagen(carta);
-			
-			Image imagenCarta = new Image(imagen.getUrl(), imagen.getWidth(), imagen.getHeigth(), imagen.getPreserveRatio(), imagen.getSmooth());
-			
-			Button botonCarta = new Button();
-			botonCarta.setGraphic(new ImageView(imagenCarta));
-			botonCarta.setDefaultButton(true);
-			botonCarta.setContentDisplay(ContentDisplay.CENTER);
-			
-			contenedorCartas.getChildren().add(botonCarta);
-			
-			botonCarta.setOnAction(e -> {
-				
-				// falta jugar la carta por el modelo
-				contenedorCartas.getChildren().remove(botonCarta);
-				this.contenedorCartasJugadas.getChildren().add(botonCarta);
-			});
-		}
+		Button botonCarta1 = new Button();
+		botonCarta1.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(0))));
+		botonCarta1.setDefaultButton(true);
+		botonCarta1.setContentDisplay(ContentDisplay.CENTER);
 		
-		VBox contenedorInferior = new VBox(this.etiquetaDatos, contenedorCartas);
+		this.contenedorCartas.getChildren().add(botonCarta1);
+		
+		botonCarta1.setOnMouseEntered(e -> {
+			
+			botonCarta1.setScaleX(1.3);
+			botonCarta1.setScaleY(1.3);
+		});
+		
+		botonCarta1.setOnMouseExited(e -> {
+			
+			botonCarta1.setScaleX(1);
+			botonCarta1.setScaleY(1);
+		});
+		
+		botonCarta1.setOnAction(e -> {
+			
+			try {
+			
+				this.modelo.jugarPrimerCartaDeJugador(this.modelo.getNombreJugadorActual());
+				
+			} catch (AccionInvalidaException ex) {
+				
+				this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
+				
+			} catch (TurnoEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
+				
+			} catch (CartaYaJugadaException ex) {
+				
+				this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
+			}
+			
+			this.contenedorCartas.getChildren().remove(botonCarta1);
+			this.contenedorCartasJugadas.getChildren().add(botonCarta1);
+		});
+		
+		Button botonCarta2 = new Button();
+		botonCarta2.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(1))));
+		botonCarta2.setDefaultButton(true);
+		botonCarta2.setContentDisplay(ContentDisplay.CENTER);
+		
+		this.contenedorCartas.getChildren().add(botonCarta2);
+		
+		botonCarta2.setOnMouseEntered(e -> {
+			
+			botonCarta2.setScaleX(1.3);
+			botonCarta2.setScaleY(1.3);
+		});
+		
+		botonCarta2.setOnMouseExited(e -> {
+			
+			botonCarta2.setScaleX(1);
+			botonCarta2.setScaleY(1);
+		});
+		
+		botonCarta2.setOnAction(e -> {
+			
+			try {
+				
+				this.modelo.jugarSegundaCartaDeJugador(this.modelo.getNombreJugadorActual());
+				
+			} catch (AccionInvalidaException ex) {
+				
+				this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
+				
+			} catch (TurnoEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
+				
+			} catch (CartaYaJugadaException ex) {
+				
+				this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
+			}
+			
+			this.contenedorCartas.getChildren().remove(botonCarta2);
+			this.contenedorCartasJugadas.getChildren().add(botonCarta2);
+		});
+		
+		Button botonCarta3 = new Button();
+		botonCarta3.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(2))));
+		botonCarta3.setDefaultButton(true);
+		botonCarta3.setContentDisplay(ContentDisplay.CENTER);
+		
+		this.contenedorCartas.getChildren().add(botonCarta3);
+		
+		botonCarta3.setOnMouseEntered(e -> {
+			
+			botonCarta3.setScaleX(1.3);
+			botonCarta3.setScaleY(1.3);
+		});
+		
+		botonCarta3.setOnMouseExited(e -> {
+			
+			botonCarta3.setScaleX(1);
+			botonCarta3.setScaleY(1);
+		});
+		
+		botonCarta3.setOnAction(e -> {
+			
+			try {
+				
+				this.modelo.jugarTercerCartaDeJugador(this.modelo.getNombreJugadorActual());
+				
+			} catch (AccionInvalidaException ex) {
+				
+				this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
+				
+			} catch (TurnoEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
+				
+			} catch (CartaYaJugadaException ex) {
+				
+				this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
+			}
+			
+			this.contenedorCartas.getChildren().remove(botonCarta3);
+			this.contenedorCartasJugadas.getChildren().add(botonCarta3);
+		});
+	}
+	
+	private void setCaracteristicasAlContenedorInferior() {
+		
+		this.setCaracteristicasAlContenedorCartas();
+		
+		VBox contenedorInferior = new VBox(this.etiquetaDatos, this.contenedorCartas);
 		contenedorInferior.setSpacing(10);
 		contenedorInferior.setPadding(new Insets(10));
 		contenedorInferior.setAlignment(Pos.CENTER);
