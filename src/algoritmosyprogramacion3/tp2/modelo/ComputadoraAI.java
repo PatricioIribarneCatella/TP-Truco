@@ -3,6 +3,7 @@ package algoritmosyprogramacion3.tp2.modelo;
 import java.util.List;
 import java.util.Random;
 
+import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 
 public class ComputadoraAI implements Jugable {
@@ -13,71 +14,61 @@ public class ComputadoraAI implements Jugable {
 	private Mesa mesa;
 	private String nombre;
 	private Equipo equipo;
-	private Random numeroRandom;
+	
 	
 	public ComputadoraAI() {
 		
 		this.puntaje = 0;
 		this.cartas = new Mano();
-		this.numeroRandom = new Random();
+		new Random();
 		this.nombre = "Computadora";
 	}
 	
-	private Evento nuevoEvento() {
-		
-		int numero = this.numeroRandom.nextInt(3);
-		
-		if (!this.cartas.hayCartasJugadas()) {
-			
-			if (numero == 0) return new Envido();
-			if (numero == 1 && this.mesa.seJuegaConFlor()) return new Flor(); 
-		}
-		return new Truco();
+	public void darRespuestaAEnvido() {
+
+	     this.moderador.jugadorAceptaVarianteEnvido(this);
 	}
 	
-	public Evento darRespuestaAEvento(Evento evento) {
+	public void darRespuestaARealEnvido() {
 		
-		int numero = this.numeroRandom.nextInt(3);
+	     this.moderador.jugadorAceptaVarianteEnvido(this);
+	}
+	
+	public void darRespuestaAFaltaEnvido() {
 		
-		if (numero == 0 && evento.esPosibleSubirLaApuesta()) return evento.subirApuesta();
-		else if (numero == 1) {
-			return new Aceptar();
-		} 
-		return new Rechazar();
+	     this.moderador.jugadorAceptaVarianteEnvido(this);
 	}
 		
+	public void darRespuestaATruco() {
+		
+	     this.moderador.jugadorAceptaVarianteTruco(this);
+	}
 	
-	public Evento darRespuestaATurno() {
+	public void darRespuestaATurno() {
 		
-		int numero = this.numeroRandom.nextInt(2);
-	     
-		if(numero == 0){
-	       
-			return this.jugarCarta();		
-		}
-		
-		return this.nuevoEvento();
+		  this.jugarCarta();
 	}
 	
 	private Evento jugarCarta() {
 
-		int numero = this.numeroRandom.nextInt(3);
-		if (numero == 0) {
-			
+		/*Intenta jugar una carta hasta que el juego se lo permita*/
+		try{
+
 			this.jugarPrimerCarta();
 		}
-		else{
+		catch(CartaYaJugadaException e){
 			
-			if(numero == 1){
+			try {
 				
 				this.jugarSegundaCarta();
 			}
-			else{
+			catch(CartaYaJugadaException d){
 				
 				this.jugarTercerCarta();
 			}
 				
 		}
+		
 		return new JugarCarta();
 	}
 
@@ -125,7 +116,7 @@ public class ComputadoraAI implements Jugable {
 	
 	@Override
 	public void jugarPrimerCarta() {
-	    
+	
 		Carta cartaAJugar = this.cartas.getPrimerCarta();
 		
 		if (this.esMiTurno()) {

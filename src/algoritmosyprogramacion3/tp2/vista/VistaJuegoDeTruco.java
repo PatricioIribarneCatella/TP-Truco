@@ -49,7 +49,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 	protected Label etiquetaNombreJugador;
 	protected Label etiquetaPuntosJugador;
 	protected VBox contenedorBotones;
-	private HBox contenedorCartas;
+	protected HBox contenedorCartas;
 	
 	public VistaJuegoDeTruco(Vista vistaAnterior) {
 		
@@ -496,7 +496,9 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			}
 			
 			this.contenedorCartas.getChildren().remove(botonCarta1);
-			this.contenedorCartasJugadas.getChildren().add(botonCarta1);
+			Label etiquetaCarta = new Label();
+			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(0))));
+			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
 		});
 		
 		Button botonCarta2 = new Button();
@@ -538,7 +540,9 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			}
 			
 			this.contenedorCartas.getChildren().remove(botonCarta2);
-			this.contenedorCartasJugadas.getChildren().add(botonCarta2);
+			Label etiquetaCarta = new Label();
+			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(1))));
+			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
 		});
 		
 		Button botonCarta3 = new Button();
@@ -580,7 +584,9 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			}
 			
 			this.contenedorCartas.getChildren().remove(botonCarta3);
-			this.contenedorCartasJugadas.getChildren().add(botonCarta3);
+			Label etiquetaCarta = new Label();
+			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(2))));
+			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
 		});
 	}
 	

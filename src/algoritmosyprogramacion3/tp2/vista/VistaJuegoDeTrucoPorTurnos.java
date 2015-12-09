@@ -40,6 +40,10 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 			botonTerminarTurno.setScaleY(1);
 		});
 		
+		botonTerminarTurno.setOnAction(e -> {
+			
+		});
+		
 		this.contenedorBotones.getChildren().add(botonTerminarTurno);
 	}
 
@@ -75,8 +79,8 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 				VistaInformacionJugador vista = new VistaInformacionJugador(this.modelo, nombre);
 				try {
 					vista.start(new Stage());
-				} catch (Exception e1) {
-					e1.printStackTrace();
+				} catch (Exception ex) {
+					ex.printStackTrace();
 				}
 			});
 			

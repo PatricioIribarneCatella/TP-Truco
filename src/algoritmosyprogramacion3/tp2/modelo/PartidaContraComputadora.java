@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PartidaContraComputadora extends Partida {
 
-	private Jugable computadora;
+	private ComputadoraAI computadora;
 	
 	public PartidaContraComputadora(String nombrePartida, boolean conFlor, String nombreJugador) {
 		
@@ -47,6 +47,51 @@ public class PartidaContraComputadora extends Partida {
 		}
 	}
 
+	public void cantarEnvido(String jugadorQueCanta) {
+		
+		 super.cantarEnvido(jugadorQueCanta);
+	     this.computadora.darRespuestaAEnvido();
+	}
+	
+	public void cantarRealEnvido(String jugadorQueCanta) {
+		
+		 super.cantarRealEnvido(jugadorQueCanta);
+	     this.computadora.darRespuestaARealEnvido();
+	}
+	
+	public void cantarFaltaEnvido(String jugadorQueCanta) {
+		
+		 super.cantarFaltaEnvido(jugadorQueCanta);
+	     this.computadora.darRespuestaAFaltaEnvido();
+	}
+	
+	public void cantarTruco(String jugadorQueCanta) {
+		
+		 super.cantarTruco(jugadorQueCanta);
+	     this.computadora.darRespuestaATruco();
+	     super.aceptarTruco(this.computadora.getNombre());// la computadora siempre acepta
+	}
+	
+	
+public void jugarPrimerCartaJugador(String unJugador){
+		
+		super.jugarPrimerCartaJugador(unJugador);
+		this.computadora.darRespuestaATurno();
+	}
+	
+	public void jugarSegundaCartaJugador(String unJugador){
+	
+    	super.jugarSegundaCartaJugador(unJugador);
+    	this.computadora.darRespuestaATurno();
+	}
+
+	public void jugarTercerCartaJugador(String unJugador){
+
+         super.jugarTercerCartaJugador(unJugador);
+         this.computadora.darRespuestaATurno();
+	}
+	
+	
 	@Override
 	protected void verificarEstrategiaDeRotacion() {
 		// No verifica ninguna estrategia ya que la ronda es la única que hay
