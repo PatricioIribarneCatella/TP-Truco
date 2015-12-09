@@ -366,7 +366,9 @@ public class JuegoTruco extends Observable {
 	
 	// Reparte cartas de forma aleatoria
 	public void repartirCartas() {
+		
 		this.partidaActual.repartirCartas();
+		this.actualizarObservadores();
 	}
 	
 	// Reparte las cartas que se le pasan como parámetro siempre en ese mismo orden

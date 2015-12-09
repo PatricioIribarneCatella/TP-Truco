@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -70,8 +71,6 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		this.setImagenDeFondo();
 		
-		this.modelo.repartirCartas();
-		
 		this.setCaracteristicasAlContenedorPrincipal();
 		
 		this.escena = new Scene(this.contenedor, 1300, 700);
@@ -98,6 +97,147 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.etiquetaDatos.setTextFill(Color.web("#FFFFFF"));
 	}
 	
+	private Image getImagenCarta(Carta carta) {
+		
+		Imagen imagen = this.graficadorCartas.getImagen(carta);
+		return new Image(imagen.getUrl(), imagen.getWidth(), imagen.getHeigth(), imagen.getPreserveRatio(), imagen.getSmooth());
+	}
+	
+	private void graficarCartas(List<Carta> cartas) {
+		
+		Button botonCarta1 = new Button();
+		botonCarta1.setGraphic(new ImageView(this.getImagenCarta(cartas.get(0))));
+		botonCarta1.setDefaultButton(true);
+		botonCarta1.setContentDisplay(ContentDisplay.CENTER);
+		
+		this.contenedorCartas.getChildren().add(botonCarta1);
+		
+		botonCarta1.setOnMouseEntered(e -> {
+			
+			botonCarta1.setScaleX(1.3);
+			botonCarta1.setScaleY(1.3);
+		});
+		
+		botonCarta1.setOnMouseExited(e -> {
+			
+			botonCarta1.setScaleX(1);
+			botonCarta1.setScaleY(1);
+		});
+		
+		botonCarta1.setOnAction(e -> {
+			
+			try {
+			
+				this.modelo.jugarPrimerCartaDeJugador(this.modelo.getNombreJugadorActual());
+				
+			} catch (AccionInvalidaException ex) {
+				
+				this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
+				
+			} catch (TurnoEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
+				
+			} catch (CartaYaJugadaException ex) {
+				
+				this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
+			}
+			
+			this.contenedorCartas.getChildren().remove(botonCarta1);
+			Label etiquetaCarta = new Label();
+			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(cartas.get(0))));
+			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
+		});
+		
+		Button botonCarta2 = new Button();
+		botonCarta2.setGraphic(new ImageView(this.getImagenCarta(cartas.get(1))));
+		botonCarta2.setDefaultButton(true);
+		botonCarta2.setContentDisplay(ContentDisplay.CENTER);
+		
+		this.contenedorCartas.getChildren().add(botonCarta2);
+		
+		botonCarta2.setOnMouseEntered(e -> {
+			
+			botonCarta2.setScaleX(1.3);
+			botonCarta2.setScaleY(1.3);
+		});
+		
+		botonCarta2.setOnMouseExited(e -> {
+			
+			botonCarta2.setScaleX(1);
+			botonCarta2.setScaleY(1);
+		});
+		
+		botonCarta2.setOnAction(e -> {
+			
+			try {
+				
+				this.modelo.jugarSegundaCartaDeJugador(this.modelo.getNombreJugadorActual());
+				
+			} catch (AccionInvalidaException ex) {
+				
+				this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
+				
+			} catch (TurnoEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
+				
+			} catch (CartaYaJugadaException ex) {
+				
+				this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
+			}
+			
+			this.contenedorCartas.getChildren().remove(botonCarta2);
+			Label etiquetaCarta = new Label();
+			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(cartas.get(1))));
+			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
+		});
+		
+		Button botonCarta3 = new Button();
+		botonCarta3.setGraphic(new ImageView(this.getImagenCarta(cartas.get(2))));
+		botonCarta3.setDefaultButton(true);
+		botonCarta3.setContentDisplay(ContentDisplay.CENTER);
+		
+		this.contenedorCartas.getChildren().add(botonCarta3);
+		
+		botonCarta3.setOnMouseEntered(e -> {
+			
+			botonCarta3.setScaleX(1.3);
+			botonCarta3.setScaleY(1.3);
+		});
+		
+		botonCarta3.setOnMouseExited(e -> {
+			
+			botonCarta3.setScaleX(1);
+			botonCarta3.setScaleY(1);
+		});
+		
+		botonCarta3.setOnAction(e -> {
+			
+			try {
+				
+				this.modelo.jugarTercerCartaDeJugador(this.modelo.getNombreJugadorActual());
+				
+			} catch (AccionInvalidaException ex) {
+				
+				this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
+				
+			} catch (TurnoEquivocadoException ex) {
+				
+				this.setMensajeInformacion("No es su turno");
+				
+			} catch (CartaYaJugadaException ex) {
+				
+				this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
+			}
+			
+			this.contenedorCartas.getChildren().remove(botonCarta3);
+			Label etiquetaCarta = new Label();
+			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(cartas.get(2))));
+			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
+		});
+	}
+	
 	private void setCaracteristicasAlContenedorCentro() {
 		
 		this.contenedorCartasJugadas = new HBox();
@@ -117,6 +257,34 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.contenedorInformacionJugadores.setAlignment(Pos.TOP_CENTER);
 		
 		this.setCaracteristicasAlContenedorInformacionJugadores();
+		
+		Button botonRepartirCartas = new Button();
+		
+		Image imagenCartaReverso = new Image("file:resources/imagenes/cartas/naipes.PNG", 75, 150, false, true);
+		botonRepartirCartas.setGraphic(new ImageView(imagenCartaReverso));
+		botonRepartirCartas.setDefaultButton(true);
+		botonRepartirCartas.setContentDisplay(ContentDisplay.CENTER);
+		
+		botonRepartirCartas.setTooltip(new Tooltip("Reparte cartas"));
+		
+		botonRepartirCartas.setOnMouseEntered(e -> {
+			
+			botonRepartirCartas.setScaleX(1.1);
+			botonRepartirCartas.setScaleY(1.1);
+		});
+		
+		botonRepartirCartas.setOnMouseExited(e -> {
+			
+			botonRepartirCartas.setScaleX(1);
+			botonRepartirCartas.setScaleY(1);
+		});
+		
+		botonRepartirCartas.setOnAction(e -> {
+			
+			this.modelo.repartirCartas();
+		});
+		
+		this.contenedorInformacionJugadores.getChildren().add(botonRepartirCartas);
 		
 		this.contenedor.setRight(this.contenedorInformacionJugadores);
 	}
@@ -442,12 +610,6 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.contenedor.setTop(contenedorSuperior);
 	}
 	
-	private Image getImagenCarta(Carta carta) {
-		
-		Imagen imagen = this.graficadorCartas.getImagen(carta);
-		return new Image(imagen.getUrl(), imagen.getWidth(), imagen.getHeigth(), imagen.getPreserveRatio(), imagen.getSmooth());
-	}
-	
 	private void setCaracteristicasAlContenedorCartas() {
 		
 		this.contenedorCartas = new HBox();
@@ -457,137 +619,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		List<Carta> listaCartas = this.modelo.getCartasJugadorConTurno();
 		
-		Button botonCarta1 = new Button();
-		botonCarta1.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(0))));
-		botonCarta1.setDefaultButton(true);
-		botonCarta1.setContentDisplay(ContentDisplay.CENTER);
-		
-		this.contenedorCartas.getChildren().add(botonCarta1);
-		
-		botonCarta1.setOnMouseEntered(e -> {
+		if (!listaCartas.isEmpty()) {
 			
-			botonCarta1.setScaleX(1.3);
-			botonCarta1.setScaleY(1.3);
-		});
-		
-		botonCarta1.setOnMouseExited(e -> {
-			
-			botonCarta1.setScaleX(1);
-			botonCarta1.setScaleY(1);
-		});
-		
-		botonCarta1.setOnAction(e -> {
-			
-			try {
-			
-				this.modelo.jugarPrimerCartaDeJugador(this.modelo.getNombreJugadorActual());
-				
-			} catch (AccionInvalidaException ex) {
-				
-				this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
-				
-			} catch (TurnoEquivocadoException ex) {
-				
-				this.setMensajeInformacion("No es su turno");
-				
-			} catch (CartaYaJugadaException ex) {
-				
-				this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
-			}
-			
-			this.contenedorCartas.getChildren().remove(botonCarta1);
-			Label etiquetaCarta = new Label();
-			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(0))));
-			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
-		});
-		
-		Button botonCarta2 = new Button();
-		botonCarta2.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(1))));
-		botonCarta2.setDefaultButton(true);
-		botonCarta2.setContentDisplay(ContentDisplay.CENTER);
-		
-		this.contenedorCartas.getChildren().add(botonCarta2);
-		
-		botonCarta2.setOnMouseEntered(e -> {
-			
-			botonCarta2.setScaleX(1.3);
-			botonCarta2.setScaleY(1.3);
-		});
-		
-		botonCarta2.setOnMouseExited(e -> {
-			
-			botonCarta2.setScaleX(1);
-			botonCarta2.setScaleY(1);
-		});
-		
-		botonCarta2.setOnAction(e -> {
-			
-			try {
-				
-				this.modelo.jugarSegundaCartaDeJugador(this.modelo.getNombreJugadorActual());
-				
-			} catch (AccionInvalidaException ex) {
-				
-				this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
-				
-			} catch (TurnoEquivocadoException ex) {
-				
-				this.setMensajeInformacion("No es su turno");
-				
-			} catch (CartaYaJugadaException ex) {
-				
-				this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
-			}
-			
-			this.contenedorCartas.getChildren().remove(botonCarta2);
-			Label etiquetaCarta = new Label();
-			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(1))));
-			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
-		});
-		
-		Button botonCarta3 = new Button();
-		botonCarta3.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(2))));
-		botonCarta3.setDefaultButton(true);
-		botonCarta3.setContentDisplay(ContentDisplay.CENTER);
-		
-		this.contenedorCartas.getChildren().add(botonCarta3);
-		
-		botonCarta3.setOnMouseEntered(e -> {
-			
-			botonCarta3.setScaleX(1.3);
-			botonCarta3.setScaleY(1.3);
-		});
-		
-		botonCarta3.setOnMouseExited(e -> {
-			
-			botonCarta3.setScaleX(1);
-			botonCarta3.setScaleY(1);
-		});
-		
-		botonCarta3.setOnAction(e -> {
-			
-			try {
-				
-				this.modelo.jugarTercerCartaDeJugador(this.modelo.getNombreJugadorActual());
-				
-			} catch (AccionInvalidaException ex) {
-				
-				this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
-				
-			} catch (TurnoEquivocadoException ex) {
-				
-				this.setMensajeInformacion("No es su turno");
-				
-			} catch (CartaYaJugadaException ex) {
-				
-				this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
-			}
-			
-			this.contenedorCartas.getChildren().remove(botonCarta3);
-			Label etiquetaCarta = new Label();
-			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(listaCartas.get(2))));
-			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
-		});
+	 		this.graficarCartas(listaCartas);
+		}
 	}
 	
 	private void setCaracteristicasAlContenedorInferior() {
@@ -643,5 +678,6 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		this.etiquetaNombreJugador.setText("Nombre: " + this.modelo.getNombreJugadorActual());
 		this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorActual()));
+		this.graficarCartas(this.modelo.getCartasJugadorConTurno());
 	}
 }
