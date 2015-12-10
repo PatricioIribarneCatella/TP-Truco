@@ -1,5 +1,6 @@
 package algoritmosyprogramacion3.tp2.vista;
 
+import java.util.Observable;
 import java.util.Set;
 
 import javafx.geometry.Insets;
@@ -42,6 +43,40 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 		
 		botonTerminarTurno.setOnAction(e -> {
 			
+			this.etiquetaNombreJugador.setText("");
+			this.etiquetaPuntosJugador.setText("");
+			
+			this.contenedorCartas.getChildren().clear();
+			
+			Button botonIniciarTurno = new Button("Iniciar turno: " + this.modelo.getNombreJugadorActual());
+			botonIniciarTurno.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
+			botonIniciarTurno.setTextFill(Color.BLACK);
+			
+			BackgroundFill fondoDeColorBotonInformacion = new BackgroundFill(Color.CYAN, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+			botonIniciarTurno.setBackground(new Background(fondoDeColorBotonInformacion));
+			
+			botonIniciarTurno.setOnMouseEntered(e1 -> {
+				
+				botonIniciarTurno.setScaleX(1.2);
+				botonIniciarTurno.setScaleY(1.2);
+			});
+			
+			botonIniciarTurno.setOnMouseExited(e2 -> {
+				
+				botonIniciarTurno.setScaleX(1);
+				botonIniciarTurno.setScaleY(1);
+			});
+			
+			botonIniciarTurno.setOnAction(e3 -> {
+				
+				this.etiquetaNombreJugador.setText("Nombre: " + this.modelo.getNombreJugadorActual());
+				this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorActual()));
+				
+				this.contenedorCartas.getChildren().clear();
+				this.graficarCartas(this.modelo.getCartasJugadorConTurno());
+			});
+			
+			this.contenedorCartas.getChildren().add(botonIniciarTurno);
 		});
 		
 		this.contenedorBotones.getChildren().add(botonTerminarTurno);
@@ -86,5 +121,10 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 			
 			this.contenedorInformacionJugadores.getChildren().add(botonNombreJugador);
 		}
+	}
+
+	@Override
+	protected void actualizar(Observable o, Object arg) {
+		
 	}
 }

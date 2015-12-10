@@ -1,5 +1,7 @@
 package algoritmosyprogramacion3.tp2.vista;
 
+import java.util.Observable;
+
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
@@ -55,5 +57,12 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco {
 		});
 		
 		this.contenedorInformacionJugadores.getChildren().add(botonComputadora);
+	}
+
+	@Override
+	protected void actualizar(Observable o, Object arg) {
+		
+		this.etiquetaNombreJugador.setText("Nombre: " + this.modelo.getNombreJugadorActual());
+		this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorActual()));
 	}
 }

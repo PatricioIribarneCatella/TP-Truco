@@ -199,6 +199,7 @@ public abstract class VistaNuevaMesa implements Vista {
 		this.etiquetaDatosInvalidos.setText("");
 		this.stage.setTitle("FonTruco");
 		this.stage.setScene(this.escena);
+		this.textoMesa.requestFocus();
 		this.stage.show();
 	}
 
