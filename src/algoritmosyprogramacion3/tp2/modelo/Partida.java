@@ -136,7 +136,6 @@ public abstract class Partida {
 	public void aceptarFlor(String jugadorQueAcepta) { //sinonimo de contraflor
 		
 		if (!this.estado.esValidoParaAceptar()) throw new AccionInvalidaException();
-		if (!this.jugadores.get(jugadorQueAcepta).tieneFlor()) throw new JugadorSinFlorException();
 		
 		Jugable jugador = this.jugadores.get(jugadorQueAcepta);
 		this.moderador.jugadorAceptaFlor(jugador);
