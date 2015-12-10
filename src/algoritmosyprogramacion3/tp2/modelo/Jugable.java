@@ -2,43 +2,136 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.List;
 
-public interface Jugable {
+import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
+
+public abstract class Jugable {
 	
-	public Carta getCartaJugada();
-
-	public String puntajeAcumuladoComoString();
+	protected int puntaje;
+	protected Mano cartas;
+	protected Moderador moderador;
+	protected Mesa mesa;
+	protected String nombre;
+	protected Equipo equipo;
 	
-	public int puntajeAcumulado();
+	public Jugable() {
+		
+		this.puntaje = 0;
+		this.cartas = new Mano();
+	}
 	
-	public void sumarPuntos(int puntos);
-
-	public void setMesa(Mesa mesa);
-
-	public void recibirCarta(Carta darCarta);
-
-	public void setModerador(Moderador moderador);
-
-	public void jugarPrimerCarta();
-
-	public void jugarSegundaCarta();
-
-	public void jugarTercerCarta();
+	public Carta getCartaJugada() {
+		return this.cartas.getUltimaCartaJugada();
+	}
 	
-	public String declararPuntosEnvido();
+	public String puntajeAcumuladoComoString() {
+		
+		String puntajeComoString = Integer.toString(this.puntaje);
+		return puntajeComoString;
+	}
 	
-	public String declararPuntosFlor();
+	public int puntajeAcumulado() {
+		return this.puntaje;
+	}
 	
-	public String getNombre();
+	public void sumarPuntos(int puntos) {
+		this.equipo.sumarPuntos(puntos);
+	}
 
-	public void setEquipo(Equipo equipo);
+	public void setMesa(Mesa mesa) {
+		this.mesa = mesa;
+	}
+
+	public void recibirCarta(Carta carta) {
+		this.cartas.agregarCarta(carta);
+	}
+
+	public void setModerador(Moderador moderadorDeLaPartida) {
+		this.moderador =  moderadorDeLaPartida;
+	}
+
+	private boolean esMiTurno() {
+		
+		return (this == this.moderador.getJugadorConTurno());
+	}
 	
-	public Equipo getEquipo();
+	public void jugarPrimerCarta() {
+	
+		Carta cartaAJugar = this.cartas.getPrimerCarta();
+		
+		if (this.esMiTurno()) {
+		
+			this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			this.moderador.seJugoUnaCarta();
+			
+		} else {
+			
+			throw new TurnoEquivocadoException();
+		}
+	}
 
-	public List<Carta> getCartas();
+	public void jugarSegundaCarta() {
+	
+		Carta cartaAJugar = this.cartas.getSegundaCarta();
+		
+		if (this.esMiTurno()) {
+		
+			this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			this.moderador.seJugoUnaCarta();
+			
+		} else {
+			
+			throw new TurnoEquivocadoException();
+		}
+	}
 
-	public void devolverCartasAlMazo();
+	public void jugarTercerCarta() {
+	 
+		Carta cartaAJugar = this.cartas.getTercerCarta();
+		
+		if (this.esMiTurno()) {
+		
+			this.mesa.recibirCartaJugada(this,cartaAJugar);	
+			this.moderador.seJugoUnaCarta();
+			
+		} else {
+			
+			throw new TurnoEquivocadoException();
+		}
+	}
+	
+	public String declararPuntosEnvido() {
+		return this.cartas.puntajeEnvido();
+	}
+	
+	public String declararPuntosFlor() {
+		return this.cartas.puntajeFlor().toString();
+	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
 
-	public boolean tieneFlor();
+	public void setEquipo(Equipo equipo) {
+		this.equipo = equipo;
+	}
+	
+	public Equipo getEquipo() {
+		return this.equipo;
+	}
 
-	public String getCantidadCartasEnMano();
+	public List<Carta> getCartas() {
+		return this.cartas.getCartas();
+	}
+
+	public void devolverCartasAlMazo() {
+		this.cartas.vaciar();
+	}
+
+	public boolean tieneFlor() {
+		return this.cartas.hayFlor();
+	}
+
+	public String getCantidadCartasEnMano() {
+		return Integer.toString(this.cartas.getCartas().size());
+	}
 }
