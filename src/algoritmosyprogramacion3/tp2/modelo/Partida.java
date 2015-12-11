@@ -1,6 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -263,5 +264,23 @@ public abstract class Partida {
 
 	public Set<String> getNombresDeJugadores() {
 		return this.jugadores.keySet();
+	}
+	
+	public List<NombreJugadorCarta> getCartasYaJugadasConJugador() {
+		
+		List<NombreJugadorCarta> lista = new LinkedList<NombreJugadorCarta>();
+		
+		Mesa mesa = this.moderador.getMesa();
+		
+		for (Jugable jugador : this.jugadores.values()) {
+			
+			List<Carta> cartas = mesa.getCartasJugadasPorJugador(jugador);
+			
+			for (Carta carta : cartas) {
+				lista.add(new NombreJugadorCarta(jugador.getNombre(), carta));
+			}
+		}
+		
+		return lista;
 	}
 }

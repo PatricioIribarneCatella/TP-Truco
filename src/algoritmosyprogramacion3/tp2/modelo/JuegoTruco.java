@@ -405,4 +405,8 @@ public class JuegoTruco extends Observable {
 	public Set<String> getNombresDeJugadores() {
 		return this.partidaActual.getNombresDeJugadores();
 	}
+
+	public List<NombreJugadorCarta> getCartasYaJugadas() {
+		return this.partidaActual.getCartasYaJugadasConJugador();
+	}
 }

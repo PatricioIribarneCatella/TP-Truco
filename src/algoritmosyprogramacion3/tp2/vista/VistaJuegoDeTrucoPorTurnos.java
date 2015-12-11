@@ -20,69 +20,6 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 	}
 
 	@Override
-	protected void setBotonTerminarTurno() {
-		
-		Button botonTerminarTurno = new Button("Terminar turno");
-		botonTerminarTurno.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
-		botonTerminarTurno.setTextFill(Color.WHITE);
-		
-		BackgroundFill fondoDeColorBotonTerminarTurno = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
-		botonTerminarTurno.setBackground(new Background(fondoDeColorBotonTerminarTurno));
-		
-		botonTerminarTurno.setOnMouseEntered(e -> {
-			
-			botonTerminarTurno.setScaleX(1.2);
-			botonTerminarTurno.setScaleY(1.2);
-		});
-		
-		botonTerminarTurno.setOnMouseExited(e -> {
-			
-			botonTerminarTurno.setScaleX(1);
-			botonTerminarTurno.setScaleY(1);
-		});
-		
-		botonTerminarTurno.setOnAction(e -> {
-			
-			this.etiquetaNombreJugador.setText("");
-			this.etiquetaPuntosJugador.setText("");
-			
-			this.contenedorCartas.getChildren().clear();
-			
-			Button botonIniciarTurno = new Button("Iniciar turno: " + this.modelo.getNombreJugadorActual());
-			botonIniciarTurno.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
-			botonIniciarTurno.setTextFill(Color.BLACK);
-			
-			BackgroundFill fondoDeColorBotonInformacion = new BackgroundFill(Color.CYAN, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
-			botonIniciarTurno.setBackground(new Background(fondoDeColorBotonInformacion));
-			
-			botonIniciarTurno.setOnMouseEntered(e1 -> {
-				
-				botonIniciarTurno.setScaleX(1.2);
-				botonIniciarTurno.setScaleY(1.2);
-			});
-			
-			botonIniciarTurno.setOnMouseExited(e2 -> {
-				
-				botonIniciarTurno.setScaleX(1);
-				botonIniciarTurno.setScaleY(1);
-			});
-			
-			botonIniciarTurno.setOnAction(e3 -> {
-				
-				this.etiquetaNombreJugador.setText("Nombre: " + this.modelo.getNombreJugadorActual());
-				this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorActual()));
-				
-				this.contenedorCartas.getChildren().clear();
-				this.graficarCartas(this.modelo.getCartasJugadorConTurno());
-			});
-			
-			this.contenedorCartas.getChildren().add(botonIniciarTurno);
-		});
-		
-		this.contenedorBotones.getChildren().add(botonTerminarTurno);
-	}
-
-	@Override
 	protected void setCaracteristicasAlContenedorInformacionJugadores() {
 		
 		Set<String> nombres = this.modelo.getNombresDeJugadores();

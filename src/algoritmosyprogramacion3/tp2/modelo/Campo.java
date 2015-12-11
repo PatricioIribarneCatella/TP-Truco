@@ -1,6 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Campo {
 	
@@ -17,6 +18,10 @@ public class Campo {
 	public Jugable getJugador(){
 		
 		return this.jugador;
+	}
+	
+	public List<Carta> getCartasJugadas() {
+		return this.cartasEnJuego;
 	}
 	
 	public Carta getPrimerCartaJugada() {

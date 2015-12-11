@@ -6,6 +6,7 @@ import java.util.Observer;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
+import algoritmosyprogramacion3.tp2.modelo.NombreJugadorCarta;
 import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
@@ -46,11 +47,11 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 	protected VBox contenedorInformacionJugadores;
 	private Label etiquetaDatos;
 	private GraficadorCartas graficadorCartas;
-	protected Vista vistaAnterior;
 	protected Label etiquetaNombreJugador;
 	protected Label etiquetaPuntosJugador;
 	protected VBox contenedorBotones;
 	protected HBox contenedorCartas;
+	protected Vista vistaAnterior;
 	
 	public VistaJuegoDeTruco(Vista vistaAnterior) {
 		
@@ -103,6 +104,44 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		return new Image(imagen.getUrl(), imagen.getWidth(), imagen.getHeigth(), imagen.getPreserveRatio(), imagen.getSmooth());
 	}
 	
+	private void cambiarTurno() {
+		
+		this.etiquetaNombreJugador.setText("");
+		this.etiquetaPuntosJugador.setText("");
+		
+		this.contenedorCartas.getChildren().clear();
+		
+		Button botonIniciarTurno = new Button("Iniciar turno: " + this.modelo.getNombreJugadorActual());
+		botonIniciarTurno.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
+		botonIniciarTurno.setTextFill(Color.BLACK);
+		
+		BackgroundFill fondoDeColorBotonInformacion = new BackgroundFill(Color.LIME, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+		botonIniciarTurno.setBackground(new Background(fondoDeColorBotonInformacion));
+		
+		botonIniciarTurno.setOnMouseEntered(e1 -> {
+			
+			botonIniciarTurno.setScaleX(1.2);
+			botonIniciarTurno.setScaleY(1.2);
+		});
+		
+		botonIniciarTurno.setOnMouseExited(e2 -> {
+			
+			botonIniciarTurno.setScaleX(1);
+			botonIniciarTurno.setScaleY(1);
+		});
+		
+		botonIniciarTurno.setOnAction(e3 -> {
+			
+			this.etiquetaNombreJugador.setText("Nombre: " + this.modelo.getNombreJugadorActual());
+			this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorActual()));
+			
+			this.contenedorCartas.getChildren().clear();
+			this.graficarCartas(this.modelo.getCartasJugadorConTurno());
+		});
+		
+		this.contenedorCartas.getChildren().add(botonIniciarTurno);
+	}
+	
 	protected void graficarCartas(List<Carta> cartas) {
 		
 		Button botonCarta1 = new Button();
@@ -126,6 +165,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		botonCarta1.setOnAction(e -> {
 			
+			Label etiquetaCarta = new Label(this.modelo.getNombreJugadorActual());
+			etiquetaCarta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
+			etiquetaCarta.setTextFill(Color.WHITE);
+			
 			try {
 			
 				this.modelo.jugarPrimerCartaDeJugador(this.modelo.getNombreJugadorActual());
@@ -144,9 +187,11 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			}
 			
 			this.contenedorCartas.getChildren().remove(botonCarta1);
-			Label etiquetaCarta = new Label();
 			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(cartas.get(0))));
+			etiquetaCarta.setContentDisplay(ContentDisplay.TOP);
 			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
+			
+			this.cambiarTurno();
 		});
 		
 		if (cartas.size() >= 2) {
@@ -172,6 +217,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			
 			botonCarta2.setOnAction(e -> {
 				
+				Label etiquetaCarta = new Label(this.modelo.getNombreJugadorActual());
+				etiquetaCarta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
+				etiquetaCarta.setTextFill(Color.WHITE);
+				
 				try {
 					
 					this.modelo.jugarSegundaCartaDeJugador(this.modelo.getNombreJugadorActual());
@@ -190,9 +239,11 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 				}
 				
 				this.contenedorCartas.getChildren().remove(botonCarta2);
-				Label etiquetaCarta = new Label();
 				etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(cartas.get(1))));
+				etiquetaCarta.setContentDisplay(ContentDisplay.TOP);
 				this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
+				
+				this.cambiarTurno();
 			});
 		}
 		
@@ -219,6 +270,10 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			
 			botonCarta3.setOnAction(e -> {
 				
+				Label etiquetaCarta = new Label(this.modelo.getNombreJugadorActual());
+				etiquetaCarta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
+				etiquetaCarta.setTextFill(Color.WHITE);
+				
 				try {
 					
 					this.modelo.jugarTercerCartaDeJugador(this.modelo.getNombreJugadorActual());
@@ -237,9 +292,11 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 				}
 				
 				this.contenedorCartas.getChildren().remove(botonCarta3);
-				Label etiquetaCarta = new Label();
 				etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(cartas.get(2))));
+				etiquetaCarta.setContentDisplay(ContentDisplay.TOP);
 				this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
+				
+				this.cambiarTurno();
 			});
 		}
 	}
@@ -251,7 +308,22 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.contenedorCartasJugadas.setPadding(new Insets(10));
 		this.contenedorCartasJugadas.setAlignment(Pos.CENTER);
 		
+		List<NombreJugadorCarta> cartasJugadores = this.modelo.getCartasYaJugadas();
 		
+		if (!cartasJugadores.isEmpty()) {
+			
+			for (NombreJugadorCarta nombreJugadorCarta : cartasJugadores) {
+				
+				Label etiqueta = new Label(nombreJugadorCarta.getNombreJugador());
+				etiqueta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
+				etiqueta.setTextFill(Color.WHITE);
+				
+				etiqueta.setGraphic(new ImageView(this.getImagenCarta(nombreJugadorCarta.getCarta())));
+				etiqueta.setContentDisplay(ContentDisplay.TOP);
+				
+				this.contenedorCartasJugadas.getChildren().add(etiqueta);
+			}
+		}
 		
 		this.contenedor.setCenter(this.contenedorCartasJugadas);
 	}
@@ -301,8 +373,6 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		this.contenedor.setRight(this.contenedorInformacionJugadores);
 	}
-	
-	protected abstract void setBotonTerminarTurno();
 	
 	private void setCaracteristicasAlContenedorIzquierdo() {
 		
@@ -568,7 +638,6 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		});
 		
 		this.contenedorBotones.getChildren().addAll(botonTruco, botonReTruco, botonValeCuatro, botonEnvido, botonRealEnvido, botonFaltaEnvido, botonFlor);
-		this.setBotonTerminarTurno();
 		
 		this.contenedorBotones.setSpacing(15);
 		this.contenedorBotones.setPadding(new Insets(10));

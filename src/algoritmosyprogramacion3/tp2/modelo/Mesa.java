@@ -72,4 +72,9 @@ public abstract class Mesa {
 		Campo campoDelJugador = this.getCampoDelJugador(unJugador);
 		return campoDelJugador.getTercerCartaJugada();
 	}
+
+	public List<Carta> getCartasJugadasPorJugador(Jugable jugador) {
+		
+		return this.getCampoDelJugador(jugador).getCartasJugadas();
+	}
 }
