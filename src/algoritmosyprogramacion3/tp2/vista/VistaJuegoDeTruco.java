@@ -293,8 +293,8 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		botonRepartirCartas.setOnAction(e -> {
 			
 			this.modelo.repartirCartas();
+			this.contenedorCartas.getChildren().clear();
 			this.graficarCartas(this.modelo.getCartasJugadorConTurno());
-
 		});
 		
 		this.contenedorInformacionJugadores.getChildren().add(botonRepartirCartas);
@@ -635,6 +635,13 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		if (!listaCartas.isEmpty()) {
 			
 	 		this.graficarCartas(listaCartas);
+	 		
+		} else {
+			
+			Label etiqueta = new Label("(Pulse el mazo para repartir las cartas y comenzar la partida)");
+			etiqueta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+			etiqueta.setTextFill(Color.WHITE);
+			this.contenedorCartas.getChildren().add(etiqueta);
 		}
 	}
 	
