@@ -369,4 +369,9 @@ public class Moderador {
 	public Mesa getMesa() {
 		return this.mesaACargo;
 	}
+	
+	public Jugable getJugadorQueTieneDecision(){
+		
+		return this.jugadorConDecision;
+	}
 }

@@ -36,6 +36,7 @@ public abstract class VistaNuevaMesa implements Vista {
 	protected TextField textoMesa;
 	protected Label etiquetaJugadores;
 	protected boolean seJuegaConFlor;
+	protected Label etiquetaNombreMesaNoCargada;
 	protected VistaEleccionTipoDeMesa vistaAnterior;
 	
 	public VistaNuevaMesa(VistaEleccionTipoDeMesa vistaAnterior) {
@@ -86,7 +87,10 @@ public abstract class VistaNuevaMesa implements Vista {
 		
 		this.etiquetaDatosInvalidos.setText(mensaje);
 		this.etiquetaDatosInvalidos.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-		this.etiquetaDatosInvalidos.setTextFill(Color.web("#FF0000"));
+		this.etiquetaDatosInvalidos.setTextFill(Color.RED);
+		
+		BackgroundFill fondoDeColorEtiquetaDatosInvalidos = new BackgroundFill(Color.WHITE, new CornerRadii(3), new Insets(0.0,0.0,0.0,0.0));
+		this.etiquetaDatosInvalidos.setBackground(new Background(fondoDeColorEtiquetaDatosInvalidos));
 		this.textoMesa.requestFocus();
 	}
 	
@@ -106,18 +110,29 @@ public abstract class VistaNuevaMesa implements Vista {
 		etiquetaMesa.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
 		this.contenedorCentral.add(etiquetaMesa, 0, 1);
 		
+		this.textoMesa = new TextField();
+		this.contenedorCentral.add(this.textoMesa, 1, 1);
+		
+		this.etiquetaNombreMesaNoCargada = new Label();
+		this.etiquetaNombreMesaNoCargada.setFont(Font.font("Tahoma", FontWeight.NORMAL, 15));
+		this.etiquetaNombreMesaNoCargada.setTextFill(Color.RED);
+		
+		BackgroundFill fondoDeColorEtiquetaDatosInvalidos = new BackgroundFill(Color.WHITE, new CornerRadii(3), new Insets(0.0,0.0,0.0,0.0));
+		this.etiquetaNombreMesaNoCargada.setBackground(new Background(fondoDeColorEtiquetaDatosInvalidos));
+		this.textoMesa.requestFocus();
+		this.contenedorCentral.add(this.etiquetaNombreMesaNoCargada, 2, 1);
+		
 		this.etiquetaJugadores = new Label();
 		this.etiquetaJugadores.setTextFill(Color.WHITE);
 		this.etiquetaJugadores.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
 		this.contenedorCentral.add(this.etiquetaJugadores, 0, 2);
 		
-		this.textoMesa = new TextField();
-		this.contenedorCentral.add(this.textoMesa, 1, 1);
-		
 		this.setCantidadJugadores();
 		
 		this.contenedor.setCenter(this.contenedorCentral);
 	}
+	
+	protected abstract void setMensajeInformacionDatosNoCargados();
 	
 	private void setCaracteristicasAlContenedorInferior() {
 		
@@ -144,7 +159,7 @@ public abstract class VistaNuevaMesa implements Vista {
 			
 			if (!this.hayDatosCargados()) {
 				
-				this.setMensajeInformacionInvalida("Debe ingresar un texto");
+				this.setMensajeInformacionDatosNoCargados();
 				
 			} else {
 				

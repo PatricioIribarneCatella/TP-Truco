@@ -250,6 +250,9 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.contenedorCartasJugadas.setSpacing(30);
 		this.contenedorCartasJugadas.setPadding(new Insets(10));
 		this.contenedorCartasJugadas.setAlignment(Pos.CENTER);
+		
+		
+		
 		this.contenedor.setCenter(this.contenedorCartasJugadas);
 	}
 	
