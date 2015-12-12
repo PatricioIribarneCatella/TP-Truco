@@ -51,7 +51,22 @@ public abstract class Jugable {
 
 	private boolean esMiTurno() {
 		
-		return (this == this.moderador.getJugadorConTurno());
+		return (this == this.moderador.getJugadorQueTieneTurno());
+	}
+	
+	public void jugarCarta(Carta carta) {
+		
+		this.cartas.jugarCarta(carta);
+		
+		if (this.esMiTurno()) {
+			
+			this.mesa.recibirCartaJugada(this,carta);	
+			this.moderador.seJugoUnaCarta();
+			
+		} else {
+			
+			throw new TurnoEquivocadoException();
+		}
 	}
 	
 	public void jugarPrimerCarta() {

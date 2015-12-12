@@ -57,7 +57,7 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco {
 	@Override
 	protected void actualizar(Observable o, Object arg) {
 		
-		this.etiquetaNombreJugador.setText("Nombre: " + this.modelo.getNombreJugadorActual());
-		this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorActual()));
+		this.etiquetaNombreJugador.setText("Nombre: " + this.modelo.getNombreJugadorConTurno());
+		this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorConTurno()));
 	}
 }

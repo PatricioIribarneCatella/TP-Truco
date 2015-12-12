@@ -325,6 +325,19 @@ public class JuegoTruco extends Observable {
 		return this.partidaActual.mostrarPuntosFlor(nombreJugador);
 	}
 	
+	public boolean jugarCartaDeJugador(String nombreJugador, Carta carta) {
+		
+		try {
+			this.partidaActual.jugarCartaDeJugador(nombreJugador, carta);
+			this.actualizarObservadores();
+			return true;
+			
+		} catch (TurnoEquivocadoException | AccionInvalidaException e) {
+			
+			throw e;
+		}
+	}
+	
 	public boolean jugarPrimerCartaDeJugador(String nombreJugador) {
 		
 		try {
@@ -378,8 +391,8 @@ public class JuegoTruco extends Observable {
 		this.partidaActual.repartirCartas(listaCartas);
 	}
 	
-	public List<Carta> getCartasJugadorConTurno() {
-		return this.partidaActual.getCartasJugadorConTurno();
+	public List<Carta> getCartasJugador(String nombreJugador) {
+		return this.partidaActual.getCartasJugador(nombreJugador);
 	}
 	
 	public Set<String> getMesasDisponilbles() {
@@ -390,10 +403,18 @@ public class JuegoTruco extends Observable {
 		this.partidaActual = this.partidasDisponibles.get(nombreMesa);
 	}
 
-	public String getNombreJugadorActual() {
-		return this.partidaActual.getNombreJugadorActual();
+	public String getNombreJugadorConTurno() {
+		return this.partidaActual.getNombreJugadorConTurno();
 	}
 
+	public String getNombreJugadorConDecisionEnvido() {
+		return this.partidaActual.getNombreJugadorConDecisionEnvido();
+	}
+	
+	public String getNombreJugadorConDecisionTruco() {
+		return this.partidaActual.getNombreJugadorConDecisionTruco();
+	}
+	
 	public boolean mesaActualContraComputadora() {
 		return this.partidaActual.esContraComputadora();
 	}

@@ -35,6 +35,14 @@ public abstract class Partida {
 		this.cantidadDeEnvidosCantados = 0;
 	}
 	
+	public void jugarCartaDeJugador(String nombreJugador, Carta carta) {
+		
+		if (!this.estado.esValidoParaJugarCarta()) throw new AccionInvalidaException();
+		
+		Jugable jugador = this.jugadores.get(nombreJugador);
+		this.moderador.jugarCartaDeJugador(jugador, carta);
+	}
+	
 	public void jugarPrimerCartaJugador(String unJugador){
 		
 		if (!this.estado.esValidoParaJugarCarta()) throw new AccionInvalidaException();
@@ -216,8 +224,10 @@ public abstract class Partida {
 		this.moderador.repartirCartas(listaCartas);
 	}
 
-	public List<Carta> getCartasJugadorConTurno() {
-		return this.moderador.getJugadorConTurno().getCartas();
+	public List<Carta> getCartasJugador(String nombreJugador) {
+		
+		Jugable jugador = this.jugadores.get(nombreJugador);
+		return jugador.getCartas();
 	}
 	
 	public void sumarPuntos(Equipo equipo, int puntosASumar) {
@@ -250,10 +260,18 @@ public abstract class Partida {
 		return jugador.declararPuntosFlor();
 	}
 
-	public String getNombreJugadorActual() {
-		return this.moderador.getJugadorConTurno().getNombre();
+	public String getNombreJugadorConTurno() {
+		return this.moderador.getJugadorQueTieneTurno().getNombre();
 	}
 
+	public String getNombreJugadorConDecisionEnvido() {
+		return this.moderador.getJugadorQueTieneDecisionEnvido().getNombre();
+	}
+	
+	public String getNombreJugadorConDecisionTruco() {
+		return this.moderador.getJugadorQueTieneDecisionTruco().getNombre();
+	}
+	
 	public abstract boolean esContraComputadora();
 	
 	public String getCantidadCartasEnManoDeJugador(String nombreJugador) {

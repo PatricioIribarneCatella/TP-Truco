@@ -119,9 +119,19 @@ public class Moderador {
     	if(this.criterioDeRotacion.rotacionCompleta()) this.partidaEnCurso.rondaFinalizada();
 	}
 	
-	public Jugable getJugadorConTurno(){
+	public Jugable getJugadorQueTieneTurno() {
 	    	
 		return this.jugadorConTurno;
+	}
+	
+	public Jugable getJugadorQueTieneDecisionEnvido() {
+		
+		return this.jugadorConDecision;
+	}
+	
+	public Jugable getJugadorQueTieneDecisionTruco() {
+		
+		return this.jugadorConDecisionTruco;
 	}
 	
 	public Jugable getJugadorMano(){
@@ -138,35 +148,46 @@ public class Moderador {
 		
 		return this.criterioDeRotacion.getJugadorConDecisionTruco();
 	}
+	
+	public void jugarCartaDeJugador(Jugable jugador, Carta carta) {
 		
-	public void jugarPrimerCarta(Jugable unJugador){
+		try {
+			jugador.jugarCarta(carta);	
+		}
+		catch (TurnoEquivocadoException e) {
+			
+			throw new TurnoEquivocadoException();
+		}
+	}
+	
+	public void jugarPrimerCarta(Jugable unJugador) {
 		
-		try{
+		try {
 			unJugador.jugarPrimerCarta();
 		}
-		catch(TurnoEquivocadoException e){
+		catch (TurnoEquivocadoException e) {
 			
 			throw new TurnoEquivocadoException();
 		}
 	}
 	
-	public void jugarSegundaCarta(Jugable unJugador){
+	public void jugarSegundaCarta(Jugable unJugador) {
 		
-		try{
+		try {
 			unJugador.jugarSegundaCarta();
 		}
-		catch(TurnoEquivocadoException e){
+		catch (TurnoEquivocadoException e) {
 			
 			throw new TurnoEquivocadoException();
 		}
 	}
 	
-	public void jugarTercerCarta(Jugable unJugador){
+	public void jugarTercerCarta(Jugable unJugador) {
 		
-		try{
+		try {
 			unJugador.jugarTercerCarta();
 		}
-		catch(TurnoEquivocadoException e){
+		catch (TurnoEquivocadoException e) {
 			
 			throw new TurnoEquivocadoException();
 		}
@@ -368,10 +389,5 @@ public class Moderador {
 	
 	public Mesa getMesa() {
 		return this.mesaACargo;
-	}
-	
-	public Jugable getJugadorQueTieneDecision(){
-		
-		return this.jugadorConDecision;
 	}
 }

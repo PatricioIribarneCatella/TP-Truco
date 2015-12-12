@@ -7,12 +7,7 @@ import java.util.Observer;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import algoritmosyprogramacion3.tp2.modelo.NombreJugadorCarta;
-import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
-import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
-import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
-import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
-import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
-import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
+import algoritmosyprogramacion3.tp2.excepciones.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -111,7 +106,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		this.contenedorCartas.getChildren().clear();
 		
-		Button botonIniciarTurno = new Button("Iniciar turno: " + this.modelo.getNombreJugadorActual());
+		Button botonIniciarTurno = new Button("Iniciar turno: " + this.modelo.getNombreJugadorConTurno());
 		botonIniciarTurno.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
 		botonIniciarTurno.setTextFill(Color.BLACK);
 		
@@ -132,98 +127,51 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		
 		botonIniciarTurno.setOnAction(e3 -> {
 			
-			this.etiquetaNombreJugador.setText("Nombre: " + this.modelo.getNombreJugadorActual());
-			this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorActual()));
+			String nombreJugador = this.modelo.getNombreJugadorConTurno();
+			
+			this.etiquetaNombreJugador.setText("Nombre: " + nombreJugador);
+			this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(nombreJugador));
 			
 			this.contenedorCartas.getChildren().clear();
-			this.graficarCartas(this.modelo.getCartasJugadorConTurno());
+			
+			this.graficarCartas(nombreJugador, this.modelo.getCartasJugador(nombreJugador));
 		});
 		
 		this.contenedorCartas.getChildren().add(botonIniciarTurno);
 	}
 	
-	protected void graficarCartas(List<Carta> cartas) {
+	protected void graficarCartas(String nombreJugador, List<Carta> cartas) {
 		
-		Button botonCarta1 = new Button();
-		botonCarta1.setGraphic(new ImageView(this.getImagenCarta(cartas.get(0))));
-		botonCarta1.setDefaultButton(true);
-		botonCarta1.setContentDisplay(ContentDisplay.CENTER);
-		
-		this.contenedorCartas.getChildren().add(botonCarta1);
-		
-		botonCarta1.setOnMouseEntered(e -> {
+		for (Carta carta : cartas) {
 			
-			botonCarta1.setScaleX(1.3);
-			botonCarta1.setScaleY(1.3);
-		});
-		
-		botonCarta1.setOnMouseExited(e -> {
+			Button botonCarta = new Button();
+			botonCarta.setGraphic(new ImageView(this.getImagenCarta(carta)));
+			botonCarta.setDefaultButton(true);
+			botonCarta.setContentDisplay(ContentDisplay.CENTER);
 			
-			botonCarta1.setScaleX(1);
-			botonCarta1.setScaleY(1);
-		});
-		
-		botonCarta1.setOnAction(e -> {
+			this.contenedorCartas.getChildren().add(botonCarta);
 			
-			Label etiquetaCarta = new Label(this.modelo.getNombreJugadorActual());
-			etiquetaCarta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
-			etiquetaCarta.setTextFill(Color.WHITE);
-			
-			try {
-			
-				this.modelo.jugarPrimerCartaDeJugador(this.modelo.getNombreJugadorActual());
+			botonCarta.setOnMouseEntered(e -> {
 				
-			} catch (AccionInvalidaException ex) {
-				
-				this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
-				
-			} catch (TurnoEquivocadoException ex) {
-				
-				this.setMensajeInformacion("No es su turno");
-				
-			} catch (CartaYaJugadaException ex) {
-				
-				this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
-			}
-			
-			this.contenedorCartas.getChildren().remove(botonCarta1);
-			etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(cartas.get(0))));
-			etiquetaCarta.setContentDisplay(ContentDisplay.TOP);
-			this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
-			
-			this.cambiarTurno();
-		});
-		
-		if (cartas.size() >= 2) {
-			
-			Button botonCarta2 = new Button();
-			botonCarta2.setGraphic(new ImageView(this.getImagenCarta(cartas.get(1))));
-			botonCarta2.setDefaultButton(true);
-			botonCarta2.setContentDisplay(ContentDisplay.CENTER);
-			
-			this.contenedorCartas.getChildren().add(botonCarta2);
-			
-			botonCarta2.setOnMouseEntered(e -> {
-				
-				botonCarta2.setScaleX(1.3);
-				botonCarta2.setScaleY(1.3);
+				botonCarta.setScaleX(1.3);
+				botonCarta.setScaleY(1.3);
 			});
 			
-			botonCarta2.setOnMouseExited(e -> {
+			botonCarta.setOnMouseExited(e -> {
 				
-				botonCarta2.setScaleX(1);
-				botonCarta2.setScaleY(1);
+				botonCarta.setScaleX(1);
+				botonCarta.setScaleY(1);
 			});
 			
-			botonCarta2.setOnAction(e -> {
+			botonCarta.setOnAction(e -> {
 				
-				Label etiquetaCarta = new Label(this.modelo.getNombreJugadorActual());
+				Label etiquetaCarta = new Label(nombreJugador);
 				etiquetaCarta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
 				etiquetaCarta.setTextFill(Color.WHITE);
 				
 				try {
-					
-					this.modelo.jugarSegundaCartaDeJugador(this.modelo.getNombreJugadorActual());
+				
+					this.modelo.jugarCartaDeJugador(nombreJugador, carta);
 					
 				} catch (AccionInvalidaException ex) {
 					
@@ -231,68 +179,11 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 					
 				} catch (TurnoEquivocadoException ex) {
 					
-					this.setMensajeInformacion("No es su turno");
-					
-				} catch (CartaYaJugadaException ex) {
-					
-					this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
+					this.setMensajeInformacion("No es su turno");	
 				}
 				
-				this.contenedorCartas.getChildren().remove(botonCarta2);
-				etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(cartas.get(1))));
-				etiquetaCarta.setContentDisplay(ContentDisplay.TOP);
-				this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
-				
-				this.cambiarTurno();
-			});
-		}
-		
-		if (cartas.size() == 3) {
-			
-			Button botonCarta3 = new Button();
-			botonCarta3.setGraphic(new ImageView(this.getImagenCarta(cartas.get(2))));
-			botonCarta3.setDefaultButton(true);
-			botonCarta3.setContentDisplay(ContentDisplay.CENTER);
-			
-			this.contenedorCartas.getChildren().add(botonCarta3);
-			
-			botonCarta3.setOnMouseEntered(e -> {
-				
-				botonCarta3.setScaleX(1.3);
-				botonCarta3.setScaleY(1.3);
-			});
-			
-			botonCarta3.setOnMouseExited(e -> {
-				
-				botonCarta3.setScaleX(1);
-				botonCarta3.setScaleY(1);
-			});
-			
-			botonCarta3.setOnAction(e -> {
-				
-				Label etiquetaCarta = new Label(this.modelo.getNombreJugadorActual());
-				etiquetaCarta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
-				etiquetaCarta.setTextFill(Color.WHITE);
-				
-				try {
-					
-					this.modelo.jugarTercerCartaDeJugador(this.modelo.getNombreJugadorActual());
-					
-				} catch (AccionInvalidaException ex) {
-					
-					this.setMensajeInformacion("No es el momento de jugar una carta, pruebe otra acción");
-					
-				} catch (TurnoEquivocadoException ex) {
-					
-					this.setMensajeInformacion("No es su turno");
-					
-				} catch (CartaYaJugadaException ex) {
-					
-					this.setMensajeInformacion("Esta carta ya ha sido jugada, intente jugar otra");
-				}
-				
-				this.contenedorCartas.getChildren().remove(botonCarta3);
-				etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(cartas.get(2))));
+				this.contenedorCartas.getChildren().remove(botonCarta);
+				etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(carta)));
 				etiquetaCarta.setContentDisplay(ContentDisplay.TOP);
 				this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
 				
@@ -366,7 +257,9 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			
 			this.modelo.repartirCartas();
 			this.contenedorCartas.getChildren().clear();
-			this.graficarCartas(this.modelo.getCartasJugadorConTurno());
+			
+			String nombreJugador = this.modelo.getNombreJugadorConTurno();
+			this.graficarCartas(nombreJugador, this.modelo.getCartasJugador(nombreJugador));
 		});
 		
 		this.contenedorInformacionJugadores.getChildren().add(botonRepartirCartas);
@@ -400,7 +293,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		botonTruco.setOnAction(e -> {
 		
 			try {
-				this.modelo.cantarTrucoPorJugador(this.modelo.getNombreJugadorActual());
+				this.modelo.cantarTrucoPorJugador(this.modelo.getNombreJugadorConTurno());
 				this.setMensajeInformacion("Truco cantado");
 				
 			} catch (AccionInvalidaException ex) {
@@ -436,7 +329,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			
 			try {
 				
-				this.modelo.cantarReTrucoPorJugador(this.modelo.getNombreJugadorActual());
+				this.modelo.cantarReTrucoPorJugador(this.modelo.getNombreJugadorConTurno());
 				this.setMensajeInformacion("Re-Truco cantado");
 				
 			} catch (AccionInvalidaException ex) {
@@ -472,7 +365,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			
 			try {
 				
-				this.modelo.cantarValeCuatroPorJugador(this.modelo.getNombreJugadorActual());
+				this.modelo.cantarValeCuatroPorJugador(this.modelo.getNombreJugadorConTurno());
 				this.setMensajeInformacion("Vale cuatro cantado");
 				
 			} catch (AccionInvalidaException ex) {
@@ -508,7 +401,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			
 			try {
 				
-				this.modelo.cantarEnvidoPorJugador(this.modelo.getNombreJugadorActual());
+				this.modelo.cantarEnvidoPorJugador(this.modelo.getNombreJugadorConTurno());
 				this.setMensajeInformacion("Envido cantado");
 				
 			} catch (AccionInvalidaException ex) {
@@ -544,7 +437,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			
 			try {
 				
-				this.modelo.cantarRealEnvidoPorJugador(this.modelo.getNombreJugadorActual());
+				this.modelo.cantarRealEnvidoPorJugador(this.modelo.getNombreJugadorConTurno());
 				this.setMensajeInformacion("Real Envido cantado");
 				
 			} catch (AccionInvalidaException ex) {
@@ -580,7 +473,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			
 			try {
 				
-				this.modelo.cantarFaltaEnvidoPorJugador(this.modelo.getNombreJugadorActual());
+				this.modelo.cantarFaltaEnvidoPorJugador(this.modelo.getNombreJugadorConTurno());
 				this.setMensajeInformacion("Falta Envido cantado");
 				
 			} catch (AccionInvalidaException ex) {
@@ -617,7 +510,7 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			try {
 				
 				this.setMensajeInformacion("Flor cantada");
-				this.modelo.cantarFlorPorJugador(this.modelo.getNombreJugadorActual());
+				this.modelo.cantarFlorPorJugador(this.modelo.getNombreJugadorConTurno());
 				
 			} catch (AccionInvalidaException ex) {
 				
@@ -647,12 +540,12 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 
 	private void setCaracteristicasAlContenedorSuperior() {
 		
-		this.etiquetaNombreJugador = new Label("Nombre: " + this.modelo.getNombreJugadorActual());
-		this.etiquetaNombreJugador.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
+		this.etiquetaNombreJugador = new Label("Nombre: " + this.modelo.getNombreJugadorConTurno());
+		this.etiquetaNombreJugador.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		this.etiquetaNombreJugador.setTextFill(Color.WHITE);
 		
-		this.etiquetaPuntosJugador = new Label("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorActual()));
-		this.etiquetaPuntosJugador.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
+		this.etiquetaPuntosJugador = new Label("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorConTurno()));
+		this.etiquetaPuntosJugador.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		this.etiquetaPuntosJugador.setTextFill(Color.WHITE);
 		
 		HBox contenedorEtiquetasJugador = new HBox(this.etiquetaNombreJugador, this.etiquetaPuntosJugador);
@@ -699,11 +592,12 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.contenedorCartas.setPadding(new Insets(10));
 		this.contenedorCartas.setAlignment(Pos.CENTER);
 		
-		List<Carta> listaCartas = this.modelo.getCartasJugadorConTurno();
+		String nombreJugador = this.modelo.getNombreJugadorConTurno();
+		List<Carta> listaCartas = this.modelo.getCartasJugador(nombreJugador);
 		
 		if (!listaCartas.isEmpty()) {
 			
-	 		this.graficarCartas(listaCartas);
+	 		this.graficarCartas(nombreJugador, listaCartas);
 	 		
 		} else {
 			

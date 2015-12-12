@@ -107,6 +107,11 @@ public class Mano {
 		this.cartas.add(nuevaCarta);
 	}
 	
+	public void jugarCarta(Carta carta) {
+		
+		this.ultimaCartaJugada = carta;
+	}
+	
 	public Carta getPrimerCarta() {
 		
 		Carta carta = this.cartas.get(0);
