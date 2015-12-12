@@ -240,4 +240,8 @@ public abstract class VistaNuevaMesa implements Vista {
 	public Button getBotonVolver() {
 		return this.botonVolver;
 	}
+	
+	public boolean seJuegaConFlor() {
+		return this.seJuegaConFlor;
+	}
 }

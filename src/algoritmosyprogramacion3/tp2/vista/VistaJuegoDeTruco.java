@@ -486,51 +486,52 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 			}
 		});
 		
-		Button botonFlor = new Button("Flor");
-		botonFlor.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
-		botonFlor.setTextFill(Color.WHITE);
+		this.contenedorBotones.getChildren().addAll(botonTruco, botonReTruco, botonValeCuatro, botonEnvido, botonRealEnvido, botonFaltaEnvido);
 		
-		BackgroundFill fondoDeColorBotonFlor = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
-		botonFlor.setBackground(new Background(fondoDeColorBotonFlor));
-		
-		botonFlor.setOnMouseEntered(e -> {
+		if (this.modelo.seJuegaConFlor()) {
 			
-			botonFlor.setScaleX(1.2);
-			botonFlor.setScaleY(1.2);
-		});
-		
-		botonFlor.setOnMouseExited(e -> {
+			Button botonFlor = new Button("Flor");
+			botonFlor.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
+			botonFlor.setTextFill(Color.WHITE);
 			
-			botonFlor.setScaleX(1);
-			botonFlor.setScaleY(1);
-		});
-		
-		botonFlor.setOnAction(e -> {
+			BackgroundFill fondoDeColorBotonFlor = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+			botonFlor.setBackground(new Background(fondoDeColorBotonFlor));
 			
-			try {
+			botonFlor.setOnMouseEntered(e -> {
 				
-				this.setMensajeInformacion("Flor cantada");
-				this.modelo.cantarFlorPorJugador(this.modelo.getNombreJugadorConTurno());
+				botonFlor.setScaleX(1.2);
+				botonFlor.setScaleY(1.2);
+			});
+			
+			botonFlor.setOnMouseExited(e -> {
 				
-			} catch (AccionInvalidaException ex) {
+				botonFlor.setScaleX(1);
+				botonFlor.setScaleY(1);
+			});
+			
+			botonFlor.setOnAction(e -> {
 				
-				this.setMensajeInformacion("No se puede cantar Flor en este momento");
-				
-			} catch (PartidaSinFlorException ex) {
-				
-				this.setMensajeInformacion("La partida se está jugando sin Flor");
-				
-			} catch (JugadorSinFlorException ex) {
-				
-				this.setMensajeInformacion("No posee tres cartas del mismo palo");
-				
-			} catch (TurnoParaTomarDecisionEquivocadoException ex) {
-				
-				this.setMensajeInformacion("No es su turno");
-			}
-		});
-		
-		this.contenedorBotones.getChildren().addAll(botonTruco, botonReTruco, botonValeCuatro, botonEnvido, botonRealEnvido, botonFaltaEnvido, botonFlor);
+				try {
+					
+					this.setMensajeInformacion("Flor cantada");
+					this.modelo.cantarFlorPorJugador(this.modelo.getNombreJugadorConTurno());
+					
+				} catch (AccionInvalidaException ex) {
+					
+					this.setMensajeInformacion("No se puede cantar Flor en este momento");
+					
+				} catch (JugadorSinFlorException ex) {
+					
+					this.setMensajeInformacion("No posee tres cartas del mismo palo");
+					
+				} catch (TurnoParaTomarDecisionEquivocadoException ex) {
+					
+					this.setMensajeInformacion("No es su turno");
+				}
+			});
+			
+			this.contenedorBotones.getChildren().add(botonFlor);
+		}
 		
 		this.contenedorBotones.setSpacing(15);
 		this.contenedorBotones.setPadding(new Insets(10));

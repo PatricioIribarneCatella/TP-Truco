@@ -10,7 +10,6 @@ public class PartidaContraComputadora extends Partida {
 	public PartidaContraComputadora(String nombrePartida, boolean conFlor, String nombreJugador) {
 		
 		super(nombrePartida);
-		
 		this.initialize(nombreJugador, conFlor);
 	}
 	
@@ -73,7 +72,7 @@ public class PartidaContraComputadora extends Partida {
 	}
 	
 	
-public void jugarPrimerCartaJugador(String unJugador){
+	public void jugarPrimerCartaJugador(String unJugador){
 		
 		super.jugarPrimerCartaJugador(unJugador);
 		this.computadora.darRespuestaATurno();
@@ -90,7 +89,6 @@ public void jugarPrimerCartaJugador(String unJugador){
          super.jugarTercerCartaJugador(unJugador);
          this.computadora.darRespuestaATurno();
 	}
-	
 	
 	@Override
 	protected void verificarEstrategiaDeRotacion() {

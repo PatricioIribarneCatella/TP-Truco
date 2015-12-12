@@ -301,4 +301,8 @@ public abstract class Partida {
 		
 		return lista;
 	}
+
+	public boolean seJuegaConFlor() {
+		return this.moderador.getMesa().seJuegaConFlor();
+	}
 }

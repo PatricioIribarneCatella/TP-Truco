@@ -430,4 +430,8 @@ public class JuegoTruco extends Observable {
 	public List<NombreJugadorCarta> getCartasYaJugadas() {
 		return this.partidaActual.getCartasYaJugadasConJugador();
 	}
+	
+	public boolean seJuegaConFlor() {
+		return this.partidaActual.seJuegaConFlor();
+	}
 }
