@@ -11,12 +11,15 @@ public class ManejadorTruco {
 	private List<Resultado> resultadosJugadas;
 	private Equipo equipo1;
 	private Equipo equipo2;
+	private int jugadasGanadasEquipo1;
+    private int jugadasGanadasEquipo2;
 
 	
 	public ManejadorTruco(){
 		
-		 this.nivelDeApuesta = null; // No hay ningun estado posible a menos que se cante algo 
 		 this.resultadosJugadas = new LinkedList<Resultado>();
+		 jugadasGanadasEquipo1 = 0;
+		 jugadasGanadasEquipo2 = 0;
 	}
 
 	
@@ -60,22 +63,18 @@ public class ManejadorTruco {
 	
 	public boolean alguienGanoDosDeTres(){
 		
-		int jugadasGanadasEquipo1 = 0;
-        int jugadasGanadasEquipo2 = 0;
-        
         if(this.resultadosJugadas.size()>1){ //ya puede haber un ganador
         
-        	jugadasGanadasEquipo1 = this.rondasGanadasEquipo(equipo1);
-        	jugadasGanadasEquipo2 = this.rondasGanadasEquipo(equipo2);
+        	this.jugadasGanadasEquipo1 = this.contarRondasGanadasPorEquipo(equipo1);
+        	this.jugadasGanadasEquipo2 = this.contarRondasGanadasPorEquipo(equipo2);
         	
-        	if(jugadasGanadasEquipo1 == 2){
+        	if(this.jugadasGanadasEquipo1 == 2){
         		
         		this.equipoGanador = equipo1;
         		return true;
         	}
         	
-        	
-            if(jugadasGanadasEquipo2 == 2){
+            if(this.jugadasGanadasEquipo2 == 2){
         			
         		this.equipoGanador = equipo2;
        			return true;
@@ -90,7 +89,7 @@ public class ManejadorTruco {
      
 	}
 	
-	private int rondasGanadasEquipo(Equipo unEquipo) {
+	private int contarRondasGanadasPorEquipo(Equipo unEquipo) {
 		
 		boolean aparecioPrimerGanador = false;
 		int rondasGanadas = 0;
@@ -106,20 +105,20 @@ public class ManejadorTruco {
 				   primerGanador =  unResultado.getJugadorGanador().getEquipo(); // el que hace la primera
 			   }
 			   
-			  if(unEquipo == unResultado.getJugadorGanador().getEquipo() && empates == 0){
+			  if(unEquipo == unResultado.getJugadorGanador().getEquipo()  && empates == 0){
 				
 			    	rondasGanadas++;
 			  }
 			  
 			  if(unEquipo == unResultado.getJugadorGanador().getEquipo() && empates > 0){
 					
-			    	rondasGanadas = 2;
+			    	rondasGanadas = 2; // si llegan a empatar las rondas anteriors pero despues alguien gana ,la jugada termina ahi.
 			    	return rondasGanadas;
 			  }
 		   }
 		   else{
 			   empates++;
-			   if(rondasGanadas>0 && unEquipo == primerGanador){// el empate beneficia a aquel que ya gano una mano
+			   if(unEquipo == primerGanador){// el empate beneficia a aquel que ya gano una mano
 				   
 				   rondasGanadas++;
 			   }
@@ -145,6 +144,8 @@ public class ManejadorTruco {
 	
 	public void nuevaRonda(){
 		
+		this.jugadasGanadasEquipo1 = 0;
+		this.jugadasGanadasEquipo2 = 0;
 		this.nivelDeApuesta = null;
 		this.equipoGanador = null;
 		this.resultadosJugadas.clear();

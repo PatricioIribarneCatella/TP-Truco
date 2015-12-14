@@ -26,14 +26,13 @@ public class ManejadorFlor {
 		this.floresAcumuladas.add(unCanto);
 	}
 	
+	
 	public Jugable getGanador(){
 		
-		Jugable ganador = this.getJugadoresConPuntajeMasAlto().getFirst(); // gana siempre el que esta mas cerca del mazo, en este caso el que esta primero en la lista.
-		this.ganador = ganador;
-		return ganador;
+		return this.ganador;
 	}
 	
-	private LinkedList<Jugable> getJugadoresConPuntajeMasAlto(){
+	public Jugable resolverFlor(){
 		
 		LinkedList<Jugable> jugadoresConPuntajeMaximo = new LinkedList<Jugable>();
         int puntajeGanador  = this.getPuntajeGanador();
@@ -47,9 +46,11 @@ public class ManejadorFlor {
 		   }
 		}
 		
-		return jugadoresConPuntajeMaximo;
+		this.ganador = jugadoresConPuntajeMaximo.getFirst();
+		return this.ganador;
 	}
 	
+
 	
    public int getPuntajeGanador(){
 	   

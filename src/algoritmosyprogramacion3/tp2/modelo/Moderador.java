@@ -302,7 +302,7 @@ public class Moderador {
 			
 			this.manejadorFlor.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
 			this.manejadorFlor.florCantada(new Flor()); //contra flor
-			Jugable jugadorGanador = this.manejadorFlor.getGanador();
+			Jugable jugadorGanador = this.manejadorFlor.resolverFlor();
 			int puntajeASumar = this.manejadorFlor.getPuntajeAEntregar();
 			this.partidaEnCurso.sumarPuntos(jugadorGanador.getEquipo(),puntajeASumar);
 			this.jugadorConDecision = this.criterioDeRotacion.getJugadorConDecision();
@@ -318,7 +318,7 @@ public class Moderador {
 		if(this.jugadorConDecision == jugadorQueResponde){
 			
 			this.manejadorEnvidos.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
-			Jugable jugadorGanador = this.manejadorEnvidos.getGanador();
+			Jugable jugadorGanador = this.manejadorEnvidos.resolverEnvido();
 			int puntajeASumar = this.manejadorEnvidos.calcularPuntajeAcumulado();
 			this.partidaEnCurso.sumarPuntos(jugadorGanador.getEquipo(),puntajeASumar);
 			this.jugadorConDecision = this.criterioDeRotacion.getJugadorConDecision();

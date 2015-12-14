@@ -12,9 +12,9 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
     
 	public StrategyRotacionEnRonda(List<Jugable>jugadores){
 		this.jugadores = jugadores;
-		iteradorTurno = this.jugadores.listIterator(0);
-		iteradorDecision = this.jugadores.listIterator(0);
-		iteradorDecisionTruco = this.jugadores.listIterator(0);
+		iteradorTurno = this.jugadores.listIterator();
+		iteradorDecision = this.jugadores.listIterator();
+		iteradorDecisionTruco = this.jugadores.listIterator();
 	}
 	
     public Jugable getJugadorConTurno() {
@@ -23,7 +23,7 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 	       return (this.iteradorTurno.next());
 	    }
     	else{
-        	 this.iteradorTurno = this.jugadores.listIterator(0); // vuelvo al comienzo
+        	 this.iteradorTurno = this.jugadores.listIterator(); // vuelvo al comienzo
 	    	 return (this.iteradorTurno.next());
 	    }
 	}
@@ -38,9 +38,9 @@ public class StrategyRotacionEnRonda implements RotacionStrategy{
 	private void cambiarOrdenJugadores(){
 		Jugable primerJugador = this.jugadores.remove(0);
 		this.jugadores.add(primerJugador);
-		this.iteradorTurno = this.jugadores.listIterator(0);
-		this.iteradorDecision = this.jugadores.listIterator(0);
-		this.iteradorDecisionTruco = this.jugadores.listIterator(0);
+		this.iteradorTurno = this.jugadores.listIterator();
+		this.iteradorDecision = this.jugadores.listIterator();
+		this.iteradorDecisionTruco = this.jugadores.listIterator();
 	}
 
 	public Jugable getJugadorConDecision() {

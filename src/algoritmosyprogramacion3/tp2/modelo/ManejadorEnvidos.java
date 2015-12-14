@@ -26,14 +26,30 @@ public class ManejadorEnvidos {
 		this.envidosAcumulados.add(unCanto);
 	}
 	
-	public Jugable getGanador(){
+	public Jugable resolverEnvido(){
 		
-		Jugable ganador = this.getJugadoresConPuntajeMasAlto().getFirst(); // gana siempre el que esta mas cerca del mazo, en este caso el que esta primero en la lista.
-		this.ganador = ganador;
-		return ganador;
+		LinkedList<Jugable> jugadoresConPuntajeMaximo = new LinkedList<Jugable>();
+        int puntajeGanador  = this.getPuntajeGanador();
+		
+		for(Jugable unJugador:this.jugadores){
+			
+		   int puntajeJugador = Integer.parseInt(unJugador.declararPuntosEnvido());
+		   if(puntajeJugador == puntajeGanador){
+			   
+			   jugadoresConPuntajeMaximo.add(unJugador);
+		   }
+		}
+		
+		this.ganador = jugadoresConPuntajeMaximo.getFirst();// el primero de la lista es el que esta en el equipo con el jugador mano 
+        return this.ganador; 		
 	}
 	
-	private LinkedList<Jugable> getJugadoresConPuntajeMasAlto(){
+	
+	public Jugable getGanador(){
+		
+		return this.ganador;
+	}
+	/*private LinkedList<Jugable> getJugadoresConPuntajeMasAlto(){
 		
 		LinkedList<Jugable> jugadoresConPuntajeMaximo = new LinkedList<Jugable>();
         int puntajeGanador  = this.getPuntajeGanador();
@@ -48,7 +64,7 @@ public class ManejadorEnvidos {
 		}
 		
 		return jugadoresConPuntajeMaximo;
-	}
+	}*/
 	
 	
    public int getPuntajeGanador(){

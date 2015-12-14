@@ -116,7 +116,7 @@ public class ManejadorEnvidoTest {
 	@Test
 	public void testJugadorDosGanaElEnvido() {
 
-           Jugable jugadorGanador = this.manejadorEnvidos.getGanador();
+           Jugable jugadorGanador = this.manejadorEnvidos.resolverEnvido();
            Assert.assertTrue(jugadorGanador == jugador2);
 		
 	}
@@ -135,7 +135,7 @@ public class ManejadorEnvidoTest {
 		
 		this.manejadorEnvidos.concatenarCanto(envido);
 		
-		this.manejadorEnvidos.getGanador();
+		this.manejadorEnvidos.resolverEnvido();
 		
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 2);
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 1);
@@ -150,7 +150,7 @@ public class ManejadorEnvidoTest {
 		this.manejadorEnvidos.concatenarCanto(envido);
 		this.manejadorEnvidos.concatenarCanto(envido);
 		
-		this.manejadorEnvidos.getGanador();
+		this.manejadorEnvidos.resolverEnvido();
 		
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 4);
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 2);
@@ -166,7 +166,7 @@ public class ManejadorEnvidoTest {
 		this.manejadorEnvidos.concatenarCanto(envido);
 		this.manejadorEnvidos.concatenarCanto(envido);
 		
-		this.manejadorEnvidos.getGanador();
+		this.manejadorEnvidos.resolverEnvido();
 		
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 6);
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 3);
@@ -179,7 +179,7 @@ public class ManejadorEnvidoTest {
 		
 		this.manejadorEnvidos.concatenarCanto(realEnvido);
 		
-		this.manejadorEnvidos.getGanador();
+		this.manejadorEnvidos.resolverEnvido();
 		
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 3);
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 1);
@@ -196,7 +196,7 @@ public class ManejadorEnvidoTest {
 		this.manejadorEnvidos.concatenarCanto(envido);
 		this.manejadorEnvidos.concatenarCanto(realEnvido);
 		
-		this.manejadorEnvidos.getGanador();
+		this.manejadorEnvidos.resolverEnvido();
 		
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumulado() == 9);
 		Assert.assertTrue(this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo() == 4);

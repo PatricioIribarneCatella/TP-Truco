@@ -116,7 +116,7 @@ public class ManejadorFlorTest {
 	@Test
 	public void testJugadorDosGanaElflor() {
 
-           Jugable jugadorGanador = this.manejadorFlor.getGanador();
+           Jugable jugadorGanador = this.manejadorFlor.resolverFlor();
            Assert.assertTrue(jugadorGanador == jugador2);
 		
 	}
@@ -134,7 +134,7 @@ public class ManejadorFlorTest {
 		
 		this.manejadorFlor.florCantada(new Flor());
 		
-		this.manejadorFlor.getGanador();
+		this.manejadorFlor.resolverFlor();
 		
 		Assert.assertTrue(this.manejadorFlor.getPuntajeAEntregar() == 3);
 		Assert.assertTrue(this.manejadorFlor.calcularPuntajeAcumuladoPorRechazo() == 3);
@@ -148,7 +148,7 @@ public class ManejadorFlorTest {
 		this.manejadorFlor.florCantada(flor);
 		this.manejadorFlor.florCantada(flor);
 		
-		this.manejadorFlor.getGanador();
+		this.manejadorFlor.resolverFlor();
 		
 		Assert.assertTrue(this.manejadorFlor.getPuntajeAEntregar() == 6);
 		Assert.assertTrue(this.manejadorFlor.calcularPuntajeAcumuladoPorRechazo() == 6);
