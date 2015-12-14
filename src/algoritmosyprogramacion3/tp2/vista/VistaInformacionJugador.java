@@ -27,6 +27,7 @@ public class VistaInformacionJugador extends Application implements Observer {
 	public VistaInformacionJugador(JuegoTruco modelo, String nombreJugador) {
 		
 		this.modelo = modelo;
+		this.modelo.addObserver(this);
 		this.nombreJugador = nombreJugador;
 		this.initialize();
 	}

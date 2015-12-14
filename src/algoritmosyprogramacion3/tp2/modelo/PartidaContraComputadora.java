@@ -99,4 +99,8 @@ public class PartidaContraComputadora extends Partida {
 	public boolean esContraComputadora() {
 		return true;
 	}
+
+	public ComputadoraAI getComputadora() {
+		return this.computadora;
+	}
 }

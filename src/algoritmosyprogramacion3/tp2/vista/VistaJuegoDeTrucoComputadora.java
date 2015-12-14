@@ -1,9 +1,15 @@
 package algoritmosyprogramacion3.tp2.vista;
 
-import java.util.Observable;
-
+import algoritmosyprogramacion3.tp2.modelo.PartidaContraComputadora;
+import algoritmosyprogramacion3.tp2.modelo.Respuesta;
+import algoritmosyprogramacion3.tp2.utilitarios.ObservableComputadora;
+import algoritmosyprogramacion3.tp2.utilitarios.ObserverCantos;
+import algoritmosyprogramacion3.tp2.utilitarios.ObserverCartas;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
@@ -12,10 +18,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco {
+public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements ObserverCartas, ObserverCantos {
 
 	public VistaJuegoDeTrucoComputadora(Vista vistaAnterior) {
+		
 		super(vistaAnterior);
+		PartidaContraComputadora partida = (PartidaContraComputadora) this.modelo.getPartida();
+		partida.getComputadora().addObserverParaCartas(this);
+		partida.getComputadora().addObserverParaCantos(this);
 	}
 
 	@Override
@@ -55,9 +65,32 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco {
 	}
 
 	@Override
-	protected void actualizar(Observable o, Object arg) {
+	protected void cambiarTurno() {
+		// no cambia de turno gráficamente
+	}
+	
+	@Override
+	public void updateCarta(ObservableComputadora o, Object arg) {
 		
-		this.etiquetaNombreJugador.setText("Nombre: " + this.modelo.getNombreJugadorConTurno());
-		this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.modelo.getNombreJugadorConTurno()));
+		Label etiqueta = new Label("Coputadora");
+		etiqueta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
+		etiqueta.setTextFill(Color.WHITE);
+		
+		etiqueta.setGraphic(new ImageView(this.getImagenCarta(this.modelo.getUltimaCartaJugada("Computadora"))));
+		etiqueta.setContentDisplay(ContentDisplay.TOP);
+		
+		this.contenedorCartasJugadas.getChildren().add(etiqueta);
+	}
+
+	@Override
+	public void updateCanto(ObservableComputadora o, Object arg) {
+		
+		Respuesta respuesta = (Respuesta) arg;
+		
+		if (respuesta.fuePositiva()) {
+			
+		} else {
+			
+		}
 	}
 }

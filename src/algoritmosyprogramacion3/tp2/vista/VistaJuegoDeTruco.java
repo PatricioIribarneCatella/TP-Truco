@@ -1,12 +1,10 @@
 package algoritmosyprogramacion3.tp2.vista;
 
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import algoritmosyprogramacion3.tp2.modelo.NombreJugadorCarta;
+import algoritmosyprogramacion3.tp2.utilitarios.NombreJugadorCarta;
 import algoritmosyprogramacion3.tp2.excepciones.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -32,7 +30,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public abstract class VistaJuegoDeTruco implements Vista, Observer {
+public abstract class VistaJuegoDeTruco implements Vista {
 
 	protected JuegoTruco modelo;
 	protected Stage stage;
@@ -55,7 +53,6 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.stage = vistaAnterior.getStage();
 		this.graficadorCartas = new GraficadorCartas();
 		this.etiquetaDatos = new Label();
-		this.modelo.addObserver(this);
 		this.initialize();
 	}
 	
@@ -86,59 +83,20 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 		this.contenedor.setBackground(new Background(imagenDeFondo));
 	}
 	
-	protected void setMensajeInformacion(String mensaje) {
+	public void setMensajeInformacion(String mensaje) {
 		
 		this.etiquetaDatos.setText(mensaje);
 		this.etiquetaDatos.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
 		this.etiquetaDatos.setTextFill(Color.web("#FFFFFF"));
 	}
 	
-	private Image getImagenCarta(Carta carta) {
+	protected Image getImagenCarta(Carta carta) {
 		
 		Imagen imagen = this.graficadorCartas.getImagen(carta);
 		return new Image(imagen.getUrl(), imagen.getWidth(), imagen.getHeigth(), imagen.getPreserveRatio(), imagen.getSmooth());
 	}
 	
-	private void cambiarTurno() {
-		
-		this.etiquetaNombreJugador.setText("");
-		this.etiquetaPuntosJugador.setText("");
-		
-		this.contenedorCartas.getChildren().clear();
-		
-		Button botonIniciarTurno = new Button("Iniciar turno: " + this.modelo.getNombreJugadorConTurno());
-		botonIniciarTurno.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
-		botonIniciarTurno.setTextFill(Color.BLACK);
-		
-		BackgroundFill fondoDeColorBotonInformacion = new BackgroundFill(Color.LIME, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
-		botonIniciarTurno.setBackground(new Background(fondoDeColorBotonInformacion));
-		
-		botonIniciarTurno.setOnMouseEntered(e1 -> {
-			
-			botonIniciarTurno.setScaleX(1.2);
-			botonIniciarTurno.setScaleY(1.2);
-		});
-		
-		botonIniciarTurno.setOnMouseExited(e2 -> {
-			
-			botonIniciarTurno.setScaleX(1);
-			botonIniciarTurno.setScaleY(1);
-		});
-		
-		botonIniciarTurno.setOnAction(e3 -> {
-			
-			String nombreJugador = this.modelo.getNombreJugadorConTurno();
-			
-			this.etiquetaNombreJugador.setText("Nombre: " + nombreJugador);
-			this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(nombreJugador));
-			
-			this.contenedorCartas.getChildren().clear();
-			
-			this.graficarCartas(nombreJugador, this.modelo.getCartasJugador(nombreJugador));
-		});
-		
-		this.contenedorCartas.getChildren().add(botonIniciarTurno);
-	}
+	protected abstract void cambiarTurno();
 	
 	protected void graficarCartas(String nombreJugador, List<Carta> cartas) {
 		
@@ -172,6 +130,11 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 				try {
 				
 					this.modelo.jugarCartaDeJugador(nombreJugador, carta);
+					this.contenedorCartas.getChildren().remove(botonCarta);
+					etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(carta)));
+					etiquetaCarta.setContentDisplay(ContentDisplay.TOP);
+					this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
+					this.cambiarTurno();
 					
 				} catch (AccionInvalidaException ex) {
 					
@@ -181,13 +144,6 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 					
 					this.setMensajeInformacion("No es su turno");	
 				}
-				
-				this.contenedorCartas.getChildren().remove(botonCarta);
-				etiquetaCarta.setGraphic(new ImageView(this.getImagenCarta(carta)));
-				etiquetaCarta.setContentDisplay(ContentDisplay.TOP);
-				this.contenedorCartasJugadas.getChildren().add(etiquetaCarta);
-				
-				this.cambiarTurno();
 			});
 		}
 	}
@@ -655,13 +611,5 @@ public abstract class VistaJuegoDeTruco implements Vista, Observer {
 	@Override
 	public void setModelo(JuegoTruco modelo) {
 		this.modelo = modelo;
-	}
-
-	protected abstract void actualizar(Observable o, Object arg);
-	
-	@Override
-	public void update(Observable o, Object arg) {
-		
-		this.actualizar(o, arg);		
 	}
 }

@@ -9,6 +9,7 @@ import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
 import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
 import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
+import algoritmosyprogramacion3.tp2.utilitarios.NombreJugadorCarta;
 
 public abstract class Partida {
 
@@ -304,5 +305,11 @@ public abstract class Partida {
 
 	public boolean seJuegaConFlor() {
 		return this.moderador.getMesa().seJuegaConFlor();
+	}
+
+	public Carta getUltimaCartaJugada(String nombreJugador) {
+		
+		Jugable jugador = this.jugadores.get(nombreJugador);
+		return jugador.getCartaJugada();
 	}
 }
