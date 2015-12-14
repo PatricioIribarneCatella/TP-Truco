@@ -195,7 +195,7 @@ public abstract class VistaJuegoDeTruco implements Vista {
 		botonRepartirCartas.setDefaultButton(true);
 		botonRepartirCartas.setContentDisplay(ContentDisplay.TOP);
 		
-		botonRepartirCartas.setTooltip(new Tooltip("Reparte cartas"));
+		botonRepartirCartas.setTooltip(new Tooltip("Reparte las cartas"));
 		
 		botonRepartirCartas.setOnMouseEntered(e -> {
 			
