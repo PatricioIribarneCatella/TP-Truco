@@ -23,6 +23,11 @@ public class JuegoTruco extends Observable {
 		this.partidasDisponibles = new HashMap<String,Partida>();
 	}
 
+	private void actualizar() {
+		setChanged();
+		notifyObservers();
+	}
+	
 	public boolean nuevaMesaContraComputadoraSinFlor(String nombreMesa, String nombreJugador) {
 		
 		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
@@ -115,6 +120,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.cantarTruco(nombreJugador);
+			actualizar();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -127,6 +133,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.cantarReTruco(nombreJugador);
+			actualizar();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -139,6 +146,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.cantarValeCuatro(nombreJugador);
+			actualizar();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -151,6 +159,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.cantarEnvido(nombreJugador);
+			actualizar();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -163,6 +172,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.cantarRealEnvido(nombreJugador);
+			actualizar();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -175,6 +185,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.cantarFaltaEnvido(nombreJugador);
+			actualizar();
 			return true;
 			
 		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -187,6 +198,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.cantarFlor(nombreJugador);
+			actualizar();
 			return true;
 			
 		} catch (JugadorSinFlorException | AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException | PartidaSinFlorException e) {
@@ -199,6 +211,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.aceptarFlor(nombreJugador);
+			actualizar();
 			return true;
 		}
 		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -211,6 +224,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.aceptarVarianteEnvido(nombreJugador);
+			actualizar();
 			return true;
 		}
 		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException | CantidadDeEnvidosMaximosSuperadaException e) {
@@ -223,6 +237,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.aceptarTruco(nombreJugador);
+			actualizar();
 			return true;
 		}
 		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -235,6 +250,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.aceptarReTruco(nombreJugador);
+			actualizar();
 			return true;
 		}
 		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -247,6 +263,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.aceptarValeCuatro(nombreJugador);
+			actualizar();
 			return true;
 		}
 		catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -259,6 +276,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.rechazarFlor(nombreJugador);
+			actualizar();
 			return true;
 			
 		}catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -271,6 +289,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.rechazarVarianteDeEnvido(nombreJugador);
+			actualizar();
 			return true;
 			
 		}catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -283,6 +302,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.rechazarVarianteDeTruco(nombreJugador);
+			actualizar();
 			return true;
 			
 		}catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
@@ -310,8 +330,7 @@ public class JuegoTruco extends Observable {
 		
 		try {
 			this.partidaActual.jugarCartaDeJugador(nombreJugador, carta);
-			setChanged();
-			notifyObservers();
+			actualizar();
 			return true;
 			
 		} catch (TurnoEquivocadoException | AccionInvalidaException e) {

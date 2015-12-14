@@ -6,10 +6,12 @@ import java.util.List;
 public class PartidaContraComputadora extends Partida {
 
 	private ComputadoraAI computadora;
+	private String nombreJugadorEnContra;
 	
 	public PartidaContraComputadora(String nombrePartida, boolean conFlor, String nombreJugador) {
 		
 		super(nombrePartida);
+		this.nombreJugadorEnContra = nombreJugador;
 		this.initialize(nombreJugador, conFlor);
 	}
 	
@@ -71,6 +73,11 @@ public class PartidaContraComputadora extends Partida {
 	     super.aceptarTruco(this.computadora.getNombre());// la computadora siempre acepta
 	}
 	
+	public void jugarCartaDeJugador(String nombreJugador, Carta carta) {
+		
+		super.jugarCartaDeJugador(nombreJugador, carta);
+		this.computadora.darRespuestaATurno();
+	}
 	
 	public void jugarPrimerCartaJugador(String unJugador){
 		
@@ -102,5 +109,9 @@ public class PartidaContraComputadora extends Partida {
 
 	public ComputadoraAI getComputadora() {
 		return this.computadora;
+	}
+
+	public String getNombreJugador() {
+		return this.nombreJugadorEnContra;
 	}
 }

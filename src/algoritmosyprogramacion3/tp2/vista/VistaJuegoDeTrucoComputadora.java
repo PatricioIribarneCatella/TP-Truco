@@ -1,5 +1,8 @@
 package algoritmosyprogramacion3.tp2.vista;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import algoritmosyprogramacion3.tp2.modelo.PartidaContraComputadora;
 import algoritmosyprogramacion3.tp2.modelo.Respuesta;
 import algoritmosyprogramacion3.tp2.utilitarios.ObservableComputadora;
@@ -18,12 +21,15 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements ObserverCartas, ObserverCantos {
+public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements ObserverCartas, ObserverCantos, Observer {
 
+	private PartidaContraComputadora partida;
+	
 	public VistaJuegoDeTrucoComputadora(Vista vistaAnterior) {
 		
 		super(vistaAnterior);
-		PartidaContraComputadora partida = (PartidaContraComputadora) this.modelo.getPartida();
+		this.modelo.addObserver(this);
+		this.partida = (PartidaContraComputadora) this.modelo.getPartida();
 		partida.getComputadora().addObserverParaCartas(this);
 		partida.getComputadora().addObserverParaCantos(this);
 	}
@@ -92,5 +98,11 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements O
 		} else {
 			
 		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		
+		this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.partida.getNombreJugador()));
 	}
 }
