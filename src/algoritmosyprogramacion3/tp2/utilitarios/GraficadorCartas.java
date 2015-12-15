@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.vista;
+package algoritmosyprogramacion3.tp2.utilitarios;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +8,7 @@ import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
 import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
+import algoritmosyprogramacion3.tp2.vista.Imagen;
 import algoritmosyprogramacion3.tp2.modelo.Dos;
 import algoritmosyprogramacion3.tp2.modelo.Tres;
 import algoritmosyprogramacion3.tp2.modelo.Cuatro;

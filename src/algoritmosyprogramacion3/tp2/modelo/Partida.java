@@ -274,6 +274,10 @@ public abstract class Partida extends Observable {
 		return this.moderador.getJugadorQueTieneDecisionEnvido().getNombre();
 	}
 	
+	public String getNombreJugadorConDecisionFlor() {
+		return this.moderador.getJugadorQueTieneDecisionFlor().getNombre();
+	}
+	
 	public String getNombreJugadorConDecisionTruco() {
 		return this.moderador.getJugadorQueTieneDecisionTruco().getNombre();
 	}

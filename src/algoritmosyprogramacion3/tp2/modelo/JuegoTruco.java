@@ -174,7 +174,7 @@ public class JuegoTruco {
 			actualizar();
 			return true;
 			
-		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException e) {
+		} catch (AccionInvalidaException | TurnoParaTomarDecisionEquivocadoException | CantidadDeEnvidosMaximosSuperadaException e) {
 			
 			throw e;
 		}
@@ -418,6 +418,10 @@ public class JuegoTruco {
 
 	public String getNombreJugadorConDecisionEnvido() {
 		return this.partidaActual.getNombreJugadorConDecisionEnvido();
+	}
+	
+	public String getNombreJugadorConDecisionFlor() {
+		return this.partidaActual.getNombreJugadorConDecisionFlor();
 	}
 	
 	public String getNombreJugadorConDecisionTruco() {

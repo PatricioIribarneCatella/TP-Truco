@@ -129,6 +129,11 @@ public class Moderador {
 		return this.jugadorConDecision;
 	}
 	
+	public Jugable getJugadorQueTieneDecisionFlor() {
+		
+		return this.jugadorConDecision;
+	}
+	
 	public Jugable getJugadorQueTieneDecisionTruco() {
 		
 		return this.jugadorConDecisionTruco;
