@@ -2,7 +2,7 @@ package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Observable;
+import java.util.Observer;
 import java.util.Set;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
@@ -14,7 +14,7 @@ import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
 import algoritmosyprogramacion3.tp2.utilitarios.NombreJugadorCarta;
 
-public class JuegoTruco extends Observable {
+public class JuegoTruco {
 	
 	private Partida partidaActual;
 	private HashMap<String,Partida> partidasDisponibles;
@@ -23,6 +23,18 @@ public class JuegoTruco extends Observable {
 		this.partidasDisponibles = new HashMap<String,Partida>();
 	}
 
+	public void addObserver(Observer o) {
+		this.partidaActual.addObserver(o);
+	}
+	
+	private void setChanged() {
+		this.partidaActual.setChanged();
+	}
+	
+	private void notifyObservers() {
+		this.partidaActual.notifyObservers();
+	}
+	
 	private void actualizar() {
 		setChanged();
 		notifyObservers();

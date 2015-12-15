@@ -3,6 +3,7 @@ package algoritmosyprogramacion3.tp2.modelo;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Observable;
 import java.util.Set;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
@@ -11,7 +12,7 @@ import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
 import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
 import algoritmosyprogramacion3.tp2.utilitarios.NombreJugadorCarta;
 
-public abstract class Partida {
+public abstract class Partida extends Observable {
 
 	private EstadoPartida estado;
 	protected Moderador moderador;
@@ -24,6 +25,10 @@ public abstract class Partida {
 		this.nombrePartida = nombrePartida;
 		this.cantidadDeEnvidosCantados = 0;
 		this.jugadores = new HashMap<String,Jugable>();
+	}
+	
+	public void setChanged() {
+		super.setChanged();
 	}
 	
 	public String getNombre() {
