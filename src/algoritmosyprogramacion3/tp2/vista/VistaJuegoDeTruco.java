@@ -30,8 +30,6 @@ public abstract class VistaJuegoDeTruco implements Vista {
 	protected BorderPane contenedor;
 	private Label etiquetaDatos;
 	private GraficadorCartas graficadorCartas;
-	protected Label etiquetaNombreJugador;
-	protected Label etiquetaPuntosJugador;
 	protected ContenedorCartasJugadas contenedorCartasJugadas;
 	protected ContenedorInformacionJugadoresYMazo contenedorInformacionJugadores;
 	protected ContenedorAccionesCantos contenedorBotones;
@@ -169,13 +167,13 @@ public abstract class VistaJuegoDeTruco implements Vista {
 	}
 
 	public void setTextoNombreJugador(String nombreJugador) {
-		// TODO Auto-generated method stub
 		
+		this.contenedorSuperior.setTextoNombreJugador(nombreJugador);
 	}
 
 	public void setTextoPuntosJugador(String puntos) {
-		// TODO Auto-generated method stub
 		
+		this.contenedorSuperior.setTextoPuntosJugador(puntos);
 	}
 	
 	public void graficarCartas(String nombreJugador, List<Carta> cartas) {
@@ -184,8 +182,8 @@ public abstract class VistaJuegoDeTruco implements Vista {
 	}
 	
 	public void graficarCartaJugada(Carta carta, String nombreJugador) {
-		// TODO Auto-generated method stub
 		
+		this.contenedorCartasJugadas.graficarCartaJugada(carta, nombreJugador);
 	}
 
 	public void graficarSituacionTruco() {

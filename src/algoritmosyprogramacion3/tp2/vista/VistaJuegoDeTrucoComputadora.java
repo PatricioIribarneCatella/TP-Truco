@@ -56,7 +56,7 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements O
 	@Override
 	public void update(Observable o, Object arg) {
 		
-		this.etiquetaPuntosJugador.setText("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.partida.getNombreJugador()));
+		setTextoPuntosJugador("Puntos: " + this.modelo.mostrarPuntosDeJugador(this.partida.getNombreJugador()));
 	}
 
 	@Override
