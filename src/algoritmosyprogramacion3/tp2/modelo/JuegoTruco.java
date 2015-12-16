@@ -455,4 +455,78 @@ public class JuegoTruco {
 	public Carta getUltimaCartaJugada(String nombreJugador) {
 		return this.partidaActual.getUltimaCartaJugada(nombreJugador);
 	}
+	
+	public Equipo getGanadorEnvido(){
+		
+		return this.partidaActual.getGanadorEnvido();
+	}
+	
+	public String getPuntajeGanadorEnvido(){
+		
+		return Integer.toString(this.partidaActual.getPuntajeGanadorEnvido());
+	}
+	
+	public String getPuntajeAcumuladoEnvidoJugado(){
+		
+		return Integer.toString(this.partidaActual.getPuntajeAcumuladoEnvidoJugado());
+	}
+	
+    public String getPuntajeAcumuladoEnvidoRechazado(){
+		
+		return Integer.toString(this.partidaActual.getPuntajeAcumuladoEnvidoRechazado());
+	}
+    
+    
+    public Equipo getGanadorFlor(){
+		
+		return this.partidaActual.getGanadorFlor();
+	}
+	
+	public String getPuntajeGanadorFlor(){
+		
+		return Integer.toString(this.partidaActual.getPuntajeGanadorFlor());
+	}
+	
+	public String getPuntajeAcumuladoFlorJugada(){
+		
+		return Integer.toString(this.partidaActual.getPuntajeAcumuladoFlorJugada());
+	}
+	
+    public String getPuntajeAcumuladoFlorRechazada(){
+		
+		return Integer.toString(this.partidaActual.getPuntajeAcumuladoFlorRechazada());
+	}
+    
+    
+    public Equipo getGanadorTruco(){
+    		
+    	return this.partidaActual.getGanadorTruco();
+    }
+    
+	
+	public String getPuntajeAcumuladoTrucoJugado(){
+		
+		return Integer.toString(this.partidaActual.getPuntajeAcumuladoTrucoJugado());
+	}
+	
+    public String getPuntajeAcumuladoTrucoRechazado(){
+		
+		return Integer.toString(this.partidaActual.getPuntajeAcumuladoTrucoRechazado());
+	}
+    
+    public boolean equipoGanoDosDeTres(){
+    	
+    	return this.partidaActual.hayGanadorTruco();
+    }
+    
+    
+	public boolean hayUnGanador(){
+		
+		return this.partidaActual.hayUnGanador();
+	}
+	
+	public Equipo getGanador(){
+		
+		return this.partidaActual.getEquipoGanador();
+	}
 }

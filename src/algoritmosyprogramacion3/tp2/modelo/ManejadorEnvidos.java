@@ -108,11 +108,6 @@ public class ManejadorEnvidos {
 	}
 	
 	
-	public void envidoNoQuerido(){
-		
-		this.envidosAcumulados.clear();
-	}
-	
 	public void nuevaRonda(){
 		
 		this.ganador = null;

@@ -92,11 +92,6 @@ public class ManejadorFlor {
 	}
 	
 	
-	public void florNoQuerida(){
-		
-		this.floresAcumuladas.clear();
-	}
-	
 	public void nuevaRonda(){
 		
 		this.ganador = null;

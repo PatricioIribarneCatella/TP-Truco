@@ -204,7 +204,6 @@ public class Moderador {
 		
 	    if(this.jugadorConDecision == jugadorQueCanto){
 			 
-	    	this.manejadorEnvidos.envidoNoQuerido(); //la flor reemplaza al envido
 			Canto flor = new Flor();
 			this.manejadorFlor.florCantada(flor);
 			this.jugadorConDecision = this.getJugadorConDecision(); // ahora el que decide si acepta o no es otro.
@@ -351,7 +350,6 @@ public class Moderador {
 				
 			this.jugadorConDecision = this.getJugadorConDecision();
 			int puntajeASumar = this.manejadorFlor.calcularPuntajeAcumuladoPorRechazo();
-			this.manejadorFlor.florNoQuerida();
 			this.partidaEnCurso.sumarPuntos(jugadorConDecision.getEquipo(),puntajeASumar);
 		}
 		else{
@@ -366,7 +364,6 @@ public class Moderador {
 				
 			this.jugadorConDecision = this.getJugadorConDecision();
 			int puntajeASumar = this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo();
-			this.manejadorEnvidos.envidoNoQuerido();
 			this.partidaEnCurso.sumarPuntos(this.jugadorConDecision.getEquipo(),puntajeASumar);
 		}
 		else{
@@ -395,4 +392,77 @@ public class Moderador {
 	public Mesa getMesa() {
 		return this.mesaACargo;
 	}
+
+	
+	
+	
+	
+	/*METODOS PARA LA VISTA*/
+	
+	/*Envido*/
+	public Equipo getGanadorEnvido() {
+		
+		return this.manejadorEnvidos.getGanador().getEquipo();
+	}
+
+	public int getPuntajeGanadorEnvido() {
+		
+		return this.manejadorEnvidos.getPuntajeGanador();
+	}
+
+
+	public int getPuntajeAcumuladoEnvidoPorGanar() {
+		
+		return this.manejadorEnvidos.calcularPuntajeAcumulado();
+	}
+	
+	public int getPuntajeAcumuladoEnvidoPorRechazo(){
+		
+		return this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo();
+	}
+
+	
+	/*Truco*/
+	public Equipo getGanadorTruco() {
+		
+		return this.manejadorTruco.getGanador();
+	}
+
+	public int getPuntajeAcumuladoTrucoPorGanar() {
+		
+		return this.manejadorTruco.getPuntajePorGanar();
+	}
+
+	public int getPuntajeAcumuladoTrucoPorRechazo() {
+	    
+		return this.manejadorTruco.getPuntajePorRechazar();
+	}
+
+	public boolean hayGanadorTruco() {
+		
+		return this.manejadorTruco.alguienGanoDosDeTres();
+	}
+
+	
+	/*Flor*/
+	public Equipo getGanadorFlor() {
+		
+		return this.manejadorFlor.getGanador().getEquipo();
+	}
+
+	public int getPuntajeGanadorFlor() {
+		
+		return this.manejadorFlor.getPuntajeGanador();
+	}
+
+	public int getPuntajeAcumuladoFlorPorGanar() {
+		
+		return this.manejadorFlor.getPuntajeAEntregar();
+	}
+
+	public int getPuntajeAcumuladoFlorPorRechazo() {
+		
+		return this.manejadorFlor.calcularPuntajeAcumuladoPorRechazo();
+	}
+
 }

@@ -321,4 +321,95 @@ public abstract class Partida extends Observable {
 		Jugable jugador = this.jugadores.get(nombreJugador);
 		return jugador.getCartaJugada();
 	}
+	
+	
+	/*Metodos para la vista*/
+	public boolean hayUnGanador(){
+		
+		for (Jugable jugador : this.jugadores.values()) {
+		    
+			if(jugador.getEquipo().getPuntaje()>30){
+				
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public Equipo getEquipoGanador(){
+		
+        Equipo equipoGanador = new Equipo();
+		for (Jugable jugador : this.jugadores.values()) {
+		    
+			if(jugador.getEquipo().getPuntaje()>30){
+				
+				equipoGanador = jugador.getEquipo();
+			}
+		}
+		return equipoGanador;
+	}
+
+	
+	/*Envido*/	
+	public Equipo getGanadorEnvido() {
+		
+		return this.moderador.getGanadorEnvido();
+	}
+
+	public int getPuntajeGanadorEnvido() {
+		
+		return this.moderador.getPuntajeGanadorEnvido();
+	}
+
+	public int getPuntajeAcumuladoEnvidoJugado() {
+		
+		return this.moderador.getPuntajeAcumuladoEnvidoPorGanar();
+	}
+	
+    public int getPuntajeAcumuladoEnvidoRechazado() {
+		
+		return this.moderador.getPuntajeAcumuladoEnvidoPorRechazo();
+	}
+
+    /*Truco*/
+	public Equipo getGanadorTruco() {
+		
+		return this.moderador.getGanadorTruco();
+	}
+
+	public int getPuntajeAcumuladoTrucoJugado() {
+	    
+		return this.moderador.getPuntajeAcumuladoTrucoPorGanar();
+	}
+
+	public int getPuntajeAcumuladoTrucoRechazado() {
+		
+		return this.moderador.getPuntajeAcumuladoTrucoPorRechazo();
+	}
+
+	public boolean hayGanadorTruco() {
+		
+		return this.moderador.hayGanadorTruco();
+	}
+
+	/*Flor*/
+    public Equipo getGanadorFlor() {
+		
+		return this.moderador.getGanadorFlor();
+	}
+
+	public int getPuntajeGanadorFlor() {
+		
+		return this.moderador.getPuntajeGanadorFlor();
+	}
+
+	public int getPuntajeAcumuladoFlorJugada() {
+		
+		return this.moderador.getPuntajeAcumuladoFlorPorGanar();
+	}
+
+	public int getPuntajeAcumuladoFlorRechazada() {
+	 
+		return this.moderador.getPuntajeAcumuladoFlorPorRechazo();
+	}
 }

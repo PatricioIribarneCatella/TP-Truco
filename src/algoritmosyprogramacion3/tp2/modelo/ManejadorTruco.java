@@ -131,7 +131,6 @@ public class ManejadorTruco {
 
 	public Equipo getGanador(){
 		
-		this.nivelDeApuesta = null;
 		return this.equipoGanador;
 	}
 
