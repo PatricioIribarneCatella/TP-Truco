@@ -16,7 +16,6 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -29,16 +28,17 @@ public abstract class VistaJuegoDeTruco implements Vista {
 	protected Stage stage;
 	protected Scene escena;
 	protected BorderPane contenedor;
-	protected HBox contenedorCartasJugadas;
-	protected VBox contenedorInformacionJugadores;
 	private Label etiquetaDatos;
 	private GraficadorCartas graficadorCartas;
 	protected Label etiquetaNombreJugador;
 	protected Label etiquetaPuntosJugador;
-	protected VBox contenedorBotones;
-	protected HBox contenedorCartas;
-	protected Vista vistaAnterior;
+	protected ContenedorCartasJugadas contenedorCartasJugadas;
+	protected ContenedorInformacionJugadoresYMazo contenedorInformacionJugadores;
+	protected ContenedorAccionesCantos contenedorBotones;
+	protected ContenedorCartas contenedorCartas;
 	private ContenedorInformacionJugadorActual contenedorSuperior;
+	protected Vista vistaAnterior;
+
 	
 	public VistaJuegoDeTruco(Vista vistaAnterior) {
 		
@@ -180,6 +180,7 @@ public abstract class VistaJuegoDeTruco implements Vista {
 	
 	public void graficarCartas(String nombreJugador, List<Carta> cartas) {
 		
+		this.contenedorCartas.graficarCartas(nombreJugador, cartas);
 	}
 	
 	public void graficarCartaJugada(Carta carta, String nombreJugador) {
