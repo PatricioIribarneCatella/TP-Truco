@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -69,7 +70,7 @@ public abstract class ContenedorCartas extends HBox {
 		return new Image(imagen.getUrl(), imagen.getWidth(), imagen.getHeigth(), imagen.getPreserveRatio(), imagen.getSmooth());
 	}
 
-	protected abstract void cambiarTurno();
+	public abstract void cambiarTurno(String nombreJugador, VBox botones);
 	
 	public void graficarCartas(String nombreJugador, List<Carta> cartas) {
 		
@@ -103,7 +104,7 @@ public abstract class ContenedorCartas extends HBox {
 					this.modelo.jugarCartaDeJugador(nombreJugador, carta);
 					this.getChildren().remove(botonCarta);
 					this.vista.graficarCartaJugada(carta, nombreJugador);
-					this.cambiarTurno();
+					this.cambiarTurno(this.modelo.getNombreJugadorConTurno(), this.vista.getSituacionInicialCantos());
 					
 				} catch (AccionInvalidaException ex) {
 					

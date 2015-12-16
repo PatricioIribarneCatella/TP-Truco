@@ -17,4 +17,10 @@ public class VistaJuegoDeTrucoPorTurnos extends VistaJuegoDeTruco {
 		
 		this.contenedorCartas = new ContenedorCartasPorTurnos(this, this.modelo);
 	}
+
+	@Override
+	protected void setCaracteristicasAlContenedorBotonesDeCantos() {
+		
+		this.contenedorBotones = new ContenedorAccionesCantosPorTurnos(this, this.modelo);
+	}
 }

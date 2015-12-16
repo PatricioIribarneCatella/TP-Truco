@@ -104,9 +104,12 @@ public abstract class VistaJuegoDeTruco implements Vista {
 		this.contenedor.setRight(this.contenedorInformacionJugadores);
 	}
 	
+	protected abstract void setCaracteristicasAlContenedorBotonesDeCantos();
+	
 	private void setCaracteristicasAlContenedorIzquierdo() {
 		
-		this.contenedorBotones = new ContenedorAccionesCantos(this, this.modelo);
+		this.setCaracteristicasAlContenedorBotonesDeCantos();
+		
 		this.contenedor.setLeft(this.contenedorBotones);
 	}
 
@@ -269,5 +272,25 @@ public abstract class VistaJuegoDeTruco implements Vista {
 	public void graficarSituacionVarianteTrucoRechazada() {
 		
 		// cartelitos
+	}
+
+	public VBox getSituacionInicialCantos() {
+		
+		return this.contenedorBotones.getSituacionInicial();
+	}
+
+	public void limpiarBotones() {
+		
+		this.contenedorBotones.limpiarBotones();
+	}
+
+	public void graficarBotones(VBox botones) {
+		
+		this.contenedorBotones.graficarBotones(botones);
+	}
+
+	public void cambiarTurno(String nombreJugador, VBox botones) {
+		
+		this.contenedorCartas.cambiarTurno(nombreJugador, botones);
 	}
 }

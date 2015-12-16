@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -17,14 +18,15 @@ public class ContenedorCartasPorTurnos extends ContenedorCartas {
 	}
 
 	@Override
-	protected void cambiarTurno() {
+	public void cambiarTurno(String nombreJugador, VBox botones) {
 		
 		this.vista.setTextoNombreJugador("");
 		this.vista.setTextoPuntosJugador("");
+		this.vista.limpiarBotones();
 		
 		this.getChildren().clear();
 		
-		Button botonIniciarTurno = new Button("Iniciar turno: " + this.modelo.getNombreJugadorConTurno());
+		Button botonIniciarTurno = new Button("Iniciar turno: " + nombreJugador);
 		botonIniciarTurno.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
 		botonIniciarTurno.setTextFill(Color.BLACK);
 		
@@ -45,14 +47,13 @@ public class ContenedorCartasPorTurnos extends ContenedorCartas {
 		
 		botonIniciarTurno.setOnAction(e3 -> {
 			
-			String nombreJugador = this.modelo.getNombreJugadorConTurno();
-			
 			this.vista.setTextoNombreJugador("Nombre: " + nombreJugador);
 			this.vista.setTextoPuntosJugador("Puntos: " + this.modelo.mostrarPuntosDeJugador(nombreJugador));
 			
 			this.getChildren().clear();
 			
 			this.graficarCartas(nombreJugador, this.modelo.getCartasJugador(nombreJugador));
+			this.vista.graficarBotones(botones);
 		});
 		
 		this.getChildren().add(botonIniciarTurno);

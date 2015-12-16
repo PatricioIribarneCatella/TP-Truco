@@ -70,4 +70,10 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements O
 		
 		this.contenedorCartas = new ContenedorCartasComputadora(this, this.modelo);
 	}
+
+	@Override
+	protected void setCaracteristicasAlContenedorBotonesDeCantos() {
+		
+		this.contenedorBotones = new ContenedorAccionesCantosComputadora(this, this.modelo);
+	}
 }
