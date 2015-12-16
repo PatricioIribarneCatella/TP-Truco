@@ -187,87 +187,87 @@ public abstract class VistaJuegoDeTruco implements Vista {
 	}
 
 	public void graficarSituacionTruco() {
-		// TODO Auto-generated method stub
 		
+		this.contenedorBotones.graficarSituacionTruco();
 	}
 
 	public void graficarSituacionReTruco() {
-		// TODO Auto-generated method stub
 		
+		this.contenedorBotones.graficarSituacionReTruco();
 	}
 
 	public void graficarSituacionValeCuatro() {
-		// TODO Auto-generated method stub
 		
+		this.contenedorBotones.graficarSituacionValeCuatro();
 	}
 
 	public void graficarSituacionFlor() {
-		// TODO Auto-generated method stub
 		
+		this.contenedorBotones.graficarSituacionFlor();
 	}
 
 	public void graficarSituacionEnvido() {
-		// TODO Auto-generated method stub
 		
+		this.contenedorBotones.graficarSituacionEnvido();
 	}
 
 	public void graficarSituacionFaltaEnvido() {
-		// TODO Auto-generated method stub
 		
+		this.contenedorBotones.graficarSituacionFaltaEnvido();
 	}
 
 	public void graficarSituacionRealEnvido() {
-		// TODO Auto-generated method stub
 		
+		this.contenedorBotones.graficarSituacionRealEnvido();
 	}
 
 	public void graficarSituacionTrucoAceptado() {
-		// TODO Auto-generated method stub
 		
+		// cartelitos
 	}
 
 	public void graficarSituacionReTrucoAceptado() {
-		// TODO Auto-generated method stub
 		
+		// cartelitos
 	}
 
 	public void graficarSituacionValeCuatroAceptado() {
-		// TODO Auto-generated method stub
 		
+		// cartelitos
 	}
 
 	public void graficarSituacionEnvidoAceptada() {
-		// TODO Auto-generated method stub
 		
+		// cartelitos
 	}
 
 	public void graficarSituacionFlorAceptada() {
-		// TODO Auto-generated method stub
 		
+		// cartelitos
 	}
 
 	public void graficarSituacionFaltaEnvidoAceptada() {
-		// TODO Auto-generated method stub
 		
+		// cartelitos
 	}
 
 	public void graficarSituacionRealEnvidoAceptada() {
-		// TODO Auto-generated method stub
-		
+	
+		// cartelitos
 	}
 
 	public void graficarSituacionFlorRechazada() {
-		// TODO Auto-generated method stub
 		
+		// cartelitos
 	}
 
 	public void graficarSituacionVarianteEnvidoRechazada() {
-		// TODO Auto-generated method stub
 		
+		// cartelitos
 	}
 
 	public void graficarSituacionVarianteTrucoRechazada() {
-		// TODO Auto-generated method stub
 		
+		// cartelitos
 	}
 }
