@@ -41,6 +41,7 @@ public class ContenedorAccionesCantos extends VBox {
 		
 		VBox botones = GraficadorBotonesDeCantos.graficarSituacionTruco(this.vista);
 		
+		this.getChildren().clear();
 		this.getChildren().addAll(botones.getChildren());
 	}
 	
@@ -48,6 +49,7 @@ public class ContenedorAccionesCantos extends VBox {
 		
 		VBox botones = GraficadorBotonesDeCantos.graficarSituacionReTruco(this.vista);
 		
+		this.getChildren().clear();
 		this.getChildren().addAll(botones.getChildren());
 	}
 	
@@ -55,6 +57,7 @@ public class ContenedorAccionesCantos extends VBox {
 		
 		VBox botones = GraficadorBotonesDeCantos.graficarSituacionValeCuatro(this.vista);
 		
+		this.getChildren().clear();
 		this.getChildren().addAll(botones.getChildren());
 	}
 	
@@ -62,6 +65,7 @@ public class ContenedorAccionesCantos extends VBox {
 		
 		VBox botones = GraficadorBotonesDeCantos.graficarSituacionEnvido(this.vista);
 		
+		this.getChildren().clear();
 		this.getChildren().addAll(botones.getChildren());
 	}
 	
@@ -69,6 +73,7 @@ public class ContenedorAccionesCantos extends VBox {
 		
 		VBox botones = GraficadorBotonesDeCantos.graficarSituacionRealEnvido(this.vista);
 		
+		this.getChildren().clear();
 		this.getChildren().addAll(botones.getChildren());
 	}
 	
@@ -76,6 +81,7 @@ public class ContenedorAccionesCantos extends VBox {
 		
 		VBox botones = GraficadorBotonesDeCantos.graficarSituacionFaltaEnvido(this.vista);
 		
+		this.getChildren().clear();
 		this.getChildren().addAll(botones.getChildren());
 	}
 	
@@ -83,6 +89,7 @@ public class ContenedorAccionesCantos extends VBox {
 		
 		VBox botones = GraficadorBotonesDeCantos.graficarSituacionFlor(this.vista);
 		
+		this.getChildren().clear();
 		this.getChildren().addAll(botones.getChildren());
 	}
 }
