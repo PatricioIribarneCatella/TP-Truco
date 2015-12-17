@@ -456,11 +456,6 @@ public class JuegoTruco {
 		return this.partidaActual.getUltimaCartaJugada(nombreJugador);
 	}
 	
-	public Equipo getGanadorEnvido(){
-		
-		return this.partidaActual.getGanadorEnvido();
-	}
-	
 	public String getPuntajeGanadorEnvido(){
 		
 		return Integer.toString(this.partidaActual.getPuntajeGanadorEnvido());
@@ -528,5 +523,9 @@ public class JuegoTruco {
 	public Equipo getGanador(){
 		
 		return this.partidaActual.getEquipoGanador();
+	}
+	
+	public Set<String> getEquipoGanadorEnvido() {
+		return this.partidaActual.getGanadorEnvido().getNombresJugadores();
 	}
 }

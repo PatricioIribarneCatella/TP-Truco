@@ -36,6 +36,7 @@ public abstract class VistaJuegoDeTruco implements Vista {
 	protected ContenedorCartas contenedorCartas;
 	private ContenedorInformacionJugadorActual contenedorSuperior;
 	protected Vista vistaAnterior;
+	private VBox situacionActual;
 
 	
 	public VistaJuegoDeTruco(Vista vistaAnterior) {
@@ -241,12 +242,15 @@ public abstract class VistaJuegoDeTruco implements Vista {
 
 	public void graficarSituacionEnvidoAceptada() {
 		
-		// cartelitos
-	}
-
-	public void graficarSituacionFlorAceptada() {
+		this.contenedorBotones.graficarSituacionEnvidoAceptada();
 		
-		// cartelitos
+		VentanaInformacionEnvidoAceptado ventana = new VentanaInformacionEnvidoAceptado(this.modelo);
+		
+		try {
+			ventana.start(new Stage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void graficarSituacionFaltaEnvidoAceptada() {
@@ -259,6 +263,11 @@ public abstract class VistaJuegoDeTruco implements Vista {
 		// cartelitos
 	}
 
+	public void graficarSituacionFlorAceptada() {
+		
+		// cartelitos
+	}
+	
 	public void graficarSituacionFlorRechazada() {
 		
 		// cartelitos
@@ -273,10 +282,14 @@ public abstract class VistaJuegoDeTruco implements Vista {
 		
 		// cartelitos
 	}
+	
+	public void setSituacionActual(VBox situacion) {
+		this.situacionActual = situacion;
+	}
 
-	public VBox getSituacionInicialCantos() {
+	public VBox getSituacionActual() {
 		
-		return this.contenedorBotones.getSituacionInicial();
+		return this.situacionActual;
 	}
 
 	public void limpiarBotones() {

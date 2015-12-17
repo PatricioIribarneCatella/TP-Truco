@@ -2,6 +2,7 @@ package algoritmosyprogramacion3.tp2.manejadores;
 
 import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
+import algoritmosyprogramacion3.tp2.utilitarios.GraficadorBotonesDeCantos;
 import algoritmosyprogramacion3.tp2.vista.VistaJuegoDeTruco;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,6 +23,7 @@ public class BotonAceptarEnvidoEventHandler implements EventHandler<ActionEvent>
 		try {
 			modelo.aceptarVarianteEnvidoPorJugador(modelo.getNombreJugadorConDecisionEnvido());
 			this.vista.setMensajeInformacion("Envido aceptado");
+			vista.setSituacionActual(GraficadorBotonesDeCantos.graficarSituacionEnvidoAceptada(vista));
 			this.vista.graficarSituacionEnvidoAceptada();
 			
 		} catch (TurnoParaTomarDecisionEquivocadoException ex) {

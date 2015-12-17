@@ -1,6 +1,7 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class Equipo {
 
@@ -28,5 +29,9 @@ public class Equipo {
 	public String getPuntajeComoString() {
 		
 		return Integer.toString(this.puntaje);
+	}
+	
+	public Set<String> getNombresJugadores() {
+		return this.jugadores.keySet();
 	}
 }
