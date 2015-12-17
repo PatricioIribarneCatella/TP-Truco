@@ -50,10 +50,7 @@ public class ManejadorTruco {
 		return this.nivelDeApuesta.getPuntosPorRechazo();
 	}
 	
-	public void trucoNoQuerido() {
-		
-		this.nuevaRonda();
-	}
+
 	
 	public boolean trucoCantado(){
 		
@@ -139,6 +136,17 @@ public class ManejadorTruco {
 		
 		   Resultado resultadoJugada = nuevaJugada.confrontar(this.jugadores);
 		   this.resultadosJugadas.add(resultadoJugada);
+	}
+	
+	public void trucoNoQuerido(Equipo equipoQueRechaza){
+		
+		  for(Jugable unJugador: this.jugadores){
+			   
+			   if(unJugador.getEquipo() != equipoQueRechaza){
+					   
+				   this.equipoGanador =  unJugador.getEquipo();
+			   }
+		   }
 	}
 	
 	public void nuevaRonda(){

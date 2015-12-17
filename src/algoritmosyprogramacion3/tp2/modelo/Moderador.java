@@ -42,7 +42,9 @@ public class Moderador {
 		this.jugadorConTurno = this.criterioDeRotacion.getJugadorConTurno();
 		this.jugadorConDecision = this.criterioDeRotacion.getJugadorConDecision();
 		this.jugadorConDecisionTruco = this.criterioDeRotacion.getJugadorConDecisionTruco();
+		this.manejadorEnvidos.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
 		this.manejadorTruco.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
+		this.manejadorFlor.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
 	}
 	
 	public void setPartida(Partida unaPartida){
@@ -321,7 +323,6 @@ public class Moderador {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
 			
-			this.manejadorEnvidos.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
 			Jugable jugadorGanador = this.manejadorEnvidos.resolverEnvido();
 			int puntajeASumar = this.manejadorEnvidos.calcularPuntajeAcumulado();
 			this.partidaEnCurso.sumarPuntos(jugadorGanador.getEquipo(),puntajeASumar);
@@ -348,6 +349,7 @@ public class Moderador {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
 				
+			this.manejadorFlor.florNoQuerida(jugadorQueResponde.getEquipo());
 			this.jugadorConDecision = this.getJugadorConDecision();
 			int puntajeASumar = this.manejadorFlor.calcularPuntajeAcumuladoPorRechazo();
 			this.partidaEnCurso.sumarPuntos(jugadorConDecision.getEquipo(),puntajeASumar);
@@ -362,6 +364,7 @@ public class Moderador {
 
 		if(this.jugadorConDecision == jugadorQueResponde){
 				
+			this.manejadorEnvidos.envidoNoQuerido(jugadorQueResponde.getEquipo());
 			this.jugadorConDecision = this.getJugadorConDecision();
 			int puntajeASumar = this.manejadorEnvidos.calcularPuntajeAcumuladoPorRechazo();
 			this.partidaEnCurso.sumarPuntos(this.jugadorConDecision.getEquipo(),puntajeASumar);
@@ -376,10 +379,10 @@ public class Moderador {
 
 		if(this.jugadorConDecisionTruco == jugadorQueResponde){
 			
+			this.manejadorTruco.trucoNoQuerido(jugadorQueResponde.getEquipo());
 			this.jugadorConDecisionTruco = getJugadorConDecisionTruco();
 			int puntajeASumar = this.manejadorTruco.getPuntajePorRechazar();
 			this.partidaEnCurso.sumarPuntos(jugadorConDecisionTruco.getEquipo(), puntajeASumar);
-			this.manejadorTruco.trucoNoQuerido();
 			this.cantidadDeCartasDeLaJugada = 0;
 			this.rondaFinalizada();
 		}

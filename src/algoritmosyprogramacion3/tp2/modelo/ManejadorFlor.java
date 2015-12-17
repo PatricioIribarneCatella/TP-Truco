@@ -50,6 +50,16 @@ public class ManejadorFlor {
 		return this.ganador;
 	}
 	
+	public void florNoQuerida(Equipo equipoQueRechaza){
+		
+	  for(Jugable unJugador: this.jugadores){
+			   
+		   if(unJugador.getEquipo() != equipoQueRechaza){
+				   
+			   this.ganador =  unJugador;
+		   }
+	   }
+	}
 
 	
    public int getPuntajeGanador(){

@@ -45,6 +45,17 @@ public class ManejadorEnvidos {
 	}
 	
 	
+	public void envidoNoQuerido(Equipo equipoQueRechaza){
+		
+	   for(Jugable unJugador: this.jugadores){
+		   
+		   if(unJugador.getEquipo() != equipoQueRechaza){
+			   
+			   this.ganador =  unJugador;
+		   }
+	   }
+	}
+	
 	public Jugable getGanador(){
 		
 		return this.ganador;

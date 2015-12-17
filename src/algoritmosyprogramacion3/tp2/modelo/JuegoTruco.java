@@ -472,9 +472,9 @@ public class JuegoTruco {
 	}
     
     
-    public Equipo getGanadorFlor(){
+    public Set<String> getEquipoGanadorFlor(){
 		
-		return this.partidaActual.getGanadorFlor();
+		return this.partidaActual.getGanadorFlor().getNombresJugadores();
 	}
 	
 	public String getPuntajeGanadorFlor(){
@@ -493,9 +493,9 @@ public class JuegoTruco {
 	}
     
     
-    public Equipo getGanadorTruco(){
+    public Set<String> getEquipoGanadorTruco(){
     		
-    	return this.partidaActual.getGanadorTruco();
+    	return this.partidaActual.getGanadorTruco().getNombresJugadores();
     }
     
 	
@@ -513,7 +513,6 @@ public class JuegoTruco {
     	
     	return this.partidaActual.hayGanadorTruco();
     }
-    
     
 	public boolean hayUnGanador(){
 		
