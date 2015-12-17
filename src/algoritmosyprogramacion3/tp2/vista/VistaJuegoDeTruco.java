@@ -255,32 +255,80 @@ public abstract class VistaJuegoDeTruco implements Vista {
 
 	public void graficarSituacionFaltaEnvidoAceptada() {
 		
-		// cartelitos
+        this.contenedorBotones.graficarSituacionEnvidoAceptada();
+		
+		VentanaInformacionFaltaEnvidoAceptado ventana = new VentanaInformacionFaltaEnvidoAceptado(this, this.modelo);
+		
+		try {
+			ventana.start(new Stage());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void graficarSituacionRealEnvidoAceptada() {
 	
-		// cartelitos
+		  this.contenedorBotones.graficarSituacionEnvidoAceptada();
+			
+			VentanaInformacionRealEnvidoAceptado ventana = new VentanaInformacionRealEnvidoAceptado(this, this.modelo);
+			
+			try {
+				ventana.start(new Stage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 
 	public void graficarSituacionFlorAceptada() {
 		
-		// cartelitos
+		 this.contenedorBotones.graficarSituacionFlor();
+			
+			VentanaInformacionFlorAceptada ventana = new VentanaInformacionFlorAceptada(this, this.modelo);
+			
+			try {
+				ventana.start(new Stage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 	
 	public void graficarSituacionFlorRechazada() {
 		
-		// cartelitos
+		 this.contenedorBotones.graficarSituacionFlor();
+			
+			VentanaInformacionFlorRechazada ventana = new VentanaInformacionFlorRechazada(this, this.modelo);
+			
+			try {
+				ventana.start(new Stage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 
 	public void graficarSituacionVarianteEnvidoRechazada() {
 		
-		// cartelitos
+		  this.contenedorBotones.graficarSituacionEnvidoAceptada();
+			
+			VentanaInformacionEnvidoRechazado ventana = new VentanaInformacionEnvidoRechazado(this, this.modelo);
+			
+			try {
+				ventana.start(new Stage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 
 	public void graficarSituacionVarianteTrucoRechazada() {
 		
-		// cartelitos
+		  this.contenedorBotones.graficarSituacionTruco();
+			
+			VentanaInformacionTrucoRechazado ventana = new VentanaInformacionTrucoRechazado(this, this.modelo);
+			
+			try {
+				ventana.start(new Stage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 	
 	public void setSituacionActual(VBox situacion) {
