@@ -7,6 +7,7 @@ import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import algoritmosyprogramacion3.tp2.utilitarios.GraficadorCartas;
+import algoritmosyprogramacion3.tp2.utilitarios.Situacion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -103,6 +104,9 @@ public abstract class ContenedorCartas extends HBox {
 				try {
 				
 					this.modelo.jugarCartaDeJugador(nombreJugador, carta);
+					
+					this.vista.setSituacionActual(Situacion.situacionCartaJugada(vista));
+					
 					this.getChildren().remove(botonCarta);
 					this.vista.graficarCartaJugada(carta, nombreJugador);
 					

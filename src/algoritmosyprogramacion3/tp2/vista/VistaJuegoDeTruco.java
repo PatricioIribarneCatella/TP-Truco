@@ -228,17 +228,17 @@ public abstract class VistaJuegoDeTruco implements Vista {
 
 	public void graficarSituacionTrucoAceptado() {
 		
-		// cartelitos
+		this.contenedorBotones.graficarSituacionTrucoAceptado();
 	}
 
 	public void graficarSituacionReTrucoAceptado() {
 		
-		// cartelitos
+		this.contenedorBotones.graficarSituacionReTrucoAceptado();
 	}
 
 	public void graficarSituacionValeCuatroAceptado() {
 		
-		// cartelitos
+		this.contenedorBotones.graficarSituacionValeCuatroAceptado();
 	}
 
 	public void graficarSituacionEnvidoAceptada() {

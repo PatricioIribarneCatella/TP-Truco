@@ -116,4 +116,28 @@ public abstract class ContenedorAccionesCantos extends VBox {
 		limpiarBotones();
 		this.cambiarTurnoDeDecision(botones, this.modelo.getNombreJugadorConTurno());
 	}
+
+	public void graficarSituacionTrucoAceptado() {
+		
+		VBox botones = GraficadorBotonesDeCantos.graficarSituacionTrucoAceptado(this.vista);
+		
+		limpiarBotones();
+		this.cambiarTurnoDeDecision(botones, this.modelo.getNombreJugadorConTurno());
+	}
+
+	public void graficarSituacionReTrucoAceptado() {
+		
+		VBox botones = GraficadorBotonesDeCantos.graficarSituacionReTrucoAceptado(this.vista);
+		
+		limpiarBotones();
+		this.cambiarTurnoDeDecision(botones, this.modelo.getNombreJugadorConTurno());
+	}
+
+	public void graficarSituacionValeCuatroAceptado() {
+		
+		VBox botones = GraficadorBotonesDeCantos.graficarSituacionValeCuatroAceptado(this.vista);
+		
+		limpiarBotones();
+		this.cambiarTurnoDeDecision(botones, this.modelo.getNombreJugadorConTurno());
+	}
 }

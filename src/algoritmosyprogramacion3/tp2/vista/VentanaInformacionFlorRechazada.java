@@ -73,8 +73,9 @@ public class VentanaInformacionFlorRechazada extends Application {
 		
 		contenedor.add(etiquetaNombresEquipo, 1, 1);
 		
-		Label etiquetaContinuar = new Label("Para continuar pulse el botón (Aceptar)");
-		etiquetaContinuar.setTextFill(Color.GRAY);
+		Label etiquetaContinuar = new Label("Para continuar pulse el botón (Aceptar) e inicie su turno (Botón Iniciar turno)");
+		etiquetaContinuar.setTextFill(Color.WHITE);
+		etiquetaContinuar.setWrapText(true);
 		
 		contenedor.add(etiquetaContinuar, 0, 5);
 		

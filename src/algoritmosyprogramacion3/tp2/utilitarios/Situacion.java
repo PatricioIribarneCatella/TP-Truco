@@ -9,6 +9,10 @@ public abstract class Situacion {
 		return new SituacionInicial(vista);
 	}
 
+	public static Situacion situacionCartaJugada(VistaJuegoDeTruco vista) {
+		return new SituacionCartaJugada(vista);
+	}
+	
 	public static Situacion situacionPostEnvido(VistaJuegoDeTruco vista) {
 		return new SituacionPostEnvido(vista);
 	}

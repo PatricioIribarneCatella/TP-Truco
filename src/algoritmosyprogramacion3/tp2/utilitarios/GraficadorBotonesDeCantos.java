@@ -387,4 +387,44 @@ public class GraficadorBotonesDeCantos {
 		
 		return graficarSituacionInicial(!vista.getModelo().seJuegaConFlor(), vista);
 	}
+
+	public static VBox graficarSituacionTrucoAceptado(VistaJuegoDeTruco vista) {
+		
+		VBox contenedor = new VBox();
+		
+		Button botonReTruco = getBotonReTruco(vista);
+		
+		contenedor.getChildren().add(botonReTruco);
+		
+		return contenedor;
+	}
+
+	public static VBox graficarSituacionReTrucoAceptado(VistaJuegoDeTruco vista) {
+		
+		VBox contenedor = new VBox();
+		
+		Button botonValeCuatro = getBotonValeCuatro(vista);
+		
+		contenedor.getChildren().add(botonValeCuatro);
+		
+		return contenedor;
+	}
+
+	public static VBox graficarSituacionValeCuatroAceptado(VistaJuegoDeTruco vista) {
+		
+		VBox contenedor = new VBox();
+		
+		return contenedor;
+	}
+
+	public static VBox graficarSituacionCartaJugada(VistaJuegoDeTruco vista) {
+		
+		VBox contenedor = new VBox();
+		
+		Button botonTruco = getBotonTruco(vista);
+		
+		contenedor.getChildren().add(botonTruco);
+		
+		return contenedor;
+	}
 }
