@@ -57,13 +57,15 @@ public class VentanaInformacionEnvidoAceptado extends Application {
 		contenedor.add(etiquetaPuntosGanados, 0, 3);
 		
 		Label etiquetaNombresEquipo = new Label();
+		etiquetaNombresEquipo.setTextFill(Color.WHITE);
+		
 		Set<String> nombres = this.modelo.getEquipoGanadorEnvido();
 		
 		StringBuilder texto = new StringBuilder();
 		
 		for (String nombre : nombres) {
 			texto.append(nombre);
-			texto.append("  ");
+			texto.append(" ");
 		}
 		
 		etiquetaNombresEquipo.setText(texto.toString());
@@ -71,10 +73,29 @@ public class VentanaInformacionEnvidoAceptado extends Application {
 		contenedor.add(etiquetaNombresEquipo, 1, 1);
 		
 		Label etiquetaContinuar = new Label("Para continuar pulse el botón (Aceptar)");
+		etiquetaContinuar.setTextFill(Color.GRAY);
 		
 		contenedor.add(etiquetaContinuar, 0, 5);
 		
 		Button botonAceptar = new Button("Aceptar");
+		
+		botonAceptar.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
+		botonAceptar.setTextFill(Color.WHITE);
+		
+		BackgroundFill fondoDeColorBotonInformacion = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+		botonAceptar.setBackground(new Background(fondoDeColorBotonInformacion));
+		
+		botonAceptar.setOnMouseEntered(e1 -> {
+			
+			botonAceptar.setScaleX(1.2);
+			botonAceptar.setScaleY(1.2);
+		});
+		
+		botonAceptar.setOnMouseExited(e2 -> {
+			
+			botonAceptar.setScaleX(1);
+			botonAceptar.setScaleY(1);
+		});
 		
 		botonAceptar.setOnAction(e -> {
 			this.stage.close();
@@ -82,7 +103,7 @@ public class VentanaInformacionEnvidoAceptado extends Application {
 		
 		contenedor.add(botonAceptar, 0, 7);
 		
-		this.escena = new Scene(contenedor, 300, 100);
+		this.escena = new Scene(contenedor, 600, 300);
 	}
 	
 	@Override
