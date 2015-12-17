@@ -20,6 +20,6 @@ public class BotonRechazarVarianteTrucoEventHandler implements EventHandler<Acti
 		
 		modelo.rechazarVarianteTrucoPorJugador(modelo.getNombreJugadorConDecisionTruco());
 		this.vista.setMensajeInformacion("Se ha rechazado");
-		this.vista.graficarSituacionVarianteEnvidoRechazada();
+		this.vista.graficarSituacionVarianteTrucoRechazada();
 	}
 }
