@@ -244,7 +244,7 @@ public abstract class VistaJuegoDeTruco implements Vista {
 		
 		this.contenedorBotones.graficarSituacionEnvidoAceptada();
 		
-		VentanaInformacionEnvidoAceptado ventana = new VentanaInformacionEnvidoAceptado(this.modelo);
+		VentanaInformacionEnvidoAceptado ventana = new VentanaInformacionEnvidoAceptado(this, this.modelo);
 		
 		try {
 			ventana.start(new Stage());

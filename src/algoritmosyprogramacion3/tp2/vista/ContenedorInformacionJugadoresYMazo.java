@@ -1,6 +1,7 @@
 package algoritmosyprogramacion3.tp2.vista;
 
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
+import algoritmosyprogramacion3.tp2.utilitarios.GraficadorBotonesDeCantos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -71,6 +72,9 @@ public abstract class ContenedorInformacionJugadoresYMazo extends VBox {
 			this.modelo.repartirCartas();
 			
 			String nombreJugador = this.modelo.getNombreJugadorConTurno();
+			//this.vista.setSituacionActual(GraficadorBotonesDeCantos.graficarSituacionInicial(this.modelo.seJuegaConFlor(), this.vista));
+			//this.vista.graficarBotones(this.vista.getSituacionActual());
+			this.vista.graficarBotones(GraficadorBotonesDeCantos.graficarSituacionInicial(this.modelo.seJuegaConFlor(), this.vista));
 			this.vista.graficarCartas(nombreJugador, this.modelo.getCartasJugador(nombreJugador));
 		});
 		

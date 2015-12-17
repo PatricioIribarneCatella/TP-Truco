@@ -22,10 +22,13 @@ import javafx.stage.Stage;
 public class VentanaInformacionEnvidoAceptado extends Application {
 
 	private JuegoTruco modelo;
+	private VistaJuegoDeTruco vista;
 	private Scene escena;
 	private Stage stage;
 	
-	public VentanaInformacionEnvidoAceptado(JuegoTruco modelo) {
+	public VentanaInformacionEnvidoAceptado(VistaJuegoDeTruco vista, JuegoTruco modelo) {
+		
+		this.vista = vista;
 		this.modelo = modelo;
 		this.initialize();
 	}
@@ -98,6 +101,8 @@ public class VentanaInformacionEnvidoAceptado extends Application {
 		});
 		
 		botonAceptar.setOnAction(e -> {
+			
+			this.vista.setMensajeInformacion("");
 			this.stage.close();
 		});
 		

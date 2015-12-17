@@ -20,7 +20,6 @@ public abstract class ContenedorAccionesCantos extends VBox {
 	private void initialize() {
 		
 		this.setConfiguracion();
-		this.setElementos();
 	}
 
 	private void setConfiguracion() {
@@ -29,14 +28,14 @@ public abstract class ContenedorAccionesCantos extends VBox {
 		this.setPadding(new Insets(10));
 		this.setAlignment(Pos.TOP_CENTER);
 	}
-
-	private void setElementos() {
-		
-		this.graficarSituacionInicial();
-	}
 	
 	public void limpiarBotones() {
 		this.getChildren().clear();
+	}
+	
+	public void graficarBotones(VBox botones) {
+		
+		this.getChildren().addAll(botones.getChildren());
 	}
 	
 	public VBox getSituacionInicial() {
@@ -110,8 +109,11 @@ public abstract class ContenedorAccionesCantos extends VBox {
 		this.cambiarTurnoDeDecision(botones, this.modelo.getNombreJugadorConDecisionFlor());
 	}
 
-	public void graficarBotones(VBox botones) {
+	public void graficarSituacionEnvidoAceptada() {
 		
-		this.getChildren().addAll(botones.getChildren());
+		VBox botones = GraficadorBotonesDeCantos.graficarSituacionEnvidoAceptada(this.vista);
+		
+		limpiarBotones();
+		this.cambiarTurnoDeDecision(botones, this.modelo.getNombreJugadorConTurno());
 	}
 }

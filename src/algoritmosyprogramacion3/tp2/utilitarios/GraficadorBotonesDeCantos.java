@@ -371,4 +371,15 @@ public class GraficadorBotonesDeCantos {
 		
 		return contenedor;
 	}
+
+	public static VBox graficarSituacionEnvidoAceptada(VistaJuegoDeTruco vista) {
+		
+		VBox contenedor = new VBox();
+		
+		Button botonTruco = getBotonTruco(vista);
+		
+		contenedor.getChildren().add(botonTruco);
+		
+		return contenedor;
+	}
 }

@@ -104,7 +104,7 @@ public abstract class ContenedorCartas extends HBox {
 					this.modelo.jugarCartaDeJugador(nombreJugador, carta);
 					this.getChildren().remove(botonCarta);
 					this.vista.graficarCartaJugada(carta, nombreJugador);
-					this.cambiarTurno(this.modelo.getNombreJugadorConTurno(), this.vista.getSituacionInicialCantos());
+					this.cambiarTurno(this.modelo.getNombreJugadorConTurno(), this.vista.getSituacionActual());
 					
 				} catch (AccionInvalidaException ex) {
 					
