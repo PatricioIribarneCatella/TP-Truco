@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 public abstract class ContenedorCartas extends HBox {
 
@@ -104,6 +105,18 @@ public abstract class ContenedorCartas extends HBox {
 					this.modelo.jugarCartaDeJugador(nombreJugador, carta);
 					this.getChildren().remove(botonCarta);
 					this.vista.graficarCartaJugada(carta, nombreJugador);
+					
+					if (this.modelo.equipoGanoDosDeTres()) {
+						
+						VentanaInformacionJugada ventana = new VentanaInformacionJugada(this.vista, this.modelo);
+						
+						try {
+							ventana.start(new Stage());
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+					}
+					
 					this.cambiarTurno(this.modelo.getNombreJugadorConTurno(), this.vista.getSituacionActual());
 					
 				} catch (AccionInvalidaException ex) {

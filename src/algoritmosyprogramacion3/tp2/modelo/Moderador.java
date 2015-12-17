@@ -20,6 +20,8 @@ public class Moderador {
     private ManejadorTruco manejadorTruco;
     private ManejadorFlor manejadorFlor;
     private int cantidadDeCartasDeLaJugada;
+    private boolean alguienGanoDosDeTres;
+    private Equipo ganadorRonda;
     
 	public Moderador(Mesa unaMesa){
 
@@ -97,6 +99,8 @@ public class Moderador {
                 
     			int puntajeASumar = this.manejadorTruco.getPuntajePorGanar();
     			Equipo equipoGanador = this.manejadorTruco.getGanador();
+    			this.ganadorRonda = equipoGanador;
+    			this.alguienGanoDosDeTres = true;
     			this.partidaEnCurso.sumarPuntos(equipoGanador,puntajeASumar);
     			this.rondaFinalizada();
     		}
@@ -428,7 +432,9 @@ public class Moderador {
 	/*Truco*/
 	public Equipo getGanadorTruco() {
 		
-		return this.manejadorTruco.getGanador();
+		Equipo ganadorUltimaRonda = this.ganadorRonda;
+		this.ganadorRonda = new Equipo(); // lo reinicio para la siguiente ronda
+		return ganadorUltimaRonda;
 	}
 
 	public int getPuntajeAcumuladoTrucoPorGanar() {
@@ -443,7 +449,12 @@ public class Moderador {
 
 	public boolean hayGanadorTruco() {
 		
-		return this.manejadorTruco.alguienGanoDosDeTres();
+		if(this.alguienGanoDosDeTres){
+			
+			this.alguienGanoDosDeTres = false; // lo reseteo para la proxima ronda
+			return true;
+		}
+		return false;
 	}
 
 	
