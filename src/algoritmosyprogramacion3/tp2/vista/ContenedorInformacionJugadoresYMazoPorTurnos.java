@@ -48,7 +48,7 @@ public class ContenedorInformacionJugadoresYMazoPorTurnos extends ContenedorInfo
 			
 			botonNombreJugador.setOnAction(e -> {
 				
-				VistaInformacionJugador vista = new VistaInformacionJugador(this.modelo, nombre);
+				VentanaInformacionJugador vista = new VentanaInformacionJugador(this.modelo, nombre);
 				try {
 					vista.start(new Stage());
 				} catch (Exception ex) {

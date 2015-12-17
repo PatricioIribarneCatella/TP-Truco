@@ -16,7 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-public class VistaInformacionJugador extends Application implements Observer {
+public class VentanaInformacionJugador extends Application implements Observer {
 
 	private JuegoTruco modelo;
 	private String nombreJugador;
@@ -24,7 +24,7 @@ public class VistaInformacionJugador extends Application implements Observer {
 	private Label etiquetaCantidadCartas;
 	private Scene escena;
 	
-	public VistaInformacionJugador(JuegoTruco modelo, String nombreJugador) {
+	public VentanaInformacionJugador(JuegoTruco modelo, String nombreJugador) {
 		
 		this.modelo = modelo;
 		this.modelo.addObserver(this);

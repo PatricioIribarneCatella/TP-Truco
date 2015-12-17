@@ -42,7 +42,7 @@ public class ContenedorInformacionJugadoresYMazoComputadora extends ContenedorIn
 		
 		botonComputadora.setOnAction(e -> {
 			
-			VistaInformacionJugador vista = new VistaInformacionJugador(this.modelo, "Computadora");
+			VentanaInformacionJugador vista = new VentanaInformacionJugador(this.modelo, "Computadora");
 			try {
 				vista.start(new Stage());
 			} catch (Exception e1) {

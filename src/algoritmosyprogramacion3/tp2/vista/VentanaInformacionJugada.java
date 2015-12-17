@@ -21,14 +21,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 
-public class VentanaInformacionTrucoAceptado extends Application {
+public class VentanaInformacionJugada extends Application {
 	
 	private JuegoTruco modelo;
 	private VistaJuegoDeTruco vista;
 	private Scene escena;
 	private Stage stage;
 	
-	public VentanaInformacionTrucoAceptado(VistaJuegoDeTruco vista, JuegoTruco modelo) {
+	public VentanaInformacionJugada(VistaJuegoDeTruco vista, JuegoTruco modelo) {
 		
 		this.vista = vista;
 		this.modelo = modelo;
@@ -75,7 +75,7 @@ public class VentanaInformacionTrucoAceptado extends Application {
 		
 		contenedor.add(etiquetaNombresEquipo, 1, 1);
 		
-		Label etiquetaContinuar = new Label("Para continuar pulse el botón (Aceptar)");
+		Label etiquetaContinuar = new Label("Para continuar pulse el botón (Aceptar) y a continuacion pulse el mazo");
 		etiquetaContinuar.setTextFill(Color.GRAY);
 		
 		contenedor.add(etiquetaContinuar, 0, 5);
@@ -112,7 +112,7 @@ public class VentanaInformacionTrucoAceptado extends Application {
 	
 		this.stage = stage;
 		
-		this.stage.setTitle("Informacion Envido");
+		this.stage.setTitle("Informacion de la jugada");
 		this.stage.setScene(this.escena);
 		this.stage.show();
 	}
