@@ -68,19 +68,23 @@ public class VentanaInformacionJugada extends Application {
 		
 		for (String nombre : nombres) {
 			texto.append(nombre);
-			texto.append("  ");
+			texto.append(" ");
 		}
 		
 		etiquetaNombresEquipo.setText(texto.toString());
 		
 		contenedor.add(etiquetaNombresEquipo, 1, 1);
 		
-		Label etiquetaContinuar = new Label("Para continuar pulse el botón (Aceptar) y a continuacion pulse el mazo");
-		etiquetaContinuar.setTextFill(Color.GRAY);
+		Label etiquetaContinuar = new Label("Para continuar pulse el botón (Aceptar), inicie su turno (Boton Iniciar turno) y pulse el mazo para repartir las cartas");
+		etiquetaContinuar.setTextFill(Color.WHITE);
+		etiquetaContinuar.setWrapText(true);
 		
 		contenedor.add(etiquetaContinuar, 0, 5);
 		
 		Button botonAceptar = new Button("Aceptar");
+		
+		botonAceptar.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
+		botonAceptar.setTextFill(Color.WHITE);
 		
 		BackgroundFill fondoDeColorBotonInformacion = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		botonAceptar.setBackground(new Background(fondoDeColorBotonInformacion));
@@ -105,7 +109,7 @@ public class VentanaInformacionJugada extends Application {
 		
 		contenedor.add(botonAceptar, 0, 7);
 		
-		this.escena = new Scene(contenedor, 300, 200);
+		this.escena = new Scene(contenedor, 600, 400);
 	}
 	
 	public void start(Stage stage) throws Exception {

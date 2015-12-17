@@ -78,4 +78,8 @@ public class ContenedorCartasJugadas extends HBox {
 		
 		this.getChildren().add(etiquetaCarta);
 	}
+
+	public void limmpiarCartas() {
+		this.getChildren().clear();
+	}
 }

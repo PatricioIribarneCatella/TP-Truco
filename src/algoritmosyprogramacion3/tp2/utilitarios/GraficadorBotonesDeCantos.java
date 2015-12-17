@@ -382,4 +382,9 @@ public class GraficadorBotonesDeCantos {
 		
 		return contenedor;
 	}
+
+	public static VBox graficarSituacionFlorAceptada(VistaJuegoDeTruco vista) {
+		
+		return graficarSituacionInicial(!vista.getModelo().seJuegaConFlor(), vista);
+	}
 }

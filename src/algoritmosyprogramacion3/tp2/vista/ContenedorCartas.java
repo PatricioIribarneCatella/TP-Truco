@@ -117,7 +117,7 @@ public abstract class ContenedorCartas extends HBox {
 						}
 					}
 					
-					this.cambiarTurno(this.modelo.getNombreJugadorConTurno(), this.vista.getSituacionActual());
+					this.cambiarTurno(this.modelo.getNombreJugadorConTurno(), this.vista.getSituacionActual().getBotones());
 					
 				} catch (AccionInvalidaException ex) {
 					

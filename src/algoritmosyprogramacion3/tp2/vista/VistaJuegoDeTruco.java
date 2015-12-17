@@ -5,6 +5,7 @@ import java.util.List;
 import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import algoritmosyprogramacion3.tp2.utilitarios.GraficadorCartas;
+import algoritmosyprogramacion3.tp2.utilitarios.Situacion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -36,7 +37,7 @@ public abstract class VistaJuegoDeTruco implements Vista {
 	protected ContenedorCartas contenedorCartas;
 	private ContenedorInformacionJugadorActual contenedorSuperior;
 	protected Vista vistaAnterior;
-	private VBox situacionActual;
+	private Situacion situacionActual;
 
 	
 	public VistaJuegoDeTruco(Vista vistaAnterior) {
@@ -331,11 +332,11 @@ public abstract class VistaJuegoDeTruco implements Vista {
 			}
 	}
 	
-	public void setSituacionActual(VBox situacion) {
+	public void setSituacionActual(Situacion situacion) {
 		this.situacionActual = situacion;
 	}
 
-	public VBox getSituacionActual() {
+	public Situacion getSituacionActual() {
 		
 		return this.situacionActual;
 	}
@@ -353,5 +354,10 @@ public abstract class VistaJuegoDeTruco implements Vista {
 	public void cambiarTurno(String nombreJugador, VBox botones) {
 		
 		this.contenedorCartas.cambiarTurno(nombreJugador, botones);
+	}
+
+	public void limpiarCartasJugadas() {
+		
+		this.contenedorCartasJugadas.limmpiarCartas();
 	}
 }
