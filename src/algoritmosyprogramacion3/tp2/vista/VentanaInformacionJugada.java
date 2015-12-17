@@ -46,7 +46,7 @@ public class VentanaInformacionJugada extends Application {
 		BackgroundFill fondoDeColor = new BackgroundFill(Color.DARKGREEN, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		contenedor.setBackground(new Background(fondoDeColor));
 		
-		Text textoEscena = new Text("Resultado Truco");
+		Text textoEscena = new Text("Resultado Jugada");
 		textoEscena.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		contenedor.add(textoEscena, 0, 0, 2, 1);
 		
@@ -105,7 +105,7 @@ public class VentanaInformacionJugada extends Application {
 		
 		contenedor.add(botonAceptar, 0, 7);
 		
-		this.escena = new Scene(contenedor, 300, 100);
+		this.escena = new Scene(contenedor, 300, 200);
 	}
 	
 	public void start(Stage stage) throws Exception {
