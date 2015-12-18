@@ -22,6 +22,8 @@ import algoritmosyprogramacion3.tp2.manejadores.BotonRechazarVarianteEnvidoEvent
 import algoritmosyprogramacion3.tp2.manejadores.BotonTrucoEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonValeCuatroEventHandler;
 import algoritmosyprogramacion3.tp2.modelo.Partida;
+import algoritmosyprogramacion3.tp2.modelo.PartidaContraComputadoraConFlor;
+import algoritmosyprogramacion3.tp2.modelo.PartidaContraComputadoraSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.PartidaRondaConFlor;
 import algoritmosyprogramacion3.tp2.modelo.PartidaRondaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.PartidaRondaYPicaPicaConFlor;
@@ -64,6 +66,8 @@ public class GraficadorBotonesDeCantos {
 		partidaBotones.put(PartidaRondaConFlor.class, getBotonesConFlor());
 		partidaBotones.put(PartidaRondaYPicaPicaSinFlor.class, getBotonesSinFlor());
 		partidaBotones.put(PartidaRondaYPicaPicaConFlor.class, getBotonesConFlor());
+		partidaBotones.put(PartidaContraComputadoraSinFlor.class, getBotonesSinFlor());
+		partidaBotones.put(PartidaContraComputadoraConFlor.class, getBotonesConFlor());
 		
 		return partidaBotones;
 	}
