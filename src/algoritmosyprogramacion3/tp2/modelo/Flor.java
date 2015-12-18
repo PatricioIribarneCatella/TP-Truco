@@ -1,9 +1,6 @@
 package algoritmosyprogramacion3.tp2.modelo;
 
 public class Flor extends Canto {
-
-	public static boolean CON_FLOR = true;
-	public static boolean SIN_FLOR = false;
 	
 	public Flor() {
 		this.puntosGanados = 3;
