@@ -21,7 +21,6 @@ import algoritmosyprogramacion3.tp2.modelo.Jugada;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.ManejadorTruco;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
-import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
 import algoritmosyprogramacion3.tp2.modelo.Palo;
 import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
@@ -87,7 +86,7 @@ public class ManejadorTrucoPartidaDosContraDos {
 		
 		List<Carta> cartas = Arrays.asList(unoDeEspada, unoDeBasto, sieteDeEspada, tresDeCopa, dosDeBasto, dosDeOro, unoDeOro, unoDeCopa, caballoDeEspada, sieteDeBasto, seisDeCopa, cincoDeEspada);
 		
-		mesa = new MesaSinFlor(jugadores);
+		mesa = new Mesa(jugadores);
 		
 		jugador1.recibirCarta(unoDeEspada);
 		jugador1.recibirCarta(dosDeBasto);

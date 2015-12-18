@@ -16,7 +16,6 @@ import algoritmosyprogramacion3.tp2.modelo.EnMano;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
-import algoritmosyprogramacion3.tp2.modelo.MesaConFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
 import algoritmosyprogramacion3.tp2.modelo.Palo;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
@@ -52,7 +51,7 @@ public class MesaTest {
 	    jugadoresPartidaDeDos.add(jugador1);
 	    jugadoresPartidaDeDos.add(jugador2);
 	     
-		mesaDeDos = new MesaConFlor(jugadoresPartidaDeDos);
+		mesaDeDos = new Mesa(jugadoresPartidaDeDos);
 		rotacionEnRonda = new StrategyRotacionEnRonda(this.mesaDeDos.getJugadores());
 		
 		moderador = new Moderador(mesaDeDos);
@@ -81,12 +80,6 @@ public class MesaTest {
 	    }
 		
 		moderador = new Moderador(mesaDeDos);
-	}
-	
-	@Test
-	public void testCreacionMesaDeDosYDeCuatroExitosa() {
-		
-		Assert.assertTrue(mesaDeDos.seJuegaConFlor());
 	}
 		
 	@Test (expected = TurnoEquivocadoException.class)

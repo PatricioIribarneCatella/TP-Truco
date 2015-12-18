@@ -34,11 +34,11 @@ public class VistaNuevaMesaDeDos extends VistaNuevaMesa {
 		
 		if (this.seJuegaConFlor) {
 			
-			return this.modelo.nuevaMesaDeDosConFlor(nombreMesa, Arrays.asList(nombreJugador1, nombreJugador2));
+			return this.modelo.nuevaMesaDeDosConFlor(nombreMesa, Arrays.asList(nombreJugador1),  Arrays.asList(nombreJugador2));
 			
 		} else {
 			
-			return this.modelo.nuevaMesaDeDosSinFlor(nombreMesa, Arrays.asList(nombreJugador1, nombreJugador2));
+			return this.modelo.nuevaMesaDeDosSinFlor(nombreMesa, Arrays.asList(nombreJugador1),  Arrays.asList(nombreJugador2));
 		}
 	}
 

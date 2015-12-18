@@ -13,6 +13,6 @@ public class SituacionInicial extends Situacion {
 
 	@Override
 	public VBox getBotones() {
-		return GraficadorBotonesDeCantos.graficarSituacionInicial(this.vista.getModelo().seJuegaConFlor(), vista);
+		return GraficadorBotonesDeCantos.graficarSituacionInicial(this.vista.getModelo().getPartida(), vista);
 	}
 }

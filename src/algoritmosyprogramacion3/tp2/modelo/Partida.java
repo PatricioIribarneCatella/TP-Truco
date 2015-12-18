@@ -103,9 +103,12 @@ public abstract class Partida extends Observable {
 		this.cantidadDeEnvidosCantados = 0;
 	}
 	
+	protected abstract boolean esPosibleCantarFlor();
+	
     public void cantarFlor(String jugadorQueCanta) {
 		
-    	if (!this.moderador.getMesa().seJuegaConFlor()) throw new PartidaSinFlorException();
+    	if (!this.esPosibleCantarFlor()) throw new PartidaSinFlorException();
+    		
     	if (!this.jugadores.get(jugadorQueCanta).tieneFlor()) throw new JugadorSinFlorException();
 		if (!this.estado.esValidoParaCantarFlor()) throw new AccionInvalidaException();
 		
@@ -312,16 +315,11 @@ public abstract class Partida extends Observable {
 		return lista;
 	}
 
-	public boolean seJuegaConFlor() {
-		return this.moderador.getMesa().seJuegaConFlor();
-	}
-
 	public Carta getUltimaCartaJugada(String nombreJugador) {
 		
 		Jugable jugador = this.jugadores.get(nombreJugador);
 		return jugador.getCartaJugada();
 	}
-	
 	
 	/*Metodos para la vista*/
 	public boolean hayUnGanador(){

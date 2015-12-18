@@ -38,7 +38,7 @@ public class PartidaDeDosConFlorTest {
 	public void setUp() {
 		
 		juego = new JuegoTruco();
-		juego.nuevaMesaDeDosConFlor("mesa1", Arrays.asList("Juan", "Pedro"));
+		juego.nuevaMesaDeDosConFlor("mesa1", Arrays.asList("Juan"), Arrays.asList("Pedro"));
 	}
 
 	@Test

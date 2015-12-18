@@ -7,9 +7,8 @@ import org.junit.Test;
 
 import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
 import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
-import algoritmosyprogramacion3.tp2.modelo.Flor;
 import algoritmosyprogramacion3.tp2.modelo.Partida;
-import algoritmosyprogramacion3.tp2.modelo.PartidaDeDos;
+import algoritmosyprogramacion3.tp2.modelo.PartidaRondaSinFlor;
 
 public class PartidaTest {
 
@@ -22,7 +21,7 @@ public class PartidaTest {
 		
 		this.jugador1 = "Juan";
 		this.jugador2 = "Pedro";
-		this.partida = new PartidaDeDos("partida1", Flor.SIN_FLOR, Arrays.asList(this.jugador1, this.jugador2));	
+		this.partida = new PartidaRondaSinFlor("partida1", Arrays.asList(this.jugador1), Arrays.asList(this.jugador2));	
 		this.partida.iniciarPartida();
 	}
 	

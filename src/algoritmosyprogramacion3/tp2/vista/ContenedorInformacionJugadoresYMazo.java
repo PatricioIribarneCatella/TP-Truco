@@ -78,7 +78,7 @@ public abstract class ContenedorInformacionJugadoresYMazo extends VBox {
 			this.vista.limpiarBotones();
 			
 			this.vista.setSituacionActual(Situacion.situacionInicial(this.vista));
-			this.vista.graficarBotones(GraficadorBotonesDeCantos.graficarSituacionInicial(this.modelo.seJuegaConFlor(), this.vista));
+			this.vista.graficarBotones(GraficadorBotonesDeCantos.graficarSituacionInicial(this.modelo.getPartida(), this.vista));
 			this.vista.graficarCartas(nombreJugador, this.modelo.getCartasJugador(nombreJugador));
 		});
 		

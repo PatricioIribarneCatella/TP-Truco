@@ -44,7 +44,7 @@ public class JuegoTruco {
 		
 		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
 		
-		Partida nuevaPartida = new PartidaContraComputadora(nombreMesa, Flor.SIN_FLOR, nombreJugador);
+		Partida nuevaPartida = new PartidaContraComputadoraSinFlor(nombreMesa, nombreJugador);
 		this.partidaActual = nuevaPartida;
 		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
@@ -55,29 +55,29 @@ public class JuegoTruco {
 		
 		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
 		
-		Partida nuevaPartida = new PartidaContraComputadora(nombreMesa, Flor.CON_FLOR, nombreJugador);
+		Partida nuevaPartida = new PartidaContraComputadoraConFlor(nombreMesa, nombreJugador);
 		this.partidaActual = nuevaPartida;
 		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
 		return true;
 	}	
 	
-	public boolean nuevaMesaDeDosSinFlor(String nombreMesa, List<String> jugadores) {
+	public boolean nuevaMesaDeDosSinFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
 		
 		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
 		
-		Partida nuevaPartida = new PartidaDeDos(nombreMesa, Flor.SIN_FLOR, jugadores);
+		Partida nuevaPartida = new PartidaRondaSinFlor(nombreMesa, equipoJugadores1, equipoJugadores2);
 		this.partidaActual = nuevaPartida;
 		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
 		return true;
 	}
 
-	public boolean nuevaMesaDeDosConFlor(String nombreMesa, List<String> jugadores) {
+	public boolean nuevaMesaDeDosConFlor(String nombreMesa, List<String> equipoJugadores1, List<String> equipoJugadores2) {
 		
 		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
 		
-		Partida nuevaPartida = new PartidaDeDos(nombreMesa, Flor.CON_FLOR, jugadores);
+		Partida nuevaPartida = new PartidaRondaConFlor(nombreMesa, equipoJugadores1, equipoJugadores2);
 		this.partidaActual = nuevaPartida;
 		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
@@ -88,7 +88,7 @@ public class JuegoTruco {
 		
 		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
 		
-		Partida nuevaPartida = new PartidaDeCuatro(nombreMesa, Flor.SIN_FLOR, equipoJugadores1, equipoJugadores2);
+		Partida nuevaPartida = new PartidaRondaSinFlor(nombreMesa, equipoJugadores1, equipoJugadores2);
 		this.partidaActual = nuevaPartida;
 		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
@@ -99,7 +99,7 @@ public class JuegoTruco {
 		
 		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
 		
-		Partida nuevaPartida = new PartidaDeCuatro(nombreMesa, Flor.CON_FLOR, equipoJugadores1, equipoJugadores2);
+		Partida nuevaPartida = new PartidaRondaConFlor(nombreMesa, equipoJugadores1, equipoJugadores2);
 		this.partidaActual = nuevaPartida;
 		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
@@ -110,7 +110,7 @@ public class JuegoTruco {
 		
 		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
 		
-		Partida nuevaPartida = new PartidaDeSeis(nombreMesa, Flor.SIN_FLOR, equipoJugadores1, equipoJugadores2);
+		Partida nuevaPartida = new PartidaRondaYPicaPicaSinFlor(nombreMesa, equipoJugadores1, equipoJugadores2);
 		this.partidaActual = nuevaPartida;
 		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
@@ -121,7 +121,7 @@ public class JuegoTruco {
 		
 		if (this.partidasDisponibles.containsKey(nombreMesa)) return false;
 		
-		Partida nuevaPartida = new PartidaDeSeis(nombreMesa, Flor.CON_FLOR, equipoJugadores1, equipoJugadores2);
+		Partida nuevaPartida = new PartidaRondaYPicaPicaConFlor(nombreMesa, equipoJugadores1, equipoJugadores2);
 		this.partidaActual = nuevaPartida;
 		this.partidaActual.iniciarPartida();
 		this.partidasDisponibles.put(nombreMesa, nuevaPartida);
@@ -442,10 +442,6 @@ public class JuegoTruco {
 
 	public List<NombreJugadorCarta> getCartasYaJugadas() {
 		return this.partidaActual.getCartasYaJugadasConJugador();
-	}
-	
-	public boolean seJuegaConFlor() {
-		return this.partidaActual.seJuegaConFlor();
 	}
 
 	public Partida getPartida() {

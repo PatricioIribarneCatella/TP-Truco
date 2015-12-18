@@ -40,7 +40,7 @@ public abstract class ContenedorAccionesCantos extends VBox {
 	
 	public VBox getSituacionInicial() {
 		
-		return GraficadorBotonesDeCantos.graficarSituacionInicial(this.modelo.seJuegaConFlor(), this.vista);
+		return GraficadorBotonesDeCantos.graficarSituacionInicial(this.modelo.getPartida(), this.vista);
 	}
 	
 	public void graficarSituacionInicial() {

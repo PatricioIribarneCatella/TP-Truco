@@ -3,19 +3,19 @@ package algoritmosyprogramacion3.tp2.modelo;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PartidaContraComputadora extends Partida {
+public abstract class PartidaContraComputadora extends Partida {
 
 	private ComputadoraAI computadora;
 	private String nombreJugadorEnContra;
 	
-	public PartidaContraComputadora(String nombrePartida, boolean conFlor, String nombreJugador) {
+	public PartidaContraComputadora(String nombrePartida, String nombreJugador) {
 		
 		super(nombrePartida);
 		this.nombreJugadorEnContra = nombreJugador;
-		this.initialize(nombreJugador, conFlor);
+		this.initialize(nombreJugador);
 	}
 	
-	private void initialize(String nombreJugador, boolean conFlor) {
+	private void initialize(String nombreJugador) {
 		
 		Mesa mesaDeDos;
 		
@@ -31,8 +31,7 @@ public class PartidaContraComputadora extends Partida {
 		equipoComputadora.agregarIntegrante(this.computadora);
 		jugadores.add(this.computadora);
 		
-		if (conFlor) mesaDeDos = new MesaConFlor(jugadores);
-		else mesaDeDos = new MesaSinFlor(jugadores);
+		mesaDeDos = new Mesa(jugadores);
 		this.moderador = new Moderador(mesaDeDos);
 		this.moderador.setPartida(this);
 		this.moderador.setRotacionStrategy(new StrategyRotacionEnRonda(jugadores));

@@ -20,7 +20,6 @@ import algoritmosyprogramacion3.tp2.modelo.Jugada;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.ManejadorTruco;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
-import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
 import algoritmosyprogramacion3.tp2.modelo.Palo;
 import algoritmosyprogramacion3.tp2.modelo.Rey;
@@ -107,7 +106,7 @@ public class ManejadorTrucoPartidaPicaPicaTest {
 		
 		List<Carta> cartas = Arrays.asList(unoDeEspada, unoDeBasto, sieteDeEspada, tresDeCopa, tresDeEspada, dosDeEspada, dosDeBasto, dosDeOro, unoDeOro, unoDeCopa, reyDeBasto, reyDeOro, caballoDeEspada, sieteDeBasto, seisDeCopa, cincoDeEspada, cuatroDeOro, cuatroDeCopa);
 		
-		mesa = new MesaSinFlor(jugadores);
+		mesa = new Mesa(jugadores);
 		
 		jugador1.recibirCarta(unoDeEspada);
 		jugador1.recibirCarta(dosDeBasto);
@@ -377,8 +376,6 @@ public class ManejadorTrucoPartidaPicaPicaTest {
 		Assert.assertTrue(this.manejador.getGanador() == jugador3.getEquipo());	
 		Assert.assertTrue(this.manejador.getGanador() == jugador5.getEquipo());	
 	}
-	
-		
 	
 	/*Arranco tests pero con un criterio de rotacion pica-pica*/
 	

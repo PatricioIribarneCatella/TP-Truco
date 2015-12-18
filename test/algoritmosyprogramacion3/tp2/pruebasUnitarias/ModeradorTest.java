@@ -9,12 +9,9 @@ import org.junit.Test;
 import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
-import algoritmosyprogramacion3.tp2.modelo.MesaConFlor;
-import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
-import algoritmosyprogramacion3.tp2.modelo.PartidaDeCuatro;
-import algoritmosyprogramacion3.tp2.modelo.PartidaDeDos;
-import algoritmosyprogramacion3.tp2.modelo.PartidaDeSeis;
+import algoritmosyprogramacion3.tp2.modelo.PartidaRondaSinFlor;
+import algoritmosyprogramacion3.tp2.modelo.PartidaRondaYPicaPicaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
 import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionPicaPica;
@@ -36,7 +33,6 @@ public class ModeradorTest {
 	private Moderador moderadorMesaDeDos;
 	private Moderador moderadorMesaDeCuatro;
 	private Moderador moderadorMesaDeSeis;
-	//private RotacionStrategy rotacionEnRonda;
 	private RotacionStrategy rotacionPicaPica;
 	
 	@Before
@@ -64,9 +60,10 @@ public class ModeradorTest {
 		jugadoresMesaDeSeis.add(jugador5);
 		jugadoresMesaDeSeis.add(jugador6);
 		
-		LinkedList<String> equiposMesaDeDos = new LinkedList<String>();
-		equiposMesaDeDos.add("1");
-		equiposMesaDeDos.add("2");
+		LinkedList<String> equipoUnoMesaDeDos = new LinkedList<String>();
+		LinkedList<String> equipoDosMesaDeDos = new LinkedList<String>();
+		equipoUnoMesaDeDos.add("1");
+		equipoDosMesaDeDos.add("2");
 		
 		LinkedList<String> equipoUnoMesaDeCuatro = new LinkedList<String>();
 		LinkedList<String> equipoDosMesaDeCuatro = new LinkedList<String>();
@@ -84,25 +81,26 @@ public class ModeradorTest {
 		equipoUnoMesaDeSeis.add("5");
 		equipoDosMesaDeSeis.add("6");
 		
-		
 	    RotacionStrategy criterioRotacionMesaDeDos = new StrategyRotacionEnRonda(this.jugadoresMesaDeDos);
 	    RotacionStrategy criterioRotacionMesaDeCuatro = new StrategyRotacionEnRonda(this.jugadoresMesaDeCuatro);
 	    rotacionPicaPica = new StrategyRotacionPicaPica(this.jugadoresMesaDeSeis);
-	    //rotacionEnRonda = new StrategyRotacionEnRonda(this.jugadoresMesaDeSeis);
-		mesaDeDos = new MesaConFlor(jugadoresMesaDeDos);
-		mesaDeCuatro = new MesaConFlor(jugadoresMesaDeCuatro); 
-	    mesaPicaPica = new MesaSinFlor(jugadoresMesaDeSeis);
+	    
+		mesaDeDos = new Mesa(jugadoresMesaDeDos);
+		mesaDeCuatro = new Mesa(jugadoresMesaDeCuatro); 
+	    mesaPicaPica = new Mesa(jugadoresMesaDeSeis);
+	    
 	    this.moderadorMesaDeDos = new Moderador(mesaDeDos);
 	    this.moderadorMesaDeCuatro = new Moderador(mesaDeCuatro);
 	    this.moderadorMesaDeSeis = new Moderador(mesaPicaPica);
+	    
 	    this.moderadorMesaDeDos.setRotacionStrategy(criterioRotacionMesaDeDos);
 	    this.moderadorMesaDeCuatro.setRotacionStrategy(criterioRotacionMesaDeCuatro);
 	    this.moderadorMesaDeSeis.setRotacionStrategy(rotacionPicaPica);
 	    
 	    
-	    this.moderadorMesaDeDos.setPartida(new PartidaDeDos("",false,equiposMesaDeDos));
-	    this.moderadorMesaDeCuatro.setPartida(new PartidaDeCuatro("",false,equipoUnoMesaDeCuatro,equipoDosMesaDeCuatro));
-	    this.moderadorMesaDeSeis.setPartida(new PartidaDeSeis("",false,equipoUnoMesaDeSeis,equipoDosMesaDeSeis));
+	    this.moderadorMesaDeDos.setPartida(new PartidaRondaSinFlor("", equipoUnoMesaDeDos, equipoDosMesaDeDos));
+	    this.moderadorMesaDeCuatro.setPartida(new PartidaRondaSinFlor("",equipoUnoMesaDeCuatro,equipoDosMesaDeCuatro));
+	    this.moderadorMesaDeSeis.setPartida(new PartidaRondaYPicaPicaSinFlor("",equipoUnoMesaDeSeis,equipoDosMesaDeSeis));
 	    this.moderadorMesaDeDos.repartirCartas();
 	    this.moderadorMesaDeCuatro.repartirCartas();
 	    this.moderadorMesaDeSeis.repartirCartas();

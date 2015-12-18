@@ -5,7 +5,7 @@ import java.util.List;
 
 import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
 
-public abstract class Mesa {
+public class Mesa {
     
 	private List<Jugable> jugadores;
 	private List<Campo> camposDeJuego;
@@ -22,7 +22,7 @@ public abstract class Mesa {
     	}
     }
     
-	public abstract boolean seJuegaConFlor();
+	//public abstract boolean seJuegaConFlor();
 	
     public List<Jugable> getJugadores()
     {

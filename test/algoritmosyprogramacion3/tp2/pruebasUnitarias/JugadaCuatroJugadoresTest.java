@@ -16,7 +16,6 @@ import algoritmosyprogramacion3.tp2.modelo.Jugable;
 import algoritmosyprogramacion3.tp2.modelo.Jugada;
 import algoritmosyprogramacion3.tp2.modelo.Jugador;
 import algoritmosyprogramacion3.tp2.modelo.Mesa;
-import algoritmosyprogramacion3.tp2.modelo.MesaSinFlor;
 import algoritmosyprogramacion3.tp2.modelo.Moderador;
 import algoritmosyprogramacion3.tp2.modelo.Palo;
 import algoritmosyprogramacion3.tp2.modelo.Resultado;
@@ -94,7 +93,7 @@ public class JugadaCuatroJugadoresTest {
 		this.jugador4.recibirCarta(tresDeEspada);
 		cartas.add(reyDeBasto); cartas.add(cincoDeEspada); cartas.add(tresDeEspada);
 		
-		this.mesa = new MesaSinFlor(Arrays.asList(this.jugador1, this.jugador2, this.jugador3, this.jugador4));
+		this.mesa = new Mesa(Arrays.asList(this.jugador1, this.jugador2, this.jugador3, this.jugador4));
 		this.rotacionEnRonda = new StrategyRotacionEnRonda(this.mesa.getJugadores());
 		this.moderador = new Moderador(mesa);
 		this.moderador.setRotacionStrategy(rotacionEnRonda);

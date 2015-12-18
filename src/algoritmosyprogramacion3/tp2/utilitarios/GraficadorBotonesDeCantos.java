@@ -1,5 +1,10 @@
 package algoritmosyprogramacion3.tp2.utilitarios;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarFlorEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarReTrucoEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarRealEnvidoEventHandler;
@@ -9,7 +14,6 @@ import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarEnvidoEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarFaltaEnvidoEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonEnvidoEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonFaltaEnvidoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonFlorEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonReTrucoEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonRealEnvidoEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonRechazarVarianteTrucoEventHandler;
@@ -17,6 +21,17 @@ import algoritmosyprogramacion3.tp2.manejadores.BotonRechazarFlorEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonRechazarVarianteEnvidoEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonTrucoEventHandler;
 import algoritmosyprogramacion3.tp2.manejadores.BotonValeCuatroEventHandler;
+import algoritmosyprogramacion3.tp2.modelo.Partida;
+import algoritmosyprogramacion3.tp2.modelo.PartidaRondaConFlor;
+import algoritmosyprogramacion3.tp2.modelo.PartidaRondaSinFlor;
+import algoritmosyprogramacion3.tp2.modelo.PartidaRondaYPicaPicaConFlor;
+import algoritmosyprogramacion3.tp2.modelo.PartidaRondaYPicaPicaSinFlor;
+import algoritmosyprogramacion3.tp2.vista.BotonEnvido;
+import algoritmosyprogramacion3.tp2.vista.BotonFaltaEnvido;
+import algoritmosyprogramacion3.tp2.vista.BotonFlor;
+import algoritmosyprogramacion3.tp2.vista.BotonJuegoTruco;
+import algoritmosyprogramacion3.tp2.vista.BotonRealEnvido;
+import algoritmosyprogramacion3.tp2.vista.BotonTruco;
 import algoritmosyprogramacion3.tp2.vista.VistaJuegoDeTruco;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -30,6 +45,41 @@ import javafx.scene.text.FontWeight;
 
 public class GraficadorBotonesDeCantos {
 
+	/* 
+	 * 
+	 * Mapeo de las distintas partidas con sus correspondientes configuraciones de botones al iniciar 
+	 * una partida
+	 * 
+	 *  */
+	
+	@SuppressWarnings("rawtypes")
+	private static Map<Class, List<BotonJuegoTruco>> partidaBotones = crearPartidaBotones(); 
+	
+	@SuppressWarnings("rawtypes")
+	private static Map<Class, List<BotonJuegoTruco>> crearPartidaBotones() {
+		
+		Map<Class, List<BotonJuegoTruco>> partidaBotones = new HashMap<Class, List<BotonJuegoTruco>>();
+		
+		partidaBotones.put(PartidaRondaSinFlor.class, getBotonesSinFlor());
+		partidaBotones.put(PartidaRondaConFlor.class, getBotonesConFlor());
+		partidaBotones.put(PartidaRondaYPicaPicaSinFlor.class, getBotonesSinFlor());
+		partidaBotones.put(PartidaRondaYPicaPicaConFlor.class, getBotonesConFlor());
+		
+		return partidaBotones;
+	}
+	
+	private static List<BotonJuegoTruco> getBotonesSinFlor() {
+		return Arrays.asList(new BotonTruco(), new BotonEnvido(), new BotonRealEnvido(), new BotonFaltaEnvido());
+	}
+	
+	private static List<BotonJuegoTruco> getBotonesConFlor() {
+		return Arrays.asList(new BotonTruco(), new BotonEnvido(), new BotonRealEnvido(), new BotonFaltaEnvido(), new BotonFlor());
+	}
+	
+	private static List<BotonJuegoTruco> getBotones(Partida partida) {
+		return partidaBotones.get(partida.getClass());
+	}
+	
 	/* Configuración caracteríticas al botón */
 	
 	private static void setCaracteristicas(Button boton) {
@@ -37,8 +87,8 @@ public class GraficadorBotonesDeCantos {
 		boton.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
 		boton.setTextFill(Color.WHITE);
 		
-		BackgroundFill fondoDeColorBotonTruco = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
-		boton.setBackground(new Background(fondoDeColorBotonTruco));
+		BackgroundFill fondoDeColorBoton = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+		boton.setBackground(new Background(fondoDeColorBoton));
 		
 		boton.setOnMouseEntered(e -> {
 			
@@ -54,7 +104,7 @@ public class GraficadorBotonesDeCantos {
 	}
 	
 	/* Construcción de los distintos botones */
-	
+
 	private static Button getBotonTruco(VistaJuegoDeTruco vista) {
 		
 		Button boton = new Button("Truco");
@@ -117,17 +167,6 @@ public class GraficadorBotonesDeCantos {
 		setCaracteristicas(boton);
 		
 		boton.setOnAction(new BotonFaltaEnvidoEventHandler(vista));
-		
-		return boton;
-	}
-	
-	private static Button getBotonFlor(VistaJuegoDeTruco vista) {
-		
-		Button boton = new Button("Flor");
-
-		setCaracteristicas(boton);
-		
-		boton.setOnAction(new BotonFlorEventHandler(vista));
 		
 		return boton;
 	}
@@ -244,28 +283,19 @@ public class GraficadorBotonesDeCantos {
 	
 	/* Métodos para graficar las distintas situaciones */
 	
-	public static VBox graficarSituacionInicial(boolean conFlor, VistaJuegoDeTruco vista) {
+	public static VBox graficarSituacionInicial(Partida partida, VistaJuegoDeTruco vista) {
+		
+		List<BotonJuegoTruco> botones = getBotones(partida);
 		
 		VBox contenedor = new VBox();
 		
-		
-		Button botonTruco = getBotonTruco(vista);
-		
-		Button botonEnvido = getBotonEnvido(vista);
-		
-		Button botonRealEnvido = getBotonRealEnvido(vista);
-		
-		Button botonFaltaEnvido = getBotonFaltaEnvido(vista);
-		
-		
-		contenedor.getChildren().addAll(botonTruco, botonEnvido, botonRealEnvido, botonFaltaEnvido);
-		
-		if (conFlor) {
+		for (BotonJuegoTruco boton : botones) {
 			
-			Button botonFlor = getBotonFlor(vista);
-			
-			contenedor.getChildren().add(botonFlor);
+			boton.setVistaAlEventHandler(vista);
+			setCaracteristicas(boton);
+			contenedor.getChildren().add(boton);
 		}
+		
 		return contenedor;
 	}
 
@@ -371,8 +401,8 @@ public class GraficadorBotonesDeCantos {
 		
 		return contenedor;
 	}
-
-	public static VBox graficarSituacionEnvidoAceptada(VistaJuegoDeTruco vista) {
+	
+	private static VBox getBotonesSituacionPostEnvidoOFlor(VistaJuegoDeTruco vista) {
 		
 		VBox contenedor = new VBox();
 		
@@ -383,9 +413,14 @@ public class GraficadorBotonesDeCantos {
 		return contenedor;
 	}
 
+	public static VBox graficarSituacionEnvidoAceptada(VistaJuegoDeTruco vista) {
+		
+		return getBotonesSituacionPostEnvidoOFlor(vista);
+	}
+
 	public static VBox graficarSituacionFlorAceptada(VistaJuegoDeTruco vista) {
 		
-		return graficarSituacionInicial(!vista.getModelo().seJuegaConFlor(), vista);
+		return getBotonesSituacionPostEnvidoOFlor(vista);
 	}
 
 	public static VBox graficarSituacionTrucoAceptado(VistaJuegoDeTruco vista) {
