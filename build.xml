@@ -144,16 +144,6 @@
         	</junit>
     	</target>
 
-
-    	<target name="compilar.paquete" depends="test">
-		<javac srcdir="src" destdir="${build}/classes" debug="no">
-		</javac>
-	</target>
-
-	<target name="empaquetar" depends="compilar.paquete">
-		<jar destfile="${build}/dist/Truco.jar" basedir="${build}/classes" />
-	</target>
-
 	<target name="integracion-continua" depends="run-pmd,coverage-report,alternate-coverage-report" description="Ejecuta todas las tareas de integracion y genera los correspondientes reportes"/>
 
 	<!-- Ivy installation -->
@@ -196,6 +186,19 @@
 		</pmd>
 	</target>
 
+    	<target name="compilar.paquete" depends="test">
+		<javac srcdir="src" destdir="${build}/classes" debug="no">
+		</javac>
+	</target>
+
+    	<target name="compilar.paquete.sin.tests" depends="compilar.aplicacion">
+		<javac srcdir="src" destdir="${build}/classes" debug="no">
+		</javac>
+	</target>
+
+	<target name="empaquetar" depends="compilar.paquete">
+		<jar destfile="${build}/dist/Truco.jar" basedir="${build}/classes" />
+	</target>
 
 	<target name="empaquetar.con.imagenes" depends="compilar.paquete">
 		<copydir src="src/gui/imagess"
@@ -204,10 +207,23 @@
 		<jar destfile="${build}/dist/Truco.jar" basedir="${build}/classes"/>
 	</target>
 
+	<target name="empaquetar.sin.tets" depends="compilar.paquete.sin.tests">
+		<copydir src="resources/imagenes"
+			dest="${build}/classes/resources/imagenes"
+			includes="**/*.png"/>
+		<jar destfile="${build}/dist/Truco.jar" basedir="${build}/classes"/>
+	</target>
+
 	<target name="ejecutar.aplicacion" depends="empaquetar">
 		<java classname="algoritmosyprogramacion3.tp2.aplicacion.JuegoDelTruco" fork="true">
 			<classpath refid="classpath" />
 			<!--<classpath location="${build}/dist/algo3.jar" />-->
+		</java>
+	</target>
+	
+	<target name="ejecutar.aplicacion.sin.tests" depends="empaquetar.sin.tets">
+		<java classname="algoritmosyprogramacion3.tp2.aplicacion.JuegoDelTruco" fork="true">
+			<classpath refid="classpath" />
 		</java>
 	</target>
 
