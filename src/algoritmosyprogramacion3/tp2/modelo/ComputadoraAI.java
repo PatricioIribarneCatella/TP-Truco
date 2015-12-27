@@ -25,35 +25,35 @@ public class ComputadoraAI extends Jugable implements ObservableComputadora {
 	public void darRespuestaAEnvido() {
 
 	     this.moderador.jugadorAceptaVarianteEnvido(this);
-	     setChangedConputadora();
+	     setChangedComputadora();
 	     notifyObserversCanto(new Aceptar());
 	}
 	
 	public void darRespuestaARealEnvido() {
 		
 	     this.moderador.jugadorAceptaVarianteEnvido(this);
-	     setChangedConputadora();
+	     setChangedComputadora();
 	     notifyObserversCanto(new Aceptar());
 	}
 	
 	public void darRespuestaAFaltaEnvido() {
 		
 	     this.moderador.jugadorAceptaVarianteEnvido(this);
-	     setChangedConputadora();
+	     setChangedComputadora();
 	     notifyObserversCanto(new Aceptar());
 	}
 		
 	public void darRespuestaATruco() {
 		
 	     this.moderador.jugadorAceptaVarianteTruco(this);
-	     setChangedConputadora();
+	     setChangedComputadora();
 	     notifyObserversCanto(new Aceptar());
 	}
 	
 	public void darRespuestaATurno() {
 		
 		  this.jugarCarta();
-		  setChangedConputadora();
+		  setChangedComputadora();
 		  notifyObserversCarta();
 	}
 	
@@ -94,7 +94,7 @@ public class ComputadoraAI extends Jugable implements ObservableComputadora {
 		if (!this.observadorCantos.contains(o)) this.observadorCantos.add(o);
 	}
 
-	protected synchronized void setChangedConputadora() {
+	protected synchronized void setChangedComputadora() {
         changed = true;
     }
 	

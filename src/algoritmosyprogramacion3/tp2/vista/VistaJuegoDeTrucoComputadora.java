@@ -47,9 +47,9 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements O
 		Respuesta respuesta = (Respuesta) arg;
 		
 		if (respuesta.fuePositiva()) {
-			
+			setMensajeInformacion("Aceptado");
 		} else {
-			
+			setMensajeInformacion("Rechazado");
 		}
 	}
 
