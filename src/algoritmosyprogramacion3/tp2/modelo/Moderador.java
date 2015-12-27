@@ -49,16 +49,16 @@ public class Moderador {
 		this.manejadorFlor.setJugadoresEnfrentados(this.criterioDeRotacion.getJugadoresEnfrentados());
 	}
 	
-	public void setPartida(Partida unaPartida){
+	public void setPartida(Partida unaPartida) {
 		
 		this.partidaEnCurso = unaPartida;
 	}
 		
-	public void repartirCartas(){
+	public void repartirCartas() {
 				
-	   for(int i = 0;i<3 ;i++){
+	   for (int i = 0; i < 3 ; i++) {
 		   
-	  	  for(Jugable unJugador:this.jugadores){
+	  	  for (Jugable unJugador : this.jugadores) {
 		 		
 		    	unJugador.recibirCarta(this.mazo.darCarta());	
 		  }

@@ -95,6 +95,14 @@ public abstract class PartidaContraComputadora extends Partida {
          super.jugarTercerCartaJugador(unJugador);
          this.computadora.darRespuestaATurno();
 	}
+
+	public ComputadoraAI getComputadora() {
+		return this.computadora;
+	}
+
+	public String getNombreJugador() {
+		return this.nombreJugadorEnContra;
+	}
 	
 	@Override
 	protected void verificarEstrategiaDeRotacion() {
@@ -105,12 +113,14 @@ public abstract class PartidaContraComputadora extends Partida {
 	public boolean esContraComputadora() {
 		return true;
 	}
-
-	public ComputadoraAI getComputadora() {
-		return this.computadora;
-	}
-
-	public String getNombreJugador() {
-		return this.nombreJugadorEnContra;
+	
+	@Override
+	public void repartirCartas() {
+		
+		this.moderador.repartirCartas();
+		
+		if (this.computadora.equals(this.moderador.getJugadorQueTieneTurno())) {
+			this.computadora.darRespuestaATurno();
+		}
 	}
 }

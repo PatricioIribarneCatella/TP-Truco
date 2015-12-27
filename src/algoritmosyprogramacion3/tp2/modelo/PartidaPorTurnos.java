@@ -13,8 +13,6 @@ public abstract class PartidaPorTurnos extends Partida {
 
 	private void initialize(List<String> jugadoresEquipo1, List<String> jugadoresEquipo2) {
 		
-		Mesa mesa;
-		
 		List<Jugable> jugadores = new LinkedList<Jugable>();
 		
 		Equipo equipo1 = new Equipo();
@@ -35,7 +33,8 @@ public abstract class PartidaPorTurnos extends Partida {
 			equipo2.agregarIntegrante(jugadores.get(j));
 		}
 		
-		mesa = new Mesa(jugadores);
+		Mesa mesa = new Mesa(jugadores);
+		
 		this.moderador = new Moderador(mesa);
 		this.moderador.setPartida(this);
 		this.moderador.setRotacionStrategy(new StrategyRotacionEnRonda(jugadores));
@@ -55,5 +54,10 @@ public abstract class PartidaPorTurnos extends Partida {
 	@Override
 	public boolean esContraComputadora() {
 		return false;
+	}
+	
+	@Override
+	public void repartirCartas() {
+		this.moderador.repartirCartas();
 	}
 }
