@@ -117,7 +117,7 @@ public abstract class PartidaContraComputadora extends Partida {
 	@Override
 	public void repartirCartas() {
 		
-		this.moderador.repartirCartas();
+		super.repartirCartas();
 		
 		if (this.computadora.equals(this.moderador.getJugadorQueTieneTurno())) {
 			this.computadora.darRespuestaATurno();

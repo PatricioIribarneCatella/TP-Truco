@@ -225,7 +225,9 @@ public abstract class Partida extends Observable {
     	this.estado = new TurnoJugador();
 	}
 
-	public abstract void repartirCartas();
+	public void repartirCartas() {
+		this.moderador.repartirCartas();
+	}
 
 	public void repartirCartas(List<Carta> listaCartas) {
 		this.moderador.repartirCartas(listaCartas);

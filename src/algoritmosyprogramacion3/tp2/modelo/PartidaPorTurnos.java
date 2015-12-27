@@ -58,6 +58,6 @@ public abstract class PartidaPorTurnos extends Partida {
 	
 	@Override
 	public void repartirCartas() {
-		this.moderador.repartirCartas();
+		super.repartirCartas();
 	}
 }
