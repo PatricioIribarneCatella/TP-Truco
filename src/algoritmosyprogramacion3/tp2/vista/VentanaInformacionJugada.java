@@ -21,7 +21,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 
-public class VentanaInformacionJugada extends Application {
+public abstract class VentanaInformacionJugada extends Application {
 	
 	private JuegoTruco modelo;
 	private VistaJuegoDeTruco vista;
@@ -75,7 +75,9 @@ public class VentanaInformacionJugada extends Application {
 		
 		contenedor.add(etiquetaNombresEquipo, 1, 1);
 		
-		Label etiquetaContinuar = new Label("Para continuar pulse el botón (Aceptar), inicie su turno (Boton Iniciar turno) y pulse el mazo para repartir las cartas");
+		String informacion = this.informacionParaSeguirJugando();
+		
+		Label etiquetaContinuar = new Label(informacion);
 		etiquetaContinuar.setTextFill(Color.WHITE);
 		etiquetaContinuar.setWrapText(true);
 		
@@ -111,6 +113,8 @@ public class VentanaInformacionJugada extends Application {
 		
 		this.escena = new Scene(contenedor, 600, 400);
 	}
+	
+	protected abstract String informacionParaSeguirJugando();
 	
 	public void start(Stage stage) throws Exception {
 	
