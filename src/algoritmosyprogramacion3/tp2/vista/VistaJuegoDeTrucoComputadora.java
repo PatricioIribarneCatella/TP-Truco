@@ -9,12 +9,6 @@ import algoritmosyprogramacion3.tp2.modelo.Respuesta;
 import algoritmosyprogramacion3.tp2.utilitarios.ObservableComputadora;
 import algoritmosyprogramacion3.tp2.utilitarios.ObserverCantos;
 import algoritmosyprogramacion3.tp2.utilitarios.ObserverCartas;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements ObserverCartas, ObserverCantos, Observer {
 
@@ -34,14 +28,7 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements O
 		
 		Carta carta = (Carta) arg;
 		
-		Label etiqueta = new Label("Coputadora");
-		etiqueta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
-		etiqueta.setTextFill(Color.WHITE);
-		
-		etiqueta.setGraphic(new ImageView(this.getImagenCarta(carta)));
-		etiqueta.setContentDisplay(ContentDisplay.TOP);
-		
-		this.contenedorCartasJugadas.getChildren().add(etiqueta);
+		this.contenedorCartasJugadas.graficarCartaJugada(carta, "Computadora");
 	}
 
 	@Override
