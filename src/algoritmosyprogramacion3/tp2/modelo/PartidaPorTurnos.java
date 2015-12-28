@@ -52,6 +52,12 @@ public abstract class PartidaPorTurnos extends Partida {
 	protected abstract void setConfiguracionDeLaRotacion(List<Jugable> jugadores, Equipo equipo1, Equipo equipo2);
 	
 	@Override
+	public String getNombreJugadorConTurno() {
+		return this.moderador.getJugadorQueTieneTurno().getNombre();
+
+	}
+	
+	@Override
 	public boolean esContraComputadora() {
 		return false;
 	}

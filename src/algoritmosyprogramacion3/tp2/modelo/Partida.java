@@ -269,9 +269,7 @@ public abstract class Partida extends Observable {
 		return jugador.declararPuntosFlor();
 	}
 
-	public String getNombreJugadorConTurno() {
-		return this.moderador.getJugadorQueTieneTurno().getNombre();
-	}
+	public abstract String getNombreJugadorConTurno();
 
 	public String getNombreJugadorConDecisionEnvido() {
 		return this.moderador.getJugadorQueTieneDecisionEnvido().getNombre();

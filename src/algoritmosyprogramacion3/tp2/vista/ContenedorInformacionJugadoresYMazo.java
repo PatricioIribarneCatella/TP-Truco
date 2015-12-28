@@ -72,10 +72,10 @@ public abstract class ContenedorInformacionJugadoresYMazo extends VBox {
 			
 			this.modelo.repartirCartas();
 			
-			String nombreJugador = this.modelo.getNombreJugadorConTurno();
-			
 			this.vista.limpiarCartasJugadas();
 			this.vista.limpiarBotones();
+			
+			String nombreJugador = this.modelo.getNombreJugadorConTurno();;
 			
 			this.vista.setSituacionActual(Situacion.situacionInicial(this.vista));
 			this.vista.graficarBotones(GraficadorBotonesDeCantos.graficarSituacionInicial(this.modelo.getPartida(), this.vista));

@@ -104,6 +104,11 @@ public abstract class PartidaContraComputadora extends Partida {
 		return this.nombreJugadorEnContra;
 	}
 	
+	@Override 
+	public String getNombreJugadorConTurno() {
+		return getNombreJugador();
+	}
+	
 	@Override
 	protected void verificarEstrategiaDeRotacion() {
 		// No verifica ninguna estrategia ya que la ronda es la única que hay
