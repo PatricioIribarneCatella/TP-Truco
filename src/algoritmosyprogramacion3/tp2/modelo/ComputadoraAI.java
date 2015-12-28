@@ -123,9 +123,10 @@ public class ComputadoraAI extends Jugable implements ObservableComputadora {
             arrLocal = observadorCartas.toArray();
             clearChanged();
         }
-
-        for (int i = arrLocal.length-1; i>=0; i--)
-            ((ObserverCartas)arrLocal[i]).updateCarta(this, arg);
+        
+        for (int i = arrLocal.length-1; i>=0; i--) {
+        	((ObserverCartas)arrLocal[i]).updateCarta(this, arg);
+        } 
 	}
 
 	@Override
