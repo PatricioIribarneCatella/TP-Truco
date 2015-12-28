@@ -104,12 +104,13 @@ public abstract class ContenedorCartas extends HBox {
 				
 				try {
 				
+					this.getChildren().remove(botonCarta);
+					
+					this.vista.graficarCartaJugada(carta, nombreJugador);
+					
 					this.modelo.jugarCartaDeJugador(nombreJugador, carta);
 					
 					this.vista.setSituacionActual(Situacion.situacionCartaJugada(vista));
-					
-					this.getChildren().remove(botonCarta);
-					this.vista.graficarCartaJugada(carta, nombreJugador);
 					
 					this.mostrarInformacionJugada();
 					
