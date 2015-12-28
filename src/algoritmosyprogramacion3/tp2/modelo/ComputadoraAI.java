@@ -54,7 +54,7 @@ public class ComputadoraAI extends Jugable implements ObservableComputadora {
 		
 		  this.jugarCarta();
 		  setChangedComputadora();
-		  notifyObserversCarta();
+		  notifyObserversCarta(getCartaJugada());
 	}
 	
 	private Evento jugarCarta() {

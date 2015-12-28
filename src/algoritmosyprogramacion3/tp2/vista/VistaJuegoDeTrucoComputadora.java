@@ -3,6 +3,7 @@ package algoritmosyprogramacion3.tp2.vista;
 import java.util.Observable;
 import java.util.Observer;
 
+import algoritmosyprogramacion3.tp2.modelo.Carta;
 import algoritmosyprogramacion3.tp2.modelo.PartidaContraComputadora;
 import algoritmosyprogramacion3.tp2.modelo.Respuesta;
 import algoritmosyprogramacion3.tp2.utilitarios.ObservableComputadora;
@@ -31,11 +32,13 @@ public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements O
 	@Override
 	public void updateCarta(ObservableComputadora o, Object arg) {
 		
+		Carta carta = (Carta) arg;
+		
 		Label etiqueta = new Label("Coputadora");
 		etiqueta.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
 		etiqueta.setTextFill(Color.WHITE);
 		
-		etiqueta.setGraphic(new ImageView(this.getImagenCarta(this.modelo.getUltimaCartaJugada("Computadora"))));
+		etiqueta.setGraphic(new ImageView(this.getImagenCarta(carta)));
 		etiqueta.setContentDisplay(ContentDisplay.TOP);
 		
 		this.contenedorCartasJugadas.getChildren().add(etiqueta);
