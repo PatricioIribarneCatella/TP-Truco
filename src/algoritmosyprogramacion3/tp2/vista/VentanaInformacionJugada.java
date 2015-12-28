@@ -50,18 +50,6 @@ public abstract class VentanaInformacionJugada extends Application {
 		textoEscena.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		contenedor.add(textoEscena, 0, 0, 2, 1);
 		
-		Label etiquetaNombre = new Label("Equipo compuesto por: ");
-		etiquetaNombre.setTextFill(Color.WHITE);
-		Label etiquetaPuntosGanados = new Label("Puntos ganados: " + this.modelo.getPuntajeAcumuladoTrucoJugado());
-		etiquetaPuntosGanados.setTextFill(Color.WHITE);
-	
-	
-		contenedor.add(etiquetaNombre, 0, 1);
-		contenedor.add(etiquetaPuntosGanados, 0, 2);
-		
-		Label etiquetaNombresEquipo = new Label();
-		etiquetaNombresEquipo.setTextFill(Color.WHITE);
-		
 		Set<String> nombres = this.modelo.getEquipoGanadorTruco();
 		
 		StringBuilder texto = new StringBuilder();
@@ -71,9 +59,13 @@ public abstract class VentanaInformacionJugada extends Application {
 			texto.append(" ");
 		}
 		
-		etiquetaNombresEquipo.setText(texto.toString());
+		Label etiquetaNombre = new Label("Equipo compuesto por: " + texto.toString());
+		etiquetaNombre.setTextFill(Color.WHITE);
+		contenedor.add(etiquetaNombre, 0, 1);
 		
-		contenedor.add(etiquetaNombresEquipo, 1, 1);
+		Label etiquetaPuntosGanados = new Label("Puntos ganados: " + this.modelo.getPuntajeAcumuladoTrucoJugado());
+		etiquetaPuntosGanados.setTextFill(Color.WHITE);
+		contenedor.add(etiquetaPuntosGanados, 0, 2);
 		
 		String informacion = this.informacionParaSeguirJugando();
 		

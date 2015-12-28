@@ -48,20 +48,6 @@ public class VentanaInformacionRealEnvidoAceptado extends Application{
 		textoEscena.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		contenedor.add(textoEscena, 0, 0, 2, 1);
 		
-		Label etiquetaNombre = new Label("Equipo compuesto por: ");
-		etiquetaNombre.setTextFill(Color.WHITE);
-		Label etiquetaPuntos = new Label("Puntos envido: " + this.modelo.getPuntajeGanadorEnvido());
-		etiquetaPuntos.setTextFill(Color.WHITE);
-		Label etiquetaPuntosGanados = new Label("Puntos ganados: " + this.modelo.getPuntajeAcumuladoEnvidoJugado());
-		etiquetaPuntosGanados.setTextFill(Color.WHITE);
-	
-		contenedor.add(etiquetaNombre, 0, 1);
-		contenedor.add(etiquetaPuntos, 0, 2);
-		contenedor.add(etiquetaPuntosGanados, 0, 3);
-		
-		Label etiquetaNombresEquipo = new Label();
-		etiquetaNombresEquipo.setTextFill(Color.WHITE);
-		
 		Set<String> nombres = this.modelo.getEquipoGanadorEnvido();
 		
 		StringBuilder texto = new StringBuilder();
@@ -71,9 +57,16 @@ public class VentanaInformacionRealEnvidoAceptado extends Application{
 			texto.append(" ");
 		}
 		
-		etiquetaNombresEquipo.setText(texto.toString());
-		
-		contenedor.add(etiquetaNombresEquipo, 1, 1);
+		Label etiquetaNombre = new Label("Equipo compuesto por: " + texto.toString());
+		etiquetaNombre.setTextFill(Color.WHITE);
+		Label etiquetaPuntos = new Label("Puntos envido: " + this.modelo.getPuntajeGanadorEnvido());
+		etiquetaPuntos.setTextFill(Color.WHITE);
+		Label etiquetaPuntosGanados = new Label("Puntos ganados: " + this.modelo.getPuntajeAcumuladoEnvidoJugado());
+		etiquetaPuntosGanados.setTextFill(Color.WHITE);
+	
+		contenedor.add(etiquetaNombre, 0, 1);
+		contenedor.add(etiquetaPuntos, 0, 2);
+		contenedor.add(etiquetaPuntosGanados, 0, 3);
 		
 		Label etiquetaContinuar = new Label("Para continuar pulse el botón (Aceptar)");
 		etiquetaContinuar.setTextFill(Color.GRAY);

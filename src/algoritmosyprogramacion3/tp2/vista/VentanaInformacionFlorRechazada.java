@@ -48,30 +48,22 @@ public class VentanaInformacionFlorRechazada extends Application {
 		textoEscena.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		contenedor.add(textoEscena, 0, 0, 2, 1);
 		
-		Label etiquetaNombre = new Label("Equipo compuesto por: ");
-		etiquetaNombre.setTextFill(Color.WHITE);
-		Label etiquetaPuntosGanados = new Label("Puntos ganados: " + this.modelo.getPuntajeAcumuladoFlorRechazada());
-		etiquetaPuntosGanados.setTextFill(Color.WHITE);
-		
-	
-		contenedor.add(etiquetaNombre, 0, 1);
-		contenedor.add(etiquetaPuntosGanados, 0, 2);
-		
-		Label etiquetaNombresEquipo = new Label();
-		etiquetaNombresEquipo.setTextFill(Color.WHITE);
-		
 		Set<String> nombres = this.modelo.getEquipoGanadorFlor();
 		
 		StringBuilder texto = new StringBuilder();
 		
 		for (String nombre : nombres) {
 			texto.append(nombre);
-			texto.append("  ");
+			texto.append(" ");
 		}
 		
-		etiquetaNombresEquipo.setText(texto.toString());
+		Label etiquetaNombre = new Label("Equipo compuesto por: " + texto.toString());
+		etiquetaNombre.setTextFill(Color.WHITE);
+		Label etiquetaPuntosGanados = new Label("Puntos ganados: " + this.modelo.getPuntajeAcumuladoFlorRechazada());
+		etiquetaPuntosGanados.setTextFill(Color.WHITE);
 		
-		contenedor.add(etiquetaNombresEquipo, 1, 1);
+		contenedor.add(etiquetaNombre, 0, 1);
+		contenedor.add(etiquetaPuntosGanados, 0, 2);
 		
 		Label etiquetaContinuar = new Label("Para continuar pulse el botón (Aceptar) e inicie su turno (Botón Iniciar turno)");
 		etiquetaContinuar.setTextFill(Color.WHITE);
