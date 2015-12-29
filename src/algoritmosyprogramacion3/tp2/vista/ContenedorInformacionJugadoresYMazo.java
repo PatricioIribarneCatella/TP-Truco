@@ -21,6 +21,7 @@ public abstract class ContenedorInformacionJugadoresYMazo extends VBox {
 	protected JuegoTruco modelo;
 	
 	public ContenedorInformacionJugadoresYMazo(VistaJuegoDeTruco vista, JuegoTruco modelo) {
+		
 		this.vista = vista;
 		this.modelo = modelo;
 		this.initialize();
@@ -70,10 +71,10 @@ public abstract class ContenedorInformacionJugadoresYMazo extends VBox {
 		
 		botonRepartirCartas.setOnAction(e -> {
 			
-			this.modelo.repartirCartas();
-			
 			this.vista.limpiarCartasJugadas();
 			this.vista.limpiarBotones();
+			
+			this.modelo.repartirCartas();
 			
 			String nombreJugador = this.modelo.getNombreJugadorConTurno();;
 			
