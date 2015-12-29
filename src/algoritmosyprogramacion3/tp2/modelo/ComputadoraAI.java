@@ -75,6 +75,9 @@ public class ComputadoraAI extends Jugable implements ObservableComputadora {
 				this.jugarTercerCarta();
 			}		
 		}
+		catch (IndexOutOfBoundsException f) {
+			// no hace nada
+		}
 		return new JugarCarta();
 	}
 
