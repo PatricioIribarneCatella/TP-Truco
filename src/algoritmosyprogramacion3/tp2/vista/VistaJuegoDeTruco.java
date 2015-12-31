@@ -247,11 +247,7 @@ public abstract class VistaJuegoDeTruco implements Vista {
 		
 		VentanaInformacionEnvidoAceptado ventana = new VentanaInformacionEnvidoAceptado(this, this.modelo);
 		
-		try {
-			ventana.start(new Stage());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ventana.mostrar();
 	}
 
 	public void graficarSituacionFaltaEnvidoAceptada() {
@@ -260,76 +256,52 @@ public abstract class VistaJuegoDeTruco implements Vista {
 		
 		VentanaInformacionFaltaEnvidoAceptado ventana = new VentanaInformacionFaltaEnvidoAceptado(this, this.modelo);
 		
-		try {
-			ventana.start(new Stage());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		ventana.mostrar();
 	}
 
 	public void graficarSituacionRealEnvidoAceptada() {
 	
-		  this.contenedorBotones.graficarSituacionEnvidoAceptada();
+		this.contenedorBotones.graficarSituacionEnvidoAceptada();
 			
-			VentanaInformacionRealEnvidoAceptado ventana = new VentanaInformacionRealEnvidoAceptado(this, this.modelo);
+		VentanaInformacionRealEnvidoAceptado ventana = new VentanaInformacionRealEnvidoAceptado(this, this.modelo);
 			
-			try {
-				ventana.start(new Stage());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		ventana.mostrar();
 	}
 
 	public void graficarSituacionFlorAceptada() {
 		
-		 this.contenedorBotones.graficarSituacionFlor();
+		this.contenedorBotones.graficarSituacionFlor();
 			
-			VentanaInformacionFlorAceptada ventana = new VentanaInformacionFlorAceptada(this, this.modelo);
+		VentanaInformacionFlorAceptada ventana = new VentanaInformacionFlorAceptada(this, this.modelo);
 			
-			try {
-				ventana.start(new Stage());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		ventana.mostrar();
 	}
 	
 	public void graficarSituacionFlorRechazada() {
 		
-		 this.contenedorBotones.graficarSituacionFlor();
+		this.contenedorBotones.graficarSituacionFlor();
+		
+		VentanaInformacionFlorRechazada ventana = new VentanaInformacionFlorRechazada(this, this.modelo);
 			
-			VentanaInformacionFlorRechazada ventana = new VentanaInformacionFlorRechazada(this, this.modelo);
-			
-			try {
-				ventana.start(new Stage());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		ventana.mostrar();
 	}
 
 	public void graficarSituacionVarianteEnvidoRechazada() {
 		
-		  this.contenedorBotones.graficarSituacionEnvidoAceptada();
+		this.contenedorBotones.graficarSituacionEnvidoAceptada();
 			
-			VentanaInformacionEnvidoRechazado ventana = new VentanaInformacionEnvidoRechazado(this, this.modelo);
+		VentanaInformacionEnvidoRechazado ventana = new VentanaInformacionEnvidoRechazado(this, this.modelo);
 			
-			try {
-				ventana.start(new Stage());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		ventana.mostrar();
 	}
 
 	public void graficarSituacionVarianteTrucoRechazada() {
 		
-		  this.contenedorBotones.graficarSituacionTruco();
+		this.contenedorBotones.graficarSituacionTruco();
 			
-			VentanaInformacionTrucoRechazado ventana = new VentanaInformacionTrucoRechazado(this, this.modelo);
+		VentanaInformacionTrucoRechazado ventana = new VentanaInformacionTrucoRechazado(this, this.modelo);
 			
-			try {
-				ventana.start(new Stage());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+		ventana.mostrar();
 	}
 	
 	public void setSituacionActual(Situacion situacion) {

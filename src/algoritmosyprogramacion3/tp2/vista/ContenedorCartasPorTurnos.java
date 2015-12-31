@@ -10,7 +10,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.stage.Stage;
 
 public class ContenedorCartasPorTurnos extends ContenedorCartas {
 
@@ -67,11 +66,7 @@ public class ContenedorCartasPorTurnos extends ContenedorCartas {
 			
 			VentanaInformacionJugada ventana = new VentanaInformacionJugadaPorTurnos(this.vista, this.modelo);
 			
-			try {
-				ventana.start(new Stage());
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
+			ventana.mostrar();
 		}
 	}
 }
