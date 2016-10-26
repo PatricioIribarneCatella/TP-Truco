@@ -2,16 +2,16 @@
 
 Juego de Truco
 
-**Ejecución**
+## Ejecución
 
-*Correr tests*
+**Correr tests**
 
 $ ant
 
-*Correr tests y aplicación*
+**Correr tests y aplicación**
 
 $ ant ejecutar.aplicacion
 
-*Correr aplicación sin tests*
+**Correr aplicación sin tests**
 
 $ ant ejecutar.aplicacion.sin.tests
