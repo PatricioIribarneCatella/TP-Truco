@@ -1,6 +1,6 @@
 # TP-Truco
 
-Juego de Truco
+Juego de Truco (Algoritmos y Programación III)
 
 ## Ejecución
 
