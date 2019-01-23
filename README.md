@@ -2,16 +2,24 @@
 
 Juego de Truco (Algoritmos y Programación III)
 
-## Ejecución
+
+### Ejecución
 
 **Correr tests**
 
-$ ant
+```bash
+ $ ant
+```
 
 **Correr tests y aplicación**
 
-$ ant ejecutar.aplicacion
+```bash
+ $ ant ejecutar.aplicacion
+```
 
 **Correr aplicación sin tests**
 
-$ ant ejecutar.aplicacion.sin.tests
+```bash
+ $ ant ejecutar.aplicacion.sin.tests
+```
+
