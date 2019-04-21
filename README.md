@@ -1,6 +1,6 @@
 # TP-Truco
 
-Juego de Truco (Algoritmos y Programación III)
+Juego de Truco (_Algoritmos y Programación III - FIUBA_)
 
 
 ### Ejecución
