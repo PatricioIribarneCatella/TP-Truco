@@ -1,7 +1,8 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
-import algoritmosyprogramacion3.tp2.manejadores.BotonEnvidoEventHandler;
 import javafx.scene.Node;
+
+import truco.manejadores.BotonEnvidoEventHandler;
 
 public class BotonEnvido extends BotonJuegoTruco {
 

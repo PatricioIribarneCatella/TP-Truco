@@ -1,9 +1,10 @@
-package algoritmosyprogramacion3.tp2.manejadores;
+package truco.manejadores;
 
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import algoritmosyprogramacion3.tp2.vista.Vista;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
+import truco.modelo.JuegoTruco;
+import truco.vista.Vista;
 
 public class BotonVolverEventHandler implements EventHandler<ActionEvent> {
 

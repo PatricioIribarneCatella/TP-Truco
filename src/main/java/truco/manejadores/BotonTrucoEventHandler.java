@@ -1,11 +1,12 @@
-package algoritmosyprogramacion3.tp2.manejadores;
+package truco.manejadores;
 
-import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
-import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import algoritmosyprogramacion3.tp2.vista.VistaJuegoDeTruco;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+
+import truco.excepciones.AccionInvalidaException;
+import truco.excepciones.TurnoParaTomarDecisionEquivocadoException;
+import truco.modelo.JuegoTruco;
+import truco.vista.VistaJuegoDeTruco;
 
 public class BotonTrucoEventHandler implements EventHandler<ActionEvent> {
 

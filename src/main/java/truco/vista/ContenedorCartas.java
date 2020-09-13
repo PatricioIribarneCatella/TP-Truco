@@ -1,13 +1,7 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 import java.util.List;
 
-import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
-import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
-import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import algoritmosyprogramacion3.tp2.utilitarios.GraficadorCartas;
-import algoritmosyprogramacion3.tp2.utilitarios.Situacion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,6 +14,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+import truco.excepciones.AccionInvalidaException;
+import truco.excepciones.TurnoEquivocadoException;
+import truco.modelo.Carta;
+import truco.modelo.JuegoTruco;
+import truco.utilitarios.GraficadorCartas;
+import truco.utilitarios.Situacion;
 
 public abstract class ContenedorCartas extends HBox {
 

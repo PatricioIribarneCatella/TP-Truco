@@ -1,22 +1,19 @@
-package algoritmosyprogramacion3.tp2.aplicacion;
+package truco.aplicacion;
 
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import algoritmosyprogramacion3.tp2.vista.VistaInicio;
-import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.application.Application;
+
+import truco.modelo.JuegoTruco;
+import truco.vista.VistaInicio;
 
 public class JuegoDelTruco extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		
+
 		JuegoTruco modelo = new JuegoTruco();
-		
+
 		VistaInicio vistaPrincipal = new VistaInicio(modelo, stage);
 		vistaPrincipal.mostrar();
-	}
-
-	public static void main(String[] args){
-		launch(args);
 	}
 }

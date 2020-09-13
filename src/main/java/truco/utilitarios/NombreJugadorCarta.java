@@ -1,6 +1,6 @@
-package algoritmosyprogramacion3.tp2.utilitarios;
+package truco.utilitarios;
 
-import algoritmosyprogramacion3.tp2.modelo.Carta;
+import truco.modelo.Carta;
 
 public class NombreJugadorCarta {
 

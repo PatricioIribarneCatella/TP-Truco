@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 import javafx.scene.Node;
 import javafx.scene.control.Button;

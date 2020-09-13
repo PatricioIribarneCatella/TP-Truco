@@ -1,40 +1,10 @@
-package algoritmosyprogramacion3.tp2.utilitarios;
+package truco.utilitarios;
 
+import java.util.Map;
+import java.util.List;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
-import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarFlorEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarReTrucoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarRealEnvidoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarTrucoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarValeCuatroEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarEnvidoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonAceptarFaltaEnvidoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonEnvidoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonFaltaEnvidoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonReTrucoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonRealEnvidoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonRechazarVarianteTrucoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonRechazarFlorEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonRechazarVarianteEnvidoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonTrucoEventHandler;
-import algoritmosyprogramacion3.tp2.manejadores.BotonValeCuatroEventHandler;
-import algoritmosyprogramacion3.tp2.modelo.Partida;
-import algoritmosyprogramacion3.tp2.modelo.PartidaContraComputadoraConFlor;
-import algoritmosyprogramacion3.tp2.modelo.PartidaContraComputadoraSinFlor;
-import algoritmosyprogramacion3.tp2.modelo.PartidaRondaConFlor;
-import algoritmosyprogramacion3.tp2.modelo.PartidaRondaSinFlor;
-import algoritmosyprogramacion3.tp2.modelo.PartidaRondaYPicaPicaConFlor;
-import algoritmosyprogramacion3.tp2.modelo.PartidaRondaYPicaPicaSinFlor;
-import algoritmosyprogramacion3.tp2.vista.BotonEnvido;
-import algoritmosyprogramacion3.tp2.vista.BotonFaltaEnvido;
-import algoritmosyprogramacion3.tp2.vista.BotonFlor;
-import algoritmosyprogramacion3.tp2.vista.BotonJuegoTruco;
-import algoritmosyprogramacion3.tp2.vista.BotonRealEnvido;
-import algoritmosyprogramacion3.tp2.vista.BotonTruco;
-import algoritmosyprogramacion3.tp2.vista.VistaJuegoDeTruco;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
@@ -45,6 +15,37 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+import truco.modelo.Partida;
+import truco.modelo.PartidaContraComputadoraConFlor;
+import truco.modelo.PartidaContraComputadoraSinFlor;
+import truco.modelo.PartidaRondaConFlor;
+import truco.modelo.PartidaRondaSinFlor;
+import truco.modelo.PartidaRondaYPicaPicaConFlor;
+import truco.modelo.PartidaRondaYPicaPicaSinFlor;
+import truco.vista.BotonEnvido;
+import truco.vista.BotonFaltaEnvido;
+import truco.vista.BotonFlor;
+import truco.vista.BotonJuegoTruco;
+import truco.vista.BotonRealEnvido;
+import truco.vista.BotonTruco;
+import truco.vista.VistaJuegoDeTruco;
+import truco.manejadores.BotonAceptarFlorEventHandler;
+import truco.manejadores.BotonAceptarReTrucoEventHandler;
+import truco.manejadores.BotonAceptarRealEnvidoEventHandler;
+import truco.manejadores.BotonAceptarTrucoEventHandler;
+import truco.manejadores.BotonAceptarValeCuatroEventHandler;
+import truco.manejadores.BotonAceptarEnvidoEventHandler;
+import truco.manejadores.BotonAceptarFaltaEnvidoEventHandler;
+import truco.manejadores.BotonEnvidoEventHandler;
+import truco.manejadores.BotonFaltaEnvidoEventHandler;
+import truco.manejadores.BotonReTrucoEventHandler;
+import truco.manejadores.BotonRealEnvidoEventHandler;
+import truco.manejadores.BotonRechazarVarianteTrucoEventHandler;
+import truco.manejadores.BotonRechazarFlorEventHandler;
+import truco.manejadores.BotonRechazarVarianteEnvidoEventHandler;
+import truco.manejadores.BotonTrucoEventHandler;
+import truco.manejadores.BotonValeCuatroEventHandler;
+
 public class GraficadorBotonesDeCantos {
 
 	/* 
@@ -52,23 +53,23 @@ public class GraficadorBotonesDeCantos {
 	 * Mapeo de las distintas partidas con sus correspondientes configuraciones de botones al iniciar 
 	 * una partida
 	 * 
-	 *  */
-	
+	 */
+
 	@SuppressWarnings("rawtypes")
 	private static Map<Class, List<BotonJuegoTruco>> partidaBotones = crearPartidaBotones(); 
-	
+
 	@SuppressWarnings("rawtypes")
 	private static Map<Class, List<BotonJuegoTruco>> crearPartidaBotones() {
-		
+
 		Map<Class, List<BotonJuegoTruco>> partidaBotones = new HashMap<Class, List<BotonJuegoTruco>>();
-		
+
 		partidaBotones.put(PartidaRondaSinFlor.class, getBotonesSinFlor());
 		partidaBotones.put(PartidaRondaConFlor.class, getBotonesConFlor());
 		partidaBotones.put(PartidaRondaYPicaPicaSinFlor.class, getBotonesSinFlor());
 		partidaBotones.put(PartidaRondaYPicaPicaConFlor.class, getBotonesConFlor());
 		partidaBotones.put(PartidaContraComputadoraSinFlor.class, getBotonesSinFlor());
 		partidaBotones.put(PartidaContraComputadoraConFlor.class, getBotonesConFlor());
-		
+
 		return partidaBotones;
 	}
 	

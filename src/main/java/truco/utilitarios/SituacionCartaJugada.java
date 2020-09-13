@@ -1,7 +1,8 @@
-package algoritmosyprogramacion3.tp2.utilitarios;
+package truco.utilitarios;
 
-import algoritmosyprogramacion3.tp2.vista.VistaJuegoDeTruco;
 import javafx.scene.layout.VBox;
+
+import truco.vista.VistaJuegoDeTruco;
 
 public class SituacionCartaJugada extends Situacion {
 

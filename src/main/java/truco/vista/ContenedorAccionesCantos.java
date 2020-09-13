@@ -1,10 +1,11 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import algoritmosyprogramacion3.tp2.utilitarios.GraficadorBotonesDeCantos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
+
+import truco.modelo.JuegoTruco;
+import truco.utilitarios.GraficadorBotonesDeCantos;
 
 public abstract class ContenedorAccionesCantos extends VBox {
 

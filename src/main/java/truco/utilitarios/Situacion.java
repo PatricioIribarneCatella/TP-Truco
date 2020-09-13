@@ -1,7 +1,8 @@
-package algoritmosyprogramacion3.tp2.utilitarios;
+package truco.utilitarios;
 
-import algoritmosyprogramacion3.tp2.vista.VistaJuegoDeTruco;
 import javafx.scene.layout.VBox;
+
+import truco.vista.VistaJuegoDeTruco;
 
 public abstract class Situacion {
 
@@ -12,14 +13,14 @@ public abstract class Situacion {
 	public static Situacion situacionCartaJugada(VistaJuegoDeTruco vista) {
 		return new SituacionCartaJugada(vista);
 	}
-	
+
 	public static Situacion situacionPostEnvido(VistaJuegoDeTruco vista) {
 		return new SituacionPostEnvido(vista);
 	}
-	
+
 	public static Situacion situacionPostFlor(VistaJuegoDeTruco vista) {
 		return new SituacionPostFlor(vista);
 	}
-	
-	public abstract  VBox getBotones();
+
+	public abstract VBox getBotones();
 }

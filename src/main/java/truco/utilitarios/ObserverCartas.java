@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.utilitarios;
+package truco.utilitarios;
 
 public interface ObserverCartas {
 

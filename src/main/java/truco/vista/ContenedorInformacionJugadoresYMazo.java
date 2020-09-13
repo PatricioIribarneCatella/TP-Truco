@@ -1,8 +1,5 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import algoritmosyprogramacion3.tp2.utilitarios.GraficadorBotonesDeCantos;
-import algoritmosyprogramacion3.tp2.utilitarios.Situacion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -14,6 +11,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+import truco.modelo.JuegoTruco;
+import truco.utilitarios.GraficadorBotonesDeCantos;
+import truco.utilitarios.Situacion;
 
 public abstract class ContenedorInformacionJugadoresYMazo extends VBox {
 

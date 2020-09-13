@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.excepciones;
+package truco.excepciones;
 
 public class CartaYaJugadaException extends RuntimeException {
 
