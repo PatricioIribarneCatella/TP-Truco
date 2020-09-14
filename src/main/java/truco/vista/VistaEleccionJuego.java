@@ -59,10 +59,14 @@ public class VistaEleccionJuego implements Vista {
 
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 800, 600, false, true);
+		Image imagen = new Image("file:src/main/resources/imagenes/fondos/fondo-verde.jpg", 800, 600, false, true);
 		
-		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-		
+		BackgroundImage imagenDeFondo = new BackgroundImage(imagen,
+															BackgroundRepeat.REPEAT,
+															BackgroundRepeat.NO_REPEAT,
+															BackgroundPosition.DEFAULT,
+															BackgroundSize.DEFAULT);
+
 		this.contenedor.setBackground(new Background(imagenDeFondo));
 	}
 	

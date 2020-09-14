@@ -13,8 +13,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 import truco.modelo.JuegoTruco;
-import truco.utilitarios.GraficadorBotonesDeCantos;
 import truco.utilitarios.Situacion;
+import truco.utilitarios.GraficadorBotonesDeCantos;
 
 public abstract class ContenedorInformacionJugadoresYMazo extends VBox {
 
@@ -51,7 +51,7 @@ public abstract class ContenedorInformacionJugadoresYMazo extends VBox {
 		botonRepartirCartas.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
 		botonRepartirCartas.setTextFill(Color.BLACK);
 		
-		Image imagenCartaReverso = new Image("file:resources/imagenes/cartas/naipes.PNG", 75, 150, false, true);
+		Image imagenCartaReverso = new Image("file:src/main/resources/imagenes/cartas/naipes.PNG", 75, 150, false, true);
 		botonRepartirCartas.setGraphic(new ImageView(imagenCartaReverso));
 		botonRepartirCartas.setDefaultButton(true);
 		botonRepartirCartas.setContentDisplay(ContentDisplay.TOP);
