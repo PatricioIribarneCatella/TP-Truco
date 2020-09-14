@@ -1,8 +1,7 @@
-package algoritmosyprogramacion3.tp2.vista;
+package true.vista;
 
 import java.util.Set;
 
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,6 +16,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import true.modelo.JuegoTruco;
 
 public abstract class Ventana {
 
@@ -113,7 +114,6 @@ public abstract class Ventana {
 	protected abstract String getInformacionParaSeguirJugando();
 	
 	public void mostrar() {
-		
 		this.stage.setScene(this.escena);
 		this.stage.show();
 	}

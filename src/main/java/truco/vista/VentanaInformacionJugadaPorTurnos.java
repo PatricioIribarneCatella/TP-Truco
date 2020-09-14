@@ -1,6 +1,6 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
+import truco.modelo.JuegoTruco;
 
 public class VentanaInformacionJugadaPorTurnos extends VentanaInformacionJugada {
 

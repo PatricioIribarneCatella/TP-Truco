@@ -1,9 +1,8 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 import java.util.Observable;
 import java.util.Observer;
 
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,6 +14,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import truco.modelo.JuegoTruco;
 
 public class VentanaInformacionJugador extends Application implements Observer {
 

@@ -1,9 +1,11 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 import java.util.Set;
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
+
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+
+import truco.modelo.JuegoTruco;
 
 public class VentanaInformacionEnvidoAceptado extends Ventana {
 	

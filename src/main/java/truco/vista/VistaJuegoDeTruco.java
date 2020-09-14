@@ -1,11 +1,7 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 import java.util.List;
 
-import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import algoritmosyprogramacion3.tp2.utilitarios.GraficadorCartas;
-import algoritmosyprogramacion3.tp2.utilitarios.Situacion;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -22,6 +18,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+
+import truco.modelo.Carta;
+import truco.modelo.JuegoTruco;
+import truco.utilitarios.GraficadorCartas;
+import truco.utilitarios.Situacion;
 
 public abstract class VistaJuegoDeTruco implements Vista {
 
@@ -70,10 +71,14 @@ public abstract class VistaJuegoDeTruco implements Vista {
 
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:resources/imagenes/fondos/fondo-verde.jpg", 1300, 700, false, true);
+		Image imagen = new Image("file:src/main/resources/imagenes/fondos/fondo-verde.jpg", 1300, 700, false, true);
 		
-		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-		
+		BackgroundImage imagenDeFondo = new BackgroundImage(imagen,
+															BackgroundRepeat.NO_REPEAT,
+															BackgroundRepeat.NO_REPEAT,
+															BackgroundPosition.DEFAULT,
+															BackgroundSize.DEFAULT);
+
 		this.contenedor.setBackground(new Background(imagenDeFondo));
 	}
 	

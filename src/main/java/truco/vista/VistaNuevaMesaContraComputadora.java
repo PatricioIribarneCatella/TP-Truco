@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
@@ -28,11 +28,8 @@ public class VistaNuevaMesaContraComputadora extends VistaNuevaMesa {
 		String nombreJugador = this.textoJugador.getText();
 		
 		if (this.seJuegaConFlor) {
-			
 			return this.modelo.nuevaMesaContraComputadoraConFlor(nombreMesa, nombreJugador);
-			
 		} else {
-			
 			return this.modelo.nuevaMesaContraComputadoraSinFlor(nombreMesa, nombreJugador);
 		}
 	}

@@ -1,14 +1,14 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 import java.util.Observable;
 import java.util.Observer;
 
-import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.PartidaContraComputadora;
-import algoritmosyprogramacion3.tp2.modelo.Respuesta;
-import algoritmosyprogramacion3.tp2.utilitarios.ObservableComputadora;
-import algoritmosyprogramacion3.tp2.utilitarios.ObserverCantos;
-import algoritmosyprogramacion3.tp2.utilitarios.ObserverCartas;
+import truco.modelo.Carta;
+import truco.modelo.Respuesta;
+import truco.modelo.PartidaContraComputadora;
+import truco.utilitarios.ObserverCantos;
+import truco.utilitarios.ObserverCartas;
+import truco.utilitarios.ObservableComputadora;
 
 public class VistaJuegoDeTrucoComputadora extends VistaJuegoDeTruco implements ObserverCartas, ObserverCantos, Observer {
 

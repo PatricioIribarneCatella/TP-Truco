@@ -1,7 +1,5 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
-import algoritmosyprogramacion3.tp2.manejadores.BotonVolverEventHandler;
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -19,6 +17,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+
+import truco.manejadores.BotonVolverEventHandler;
+import truco.modelo.JuegoTruco;
 
 public class VistaEleccionTipoDeMesa implements Vista {
 

@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 import java.util.Arrays;
 
@@ -33,18 +33,18 @@ public class VistaNuevaMesaDeDos extends VistaNuevaMesa {
 		String nombreJugador2 = this.textoJugador2.getText();
 		
 		if (this.seJuegaConFlor) {
-			
-			return this.modelo.nuevaMesaDeDosConFlor(nombreMesa, Arrays.asList(nombreJugador1),  Arrays.asList(nombreJugador2));
-			
+			return this.modelo.nuevaMesaDeDosConFlor(nombreMesa,
+													 Arrays.asList(nombreJugador1),
+													 Arrays.asList(nombreJugador2));
 		} else {
-			
-			return this.modelo.nuevaMesaDeDosSinFlor(nombreMesa, Arrays.asList(nombreJugador1),  Arrays.asList(nombreJugador2));
+			return this.modelo.nuevaMesaDeDosSinFlor(nombreMesa,
+													 Arrays.asList(nombreJugador1),
+													 Arrays.asList(nombreJugador2));
 		}
 	}
 
 	@Override
 	protected boolean hayDatosCargados() {
-		
 		return (!this.textoMesa.getText().trim().equals("")
 				&& !this.textoJugador1.getText().trim().equals("")
 					&& !this.textoJugador2.getText().trim().equals(""));

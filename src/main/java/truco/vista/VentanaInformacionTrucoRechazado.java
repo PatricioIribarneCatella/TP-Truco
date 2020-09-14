@@ -1,15 +1,15 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 import java.util.Set;
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
+
+import truco.modelo.JuegoTruco;
 
 public class VentanaInformacionTrucoRechazado extends Ventana {
 	
 	public VentanaInformacionTrucoRechazado(VistaJuegoDeTruco vista, JuegoTruco modelo) {
-		
 		super(vista, modelo);
 	}
-	
+
 	@Override
 	protected String getTextoEscena() {
 		return "Canto rechazado";

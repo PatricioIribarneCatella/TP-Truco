@@ -1,17 +1,17 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 import java.util.Set;
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
+
+import truco.modelo.JuegoTruco;
 
 public abstract class VentanaInformacionJugada extends Ventana {
-	
-	public VentanaInformacionJugada(VistaJuegoDeTruco vista, JuegoTruco modelo) {
-		
+
+	public VentanaInformacionJugada(VistaJuegoDeTruco vista, JuegoTruco modelo) {		
 		super(vista, modelo);
 	}
-	
+
 	protected abstract String informacionParaSeguirJugando();
-	
+
 	@Override
 	protected String getTextoEscena() {
 		return "Resultado Jugada";

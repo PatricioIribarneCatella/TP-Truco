@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
 public class Imagen {
 

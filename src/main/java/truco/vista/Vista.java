@@ -1,7 +1,8 @@
-package algoritmosyprogramacion3.tp2.vista;
+package truco.vista;
 
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
 import javafx.stage.Stage;
+
+import truco.modelo.JuegoTruco;
 
 public interface Vista {
 
