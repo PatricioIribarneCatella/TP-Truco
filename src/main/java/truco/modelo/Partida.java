@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package truco.modelo;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Set;
 
-import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
-import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
-import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
-import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
-import algoritmosyprogramacion3.tp2.utilitarios.NombreJugadorCarta;
+import truco.excepciones.AccionInvalidaException;
+import truco.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import truco.excepciones.JugadorSinFlorException;
+import truco.excepciones.PartidaSinFlorException;
+import truco.utilitarios.NombreJugadorCarta;
 
 public abstract class Partida extends Observable {
 

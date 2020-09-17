@@ -6,7 +6,7 @@ import javafx.application.Application;
 import truco.modelo.JuegoTruco;
 import truco.vista.VistaInicio;
 
-public class JuegoDelTruco extends Application {
+public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {

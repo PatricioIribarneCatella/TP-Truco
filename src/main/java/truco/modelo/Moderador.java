@@ -1,9 +1,9 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package truco.modelo;
 
 import java.util.List;
 
-import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
-import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
+import truco.excepciones.TurnoEquivocadoException;
+import truco.excepciones.TurnoParaTomarDecisionEquivocadoException;
 
 public class Moderador {
 	

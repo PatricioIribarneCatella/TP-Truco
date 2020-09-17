@@ -1,12 +1,12 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package truco.modelo;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
-import algoritmosyprogramacion3.tp2.utilitarios.ObservableComputadora;
-import algoritmosyprogramacion3.tp2.utilitarios.ObserverCantos;
-import algoritmosyprogramacion3.tp2.utilitarios.ObserverCartas;
+import truco.excepciones.CartaYaJugadaException;
+import truco.utilitarios.ObservableComputadora;
+import truco.utilitarios.ObserverCantos;
+import truco.utilitarios.ObserverCartas;
 
 public class ComputadoraAI extends Jugable implements ObservableComputadora {
 	

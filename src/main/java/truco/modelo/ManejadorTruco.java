@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package truco.modelo;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -14,24 +14,20 @@ public class ManejadorTruco {
 	private int jugadasGanadasEquipo1;
     private int jugadasGanadasEquipo2;
 
-	
 	public ManejadorTruco(){
-		
+
 		 this.resultadosJugadas = new LinkedList<Resultado>();
 		 jugadasGanadasEquipo1 = 0;
 		 jugadasGanadasEquipo2 = 0;
 	}
 
-	
 	public void setJugadoresEnfrentados(List<Jugable> jugadoresEnfrentados){
-		
+
 		 this.jugadores = jugadoresEnfrentados;
 		 this.equipo1 = this.jugadores.get(0).getEquipo();
 		 this.equipo2 = this.jugadores.get(1).getEquipo(); // los jugadores de 2 posiciones contiguas tienen distintos equipos
 	}
-	
-	
-	
+
 	public void setNivelApuesta(Canto unCanto) {
 			
 		this.nivelDeApuesta = unCanto;

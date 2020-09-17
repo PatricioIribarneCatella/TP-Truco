@@ -1,14 +1,13 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package truco.modelo;
 
-import java.util.LinkedList;
 import java.util.List;
+import java.util.LinkedList;
 
 public class Campo {
 	
 	private Jugable jugador;
 	private LinkedList<Carta> cartasEnJuego;
     
-	
 	public Campo(Jugable jugadorDelCampo){
 		
 		this.jugador = jugadorDelCampo;

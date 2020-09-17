@@ -1,6 +1,6 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package truco.modelo;
 
-import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import truco.excepciones.CantidadDeEnvidosMaximosSuperadaException;
 
 public class Jugador extends Jugable {
 	

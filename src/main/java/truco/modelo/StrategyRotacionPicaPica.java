@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package truco.modelo;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.ListIterator;
 
 public class StrategyRotacionPicaPica implements RotacionStrategy {
 
-	
     private ListIterator<List<Jugable>> iteradorPareja;
     private List<List<Jugable>> parejas;
     private List<Jugable> primerPareja;

@@ -1,18 +1,18 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package truco.modelo;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observer;
 import java.util.Set;
 
-import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
-import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
-import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
-import algoritmosyprogramacion3.tp2.excepciones.JugadorSinFlorException;
-import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
-import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
-import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
-import algoritmosyprogramacion3.tp2.utilitarios.NombreJugadorCarta;
+import truco.excepciones.AccionInvalidaException;
+import truco.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import truco.excepciones.CartaYaJugadaException;
+import truco.excepciones.JugadorSinFlorException;
+import truco.excepciones.PartidaSinFlorException;
+import truco.excepciones.TurnoEquivocadoException;
+import truco.excepciones.TurnoParaTomarDecisionEquivocadoException;
+import truco.utilitarios.NombreJugadorCarta;
 
 public class JuegoTruco {
 	

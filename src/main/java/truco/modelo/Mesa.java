@@ -1,9 +1,9 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package truco.modelo;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import algoritmosyprogramacion3.tp2.excepciones.CartaYaJugadaException;
+import truco.excepciones.CartaYaJugadaException;
 
 public class Mesa {
     

@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.modelo;
+package truco.modelo;
 
 public class Cuatro extends Carta {
 
