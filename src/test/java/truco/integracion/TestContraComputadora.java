@@ -1,4 +1,4 @@
-package truco.pruebasIntegracion;
+package truco.integracion;
 
 import java.util.Arrays;
 

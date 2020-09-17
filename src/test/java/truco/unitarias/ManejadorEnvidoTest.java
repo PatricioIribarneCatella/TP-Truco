@@ -1,4 +1,4 @@
-package truco.pruebasUnitarias;
+package truco.unitarias;
 
 import java.util.Arrays;
 import java.util.LinkedList;

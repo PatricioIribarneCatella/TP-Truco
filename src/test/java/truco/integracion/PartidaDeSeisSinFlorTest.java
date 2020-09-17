@@ -1,4 +1,4 @@
-package truco.pruebasIntegracion;
+package truco.integracion;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -8,8 +8,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import truco.excepciones.JugadorSinFlorException;
 import truco.excepciones.AccionInvalidaException;
+import truco.excepciones.PartidaSinFlorException;
 import truco.excepciones.TurnoParaTomarDecisionEquivocadoException;
 import truco.modelo.Caballo;
 import truco.modelo.Cinco;
@@ -27,7 +27,7 @@ import truco.modelo.UnoDeCopa;
 import truco.modelo.UnoDeEspada;
 import truco.modelo.UnoDeOro;
 
-public class PartidaDeSeisConFlorTest {
+public class PartidaDeSeisSinFlorTest {
 
 	private JuegoTruco juego;
 	private List<String> jugadoresEquipo1;
@@ -46,13 +46,13 @@ public class PartidaDeSeisConFlorTest {
 		this.jugadoresEquipo2.add("Pepe");			
 		
 		juego = new JuegoTruco();
-		juego.nuevaMesaDeSeisConFlor("mesa1",jugadoresEquipo1,jugadoresEquipo2);
-		juego.repartirCartas(Arrays.asList(new UnoDeEspada(),new Dos(Palo.BASTO),new Caballo(Palo.ESPADA),new UnoDeBasto(),new Dos(Palo.ORO),new SieteDeBasto(),new SieteDeEspada(),new UnoDeOro(),new Seis(Palo.COPA),new Tres(Palo.COPA),new UnoDeCopa(),new Cinco(Palo.ESPADA),new Tres(Palo.ESPADA),new Rey(Palo.BASTO),new Cuatro(Palo.ORO),new Dos(Palo.ESPADA),new Rey(Palo.ORO),new Cuatro(Palo.COPA)));	
-		                                                  
+		juego.nuevaMesaDeSeisSinFlor("mesa1",jugadoresEquipo1,jugadoresEquipo2);
+		juego.repartirCartas(Arrays.asList(new UnoDeEspada(),new Dos(Palo.BASTO),new Caballo(Palo.ESPADA),new UnoDeBasto(),new Dos(Palo.ORO),new SieteDeBasto(),new SieteDeEspada(),new UnoDeOro(),new Seis(Palo.COPA),new Tres(Palo.COPA),new UnoDeCopa(),new Cinco(Palo.ESPADA),new Tres(Palo.ESPADA),new Rey(Palo.BASTO),new Cuatro(Palo.ORO),new Dos(Palo.ESPADA),new Rey(Palo.ORO),new Cuatro(Palo.COPA)));
+		                                                    
 	}
 	
-	@Test (expected = JugadorSinFlorException.class)
-	public void testCantarFlorDeberiaSerPosiblePeroLanzaExcepcionSiNoHayFlor() {
+	@Test (expected = PartidaSinFlorException.class)
+	public void testCantarFlorNoDeberiaSerPosible() {
 		
 		juego.cantarFlorPorJugador("Juan");
 	}
@@ -318,12 +318,9 @@ public class PartidaDeSeisConFlorTest {
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pepe").equals("30"));
 	}
 	
-	
-	
-
-	
 	@Test
-	public void testRondaComunYRondaPicaPicaConFlor(){
+	public void testRondaComunYRondaPicaPica(){
+		
 		
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Juan"));
 		Assert.assertTrue(juego.cantarEnvidoPorJugador("Pedro"));
@@ -369,7 +366,7 @@ public class PartidaDeSeisConFlorTest {
 		//Pedro vs Jorge
 		//Patricio vs Pepe
 		//Santiago vs Juan 
-		juego.repartirCartas(Arrays.asList(new UnoDeBasto(),new Dos(Palo.ORO),new SieteDeBasto(),new SieteDeEspada(),new Cinco(Palo.ESPADA),new Cuatro(Palo.ESPADA),new Tres(Palo.COPA),new UnoDeCopa(),new Cinco(Palo.ESPADA),new Tres(Palo.ESPADA),new Rey(Palo.BASTO),new Cuatro(Palo.ORO),new Dos(Palo.COPA),new Cinco(Palo.COPA),new Cuatro(Palo.COPA),new UnoDeEspada(),new Dos(Palo.BASTO),new Caballo(Palo.ESPADA)));
+		juego.repartirCartas(Arrays.asList(new UnoDeBasto(),new Dos(Palo.ORO),new SieteDeBasto(),new SieteDeEspada(),new UnoDeOro(),new Seis(Palo.COPA),new Tres(Palo.COPA),new UnoDeCopa(),new Cinco(Palo.ESPADA),new Tres(Palo.ESPADA),new Rey(Palo.BASTO),new Cuatro(Palo.ORO),new Dos(Palo.ESPADA),new Rey(Palo.ORO),new Cuatro(Palo.COPA),new UnoDeEspada(),new Dos(Palo.BASTO),new Caballo(Palo.ESPADA)));
 		
 		Assert.assertTrue(juego.jugarTercerCartaDeJugador("Pedro"));
 		Assert.assertTrue(juego.jugarSegundaCartaDeJugador("Jorge")); // gana jorge primera
@@ -388,17 +385,21 @@ public class PartidaDeSeisConFlorTest {
 		
 		/*Ahora juegan Patricio y Pepe*/
 		
-		Assert.assertTrue(juego.cantarFlorPorJugador("Patricio"));
-		Assert.assertTrue(juego.aceptarFlorPorJugador("Pepe"));
-    
-		Assert.assertTrue(juego.cantarTrucoPorJugador("Patricio"));
-		Assert.assertTrue(juego.rechazarVarianteTrucoPorJugador("Pepe"));
 		
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("7"));
+		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Patricio"));
+		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pepe"));//Patricio hace primera
+		
+		Assert.assertTrue(juego.cantarTrucoPorJugador("Patricio"));
+		Assert.assertTrue(juego.aceptarTrucoPorJugador("Pepe"));
+		
+		Assert.assertTrue(juego.jugarSegundaCartaDeJugador("Patricio"));
+		Assert.assertTrue(juego.jugarSegundaCartaDeJugador("Pepe"));//Patricio hace Segunda
+		
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("2"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("7"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("7"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("2"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Santiago").equals("7"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("7"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("2"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pepe").equals("7"));
 		
 		/*Ahora juegan Santiago y Juan*/
@@ -413,11 +414,11 @@ public class PartidaDeSeisConFlorTest {
 		Assert.assertTrue(juego.jugarSegundaCartaDeJugador("Santiago"));
 		Assert.assertTrue(juego.jugarSegundaCartaDeJugador("Juan"));//Juan hace Segunda
 		
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("9"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("4"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("7"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("9"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("4"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Santiago").equals("7"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("9"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("4"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pepe").equals("7"));
 		
 		
@@ -585,8 +586,7 @@ public class PartidaDeSeisConFlorTest {
 		
 		
 		/*Vuelven a jugar pica pica*/
-		juego.repartirCartas(Arrays.asList(new Tres(Palo.ESPADA),new Rey(Palo.BASTO),new Cuatro(Palo.ORO),new Dos(Palo.COPA),new Cinco(Palo.COPA),new Cuatro(Palo.COPA),new UnoDeEspada(),new Dos(Palo.BASTO),new Caballo(Palo.ESPADA),new UnoDeBasto(),new Dos(Palo.ORO),new SieteDeBasto(),new SieteDeEspada(),new Cinco(Palo.ESPADA),new Cuatro(Palo.ESPADA),new Tres(Palo.COPA),new UnoDeCopa(),new Cinco(Palo.ESPADA)));
-		//juego.repartirCartas(Arrays.asList(new Tres(Palo.ESPADA),new Rey(Palo.BASTO),new Cuatro(Palo.ORO),new Dos(Palo.ESPADA),new Rey(Palo.ORO),new Cuatro(Palo.COPA),new UnoDeEspada(),new Dos(Palo.BASTO),new Caballo(Palo.ESPADA),new UnoDeBasto(),new Dos(Palo.ORO),new SieteDeBasto(),new SieteDeEspada(),new UnoDeOro(),new Seis(Palo.COPA),new Tres(Palo.COPA),new UnoDeCopa(),new Cinco(Palo.ESPADA)));
+		juego.repartirCartas(Arrays.asList(new Tres(Palo.ESPADA),new Rey(Palo.BASTO),new Cuatro(Palo.ORO),new Dos(Palo.ESPADA),new Rey(Palo.ORO),new Cuatro(Palo.COPA),new UnoDeEspada(),new Dos(Palo.BASTO),new Caballo(Palo.ESPADA),new UnoDeBasto(),new Dos(Palo.ORO),new SieteDeBasto(),new SieteDeEspada(),new UnoDeOro(),new Seis(Palo.COPA),new Tres(Palo.COPA),new UnoDeCopa(),new Cinco(Palo.ESPADA)));
 	   /*Jorge vs Pedro
 		 Pepe vs Patricio
 		 Juan vs Santiago*/
@@ -613,18 +613,18 @@ public class PartidaDeSeisConFlorTest {
 		
 		/*Pepe vs Patricio*/
 		
-		Assert.assertTrue(juego.cantarFlorPorJugador("Pepe"));
-		Assert.assertTrue(juego.aceptarFlorPorJugador("Patricio")); // gana patricio por que tiene 36 vs 31 de pepe
+		Assert.assertTrue(juego.cantarEnvidoPorJugador("Pepe"));
+		Assert.assertTrue(juego.aceptarVarianteEnvidoPorJugador("Patricio")); // gana patricio por que tiene 7 vs 4 de pepe
 		
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pepe"));
 		Assert.assertTrue(juego.cantarTrucoPorJugador("Patricio"));
 		Assert.assertTrue(juego.rechazarVarianteTrucoPorJugador("Pepe"));
 		
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("21"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Santiago").equals("21"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pepe").equals("21"));
 		
 		/*Juan vs Santiago*/
@@ -639,11 +639,11 @@ public class PartidaDeSeisConFlorTest {
 		Assert.assertTrue(juego.jugarSegundaCartaDeJugador("Juan")); 
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Santiago"));// gana Santiago la segunda por lo tanto gana
 		
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("24"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Santiago").equals("24"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pepe").equals("24"));
 		
 		/*Vuelven a jugar en ronda*/
@@ -657,11 +657,11 @@ public class PartidaDeSeisConFlorTest {
 		Assert.assertTrue(juego.cantarValeCuatroPorJugador("Pedro"));
 		Assert.assertTrue(juego.rechazarVarianteTrucoPorJugador("Patricio"));
 		
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("28"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Santiago").equals("28"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pepe").equals("28"));
 		
 		
@@ -685,11 +685,11 @@ public class PartidaDeSeisConFlorTest {
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Jorge"));
 		Assert.assertTrue(juego.jugarPrimerCartaDeJugador("Pepe"));//equipo 2 gana segunda
 		
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Juan").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pedro").equals("30"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Patricio").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Santiago").equals("30"));
-		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("13"));
+		Assert.assertTrue(juego.mostrarPuntosDeJugador("Jorge").equals("9"));
 		Assert.assertTrue(juego.mostrarPuntosDeJugador("Pepe").equals("30"));
 	}
 }
