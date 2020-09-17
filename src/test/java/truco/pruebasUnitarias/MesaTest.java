@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import  org.junit.Assert;
 
@@ -9,21 +9,21 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.excepciones.TurnoEquivocadoException;
-import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.Cuatro;
-import algoritmosyprogramacion3.tp2.modelo.EnMano;
-import algoritmosyprogramacion3.tp2.modelo.Jugable;
-import algoritmosyprogramacion3.tp2.modelo.Jugador;
-import algoritmosyprogramacion3.tp2.modelo.Mesa;
-import algoritmosyprogramacion3.tp2.modelo.Moderador;
-import algoritmosyprogramacion3.tp2.modelo.Palo;
-import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeOro;
-import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
-import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
+import truco.excepciones.TurnoEquivocadoException;
+import truco.modelo.Carta;
+import truco.modelo.Cuatro;
+import truco.modelo.EnMano;
+import truco.modelo.Jugable;
+import truco.modelo.Jugador;
+import truco.modelo.Mesa;
+import truco.modelo.Moderador;
+import truco.modelo.Palo;
+import truco.modelo.RotacionStrategy;
+import truco.modelo.SieteDeEspada;
+import truco.modelo.SieteDeOro;
+import truco.modelo.StrategyRotacionEnRonda;
+import truco.modelo.UnoDeBasto;
+import truco.modelo.UnoDeEspada;
 
 public class MesaTest {
 

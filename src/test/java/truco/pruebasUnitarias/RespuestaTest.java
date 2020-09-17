@@ -1,11 +1,11 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.Aceptar;
-import algoritmosyprogramacion3.tp2.modelo.Rechazar;
-import algoritmosyprogramacion3.tp2.modelo.Respuesta;
+import truco.modelo.Aceptar;
+import truco.modelo.Rechazar;
+import truco.modelo.Respuesta;
 
 public class RespuestaTest {
 

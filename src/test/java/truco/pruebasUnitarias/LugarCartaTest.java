@@ -1,12 +1,12 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.EnMano;
-import algoritmosyprogramacion3.tp2.modelo.EnMazo;
-import algoritmosyprogramacion3.tp2.modelo.EnMesa;
-import algoritmosyprogramacion3.tp2.modelo.LugarCarta;
+import truco.modelo.EnMano;
+import truco.modelo.EnMazo;
+import truco.modelo.EnMesa;
+import truco.modelo.LugarCarta;
 
 public class LugarCartaTest {
 

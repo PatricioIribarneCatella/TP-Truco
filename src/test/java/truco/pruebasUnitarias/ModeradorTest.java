@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import java.util.LinkedList;
 
@@ -6,15 +6,15 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.Jugable;
-import algoritmosyprogramacion3.tp2.modelo.Jugador;
-import algoritmosyprogramacion3.tp2.modelo.Mesa;
-import algoritmosyprogramacion3.tp2.modelo.Moderador;
-import algoritmosyprogramacion3.tp2.modelo.PartidaRondaSinFlor;
-import algoritmosyprogramacion3.tp2.modelo.PartidaRondaYPicaPicaSinFlor;
-import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
-import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
-import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionPicaPica;
+import truco.modelo.Jugable;
+import truco.modelo.Jugador;
+import truco.modelo.Mesa;
+import truco.modelo.Moderador;
+import truco.modelo.PartidaRondaSinFlor;
+import truco.modelo.PartidaRondaYPicaPicaSinFlor;
+import truco.modelo.RotacionStrategy;
+import truco.modelo.StrategyRotacionEnRonda;
+import truco.modelo.StrategyRotacionPicaPica;
 
 public class ModeradorTest {
 

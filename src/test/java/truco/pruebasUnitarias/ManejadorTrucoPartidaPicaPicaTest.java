@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -8,30 +8,30 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.Caballo;
-import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.Cinco;
-import algoritmosyprogramacion3.tp2.modelo.Cuatro;
-import algoritmosyprogramacion3.tp2.modelo.Dos;
-import algoritmosyprogramacion3.tp2.modelo.EnMano;
-import algoritmosyprogramacion3.tp2.modelo.Equipo;
-import algoritmosyprogramacion3.tp2.modelo.Jugable;
-import algoritmosyprogramacion3.tp2.modelo.Jugada;
-import algoritmosyprogramacion3.tp2.modelo.Jugador;
-import algoritmosyprogramacion3.tp2.modelo.ManejadorTruco;
-import algoritmosyprogramacion3.tp2.modelo.Mesa;
-import algoritmosyprogramacion3.tp2.modelo.Moderador;
-import algoritmosyprogramacion3.tp2.modelo.Palo;
-import algoritmosyprogramacion3.tp2.modelo.Rey;
-import algoritmosyprogramacion3.tp2.modelo.Seis;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
-import algoritmosyprogramacion3.tp2.modelo.Tres;
-import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.UnoDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
-import algoritmosyprogramacion3.tp2.modelo.UnoDeOro;
+import truco.modelo.Caballo;
+import truco.modelo.Carta;
+import truco.modelo.Cinco;
+import truco.modelo.Cuatro;
+import truco.modelo.Dos;
+import truco.modelo.EnMano;
+import truco.modelo.Equipo;
+import truco.modelo.Jugable;
+import truco.modelo.Jugada;
+import truco.modelo.Jugador;
+import truco.modelo.ManejadorTruco;
+import truco.modelo.Mesa;
+import truco.modelo.Moderador;
+import truco.modelo.Palo;
+import truco.modelo.Rey;
+import truco.modelo.Seis;
+import truco.modelo.SieteDeBasto;
+import truco.modelo.SieteDeEspada;
+import truco.modelo.StrategyRotacionEnRonda;
+import truco.modelo.Tres;
+import truco.modelo.UnoDeBasto;
+import truco.modelo.UnoDeCopa;
+import truco.modelo.UnoDeEspada;
+import truco.modelo.UnoDeOro;
 
 public class ManejadorTrucoPartidaPicaPicaTest {
 

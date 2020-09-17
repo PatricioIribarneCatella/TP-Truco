@@ -1,12 +1,12 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
-import algoritmosyprogramacion3.tp2.utilitarios.GraficadorCartas;
-import algoritmosyprogramacion3.tp2.vista.Imagen;
+import truco.modelo.Carta;
+import truco.modelo.UnoDeBasto;
+import truco.utilitarios.GraficadorCartas;
+import truco.vista.Imagen;
 
 public class GraficadorCartasTest {
 

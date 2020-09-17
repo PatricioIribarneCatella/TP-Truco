@@ -1,16 +1,16 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.Carta;
-import algoritmosyprogramacion3.tp2.modelo.Cinco;
-import algoritmosyprogramacion3.tp2.modelo.Mano;
-import algoritmosyprogramacion3.tp2.modelo.Palo;
-import algoritmosyprogramacion3.tp2.modelo.Seis;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeEspada;
+import truco.modelo.Carta;
+import truco.modelo.Cinco;
+import truco.modelo.Mano;
+import truco.modelo.Palo;
+import truco.modelo.Seis;
+import truco.modelo.SieteDeCopa;
+import truco.modelo.SieteDeEspada;
 
 public class ManoTest {
 

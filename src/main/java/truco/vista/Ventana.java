@@ -1,4 +1,4 @@
-package true.vista;
+package truco.vista;
 
 import java.util.Set;
 
@@ -17,7 +17,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import true.modelo.JuegoTruco;
+import truco.modelo.JuegoTruco;
 
 public abstract class Ventana {
 

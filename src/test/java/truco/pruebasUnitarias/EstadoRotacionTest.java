@@ -1,12 +1,12 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.EstadoRotacion;
-import algoritmosyprogramacion3.tp2.modelo.MayorQueCincoYMenorQueVenticinco;
-import algoritmosyprogramacion3.tp2.modelo.MayorQueVeinticinco;
-import algoritmosyprogramacion3.tp2.modelo.MenorQueCinco;
+import truco.modelo.EstadoRotacion;
+import truco.modelo.MayorQueCincoYMenorQueVenticinco;
+import truco.modelo.MayorQueVeinticinco;
+import truco.modelo.MenorQueCinco;
 
 public class EstadoRotacionTest {
 

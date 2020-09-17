@@ -1,17 +1,17 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.EnvidoCantado;
-import algoritmosyprogramacion3.tp2.modelo.EstadoPartida;
-import algoritmosyprogramacion3.tp2.modelo.FaltaEnvidoCantado;
-import algoritmosyprogramacion3.tp2.modelo.PartidaFinalizada;
-import algoritmosyprogramacion3.tp2.modelo.ReTrucoCantado;
-import algoritmosyprogramacion3.tp2.modelo.RealEnvidoCantado;
-import algoritmosyprogramacion3.tp2.modelo.TrucoCantado;
-import algoritmosyprogramacion3.tp2.modelo.TurnoJugador;
-import algoritmosyprogramacion3.tp2.modelo.ValeCuatroCantado;
+import truco.modelo.EnvidoCantado;
+import truco.modelo.EstadoPartida;
+import truco.modelo.FaltaEnvidoCantado;
+import truco.modelo.PartidaFinalizada;
+import truco.modelo.ReTrucoCantado;
+import truco.modelo.RealEnvidoCantado;
+import truco.modelo.TrucoCantado;
+import truco.modelo.TurnoJugador;
+import truco.modelo.ValeCuatroCantado;
 
 public class EstadoPartidaTest {
 	

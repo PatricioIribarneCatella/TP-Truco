@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.pruebasIntegracion;
+package truco.pruebasIntegracion;
 
 import java.util.Arrays;
 
@@ -6,16 +6,16 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
-import algoritmosyprogramacion3.tp2.excepciones.PartidaSinFlorException;
-import algoritmosyprogramacion3.tp2.excepciones.TurnoParaTomarDecisionEquivocadoException;
-import algoritmosyprogramacion3.tp2.modelo.Dos;
-import algoritmosyprogramacion3.tp2.modelo.JuegoTruco;
-import algoritmosyprogramacion3.tp2.modelo.Palo;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.SieteDeCopa;
-import algoritmosyprogramacion3.tp2.modelo.UnoDeBasto;
-import algoritmosyprogramacion3.tp2.modelo.UnoDeEspada;
+import truco.modelo.Dos;
+import truco.modelo.JuegoTruco;
+import truco.modelo.Palo;
+import truco.modelo.SieteDeBasto;
+import truco.modelo.SieteDeCopa;
+import truco.modelo.UnoDeBasto;
+import truco.modelo.UnoDeEspada;
+import truco.excepciones.AccionInvalidaException;
+import truco.excepciones.PartidaSinFlorException;
+import truco.excepciones.TurnoParaTomarDecisionEquivocadoException;
 
 public class TestContraComputadora {
 

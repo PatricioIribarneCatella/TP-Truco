@@ -1,14 +1,14 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.excepciones.AccionInvalidaException;
-import algoritmosyprogramacion3.tp2.excepciones.CantidadDeEnvidosMaximosSuperadaException;
-import algoritmosyprogramacion3.tp2.modelo.Partida;
-import algoritmosyprogramacion3.tp2.modelo.PartidaRondaSinFlor;
+import truco.excepciones.AccionInvalidaException;
+import truco.excepciones.CantidadDeEnvidosMaximosSuperadaException;
+import truco.modelo.Partida;
+import truco.modelo.PartidaRondaSinFlor;
 
 public class PartidaTest {
 

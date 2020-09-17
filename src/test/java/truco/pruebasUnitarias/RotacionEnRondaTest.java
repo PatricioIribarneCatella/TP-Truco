@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import  org.junit.Assert;
 
@@ -7,10 +7,10 @@ import java.util.LinkedList;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.Jugable;
-import algoritmosyprogramacion3.tp2.modelo.Jugador;
-import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
-import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionEnRonda;
+import truco.modelo.Jugable;
+import truco.modelo.Jugador;
+import truco.modelo.RotacionStrategy;
+import truco.modelo.StrategyRotacionEnRonda;
 
 public class RotacionEnRondaTest {
 

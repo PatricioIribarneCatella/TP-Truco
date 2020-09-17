@@ -1,15 +1,15 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.Envido;
-import algoritmosyprogramacion3.tp2.modelo.Evento;
-import algoritmosyprogramacion3.tp2.modelo.FaltaEnvido;
-import algoritmosyprogramacion3.tp2.modelo.ReTruco;
-import algoritmosyprogramacion3.tp2.modelo.RealEnvido;
-import algoritmosyprogramacion3.tp2.modelo.Truco;
-import algoritmosyprogramacion3.tp2.modelo.ValeCuatro;
+import truco.modelo.Envido;
+import truco.modelo.Evento;
+import truco.modelo.FaltaEnvido;
+import truco.modelo.ReTruco;
+import truco.modelo.RealEnvido;
+import truco.modelo.Truco;
+import truco.modelo.ValeCuatro;
 
 public class CantoTest {
 

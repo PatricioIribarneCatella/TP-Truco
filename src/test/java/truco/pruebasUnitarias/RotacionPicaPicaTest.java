@@ -1,4 +1,4 @@
-package algoritmosyprogramacion3.tp2.pruebasUnitarias;
+package truco.pruebasUnitarias;
 
 import java.util.LinkedList;
 
@@ -6,10 +6,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import algoritmosyprogramacion3.tp2.modelo.Jugable;
-import algoritmosyprogramacion3.tp2.modelo.Jugador;
-import algoritmosyprogramacion3.tp2.modelo.RotacionStrategy;
-import algoritmosyprogramacion3.tp2.modelo.StrategyRotacionPicaPica;
+import truco.modelo.Jugable;
+import truco.modelo.Jugador;
+import truco.modelo.RotacionStrategy;
+import truco.modelo.StrategyRotacionPicaPica;
 
 public class RotacionPicaPicaTest {
 	
@@ -25,14 +25,14 @@ public class RotacionPicaPicaTest {
 	@Before
 	public void setUp(){
 		
-		jugador1= new Jugador("1");
+		jugador1 = new Jugador("1");
 		jugador2 = new Jugador("2");
-		jugador3= new Jugador("3");
+		jugador3 = new Jugador("3");
 		jugador4 = new Jugador("4");
 		jugador5 = new Jugador("5");
 		jugador6 = new Jugador("6");
 		
-		jugadores= new LinkedList<Jugable>();
+		jugadores = new LinkedList<Jugable>();
 		jugadores.add(jugador1);
 		jugadores.add(jugador2);
 		jugadores.add(jugador3);
