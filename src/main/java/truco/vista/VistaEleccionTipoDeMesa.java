@@ -62,7 +62,7 @@ public class VistaEleccionTipoDeMesa implements Vista {
 
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:src/main/resources/imagenes/fondos/fondo-verde.jpg", 800, 600, false, true);
+		Image imagen = new Image("imagenes/fondos/fondo-verde.jpg", 800, 600, false, true);
 		
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen,
 															BackgroundRepeat.REPEAT,

@@ -26,37 +26,37 @@ public class VistaInicio implements Vista {
 	private Stage stage;
 	private Scene escena;
 	private VBox contenedor;
-	
+
 	public VistaInicio(JuegoTruco modelo, Stage stage) {
-		
+
 		this.modelo = modelo;
 		this.stage = stage;
 		this.initialize();
 	}
 
 	private void initialize() {
-		
+
 		this.contenedor = new VBox();
-		
+
 		this.setContenedorPrincipal();
-		
+
 		this.setImagenDeFondo();
-		
+
 		this.setCaracteristicasAlContenedorPrincipal();
-		
+
 		this.escena = new Scene(this.contenedor, 733, 540);
 	}
-	
+
 	private void setContenedorPrincipal() {
-		
+
 		this.contenedor.setAlignment(Pos.CENTER);
 		this.contenedor.setSpacing(20);
 		this.contenedor.setPadding(new Insets(25));
 	}
-	
+
 	private void setImagenDeFondo() {
 
-		Image imagen = new Image("file:src/main/resources/imagenes/fondos/fondo-con-cartas-1.jpg", 733, 540, false, true);
+		Image imagen = new Image("imagenes/fondos/fondo-con-cartas-1.jpg", 733, 540, false, true);
 
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen,
 															BackgroundRepeat.REPEAT,

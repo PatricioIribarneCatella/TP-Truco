@@ -51,7 +51,7 @@ public abstract class ContenedorInformacionJugadoresYMazo extends VBox {
 		botonRepartirCartas.setFont(Font.font("Tahoma", FontWeight.NORMAL, 13));
 		botonRepartirCartas.setTextFill(Color.BLACK);
 		
-		Image imagenCartaReverso = new Image("file:src/main/resources/imagenes/cartas/naipes.PNG", 75, 150, false, true);
+		Image imagenCartaReverso = new Image("imagenes/cartas/naipes.PNG", 75, 150, false, true);
 		botonRepartirCartas.setGraphic(new ImageView(imagenCartaReverso));
 		botonRepartirCartas.setDefaultButton(true);
 		botonRepartirCartas.setContentDisplay(ContentDisplay.TOP);

@@ -61,7 +61,7 @@ public class VistaCreditos implements Vista {
 
 	private void setImagenDeFondo() {
 		
-		Image imagen = new Image("file:src/main/resources/imagenes/fondos/fondo-verde.jpg", 733, 540, false, true);
+		Image imagen = new Image("imagenes/fondos/fondo-verde.jpg", 733, 540, false, true);
 		
 		BackgroundImage imagenDeFondo = new BackgroundImage(imagen,
 															BackgroundRepeat.REPEAT,
