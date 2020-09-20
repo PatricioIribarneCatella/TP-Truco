@@ -19,8 +19,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import truco.manejadores.BotonVolverEventHandler;
 import truco.modelo.JuegoTruco;
+import truco.manejadores.BotonVolverEventHandler;
 
 public class VistaCreditos implements Vista {
 
@@ -73,48 +73,47 @@ public class VistaCreditos implements Vista {
 	}
 	
 	private void setCaracteristicasAlContenedorPrincipal() {
-		
+
 		Label etiquetaNombreVersion = new Label("FonTruco - v1.0");
 		etiquetaNombreVersion.setFont(Font.font("Tahoma", FontWeight.NORMAL, 22));
 		etiquetaNombreVersion.setTextFill(Color.WHITE);
-		
+
 		Label etiquetaAutores = new Label("Autores");
 		etiquetaAutores.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
 		etiquetaAutores.setTextFill(Color.WHITE);
-		
+
 		BackgroundFill fondoDeColorAutores = new BackgroundFill(Color.RED, new CornerRadii(3), new Insets(0.0,0.0,0.0,0.0));
 		etiquetaAutores.setBackground(new Background(fondoDeColorAutores));
-		
-		
+
 		Label etiquetaSantiago = new Label("Santiago Augusto Pinto");
 		etiquetaSantiago.setFont(Font.font("Tahoma", FontWeight.NORMAL, 16));
 		etiquetaSantiago.setTextFill(Color.WHITE);
-		
+
 		Label etiquetaPatricio = new Label("Patricio Iribarne Catella");
 		etiquetaPatricio.setFont(Font.font("Tahoma", FontWeight.NORMAL, 16));
 		etiquetaPatricio.setTextFill(Color.WHITE);
-		
+
 		this.botonVolver = new Button("Volver");
 		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 14));
 		this.botonVolver.setTextFill(Color.BLACK);
-		
+
 		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
-		
+
 		this.botonVolver.setOnMouseEntered(e -> {
-			
+
 			this.botonVolver.setScaleX(1.2);
 			this.botonVolver.setScaleY(1.2);
 		});
-		
+
 		this.botonVolver.setOnMouseExited(e -> {
-			
+
 			this.botonVolver.setScaleX(1);
 			this.botonVolver.setScaleY(1);
 		});
-		
+
 		this.botonVolver.setOnAction(new BotonVolverEventHandler(this, this.vistaAnterior));
-		
+
 		this.contenedor.getChildren().addAll(etiquetaNombreVersion, etiquetaAutores, etiquetaSantiago, etiquetaPatricio, this.botonVolver);
 	}
 	

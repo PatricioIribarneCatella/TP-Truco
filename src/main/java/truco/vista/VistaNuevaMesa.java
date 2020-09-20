@@ -182,9 +182,9 @@ public abstract class VistaNuevaMesa implements Vista {
 		
 		this.botonVolver = new Button("Volver");
 		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 18));
-		this.botonVolver.setTextFill(Color.WHITE);
+		this.botonVolver.setTextFill(Color.BLACK);
 		
-		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.LIGHTBLUE , new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
 		
 		this.botonVolver.setOnMouseEntered(e -> {

@@ -91,9 +91,9 @@ public class VistaJuegosExistentes implements Vista {
 				
 				Button botonMesa = new Button(nombreMesa);
 				botonMesa.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-				botonMesa.setTextFill(Color.BLACK);
+				botonMesa.setTextFill(Color.WHITE);
 				
-				BackgroundFill fondoDeColorBotonMesa = new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+				BackgroundFill fondoDeColorBotonMesa = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 				botonMesa.setBackground(new Background(fondoDeColorBotonMesa));
 				
 				botonMesa.setOnMouseEntered(e -> {
@@ -131,9 +131,9 @@ public class VistaJuegosExistentes implements Vista {
 		
 		this.botonVolver = new Button("Volver");
 		this.botonVolver.setFont(Font.font("Tahoma", FontWeight.NORMAL, 16));
-		this.botonVolver.setTextFill(Color.WHITE);
+		this.botonVolver.setTextFill(Color.BLACK);
 		
-		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.RED, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
+		BackgroundFill fondoDeColorVolver = new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5), new Insets(0.0,0.0,0.0,0.0));
 		this.botonVolver.setBackground(new Background(fondoDeColorVolver));
 		
 		this.botonVolver.setOnMouseEntered(e -> {
