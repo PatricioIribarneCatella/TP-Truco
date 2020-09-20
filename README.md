@@ -8,18 +8,12 @@ Juego de Truco (_Algoritmos y Programación III - FIUBA_)
 **Correr tests**
 
 ```bash
- $ ant
+ $ ./gradlew test
 ```
 
-**Correr tests y aplicación**
+**Correr aplicación**
 
 ```bash
- $ ant ejecutar.aplicacion
+ $ ./gradlew jar
+ $ java -jar build/libs/truco.jar
 ```
-
-**Correr aplicación sin tests**
-
-```bash
- $ ant ejecutar.aplicacion.sin.tests
-```
-
